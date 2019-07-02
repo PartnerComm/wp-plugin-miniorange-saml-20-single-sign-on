@@ -168,7 +168,7 @@ jQuery(document).ready(function () {
 	//FAQ - redirect to idp issue
 	 jQuery("#help_faq_idp_redirect_title").click(function () {
         jQuery("#help_faq_idp_redirect_desc").slideToggle(400);
-    });
+	});
 
 	//SYNC Metdata
 	jQuery("#sync_metadata").click(function () {

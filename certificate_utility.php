@@ -3,22 +3,22 @@
 
 class CertificateUtility
 {
-    public static function generate_certificate($N5, $jj, $hK)
+    public static function generate_certificate($TF, $Kf, $au)
     {
-        $Jh = openssl_pkey_new();
-        $my = openssl_csr_new($N5, $Jh, $jj);
-        $yD = openssl_csr_sign($my, null, $Jh, $hK, $jj, time());
-        openssl_csr_export($my, $la);
-        openssl_x509_export($yD, $q4);
-        openssl_pkey_export($Jh, $o7);
-        Sa:
-        if (!(($El = openssl_error_string()) !== false)) {
-            goto Bw;
+        $tz = openssl_pkey_new();
+        $P_ = openssl_csr_new($TF, $tz, $Kf);
+        $hb = openssl_csr_sign($P_, null, $tz, $au, $Kf, time());
+        openssl_csr_export($P_, $Ak);
+        openssl_x509_export($hb, $B4);
+        openssl_pkey_export($tz, $Bv);
+        lmt:
+        if (!(($xr = openssl_error_string()) !== false)) {
+            goto P3a;
         }
-        error_log("\103\145\162\x74\x69\x66\151\x63\x61\x74\x65\125\164\151\x6c\x69\164\x79\x3a\40\105\162\162\x6f\162\40\x67\145\x6e\145\x72\141\x74\151\156\147\40\143\x65\162\164\x69\x66\151\143\x61\x74\145\56\x20" . $El);
-        goto Sa;
-        Bw:
-        $ZY = array("\160\165\x62\154\x69\x63\x5f\153\145\x79" => $q4, "\x70\x72\151\x76\x61\x74\145\x5f\x6b\145\171" => $o7);
-        return $ZY;
+        error_log("\x43\145\162\x74\151\x66\x69\x63\141\x74\145\125\x74\151\x6c\x69\164\x79\72\x20\105\x72\x72\157\162\x20\147\x65\156\x65\x72\x61\164\151\156\x67\x20\x63\145\x72\x74\151\x66\151\143\x61\x74\145\56\40" . $xr);
+        goto lmt;
+        P3a:
+        $pj = array("\160\165\142\x6c\x69\x63\137\153\x65\x79" => $B4, "\160\162\x69\166\x61\164\x65\137\153\145\x79" => $Bv);
+        return $pj;
     }
 }

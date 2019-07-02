@@ -1,61 +1,61 @@
 <?php
 
 
-include "\101\x73\x73\x65\x72\x74\151\x6f\x6e\56\x70\150\x70";
+include "\101\163\163\x65\x72\x74\x69\157\156\x2e\x70\x68\x70";
 class SAML2SPResponse
 {
     private $assertions;
     private $destination;
     private $certificates;
     private $signatureData;
-    public function __construct(DOMElement $vw = NULL)
+    public function __construct(DOMElement $BO = NULL)
     {
         $this->assertions = array();
         $this->certificates = array();
-        if (!($vw === NULL)) {
-            goto HZ;
+        if (!($BO === NULL)) {
+            goto Zh;
         }
         return;
-        HZ:
-        $Yd = SAMLSPUtilities::validateElement($vw);
-        if (!($Yd !== FALSE)) {
-            goto Tj;
+        Zh:
+        $XS = SAMLSPUtilities::validateElement($BO);
+        if (!($XS !== FALSE)) {
+            goto x5;
         }
-        $this->certificates = $Yd["\x43\x65\x72\x74\151\146\151\x63\x61\x74\145\163"];
-        $this->signatureData = $Yd;
-        Tj:
-        if (!$vw->hasAttribute("\x44\145\x73\x74\x69\156\141\164\x69\x6f\x6e")) {
-            goto cf;
+        $this->certificates = $XS["\103\x65\162\x74\151\146\151\x63\141\164\145\x73"];
+        $this->signatureData = $XS;
+        x5:
+        if (!$BO->hasAttribute("\104\145\x73\x74\151\156\141\164\x69\157\156")) {
+            goto vA;
         }
-        $this->destination = $vw->getAttribute("\104\x65\x73\164\x69\156\x61\x74\151\157\156");
-        cf:
-        $Ua = $vw->firstChild;
-        Kx:
-        if (!($Ua !== NULL)) {
-            goto Pu;
+        $this->destination = $BO->getAttribute("\104\x65\163\164\151\156\141\x74\151\157\x6e");
+        vA:
+        $pu = $BO->firstChild;
+        DR:
+        if (!($pu !== NULL)) {
+            goto Dv;
         }
-        if (!($Ua->namespaceURI !== "\x75\x72\x6e\72\157\141\163\x69\163\x3a\x6e\141\155\x65\163\x3a\x74\x63\72\x53\x41\x4d\x4c\72\x32\56\60\x3a\141\163\163\x65\162\164\151\x6f\x6e")) {
-            goto Yc;
+        if (!($pu->namespaceURI !== "\x75\162\x6e\x3a\157\141\163\151\x73\x3a\156\x61\155\145\163\x3a\164\x63\x3a\x53\x41\115\x4c\72\62\x2e\60\x3a\x61\163\x73\x65\162\164\151\157\156")) {
+            goto D2;
         }
-        goto g2;
-        Yc:
-        if (!($Ua->localName === "\x41\163\163\x65\x72\x74\x69\157\156" || $Ua->localName === "\105\x6e\143\162\171\160\x74\x65\x64\x41\163\163\145\162\x74\x69\157\156")) {
-            goto qg;
+        goto iO;
+        D2:
+        if (!($pu->localName === "\x41\163\x73\145\162\164\x69\x6f\x6e" || $pu->localName === "\x45\156\x63\162\171\x70\x74\x65\144\101\163\163\x65\x72\x74\x69\157\x6e")) {
+            goto kR;
         }
-        $this->assertions[] = new SAML2SPAssertion($Ua);
-        qg:
-        g2:
-        $Ua = $Ua->nextSibling;
-        goto Kx;
-        Pu:
+        $this->assertions[] = new SAML2SPAssertion($pu);
+        kR:
+        iO:
+        $pu = $pu->nextSibling;
+        goto DR;
+        Dv:
     }
     public function getAssertions()
     {
         return $this->assertions;
     }
-    public function setAssertions(array $fM)
+    public function setAssertions(array $oW)
     {
-        $this->assertions = $fM;
+        $this->assertions = $oW;
     }
     public function getDestination()
     {
@@ -63,13 +63,13 @@ class SAML2SPResponse
     }
     public function toUnsignedXML()
     {
-        $KQ = parent::toUnsignedXML();
-        foreach ($this->assertions as $U1) {
-            $U1->toXML($KQ);
-            fI:
+        $wP = parent::toUnsignedXML();
+        foreach ($this->assertions as $XP) {
+            $XP->toXML($wP);
+            p_:
         }
-        iZ:
-        return $KQ;
+        Eo:
+        return $wP;
     }
     public function getCertificates()
     {

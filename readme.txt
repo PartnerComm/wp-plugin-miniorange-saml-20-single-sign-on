@@ -3,8 +3,8 @@ Contributors: miniOrange
 Donate link: http://miniorange.com
 Tags: saml, single sign on, SSO, single sign on saml, sso saml, sso integration WordPress, sso using SAML, SAML 2.0 Service Provider, Wordpress SAML, SAML Single Sign-On, SSO using SAML, SAML 2.0, SAML 20, Wordpress Single Sign On, ADFS, Okta, Google Apps, Google for Work, Salesforce, Shibboleth, SimpleSAMLphp, OpenAM, Centrify, Ping, RSA, IBM, Oracle, OneLogin, Bitium, WSO2, NetIQ, Novell Access Manager
 Requires at least: 3.5
-Tested up to: 4.9.6
-Stable tag: 11.4.0
+Tested up to: 5.2.2
+Stable tag: 11.4.2
 License URI: http://miniorange.com/usecases/miniOrange_User_Agreement.pdf
 
 miniOrange SAML 2.0 Single Sign-On provides SSO to your Wordpress site with any SAML compliant Identity Provider. (ACTIVE SUPPORT for IdP config)
@@ -15,7 +15,7 @@ miniOrange SAML 2.0 SSO allows users residing at SAML 2.0 compliant Identity Pro
 
 miniOrange SAML SSO Plugin acts as a SAML 2.0 Service Provider which can be configured to establish the trust between the plugin and various SAML 2.0 supported Identity Providers to securely authenticate the user to the Wordpress site.
 
-If you require any Single Sign On application or need any help with installing this plugin, please feel free to email us at info@miniorange.com or <a href="http://miniorange.com/contact">Contact us</a>.
+If you require any Single Sign On application or need any help with installing this plugin, please feel free to email us at info@xecurify.com or <a href="http://miniorange.com/contact">Contact us</a>.
 
 = Features :- =
 
@@ -33,7 +33,7 @@ If you require any Single Sign On application or need any help with installing t
 
 = Website - =
 Check out our website for other plugins <a href="http://miniorange.com/plugins" >http://miniorange.com/plugins</a> or <a href="https://wordpress.org/plugins/search.php?q=miniorange" >click here</a> to see all our listed WordPress plugins.
-For more support or info email us at info@miniorange.com or <a href="http://miniorange.com/contact" >Contact us</a>. You can also submit your query from plugin's configuration page.
+For more support or info email us at info@xecurify.com or <a href="http://miniorange.com/contact" >Contact us</a>. You can also submit your query from plugin's configuration page.
 
 == Installation ==
 
@@ -50,10 +50,10 @@ For more support or info email us at info@miniorange.com or <a href="http://mini
 == Frequently Asked Questions ==
 
 = I am not able to configure the Identity Provider with the provided settings =
-Please email us at info@miniorange.com or <a href="http://miniorange.com/contact" >Contact us</a>. You can also submit your app request from plugin's configuration page.
+Please email us at info@xecurify.com or <a href="http://miniorange.com/contact" >Contact us</a>. You can also submit your app request from plugin's configuration page.
 
 = For any query/problem/request =
-Visit Help & FAQ section in the plugin OR email us at info@miniorange.com or <a href="http://miniorange.com/contact">Contact us</a>. You can also submit your query from plugin's configuration page.
+Visit Help & FAQ section in the plugin OR email us at info@xecurify.com or <a href="http://miniorange.com/contact">Contact us</a>. You can also submit your query from plugin's configuration page.
 
 == Screenshots ==
 
@@ -63,7 +63,23 @@ Visit Help & FAQ section in the plugin OR email us at info@miniorange.com or <a 
 
 == Changelog ==
 
-= 11.4.0 = 
+= 11.4.2 =
+UI fixes.
+Added Customizable SSO button.
+Added Domain Restriction feature.
+Send plugin configuration with support query.
+Custom Widget and shortcode Text.
+Added Keep Configuration intact feature.
+Compatibility with WordPress 5.2.2.
+
+= 11.4.1 =
+UI fixes.
+Updated XMLSeclibs library.
+Custom widget texts.
+Custom error messages.
+Compatibility with Wordpress 5.0.2.
+
+= 11.4.0 =
 Compatibility with WordPress 4.9.6
 
 = 11.3.0 =
@@ -74,7 +90,7 @@ Support for Wordpress 4.9.1
 Descriptive error messages. mcrypt check and auto-redirect bug fixed.
 
 = 3.7 =
-Support for Integrated Windows Authentication - contact info@miniorange.com if interested
+Support for Integrated Windows Authentication - contact info@xecurify.com if interested
 
 = 3.5 =
 Decrypt assertion bug fix
@@ -133,6 +149,26 @@ UI Improvements.
 * this is the first release.
 
 == Upgrade Notice ==
+
+= 11.4.2 =
+UI fixes.
+Added Customizable SSO button.
+Added Domain Restriction feature.
+Send plugin configuration with support query.
+Custom Widget and shortcode Text.
+Added Keep Configuration intact feature.
+Compatibility with WordPress 5.2.2.
+
+= 11.4.1 =
+UI fixes.
+Updated XMLSeclibs library.
+Custom widget texts.
+Custom error messages.
+Compatibility with Wordpress 5.0.2.
+
+= 11.4.0 =
+Compatibility with WordPress 4.9.6
+
 = 11.3.0 =
 
 Removed mcrypt dependencies.
@@ -142,7 +178,7 @@ Support for Wordpress 4.9.1
 Descriptive error messages. mcrypt check and auto-redirect bug fixed.
 
 = 3.7 =
-Support for Integrated Windows Authentication - contact info@miniorange.com if interested
+Support for Integrated Windows Authentication - contact info@xecurify.com if interested
 
 = 3.5 =
 Decrypt assertion bug fix
@@ -151,8 +187,8 @@ Decrypt assertion bug fix
 Added some requested features and some bug fixes.
 
 = 3.0 =
-Major Update. We have taken ut-most care to make sure that your existing login flow doesn't break. If you have issues after this update then please contact us. We will get back to you very soon. 
- 
+Major Update. We have taken ut-most care to make sure that your existing login flow doesn't break. If you have issues after this update then please contact us. We will get back to you very soon.
+
 = 2.1 =
 Removed unwanted JS files.
 

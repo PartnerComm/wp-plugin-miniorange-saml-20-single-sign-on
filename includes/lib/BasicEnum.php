@@ -7,33 +7,33 @@ abstract class BasicEnum
     public static function getConstants()
     {
         if (!(self::$constCacheArray == NULL)) {
-            goto Qa;
+            goto foe;
         }
         self::$constCacheArray = array();
-        Qa:
-        $mg = get_called_class();
-        if (array_key_exists($mg, self::$constCacheArray)) {
-            goto L9;
+        foe:
+        $PB = get_called_class();
+        if (array_key_exists($PB, self::$constCacheArray)) {
+            goto wk_;
         }
-        $Zv = new ReflectionClass($mg);
-        self::$constCacheArray[$mg] = $Zv->getConstants();
-        L9:
-        return self::$constCacheArray[$mg];
+        $XC = new ReflectionClass($PB);
+        self::$constCacheArray[$PB] = $XC->getConstants();
+        wk_:
+        return self::$constCacheArray[$PB];
     }
-    public static function isValidName($M7, $x6 = false)
+    public static function isValidName($vd, $Vs = false)
     {
-        $vd = self::getConstants();
-        if (!$x6) {
-            goto BB;
+        $K9 = self::getConstants();
+        if (!$Vs) {
+            goto Ls7;
         }
-        return array_key_exists($M7, $vd);
-        BB:
-        $wu = array_map("\163\164\x72\x74\157\x6c\x6f\x77\145\162", array_keys($vd));
-        return in_array(strtolower($M7), $wu);
+        return array_key_exists($vd, $K9);
+        Ls7:
+        $ID = array_map("\x73\164\162\x74\157\154\x6f\x77\x65\x72", array_keys($K9));
+        return in_array(strtolower($vd), $ID);
     }
-    public static function isValidValue($q0, $x6 = true)
+    public static function isValidValue($Iy, $Vs = true)
     {
-        $yE = array_values(self::getConstants());
-        return in_array($q0, $yE, $x6);
+        $o0 = array_values(self::getConstants());
+        return in_array($Iy, $o0, $Vs);
     }
 }
