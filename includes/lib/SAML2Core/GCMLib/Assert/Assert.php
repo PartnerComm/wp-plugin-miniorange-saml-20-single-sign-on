@@ -5,24 +5,24 @@ namespace Assert;
 
 abstract class Assert
 {
-    protected static $lazyAssertionExceptionClass = "\101\163\x73\x65\x72\164\x5c\114\141\x7a\x79\x41\163\x73\x65\x72\x74\x69\x6f\156\x45\170\143\145\x70\164\151\157\x6e";
-    protected static $assertionClass = "\x41\163\x73\145\162\164\x5c\x41\163\163\x65\x72\164\x69\157\156";
-    public static function that($Iy, $cx = null, $Oi = null)
+    protected static $lazyAssertionExceptionClass = "\x41\163\163\x65\162\164\x5c\x4c\x61\x7a\x79\x41\x73\163\145\x72\x74\151\x6f\x6e\x45\x78\143\145\160\164\x69\x6f\156";
+    protected static $assertionClass = "\101\163\163\145\x72\x74\134\x41\163\x73\x65\162\x74\151\157\156";
+    public static function that($zw, $dx = null, $mi = null)
     {
-        $zY = new AssertionChain($Iy, $cx, $Oi);
-        return $zY->setAssertionClassName(static::$assertionClass);
+        $ds = new AssertionChain($zw, $dx, $mi);
+        return $ds->setAssertionClassName(static::$assertionClass);
     }
-    public static function thatAll($o0, $cx = null, $Oi = null)
+    public static function thatAll($Uj, $dx = null, $mi = null)
     {
-        return static::that($o0, $cx, $Oi)->all();
+        return static::that($Uj, $dx, $mi)->all();
     }
-    public static function thatNullOr($Iy, $cx = null, $Oi = null)
+    public static function thatNullOr($zw, $dx = null, $mi = null)
     {
-        return static::that($Iy, $cx, $Oi)->nullOr();
+        return static::that($zw, $dx, $mi)->nullOr();
     }
     public static function lazy()
     {
-        $rA = new LazyAssertion();
-        return $rA->setAssertClass(\get_called_class())->setExceptionClass(static::$lazyAssertionExceptionClass);
+        $v3 = new LazyAssertion();
+        return $v3->setAssertClass(\get_called_class())->setExceptionClass(static::$lazyAssertionExceptionClass);
     }
 }

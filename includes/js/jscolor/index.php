@@ -2,7 +2,7 @@
 
 
 if (defined("\127\120\x49\x4e\x43")) {
-    goto z8;
+    goto O10;
 }
 die;
-z8:
+O10:
