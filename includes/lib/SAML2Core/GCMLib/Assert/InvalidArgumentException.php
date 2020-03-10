@@ -8,12 +8,12 @@ class InvalidArgumentException extends \InvalidArgumentException implements Asse
     private $propertyPath;
     private $value;
     private $constraints;
-    public function __construct($Nr, $ug, $m7, $Iy, array $uU = array())
+    public function __construct($Ew, $oZ, $YK, $zw, array $b6 = array())
     {
-        parent::__construct($Nr, $ug);
-        $this->propertyPath = $m7;
-        $this->value = $Iy;
-        $this->constraints = $uU;
+        parent::__construct($Ew, $oZ);
+        $this->propertyPath = $YK;
+        $this->value = $zw;
+        $this->constraints = $b6;
     }
     public function getPropertyPath()
     {

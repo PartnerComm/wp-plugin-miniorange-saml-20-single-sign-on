@@ -2,7 +2,7 @@
 
 
 if (defined("\x57\x50\x49\x4e\x43")) {
-    goto U9m;
+    goto Dk_;
 }
 die;
-U9m:
+Dk_:

@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\x49\x4e\103")) {
-    goto LTV;
+if (defined("\127\120\x49\x4e\x43")) {
+    goto BKL;
 }
 die;
-LTV:
+BKL:
