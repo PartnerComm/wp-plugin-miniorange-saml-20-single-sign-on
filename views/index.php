@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\x50\111\116\x43")) {
-    goto N6;
+if (defined("\127\120\x49\x4e\x43")) {
+    goto NF;
 }
 die;
-N6:
+NF:

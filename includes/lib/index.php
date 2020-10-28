@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\x49\x4e\x43")) {
-    goto BKL;
+if (defined("\127\x50\111\x4e\103")) {
+    goto RI8;
 }
 die;
-BKL:
+RI8:

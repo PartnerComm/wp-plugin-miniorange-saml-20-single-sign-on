@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\111\116\x43")) {
-    goto G3C;
+if (defined("\x57\120\x49\116\103")) {
+    goto pv1;
 }
 die;
-G3C:
+pv1:

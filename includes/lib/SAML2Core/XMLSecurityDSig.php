@@ -11,18 +11,18 @@ use Exception;
 use RobRichards\XMLSecLibs\Utils\XPath;
 class XMLSecurityDSig
 {
-    const XMLDSIGNS = "\x68\x74\164\x70\72\57\57\167\x77\167\56\x77\63\56\157\x72\x67\57\x32\x30\x30\x30\57\x30\71\x2f\170\155\154\144\x73\x69\x67\x23";
-    const SHA1 = "\x68\164\x74\160\x3a\57\x2f\167\x77\167\56\167\x33\56\157\x72\x67\57\62\60\60\60\57\x30\x39\57\170\155\x6c\x64\163\151\x67\43\x73\x68\141\x31";
-    const SHA256 = "\150\x74\164\160\x3a\57\x2f\167\x77\x77\56\167\x33\x2e\157\162\147\57\62\60\60\x31\x2f\x30\x34\x2f\x78\155\x6c\x65\156\143\x23\163\150\141\x32\x35\66";
-    const SHA384 = "\x68\164\x74\x70\72\57\57\x77\167\167\56\x77\63\x2e\x6f\162\147\57\x32\x30\x30\61\57\60\x34\57\x78\155\154\x64\x73\151\x67\x2d\x6d\157\x72\145\43\163\150\141\x33\70\x34";
-    const SHA512 = "\150\164\x74\x70\72\57\x2f\167\x77\x77\x2e\x77\x33\56\157\162\x67\57\62\60\60\x31\x2f\60\x34\57\170\155\154\x65\x6e\x63\43\163\150\x61\x35\x31\x32";
-    const RIPEMD160 = "\150\164\164\x70\72\57\57\x77\x77\x77\56\167\63\56\x6f\x72\x67\x2f\x32\60\60\x31\57\60\x34\57\x78\155\154\145\156\x63\43\162\x69\160\x65\x6d\x64\x31\66\x30";
-    const C14N = "\150\x74\164\x70\72\x2f\57\167\x77\167\x2e\167\63\56\157\x72\x67\x2f\124\x52\x2f\62\x30\60\x31\57\x52\105\x43\55\x78\155\154\55\143\x31\64\x6e\55\62\60\60\x31\x30\x33\61\x35";
-    const C14N_COMMENTS = "\150\164\164\x70\x3a\x2f\57\x77\167\x77\56\x77\x33\x2e\x6f\162\x67\x2f\124\122\x2f\62\x30\x30\x31\x2f\122\x45\x43\x2d\x78\x6d\x6c\55\x63\x31\64\x6e\55\62\x30\x30\61\60\63\61\65\x23\x57\151\x74\150\103\157\155\x6d\145\156\164\163";
-    const EXC_C14N = "\150\164\164\160\72\57\x2f\x77\x77\x77\x2e\x77\x33\x2e\157\162\x67\x2f\x32\60\x30\61\x2f\x31\x30\x2f\x78\155\154\55\x65\170\143\55\x63\61\64\x6e\43";
-    const EXC_C14N_COMMENTS = "\150\164\164\160\x3a\x2f\57\x77\167\x77\56\x77\x33\56\157\x72\147\57\x32\x30\x30\x31\57\61\x30\x2f\170\155\154\x2d\x65\170\143\x2d\x63\61\x34\x6e\x23\x57\x69\164\x68\x43\157\x6d\155\145\x6e\164\163";
-    const template = "\x3c\144\x73\x3a\123\151\x67\x6e\141\164\x75\x72\x65\40\170\x6d\154\156\163\x3a\x64\163\x3d\x22\150\x74\x74\x70\72\x2f\x2f\167\167\167\56\x77\x33\x2e\x6f\162\x67\x2f\62\x30\x30\60\x2f\x30\x39\57\170\x6d\x6c\x64\x73\151\147\x23\x22\x3e\12\40\x20\74\x64\x73\x3a\123\151\x67\x6e\x65\x64\111\x6e\x66\x6f\76\12\x20\x20\x20\x20\74\x64\x73\72\123\x69\147\x6e\x61\164\x75\162\x65\115\145\x74\150\x6f\x64\x20\x2f\x3e\12\40\40\74\57\x64\x73\x3a\x53\151\147\156\145\144\111\156\x66\x6f\76\12\x3c\57\x64\x73\72\x53\151\x67\156\x61\164\165\x72\x65\76";
-    const BASE_TEMPLATE = "\x3c\123\x69\x67\156\141\x74\165\162\145\40\170\155\x6c\x6e\163\75\42\150\x74\164\160\72\x2f\x2f\x77\x77\167\x2e\167\x33\x2e\157\162\x67\57\x32\x30\x30\60\x2f\60\71\57\x78\155\154\144\163\151\147\43\x22\76\12\40\x20\x3c\123\x69\x67\x6e\x65\x64\x49\x6e\146\x6f\76\12\x20\40\x20\40\x3c\x53\x69\x67\x6e\141\164\165\162\x65\115\x65\164\x68\157\144\x20\x2f\x3e\xa\x20\x20\x3c\57\123\151\x67\156\x65\144\x49\156\x66\157\76\12\74\57\x53\x69\147\156\x61\164\165\162\145\x3e";
+    const XMLDSIGNS = "\x68\164\164\160\x3a\57\x2f\x77\167\167\x2e\x77\x33\x2e\157\x72\x67\x2f\62\x30\x30\x30\x2f\x30\71\x2f\170\x6d\154\144\x73\151\x67\43";
+    const SHA1 = "\x68\164\164\160\x3a\57\x2f\x77\167\167\56\x77\x33\x2e\157\x72\x67\x2f\x32\60\x30\x30\57\x30\71\57\x78\x6d\154\144\x73\151\x67\43\x73\x68\x61\x31";
+    const SHA256 = "\150\x74\x74\160\x3a\x2f\57\x77\167\x77\x2e\167\63\x2e\157\162\147\57\x32\x30\x30\x31\x2f\x30\64\57\x78\155\x6c\145\x6e\143\43\163\150\141\x32\x35\x36";
+    const SHA384 = "\150\x74\164\160\72\57\x2f\167\167\x77\x2e\167\x33\x2e\157\x72\x67\57\x32\x30\60\x31\57\60\x34\57\x78\155\154\144\x73\x69\147\x2d\x6d\x6f\162\145\43\x73\150\141\x33\70\64";
+    const SHA512 = "\x68\x74\x74\x70\72\x2f\x2f\167\x77\167\56\167\x33\x2e\157\x72\147\x2f\x32\60\x30\x31\x2f\x30\64\x2f\170\x6d\x6c\145\156\143\43\x73\x68\141\x35\x31\62";
+    const RIPEMD160 = "\150\164\x74\160\x3a\x2f\57\167\x77\x77\56\x77\x33\x2e\x6f\162\147\x2f\x32\60\x30\61\57\60\x34\x2f\x78\x6d\x6c\x65\x6e\x63\43\x72\151\x70\145\x6d\x64\x31\66\60";
+    const C14N = "\150\164\x74\160\72\x2f\57\x77\167\x77\56\167\x33\x2e\157\x72\x67\57\x54\122\x2f\x32\60\60\61\57\122\105\x43\55\x78\x6d\x6c\55\143\x31\x34\156\55\62\60\x30\x31\60\63\61\65";
+    const C14N_COMMENTS = "\150\164\164\x70\72\x2f\x2f\x77\167\167\56\167\63\56\x6f\x72\147\57\124\122\57\62\x30\60\x31\x2f\122\105\x43\55\170\x6d\154\x2d\x63\x31\64\x6e\x2d\62\x30\x30\61\60\63\x31\x35\43\x57\x69\x74\x68\103\157\x6d\x6d\145\x6e\x74\163";
+    const EXC_C14N = "\x68\164\x74\x70\x3a\x2f\57\x77\167\167\56\x77\x33\x2e\157\162\x67\57\x32\x30\x30\x31\57\61\60\57\x78\x6d\x6c\x2d\145\170\x63\x2d\x63\x31\x34\156\43";
+    const EXC_C14N_COMMENTS = "\150\x74\x74\x70\x3a\57\x2f\x77\167\x77\x2e\167\x33\56\157\x72\x67\57\62\60\60\61\x2f\x31\x30\57\x78\x6d\154\55\x65\x78\x63\x2d\x63\x31\x34\156\43\x57\x69\164\150\x43\x6f\155\155\145\156\x74\163";
+    const template = "\x3c\144\x73\72\x53\151\147\156\141\164\x75\162\145\40\x78\x6d\154\x6e\x73\x3a\x64\x73\75\42\150\164\164\160\x3a\x2f\x2f\x77\x77\167\56\x77\x33\56\157\x72\x67\x2f\x32\x30\60\60\x2f\60\x39\x2f\x78\155\x6c\144\163\x69\x67\43\x22\76\xd\xa\40\40\74\x64\x73\x3a\123\x69\147\x6e\x65\x64\111\x6e\146\x6f\x3e\xd\xa\x20\x20\x20\40\x3c\x64\x73\72\x53\151\x67\x6e\141\164\x75\x72\x65\x4d\145\x74\x68\x6f\144\40\x2f\x3e\xd\xa\x20\40\74\x2f\144\x73\72\123\x69\147\156\x65\x64\111\x6e\x66\x6f\x3e\15\xa\74\x2f\x64\163\72\x53\151\x67\x6e\x61\x74\165\162\x65\x3e";
+    const BASE_TEMPLATE = "\x3c\123\151\147\x6e\141\x74\165\x72\x65\x20\x78\155\154\156\163\75\42\150\x74\164\160\x3a\57\57\x77\167\167\56\167\63\x2e\157\162\x67\x2f\62\60\x30\x30\x2f\x30\71\x2f\170\x6d\x6c\x64\163\151\147\x23\x22\76\15\12\x20\40\x3c\123\x69\147\x6e\145\144\x49\156\146\157\x3e\xd\12\40\x20\40\x20\74\x53\151\x67\x6e\141\164\x75\162\145\115\145\x74\x68\x6f\144\x20\x2f\76\xd\xa\x20\40\x3c\x2f\x53\x69\x67\156\x65\144\x49\x6e\146\x6f\x3e\15\xa\x3c\57\x53\x69\x67\156\x61\x74\165\162\145\x3e";
     public $sigNode = null;
     public $idKeys = array();
     public $idNS = array();
@@ -30,22 +30,22 @@ class XMLSecurityDSig
     private $xPathCtx = null;
     private $canonicalMethod = null;
     private $prefix = '';
-    private $searchpfx = "\163\x65\x63\144\163\151\147";
+    private $searchpfx = "\163\x65\143\144\163\x69\147";
     private $validatedNodes = null;
-    public function __construct($It = "\x64\x73")
+    public function __construct($L3 = "\144\x73")
     {
-        $it = self::BASE_TEMPLATE;
-        if (empty($It)) {
-            goto g2r;
+        $QY = self::BASE_TEMPLATE;
+        if (empty($L3)) {
+            goto ai;
         }
-        $this->prefix = $It . "\x3a";
-        $zx = array("\74\x53", "\74\x2f\x53", "\x78\x6d\x6c\156\163\x3d");
-        $b8 = array("\74{$It}\72\x53", "\x3c\57{$It}\x3a\123", "\170\x6d\x6c\x6e\163\72{$It}\x3d");
-        $it = str_replace($zx, $b8, $it);
-        g2r:
-        $aL = new DOMDocument();
-        $aL->loadXML($it);
-        $this->sigNode = $aL->documentElement;
+        $this->prefix = $L3 . "\72";
+        $FZ = array("\x3c\123", "\74\57\123", "\170\x6d\x6c\x6e\x73\x3d");
+        $VU = array("\x3c{$L3}\72\123", "\74\x2f{$L3}\72\x53", "\x78\155\154\156\x73\72{$L3}\x3d");
+        $QY = str_replace($FZ, $VU, $QY);
+        ai:
+        $Vw = new DOMDocument();
+        $Vw->loadXML($QY);
+        $this->sigNode = $Vw->documentElement;
     }
     private function resetXPathObj()
     {
@@ -54,962 +54,962 @@ class XMLSecurityDSig
     private function getXPathObj()
     {
         if (!(empty($this->xPathCtx) && !empty($this->sigNode))) {
-            goto x3X;
+            goto T_;
         }
-        $TB = new DOMXPath($this->sigNode->ownerDocument);
-        $TB->registerNamespace("\163\145\143\x64\x73\x69\147", self::XMLDSIGNS);
-        $this->xPathCtx = $TB;
-        x3X:
+        $yJ = new DOMXPath($this->sigNode->ownerDocument);
+        $yJ->registerNamespace("\x73\145\x63\144\x73\x69\147", self::XMLDSIGNS);
+        $this->xPathCtx = $yJ;
+        T_:
         return $this->xPathCtx;
     }
-    public static function generateGUID($It = "\x70\x66\170")
+    public static function generateGUID($L3 = "\x70\146\x78")
     {
-        $wW = md5(uniqid(mt_rand(), true));
-        $Mu = $It . substr($wW, 0, 8) . "\x2d" . substr($wW, 8, 4) . "\x2d" . substr($wW, 12, 4) . "\x2d" . substr($wW, 16, 4) . "\x2d" . substr($wW, 20, 12);
-        return $Mu;
+        $gg = md5(uniqid(mt_rand(), true));
+        $hk = $L3 . substr($gg, 0, 8) . "\55" . substr($gg, 8, 4) . "\55" . substr($gg, 12, 4) . "\x2d" . substr($gg, 16, 4) . "\x2d" . substr($gg, 20, 12);
+        return $hk;
     }
-    public static function generate_GUID($It = "\x70\x66\x78")
+    public static function generate_GUID($L3 = "\x70\146\x78")
     {
-        return self::generateGUID($It);
+        return self::generateGUID($L3);
     }
-    public function locateSignature($ln, $la = 0)
+    public function locateSignature($vR, $Vl = 0)
     {
-        if ($ln instanceof DOMDocument) {
-            goto mKi;
+        if ($vR instanceof DOMDocument) {
+            goto CN;
         }
-        $pf = $ln->ownerDocument;
-        goto Uc0;
-        mKi:
-        $pf = $ln;
-        Uc0:
-        if (!$pf) {
-            goto Qgg;
+        $R0 = $vR->ownerDocument;
+        goto U0;
+        CN:
+        $R0 = $vR;
+        U0:
+        if (!$R0) {
+            goto zI;
         }
-        $TB = new DOMXPath($pf);
-        $TB->registerNamespace("\x73\145\x63\x64\163\151\147", self::XMLDSIGNS);
-        $Gy = "\56\57\57\163\x65\x63\x64\163\x69\147\72\x53\x69\147\x6e\141\x74\165\162\x65";
-        $Un = $TB->query($Gy, $ln);
-        $this->sigNode = $Un->item($la);
+        $yJ = new DOMXPath($R0);
+        $yJ->registerNamespace("\163\x65\143\144\163\151\147", self::XMLDSIGNS);
+        $IC = "\56\x2f\57\163\145\x63\144\163\x69\x67\72\x53\x69\x67\x6e\x61\164\x75\162\x65";
+        $do = $yJ->query($IC, $vR);
+        $this->sigNode = $do->item($Vl);
         return $this->sigNode;
-        Qgg:
+        zI:
         return null;
     }
-    public function createNewSignNode($eB, $zw = null)
+    public function createNewSignNode($ly, $DE = null)
     {
-        $pf = $this->sigNode->ownerDocument;
-        if (!is_null($zw)) {
-            goto Gbd;
+        $R0 = $this->sigNode->ownerDocument;
+        if (!is_null($DE)) {
+            goto jZ;
         }
-        $pi = $pf->createElementNS(self::XMLDSIGNS, $this->prefix . $eB);
-        goto C6b;
-        Gbd:
-        $pi = $pf->createElementNS(self::XMLDSIGNS, $this->prefix . $eB, $zw);
-        C6b:
-        return $pi;
+        $e3 = $R0->createElementNS(self::XMLDSIGNS, $this->prefix . $ly);
+        goto s8;
+        jZ:
+        $e3 = $R0->createElementNS(self::XMLDSIGNS, $this->prefix . $ly, $DE);
+        s8:
+        return $e3;
     }
-    public function setCanonicalMethod($CG)
+    public function setCanonicalMethod($XC)
     {
-        switch ($CG) {
-            case "\x68\x74\164\160\x3a\x2f\57\167\167\x77\x2e\x77\63\56\x6f\162\147\x2f\124\122\57\x32\60\x30\61\x2f\122\105\x43\x2d\x78\x6d\x6c\55\143\61\x34\x6e\x2d\62\60\60\61\60\x33\x31\x35":
-            case "\150\164\x74\160\72\57\x2f\x77\167\167\56\167\x33\x2e\x6f\162\x67\57\124\x52\57\x32\x30\x30\x31\57\x52\x45\103\55\170\155\154\x2d\x63\x31\x34\156\55\62\x30\60\61\60\63\x31\x35\43\x57\151\164\150\103\157\155\155\x65\156\164\x73":
-            case "\x68\164\164\160\x3a\57\57\167\167\x77\56\x77\63\56\x6f\x72\147\x2f\62\60\60\x31\57\61\x30\x2f\170\155\154\x2d\145\170\143\x2d\x63\61\x34\x6e\x23":
-            case "\150\164\164\160\x3a\x2f\57\x77\x77\167\x2e\167\x33\56\x6f\x72\x67\x2f\62\x30\60\61\57\x31\x30\x2f\170\155\154\55\145\x78\x63\55\x63\61\x34\x6e\43\127\151\164\x68\x43\x6f\155\x6d\x65\x6e\164\x73":
-                $this->canonicalMethod = $CG;
-                goto nip;
+        switch ($XC) {
+            case "\150\x74\x74\160\x3a\57\57\x77\x77\x77\56\x77\x33\56\157\162\x67\x2f\x54\x52\57\x32\x30\x30\61\57\x52\x45\x43\55\170\155\x6c\x2d\x63\x31\64\156\55\x32\60\x30\61\60\63\x31\x35":
+            case "\x68\x74\x74\x70\72\57\x2f\x77\x77\x77\56\167\x33\56\157\162\x67\57\x54\x52\x2f\x32\60\x30\x31\x2f\x52\105\x43\x2d\170\155\x6c\55\x63\61\64\x6e\x2d\62\x30\x30\x31\x30\x33\x31\x35\43\127\x69\x74\150\103\x6f\x6d\155\145\156\164\163":
+            case "\150\x74\x74\160\x3a\57\x2f\x77\x77\x77\x2e\167\63\x2e\x6f\x72\x67\x2f\x32\60\x30\61\57\x31\x30\x2f\170\155\x6c\55\x65\x78\143\55\143\61\64\156\x23":
+            case "\150\164\164\160\72\57\x2f\167\x77\167\56\x77\63\x2e\x6f\x72\147\x2f\62\x30\x30\61\x2f\x31\x30\x2f\x78\155\x6c\x2d\x65\170\143\55\x63\x31\64\x6e\43\127\151\164\x68\x43\x6f\x6d\155\145\x6e\164\x73":
+                $this->canonicalMethod = $XC;
+                goto Eo;
             default:
-                throw new Exception("\111\x6e\166\141\x6c\151\x64\40\x43\141\x6e\x6f\x6e\151\143\141\154\x20\x4d\x65\x74\x68\157\x64");
+                throw new Exception("\x49\156\x76\x61\154\151\144\x20\103\141\156\157\156\151\x63\x61\x6c\x20\x4d\x65\164\150\x6f\144");
         }
-        FMW:
-        nip:
-        if (!($TB = $this->getXPathObj())) {
-            goto tA2;
+        ya:
+        Eo:
+        if (!($yJ = $this->getXPathObj())) {
+            goto Hk;
         }
-        $Gy = "\56\x2f" . $this->searchpfx . "\72\123\151\x67\156\145\x64\x49\x6e\x66\x6f";
-        $Un = $TB->query($Gy, $this->sigNode);
-        if (!($gp = $Un->item(0))) {
-            goto T80;
+        $IC = "\56\x2f" . $this->searchpfx . "\x3a\x53\x69\147\156\145\144\x49\156\146\x6f";
+        $do = $yJ->query($IC, $this->sigNode);
+        if (!($o8 = $do->item(0))) {
+            goto qC;
         }
-        $Gy = "\56\57" . $this->searchpfx . "\x43\141\x6e\x6f\x6e\x69\x63\141\x6c\151\x7a\x61\164\151\157\156\115\x65\164\150\x6f\x64";
-        $Un = $TB->query($Gy, $gp);
-        if ($C7 = $Un->item(0)) {
-            goto Ouo;
+        $IC = "\x2e\57" . $this->searchpfx . "\x43\x61\x6e\157\156\151\143\141\x6c\x69\172\x61\164\x69\x6f\156\115\145\164\x68\157\144";
+        $do = $yJ->query($IC, $o8);
+        if ($Q7 = $do->item(0)) {
+            goto c1;
         }
-        $C7 = $this->createNewSignNode("\x43\141\x6e\x6f\x6e\x69\x63\x61\154\x69\172\141\x74\151\157\x6e\115\x65\164\150\x6f\x64");
-        $gp->insertBefore($C7, $gp->firstChild);
-        Ouo:
-        $C7->setAttribute("\101\154\147\157\162\x69\164\x68\155", $this->canonicalMethod);
-        T80:
-        tA2:
+        $Q7 = $this->createNewSignNode("\103\141\x6e\157\156\151\x63\141\154\x69\172\141\164\x69\157\156\115\145\164\150\157\x64");
+        $o8->insertBefore($Q7, $o8->firstChild);
+        c1:
+        $Q7->setAttribute("\101\x6c\147\x6f\x72\x69\164\x68\155", $this->canonicalMethod);
+        qC:
+        Hk:
     }
-    private function canonicalizeData($pi, $S8, $YW = null, $ud = null)
+    private function canonicalizeData($e3, $NX, $ML = null, $Xi = null)
     {
-        $ER = false;
-        $Oy = false;
-        switch ($S8) {
-            case "\150\164\164\x70\72\x2f\x2f\x77\167\x77\x2e\167\63\x2e\157\x72\147\57\x54\122\x2f\62\60\x30\x31\x2f\122\x45\103\55\170\155\x6c\55\143\x31\x34\x6e\x2d\x32\60\60\61\x30\x33\x31\x35":
-                $ER = false;
-                $Oy = false;
-                goto GnH;
-            case "\150\164\x74\160\x3a\x2f\x2f\167\x77\x77\56\x77\63\56\157\162\147\x2f\x54\x52\57\x32\x30\x30\x31\x2f\x52\105\x43\x2d\x78\155\x6c\55\143\61\x34\156\x2d\x32\x30\x30\x31\60\x33\61\65\x23\127\x69\164\x68\103\157\155\x6d\145\x6e\164\x73":
-                $Oy = true;
-                goto GnH;
-            case "\x68\164\x74\x70\72\57\57\x77\167\167\56\167\63\56\157\x72\147\x2f\62\60\x30\61\x2f\61\x30\x2f\x78\x6d\154\x2d\x65\170\143\x2d\x63\x31\64\x6e\x23":
-                $ER = true;
-                goto GnH;
-            case "\x68\164\x74\x70\x3a\x2f\x2f\x77\167\x77\x2e\167\63\56\x6f\x72\147\x2f\62\60\60\x31\57\61\x30\57\x78\155\x6c\x2d\x65\170\x63\55\x63\x31\x34\156\43\127\151\164\x68\103\157\155\155\x65\156\x74\163":
-                $ER = true;
-                $Oy = true;
-                goto GnH;
+        $Ya = false;
+        $H3 = false;
+        switch ($NX) {
+            case "\x68\x74\164\160\72\x2f\x2f\x77\167\x77\x2e\x77\63\56\157\162\x67\x2f\x54\122\57\62\60\60\x31\57\122\x45\x43\55\x78\x6d\154\x2d\143\x31\x34\x6e\55\x32\60\x30\61\x30\x33\61\65":
+                $Ya = false;
+                $H3 = false;
+                goto u4;
+            case "\x68\164\x74\160\x3a\57\x2f\167\167\167\56\167\x33\x2e\x6f\x72\x67\x2f\x54\122\x2f\62\60\x30\x31\57\122\x45\103\x2d\x78\x6d\x6c\55\143\61\x34\156\x2d\62\x30\x30\x31\60\x33\x31\65\43\127\151\x74\150\x43\157\x6d\155\145\156\164\x73":
+                $H3 = true;
+                goto u4;
+            case "\x68\164\164\x70\x3a\x2f\57\x77\x77\x77\56\x77\63\56\157\162\x67\x2f\62\60\x30\61\57\61\x30\57\x78\x6d\154\x2d\x65\x78\x63\x2d\x63\x31\64\156\x23":
+                $Ya = true;
+                goto u4;
+            case "\150\x74\x74\x70\x3a\x2f\x2f\167\167\x77\56\x77\63\x2e\x6f\162\x67\x2f\62\60\60\x31\x2f\61\60\57\170\x6d\154\x2d\145\170\143\x2d\143\x31\64\x6e\43\x57\151\164\150\103\x6f\155\x6d\x65\156\x74\x73":
+                $Ya = true;
+                $H3 = true;
+                goto u4;
         }
-        QXS:
-        GnH:
-        if (!(is_null($YW) && $pi instanceof DOMNode && $pi->ownerDocument !== null && $pi->isSameNode($pi->ownerDocument->documentElement))) {
-            goto MuT;
+        l3:
+        u4:
+        if (!(is_null($ML) && $e3 instanceof DOMNode && $e3->ownerDocument !== null && $e3->isSameNode($e3->ownerDocument->documentElement))) {
+            goto KH;
         }
-        $kF = $pi;
-        DHv:
-        if (!($Io = $kF->previousSibling)) {
-            goto JZ8;
+        $Z9 = $e3;
+        nR:
+        if (!($Uv = $Z9->previousSibling)) {
+            goto ie;
         }
-        if (!($Io->nodeType == XML_PI_NODE || $Io->nodeType == XML_COMMENT_NODE && $Oy)) {
-            goto UV2;
+        if (!($Uv->nodeType == XML_PI_NODE || $Uv->nodeType == XML_COMMENT_NODE && $H3)) {
+            goto wh;
         }
-        goto JZ8;
-        UV2:
-        $kF = $Io;
-        goto DHv;
-        JZ8:
-        if (!($Io == null)) {
-            goto R_X;
+        goto ie;
+        wh:
+        $Z9 = $Uv;
+        goto nR;
+        ie:
+        if (!($Uv == null)) {
+            goto IO;
         }
-        $pi = $pi->ownerDocument;
-        R_X:
-        MuT:
-        return $pi->C14N($ER, $Oy, $YW, $ud);
+        $e3 = $e3->ownerDocument;
+        IO:
+        KH:
+        return $e3->C14N($Ya, $H3, $ML, $Xi);
     }
     public function canonicalizeSignedInfo()
     {
-        $pf = $this->sigNode->ownerDocument;
-        $S8 = null;
-        if (!$pf) {
-            goto PJb;
+        $R0 = $this->sigNode->ownerDocument;
+        $NX = null;
+        if (!$R0) {
+            goto ep;
         }
-        $TB = $this->getXPathObj();
-        $Gy = "\56\x2f\163\145\143\x64\x73\x69\x67\72\x53\x69\147\156\145\x64\111\x6e\146\157";
-        $Un = $TB->query($Gy, $this->sigNode);
-        if (!($za = $Un->item(0))) {
-            goto sno;
+        $yJ = $this->getXPathObj();
+        $IC = "\x2e\57\163\145\x63\144\163\151\147\72\x53\x69\x67\156\x65\x64\111\156\x66\157";
+        $do = $yJ->query($IC, $this->sigNode);
+        if (!($BR = $do->item(0))) {
+            goto tV;
         }
-        $Gy = "\x2e\x2f\163\x65\143\x64\163\x69\147\72\x43\141\x6e\157\156\151\143\x61\154\151\172\141\x74\x69\x6f\x6e\115\145\164\150\x6f\144";
-        $Un = $TB->query($Gy, $za);
-        if (!($C7 = $Un->item(0))) {
-            goto MHq;
+        $IC = "\56\x2f\x73\x65\x63\x64\163\x69\x67\72\x43\141\156\x6f\156\151\143\141\x6c\151\x7a\x61\x74\151\157\x6e\x4d\145\164\x68\157\144";
+        $do = $yJ->query($IC, $BR);
+        if (!($Q7 = $do->item(0))) {
+            goto f9;
         }
-        $S8 = $C7->getAttribute("\101\154\147\157\x72\x69\164\150\155");
-        MHq:
-        $this->signedInfo = $this->canonicalizeData($za, $S8);
+        $NX = $Q7->getAttribute("\101\154\147\157\x72\x69\164\x68\x6d");
+        f9:
+        $this->signedInfo = $this->canonicalizeData($BR, $NX);
         return $this->signedInfo;
-        sno:
-        PJb:
+        tV:
+        ep:
         return null;
     }
-    public function calculateDigest($Os, $Qk, $vf = true)
+    public function calculateDigest($RC, $cd, $i2 = true)
     {
-        switch ($Os) {
+        switch ($RC) {
             case self::SHA1:
-                $WP = "\163\150\x61\61";
-                goto Di3;
+                $rA = "\163\x68\x61\61";
+                goto Tn;
             case self::SHA256:
-                $WP = "\163\150\141\x32\65\x36";
-                goto Di3;
+                $rA = "\x73\x68\141\x32\x35\66";
+                goto Tn;
             case self::SHA384:
-                $WP = "\163\x68\x61\63\70\x34";
-                goto Di3;
+                $rA = "\163\150\x61\63\x38\x34";
+                goto Tn;
             case self::SHA512:
-                $WP = "\x73\x68\141\x35\61\62";
-                goto Di3;
+                $rA = "\163\x68\x61\65\61\62";
+                goto Tn;
             case self::RIPEMD160:
-                $WP = "\x72\x69\160\x65\x6d\144\x31\x36\x30";
-                goto Di3;
+                $rA = "\162\151\160\145\x6d\144\61\x36\x30";
+                goto Tn;
             default:
-                throw new Exception("\x43\141\x6e\156\157\164\40\x76\x61\154\x69\x64\141\x74\145\x20\144\x69\x67\145\x73\x74\x3a\40\x55\x6e\x73\x75\x70\x70\157\x72\164\x65\x64\40\x41\x6c\x67\157\162\151\x74\150\x6d\40\x3c{$Os}\76");
+                throw new Exception("\x43\x61\156\x6e\157\x74\x20\166\x61\154\x69\144\x61\x74\x65\x20\x64\x69\147\x65\163\x74\72\40\x55\x6e\163\x75\x70\x70\x6f\162\164\x65\x64\40\x41\154\147\x6f\162\x69\x74\x68\x6d\40\74{$RC}\76");
         }
-        w8_:
-        Di3:
-        $Nw = hash($WP, $Qk, true);
-        if (!$vf) {
-            goto J9q;
+        oF:
+        Tn:
+        $Tp = hash($rA, $cd, true);
+        if (!$i2) {
+            goto qP;
         }
-        $Nw = base64_encode($Nw);
-        J9q:
-        return $Nw;
+        $Tp = base64_encode($Tp);
+        qP:
+        return $Tp;
     }
-    public function validateDigest($S4, $Qk)
+    public function validateDigest($kQ, $cd)
     {
-        $TB = new DOMXPath($S4->ownerDocument);
-        $TB->registerNamespace("\163\x65\x63\144\x73\151\x67", self::XMLDSIGNS);
-        $Gy = "\163\x74\162\x69\156\x67\x28\x2e\x2f\163\x65\x63\144\x73\x69\x67\72\104\x69\147\x65\x73\x74\x4d\x65\x74\x68\x6f\x64\x2f\x40\101\x6c\147\157\x72\x69\164\x68\155\51";
-        $Os = $TB->evaluate($Gy, $S4);
-        $oN = $this->calculateDigest($Os, $Qk, false);
-        $Gy = "\x73\x74\162\151\x6e\147\50\56\57\163\x65\x63\144\x73\x69\147\x3a\104\151\x67\145\x73\x74\126\141\x6c\x75\145\51";
-        $mw = $TB->evaluate($Gy, $S4);
-        return $oN === base64_decode($mw);
+        $yJ = new DOMXPath($kQ->ownerDocument);
+        $yJ->registerNamespace("\163\x65\143\144\x73\151\147", self::XMLDSIGNS);
+        $IC = "\163\164\162\x69\156\147\50\56\57\163\145\x63\144\163\151\x67\72\104\x69\x67\145\x73\x74\x4d\x65\x74\x68\x6f\144\x2f\100\x41\154\x67\x6f\162\151\164\150\x6d\x29";
+        $RC = $yJ->evaluate($IC, $kQ);
+        $lD = $this->calculateDigest($RC, $cd, false);
+        $IC = "\x73\x74\162\151\x6e\147\x28\x2e\57\163\x65\x63\x64\x73\x69\147\x3a\x44\x69\147\x65\x73\x74\126\141\x6c\x75\x65\x29";
+        $u8 = $yJ->evaluate($IC, $kQ);
+        return $lD === base64_decode($u8);
     }
-    public function processTransforms($S4, $Q2, $pN = true)
+    public function processTransforms($kQ, $L9, $Kr = true)
     {
-        $Qk = $Q2;
-        $TB = new DOMXPath($S4->ownerDocument);
-        $TB->registerNamespace("\x73\x65\x63\144\x73\x69\147", self::XMLDSIGNS);
-        $Gy = "\56\x2f\x73\x65\143\144\163\151\x67\x3a\x54\x72\141\x6e\163\146\157\x72\155\163\57\163\145\x63\144\x73\x69\147\72\124\162\141\x6e\x73\146\x6f\x72\155";
-        $U8 = $TB->query($Gy, $S4);
-        $bd = "\x68\x74\164\x70\72\57\57\167\167\x77\56\x77\63\56\157\x72\x67\57\x54\x52\57\62\60\x30\61\57\122\x45\x43\55\x78\155\154\x2d\143\61\x34\x6e\55\62\60\60\x31\x30\63\x31\x35";
-        $YW = null;
-        $ud = null;
-        foreach ($U8 as $dW) {
-            $wl = $dW->getAttribute("\101\154\147\157\x72\x69\x74\150\155");
-            switch ($wl) {
-                case "\150\164\164\x70\72\x2f\57\167\167\167\x2e\x77\63\x2e\x6f\162\147\57\x32\60\x30\x31\x2f\x31\60\57\x78\155\x6c\55\x65\170\x63\x2d\x63\x31\x34\156\x23":
-                case "\150\164\164\160\72\x2f\x2f\167\x77\167\56\x77\63\56\157\162\147\x2f\x32\x30\60\61\x2f\x31\x30\57\170\155\x6c\55\x65\170\143\x2d\x63\x31\x34\x6e\x23\127\x69\164\x68\x43\157\x6d\x6d\x65\156\164\163":
-                    if (!$pN) {
-                        goto VVP;
+        $cd = $L9;
+        $yJ = new DOMXPath($kQ->ownerDocument);
+        $yJ->registerNamespace("\163\x65\143\144\163\x69\147", self::XMLDSIGNS);
+        $IC = "\56\x2f\163\145\143\x64\x73\x69\147\x3a\x54\x72\x61\x6e\163\146\157\162\155\x73\57\x73\145\x63\144\163\x69\147\x3a\124\162\x61\x6e\163\146\157\x72\x6d";
+        $k9 = $yJ->query($IC, $kQ);
+        $oI = "\150\x74\164\160\72\x2f\x2f\167\167\167\x2e\167\x33\x2e\157\162\x67\x2f\124\x52\x2f\62\x30\60\61\x2f\122\105\x43\55\x78\x6d\x6c\55\x63\61\64\156\x2d\x32\60\x30\61\x30\63\x31\x35";
+        $ML = null;
+        $Xi = null;
+        foreach ($k9 as $tN) {
+            $gZ = $tN->getAttribute("\x41\x6c\147\157\x72\x69\x74\150\x6d");
+            switch ($gZ) {
+                case "\x68\x74\164\160\x3a\x2f\57\167\167\x77\x2e\x77\x33\56\x6f\162\x67\x2f\62\x30\x30\x31\57\61\60\x2f\170\155\154\x2d\x65\x78\143\x2d\143\61\64\x6e\x23":
+                case "\x68\164\x74\x70\72\x2f\57\167\x77\167\x2e\167\x33\x2e\157\x72\147\x2f\x32\x30\x30\61\x2f\x31\60\57\170\x6d\154\55\145\170\x63\x2d\143\x31\64\156\43\x57\x69\164\150\x43\x6f\x6d\155\x65\x6e\164\x73":
+                    if (!$Kr) {
+                        goto TH;
                     }
-                    $bd = $wl;
-                    goto VEz;
-                    VVP:
-                    $bd = "\x68\x74\x74\160\72\x2f\57\167\167\167\x2e\167\x33\x2e\157\162\147\57\62\x30\60\61\57\x31\60\x2f\x78\155\x6c\55\145\x78\143\55\x63\x31\x34\156\43";
-                    VEz:
-                    $pi = $dW->firstChild;
-                    YzG:
-                    if (!$pi) {
-                        goto JOH;
+                    $oI = $gZ;
+                    goto ES;
+                    TH:
+                    $oI = "\150\164\164\160\x3a\57\57\167\167\x77\56\x77\63\x2e\157\x72\147\x2f\x32\x30\60\x31\x2f\x31\x30\x2f\x78\x6d\154\55\x65\170\143\55\143\x31\64\156\43";
+                    ES:
+                    $e3 = $tN->firstChild;
+                    IU:
+                    if (!$e3) {
+                        goto Um;
                     }
-                    if (!($pi->localName == "\x49\156\143\x6c\165\163\151\166\145\x4e\141\155\x65\x73\x70\141\x63\145\163")) {
-                        goto jF5;
+                    if (!($e3->localName == "\x49\156\143\x6c\165\163\151\x76\145\x4e\141\x6d\145\x73\x70\x61\143\x65\x73")) {
+                        goto BY;
                     }
-                    if (!($qI = $pi->getAttribute("\120\162\145\x66\x69\x78\x4c\x69\163\164"))) {
-                        goto F28;
+                    if (!($yy = $e3->getAttribute("\x50\x72\145\146\151\x78\114\151\x73\164"))) {
+                        goto EA;
                     }
-                    $Dt = array();
-                    $dq = explode("\x20", $qI);
-                    foreach ($dq as $qI) {
-                        $N_ = trim($qI);
-                        if (empty($N_)) {
-                            goto HXK;
+                    $IK = array();
+                    $ko = explode("\x20", $yy);
+                    foreach ($ko as $yy) {
+                        $VR = trim($yy);
+                        if (empty($VR)) {
+                            goto NM;
                         }
-                        $Dt[] = $N_;
-                        HXK:
-                        jEJ:
+                        $IK[] = $VR;
+                        NM:
+                        wf:
                     }
-                    N1E:
-                    if (!(count($Dt) > 0)) {
-                        goto E35;
+                    sD:
+                    if (!(count($IK) > 0)) {
+                        goto rl;
                     }
-                    $ud = $Dt;
-                    E35:
-                    F28:
-                    goto JOH;
-                    jF5:
-                    $pi = $pi->nextSibling;
-                    goto YzG;
-                    JOH:
-                    goto qn3;
-                case "\150\x74\164\160\72\x2f\57\x77\167\167\56\x77\x33\x2e\157\162\147\x2f\124\x52\57\62\x30\x30\x31\57\122\105\x43\x2d\x78\x6d\154\55\143\x31\64\x6e\55\62\60\60\61\x30\x33\x31\x35":
-                case "\x68\x74\164\160\72\57\x2f\167\167\167\x2e\x77\63\x2e\x6f\x72\147\57\124\x52\x2f\x32\60\x30\x31\57\x52\105\103\x2d\x78\x6d\x6c\x2d\143\61\x34\156\x2d\x32\x30\x30\61\x30\63\61\65\x23\x57\151\164\x68\103\x6f\155\155\x65\x6e\164\x73":
-                    if (!$pN) {
-                        goto o4Q;
+                    $Xi = $IK;
+                    rl:
+                    EA:
+                    goto Um;
+                    BY:
+                    $e3 = $e3->nextSibling;
+                    goto IU;
+                    Um:
+                    goto E_;
+                case "\150\164\x74\x70\72\57\x2f\x77\167\167\x2e\x77\x33\56\157\x72\x67\57\124\x52\57\x32\x30\60\61\x2f\122\x45\103\x2d\x78\155\154\x2d\x63\x31\64\x6e\x2d\x32\60\x30\x31\60\x33\x31\65":
+                case "\x68\164\x74\160\x3a\57\x2f\x77\167\x77\x2e\x77\x33\56\157\x72\x67\x2f\124\x52\x2f\62\x30\60\61\x2f\122\x45\103\55\x78\x6d\154\x2d\x63\x31\64\156\x2d\62\60\60\x31\x30\x33\x31\x35\43\x57\151\164\150\103\157\x6d\x6d\145\x6e\164\163":
+                    if (!$Kr) {
+                        goto P0;
                     }
-                    $bd = $wl;
-                    goto KJ3;
-                    o4Q:
-                    $bd = "\x68\x74\x74\160\72\57\57\167\x77\x77\56\x77\x33\x2e\157\162\x67\x2f\x54\x52\x2f\62\x30\x30\61\x2f\122\105\103\x2d\x78\155\154\55\143\61\64\x6e\x2d\x32\60\x30\61\x30\x33\61\x35";
-                    KJ3:
-                    goto qn3;
-                case "\x68\x74\x74\x70\72\57\x2f\167\x77\x77\56\x77\63\56\157\x72\x67\x2f\124\122\x2f\61\71\71\71\57\x52\105\103\x2d\170\x70\141\x74\x68\x2d\x31\71\x39\71\61\x31\x31\x36":
-                    $pi = $dW->firstChild;
-                    Cyp:
-                    if (!$pi) {
-                        goto Gx4;
+                    $oI = $gZ;
+                    goto a1;
+                    P0:
+                    $oI = "\x68\164\164\x70\x3a\x2f\57\x77\x77\167\56\x77\x33\56\157\x72\x67\57\x54\122\57\x32\x30\x30\61\57\122\x45\x43\x2d\170\x6d\x6c\55\x63\61\64\156\x2d\x32\60\x30\x31\x30\x33\61\x35";
+                    a1:
+                    goto E_;
+                case "\x68\x74\164\160\72\57\x2f\x77\x77\x77\x2e\167\x33\56\x6f\x72\x67\57\124\122\57\x31\x39\71\x39\x2f\122\105\103\x2d\170\160\x61\x74\150\55\61\x39\x39\x39\x31\61\x31\66":
+                    $e3 = $tN->firstChild;
+                    ws:
+                    if (!$e3) {
+                        goto Zo;
                     }
-                    if (!($pi->localName == "\x58\x50\141\x74\150")) {
-                        goto FEf;
+                    if (!($e3->localName == "\x58\120\141\x74\x68")) {
+                        goto hi;
                     }
-                    $YW = array();
-                    $YW["\161\165\145\x72\171"] = "\50\56\57\57\56\40\174\40\56\x2f\x2f\100\52\40\174\40\56\x2f\x2f\156\141\x6d\145\x73\160\141\143\x65\x3a\x3a\52\51\x5b" . $pi->nodeValue . "\135";
-                    $fa["\156\141\x6d\x65\x73\x70\141\143\x65\x73"] = array();
-                    $CY = $TB->query("\x2e\57\156\x61\x6d\x65\x73\160\x61\143\145\72\72\x2a", $pi);
-                    foreach ($CY as $Dq) {
-                        if (!($Dq->localName != "\170\x6d\154")) {
-                            goto trZ;
+                    $ML = array();
+                    $ML["\x71\x75\x65\x72\x79"] = "\50\56\x2f\x2f\x2e\40\x7c\x20\56\57\x2f\x40\x2a\40\x7c\x20\x2e\x2f\57\x6e\141\x6d\145\x73\160\x61\143\145\72\x3a\x2a\51\133" . $e3->nodeValue . "\135";
+                    $kV["\x6e\x61\x6d\145\x73\x70\x61\143\145\163"] = array();
+                    $sk = $yJ->query("\56\57\156\141\x6d\x65\163\x70\141\143\x65\72\72\52", $e3);
+                    foreach ($sk as $sE) {
+                        if (!($sE->localName != "\x78\x6d\154")) {
+                            goto k9;
                         }
-                        $YW["\x6e\141\155\145\x73\x70\x61\x63\x65\163"][$Dq->localName] = $Dq->nodeValue;
-                        trZ:
-                        Bia:
+                        $ML["\156\x61\155\145\x73\160\x61\143\x65\163"][$sE->localName] = $sE->nodeValue;
+                        k9:
+                        Sl:
                     }
-                    bND:
-                    goto Gx4;
-                    FEf:
-                    $pi = $pi->nextSibling;
-                    goto Cyp;
-                    Gx4:
-                    goto qn3;
+                    Vh:
+                    goto Zo;
+                    hi:
+                    $e3 = $e3->nextSibling;
+                    goto ws;
+                    Zo:
+                    goto E_;
             }
-            kJC:
-            qn3:
-            uNr:
+            GI:
+            E_:
+            e9:
         }
-        Gto:
-        if (!$Qk instanceof DOMNode) {
-            goto YXG;
+        BN:
+        if (!$cd instanceof DOMNode) {
+            goto cz;
         }
-        $Qk = $this->canonicalizeData($Q2, $bd, $YW, $ud);
-        YXG:
-        return $Qk;
+        $cd = $this->canonicalizeData($L9, $oI, $ML, $Xi);
+        cz:
+        return $cd;
     }
-    public function processRefNode($S4)
+    public function processRefNode($kQ)
     {
-        $ul = null;
-        $pN = true;
-        if ($Xz = $S4->getAttribute("\125\x52\x49")) {
-            goto QQj;
+        $w8 = null;
+        $Kr = true;
+        if ($HA = $kQ->getAttribute("\x55\122\x49")) {
+            goto GG8;
         }
-        $pN = false;
-        $ul = $S4->ownerDocument;
-        goto zaY;
-        QQj:
-        $ew = parse_url($Xz);
-        if (!empty($ew["\x70\141\164\x68"])) {
-            goto cHK;
+        $Kr = false;
+        $w8 = $kQ->ownerDocument;
+        goto O0A;
+        GG8:
+        $Y9 = parse_url($HA);
+        if (!empty($Y9["\160\141\164\150"])) {
+            goto iWo;
         }
-        if ($xg = $ew["\x66\x72\141\147\x6d\145\x6e\164"]) {
-            goto m5B;
+        if ($Sx = $Y9["\146\162\x61\x67\155\x65\x6e\x74"]) {
+            goto YEx;
         }
-        $ul = $S4->ownerDocument;
-        goto xHb;
-        m5B:
-        $pN = false;
-        $d8 = new DOMXPath($S4->ownerDocument);
+        $w8 = $kQ->ownerDocument;
+        goto f1v;
+        YEx:
+        $Kr = false;
+        $t8 = new DOMXPath($kQ->ownerDocument);
         if (!($this->idNS && is_array($this->idNS))) {
-            goto zpd;
+            goto N8;
         }
-        foreach ($this->idNS as $a7 => $FP) {
-            $d8->registerNamespace($a7, $FP);
-            SPi:
+        foreach ($this->idNS as $rJ => $d7) {
+            $t8->registerNamespace($rJ, $d7);
+            X4:
         }
-        l3O:
-        zpd:
-        $gR = "\100\111\144\75\42" . XPath::filterAttrValue($xg, XPath::DOUBLE_QUOTE) . "\x22";
+        yM:
+        N8:
+        $VD = "\100\111\144\x3d\42" . XPath::filterAttrValue($Sx, XPath::DOUBLE_QUOTE) . "\42";
         if (!is_array($this->idKeys)) {
-            goto UPV;
+            goto ykx;
         }
-        foreach ($this->idKeys as $a8) {
-            $gR .= "\40\x6f\x72\40\100" . XPath::filterAttrName($a8) . "\75\42" . XPath::filterAttrValue($xg, XPath::DOUBLE_QUOTE) . "\x22";
-            Vrp:
+        foreach ($this->idKeys as $OD) {
+            $VD .= "\x20\157\x72\40\100" . XPath::filterAttrName($OD) . "\75\x22" . XPath::filterAttrValue($Sx, XPath::DOUBLE_QUOTE) . "\x22";
+            rSy:
         }
-        b00:
-        UPV:
-        $Gy = "\x2f\x2f\x2a\x5b" . $gR . "\135";
-        $ul = $d8->query($Gy)->item(0);
-        xHb:
-        cHK:
-        zaY:
-        $Qk = $this->processTransforms($S4, $ul, $pN);
-        if ($this->validateDigest($S4, $Qk)) {
-            goto zfC;
+        gy:
+        ykx:
+        $IC = "\x2f\x2f\52\x5b" . $VD . "\135";
+        $w8 = $t8->query($IC)->item(0);
+        f1v:
+        iWo:
+        O0A:
+        $cd = $this->processTransforms($kQ, $w8, $Kr);
+        if ($this->validateDigest($kQ, $cd)) {
+            goto duq;
         }
         return false;
-        zfC:
-        if (!$ul instanceof DOMNode) {
-            goto Z91;
+        duq:
+        if (!$w8 instanceof DOMNode) {
+            goto qF2;
         }
-        if (!empty($xg)) {
-            goto BSi;
+        if (!empty($Sx)) {
+            goto Z3r;
         }
-        $this->validatedNodes[] = $ul;
-        goto L3J;
-        BSi:
-        $this->validatedNodes[$xg] = $ul;
-        L3J:
-        Z91:
+        $this->validatedNodes[] = $w8;
+        goto XX2;
+        Z3r:
+        $this->validatedNodes[$Sx] = $w8;
+        XX2:
+        qF2:
         return true;
     }
-    public function getRefNodeID($S4)
+    public function getRefNodeID($kQ)
     {
-        if (!($Xz = $S4->getAttribute("\125\x52\111"))) {
-            goto YTa;
+        if (!($HA = $kQ->getAttribute("\x55\x52\111"))) {
+            goto tzb;
         }
-        $ew = parse_url($Xz);
-        if (!empty($ew["\x70\141\x74\150"])) {
-            goto xhz;
+        $Y9 = parse_url($HA);
+        if (!empty($Y9["\x70\141\x74\150"])) {
+            goto zFE;
         }
-        if (!($xg = $ew["\146\162\x61\147\x6d\145\156\x74"])) {
-            goto vnU;
+        if (!($Sx = $Y9["\146\x72\141\147\x6d\145\x6e\x74"])) {
+            goto opu;
         }
-        return $xg;
-        vnU:
-        xhz:
-        YTa:
+        return $Sx;
+        opu:
+        zFE:
+        tzb:
         return null;
     }
     public function getRefIDs()
     {
-        $ES = array();
-        $TB = $this->getXPathObj();
-        $Gy = "\56\57\x73\145\x63\144\x73\151\x67\x3a\x53\151\147\x6e\x65\144\111\156\x66\157\x2f\x73\145\x63\x64\x73\151\147\x3a\122\x65\146\145\162\145\x6e\143\145";
-        $Un = $TB->query($Gy, $this->sigNode);
-        if (!($Un->length == 0)) {
-            goto IDa;
+        $Tz = array();
+        $yJ = $this->getXPathObj();
+        $IC = "\56\57\x73\145\x63\144\x73\x69\147\x3a\x53\x69\x67\x6e\145\x64\111\x6e\x66\157\57\163\x65\x63\144\x73\x69\x67\72\x52\145\146\145\162\145\x6e\143\x65";
+        $do = $yJ->query($IC, $this->sigNode);
+        if (!($do->length == 0)) {
+            goto mhT;
         }
-        throw new Exception("\122\145\x66\145\x72\x65\x6e\x63\x65\40\156\x6f\144\145\x73\x20\156\x6f\164\40\x66\x6f\x75\x6e\x64");
-        IDa:
-        foreach ($Un as $S4) {
-            $ES[] = $this->getRefNodeID($S4);
-            Uri:
+        throw new Exception("\x52\145\146\145\162\x65\156\143\x65\40\156\x6f\x64\x65\x73\40\156\157\164\x20\146\157\x75\156\144");
+        mhT:
+        foreach ($do as $kQ) {
+            $Tz[] = $this->getRefNodeID($kQ);
+            bC9:
         }
-        E5C:
-        return $ES;
+        Zqd:
+        return $Tz;
     }
     public function validateReference()
     {
-        $Vh = $this->sigNode->ownerDocument->documentElement;
-        if ($Vh->isSameNode($this->sigNode)) {
-            goto BN1;
+        $AI = $this->sigNode->ownerDocument->documentElement;
+        if ($AI->isSameNode($this->sigNode)) {
+            goto JZa;
         }
         if (!($this->sigNode->parentNode != null)) {
-            goto iWd;
+            goto ol2;
         }
         $this->sigNode->parentNode->removeChild($this->sigNode);
-        iWd:
-        BN1:
-        $TB = $this->getXPathObj();
-        $Gy = "\x2e\x2f\x73\145\x63\144\x73\x69\147\72\x53\x69\x67\156\x65\x64\x49\156\x66\x6f\57\x73\x65\x63\x64\x73\151\x67\72\122\145\146\145\x72\x65\x6e\x63\145";
-        $Un = $TB->query($Gy, $this->sigNode);
-        if (!($Un->length == 0)) {
-            goto S0T;
+        ol2:
+        JZa:
+        $yJ = $this->getXPathObj();
+        $IC = "\x2e\57\163\145\143\144\x73\151\147\72\123\151\147\x6e\145\144\x49\156\146\x6f\57\x73\145\143\x64\x73\x69\x67\72\122\x65\x66\x65\x72\145\156\x63\x65";
+        $do = $yJ->query($IC, $this->sigNode);
+        if (!($do->length == 0)) {
+            goto A2P;
         }
-        throw new Exception("\122\x65\146\145\162\x65\x6e\143\x65\x20\156\157\144\x65\x73\40\x6e\x6f\164\x20\146\157\165\x6e\144");
-        S0T:
+        throw new Exception("\122\x65\146\145\162\x65\x6e\x63\x65\40\156\157\144\x65\x73\40\x6e\157\x74\40\x66\x6f\x75\156\144");
+        A2P:
         $this->validatedNodes = array();
-        foreach ($Un as $S4) {
-            if ($this->processRefNode($S4)) {
-                goto d5F;
+        foreach ($do as $kQ) {
+            if ($this->processRefNode($kQ)) {
+                goto EcN;
             }
             $this->validatedNodes = null;
-            throw new Exception("\122\145\146\145\x72\145\156\143\145\40\x76\141\x6c\x69\144\x61\x74\x69\x6f\x6e\x20\146\141\151\154\145\144");
-            d5F:
-            nna:
+            throw new Exception("\x52\x65\x66\x65\x72\x65\156\143\145\40\x76\x61\154\151\144\x61\164\151\x6f\x6e\x20\146\141\x69\154\x65\144");
+            EcN:
+            k9G:
         }
-        RBH:
+        NCV:
         return true;
     }
-    private function addRefInternal($Y3, $pi, $wl, $co = null, $M4 = null)
+    private function addRefInternal($tT, $e3, $gZ, $Ty = null, $NZ = null)
     {
-        $It = null;
-        $qe = null;
-        $Gb = "\111\144";
-        $MW = true;
-        $ZI = false;
-        if (!is_array($M4)) {
-            goto esF;
+        $L3 = null;
+        $KF = null;
+        $K2 = "\111\144";
+        $Tf = true;
+        $bN = false;
+        if (!is_array($NZ)) {
+            goto HCO;
         }
-        $It = empty($M4["\x70\x72\145\146\151\x78"]) ? null : $M4["\160\x72\x65\x66\151\170"];
-        $qe = empty($M4["\x70\162\x65\146\x69\170\137\x6e\163"]) ? null : $M4["\x70\162\x65\146\151\x78\137\x6e\163"];
-        $Gb = empty($M4["\151\x64\137\156\141\155\145"]) ? "\x49\x64" : $M4["\151\x64\x5f\x6e\141\x6d\x65"];
-        $MW = !isset($M4["\x6f\x76\145\162\x77\x72\151\164\145"]) ? true : (bool) $M4["\157\x76\145\x72\x77\162\151\x74\145"];
-        $ZI = !isset($M4["\x66\x6f\x72\x63\145\x5f\x75\162\151"]) ? false : (bool) $M4["\x66\x6f\x72\143\145\x5f\165\162\x69"];
-        esF:
-        $HM = $Gb;
-        if (empty($It)) {
-            goto Ekr;
+        $L3 = empty($NZ["\160\162\x65\146\x69\x78"]) ? null : $NZ["\x70\162\145\x66\151\170"];
+        $KF = empty($NZ["\160\x72\145\x66\151\170\x5f\156\x73"]) ? null : $NZ["\x70\x72\x65\x66\x69\170\x5f\156\x73"];
+        $K2 = empty($NZ["\151\x64\137\x6e\141\x6d\x65"]) ? "\x49\x64" : $NZ["\x69\144\x5f\156\141\x6d\145"];
+        $Tf = !isset($NZ["\x6f\x76\145\x72\167\162\151\164\145"]) ? true : (bool) $NZ["\x6f\x76\x65\x72\x77\x72\151\x74\x65"];
+        $bN = !isset($NZ["\x66\157\x72\143\145\137\165\x72\151"]) ? false : (bool) $NZ["\x66\x6f\x72\x63\145\137\x75\162\151"];
+        HCO:
+        $nw = $K2;
+        if (empty($L3)) {
+            goto srk;
         }
-        $HM = $It . "\x3a" . $HM;
-        Ekr:
-        $S4 = $this->createNewSignNode("\122\x65\146\145\x72\x65\x6e\x63\145");
-        $Y3->appendChild($S4);
-        if (!$pi instanceof DOMDocument) {
-            goto uoR;
+        $nw = $L3 . "\72" . $nw;
+        srk:
+        $kQ = $this->createNewSignNode("\x52\145\146\x65\162\x65\x6e\x63\x65");
+        $tT->appendChild($kQ);
+        if (!$e3 instanceof DOMDocument) {
+            goto OWr;
         }
-        if ($ZI) {
-            goto fEl;
+        if ($bN) {
+            goto Plj;
         }
-        goto AEt;
-        uoR:
-        $Xz = null;
-        if ($MW) {
-            goto fc1;
+        goto dXL;
+        OWr:
+        $HA = null;
+        if ($Tf) {
+            goto adA;
         }
-        $Xz = $qe ? $pi->getAttributeNS($qe, $Gb) : $pi->getAttribute($Gb);
-        fc1:
-        if (!empty($Xz)) {
-            goto f20;
+        $HA = $KF ? $e3->getAttributeNS($KF, $K2) : $e3->getAttribute($K2);
+        adA:
+        if (!empty($HA)) {
+            goto lTA;
         }
-        $Xz = self::generateGUID();
-        $pi->setAttributeNS($qe, $HM, $Xz);
-        f20:
-        $S4->setAttribute("\125\122\x49", "\x23" . $Xz);
-        goto AEt;
-        fEl:
-        $S4->setAttribute("\125\122\111", '');
-        AEt:
-        $XH = $this->createNewSignNode("\124\162\x61\x6e\x73\146\x6f\162\x6d\x73");
-        $S4->appendChild($XH);
-        if (is_array($co)) {
-            goto f2E;
+        $HA = self::generateGUID();
+        $e3->setAttributeNS($KF, $nw, $HA);
+        lTA:
+        $kQ->setAttribute("\125\x52\x49", "\43" . $HA);
+        goto dXL;
+        Plj:
+        $kQ->setAttribute("\125\122\x49", '');
+        dXL:
+        $V5 = $this->createNewSignNode("\x54\162\141\x6e\x73\x66\x6f\x72\155\x73");
+        $kQ->appendChild($V5);
+        if (is_array($Ty)) {
+            goto JTp;
         }
         if (!empty($this->canonicalMethod)) {
-            goto kJn;
+            goto fte;
         }
-        goto doS;
-        f2E:
-        foreach ($co as $dW) {
-            $kU = $this->createNewSignNode("\x54\x72\141\156\x73\x66\157\162\155");
-            $XH->appendChild($kU);
-            if (is_array($dW) && !empty($dW["\150\164\x74\160\x3a\57\57\x77\167\167\x2e\167\63\56\x6f\x72\x67\57\124\x52\57\x31\x39\71\x39\x2f\122\x45\103\55\170\x70\x61\164\x68\55\x31\x39\x39\x39\61\61\61\x36"]) && !empty($dW["\x68\164\164\x70\x3a\57\57\167\x77\x77\56\167\63\56\x6f\162\x67\57\124\122\57\61\71\71\71\x2f\122\x45\x43\x2d\x78\x70\x61\164\x68\55\61\71\71\x39\x31\61\x31\66"]["\161\x75\x65\162\171"])) {
-                goto yTv;
+        goto e9I;
+        JTp:
+        foreach ($Ty as $tN) {
+            $Wb = $this->createNewSignNode("\124\x72\141\156\163\146\157\162\155");
+            $V5->appendChild($Wb);
+            if (is_array($tN) && !empty($tN["\x68\x74\x74\160\x3a\x2f\57\167\x77\167\x2e\167\63\x2e\157\x72\x67\57\x54\122\x2f\x31\x39\x39\71\57\122\x45\x43\x2d\170\x70\141\164\x68\55\x31\x39\71\71\x31\x31\61\66"]) && !empty($tN["\150\x74\164\x70\x3a\57\57\x77\x77\x77\56\x77\x33\x2e\x6f\x72\x67\57\x54\x52\57\x31\x39\71\71\57\x52\105\x43\x2d\170\160\x61\x74\150\x2d\61\x39\x39\x39\61\61\x31\x36"]["\x71\165\x65\162\x79"])) {
+                goto Uf3;
             }
-            $kU->setAttribute("\101\154\147\x6f\162\x69\x74\150\x6d", $dW);
-            goto TBH;
-            yTv:
-            $kU->setAttribute("\101\x6c\x67\x6f\162\x69\164\150\x6d", "\x68\164\x74\x70\x3a\x2f\57\167\167\x77\56\x77\x33\56\x6f\162\x67\57\124\122\57\x31\71\x39\x39\x2f\x52\x45\x43\55\x78\x70\141\x74\x68\55\61\x39\x39\x39\61\x31\61\66");
-            $pC = $this->createNewSignNode("\x58\x50\141\164\x68", $dW["\150\164\x74\x70\x3a\57\x2f\x77\x77\167\x2e\x77\63\56\157\162\147\57\124\x52\x2f\x31\x39\x39\x39\x2f\122\105\103\x2d\170\x70\x61\164\x68\55\61\71\x39\71\x31\x31\61\x36"]["\x71\165\x65\x72\171"]);
-            $kU->appendChild($pC);
-            if (empty($dW["\x68\164\x74\x70\x3a\x2f\57\167\167\167\x2e\x77\x33\x2e\x6f\162\x67\x2f\124\122\x2f\x31\71\71\x39\57\x52\x45\103\x2d\x78\x70\x61\x74\150\55\x31\x39\71\71\61\61\x31\66"]["\156\141\155\x65\163\x70\x61\143\145\x73"])) {
-                goto B8V;
+            $Wb->setAttribute("\x41\x6c\x67\157\162\x69\164\x68\155", $tN);
+            goto cNK;
+            Uf3:
+            $Wb->setAttribute("\101\x6c\147\x6f\162\x69\164\150\155", "\x68\164\164\160\x3a\x2f\57\167\x77\x77\56\x77\x33\x2e\157\162\x67\x2f\124\x52\57\x31\71\x39\71\x2f\122\x45\103\55\170\x70\141\x74\150\55\x31\x39\x39\71\x31\x31\61\x36");
+            $ZC = $this->createNewSignNode("\x58\120\141\164\150", $tN["\x68\x74\164\160\x3a\57\x2f\x77\167\167\56\167\63\56\157\x72\147\57\x54\x52\x2f\61\71\71\71\x2f\122\x45\x43\x2d\x78\160\x61\x74\x68\x2d\x31\71\71\71\x31\x31\61\66"]["\x71\165\145\162\171"]);
+            $Wb->appendChild($ZC);
+            if (empty($tN["\150\x74\x74\x70\x3a\57\x2f\167\167\x77\x2e\167\63\56\x6f\x72\x67\57\124\x52\x2f\61\x39\71\x39\x2f\122\x45\x43\x2d\x78\160\x61\164\150\55\61\71\71\71\61\61\x31\66"]["\x6e\141\x6d\x65\x73\160\141\x63\145\x73"])) {
+                goto p42;
             }
-            foreach ($dW["\150\164\x74\x70\72\57\57\x77\x77\x77\56\x77\x33\56\157\x72\147\x2f\124\122\x2f\x31\71\71\71\57\x52\x45\x43\55\x78\160\141\x74\x68\55\x31\71\71\x39\x31\x31\x31\x36"]["\x6e\x61\155\x65\x73\160\141\143\x65\x73"] as $It => $oO) {
-                $pC->setAttributeNS("\150\x74\x74\x70\72\57\57\167\x77\167\x2e\167\x33\x2e\157\x72\x67\57\x32\x30\60\60\x2f\x78\x6d\154\x6e\163\x2f", "\x78\x6d\154\156\163\72{$It}", $oO);
-                rqw:
+            foreach ($tN["\x68\x74\164\x70\x3a\57\57\167\167\x77\x2e\x77\63\56\x6f\162\x67\57\x54\122\57\61\x39\x39\x39\x2f\122\x45\103\x2d\x78\160\141\164\150\55\61\x39\71\x39\x31\x31\61\66"]["\x6e\x61\x6d\x65\x73\x70\141\x63\145\x73"] as $L3 => $jY) {
+                $ZC->setAttributeNS("\x68\x74\164\160\72\x2f\57\x77\167\x77\x2e\167\x33\56\x6f\x72\147\x2f\62\x30\x30\60\57\170\x6d\x6c\156\163\x2f", "\x78\x6d\154\156\163\x3a{$L3}", $jY);
+                S5k:
             }
-            OVg:
-            B8V:
-            TBH:
-            Dc4:
+            rlm:
+            p42:
+            cNK:
+            FFr:
         }
-        R57:
-        goto doS;
-        kJn:
-        $kU = $this->createNewSignNode("\124\162\141\156\x73\146\x6f\x72\155");
-        $XH->appendChild($kU);
-        $kU->setAttribute("\101\x6c\x67\x6f\x72\151\x74\150\x6d", $this->canonicalMethod);
-        doS:
-        $hz = $this->processTransforms($S4, $pi);
-        $oN = $this->calculateDigest($wl, $hz);
-        $U4 = $this->createNewSignNode("\x44\151\147\x65\163\x74\115\x65\x74\x68\x6f\x64");
-        $S4->appendChild($U4);
-        $U4->setAttribute("\x41\x6c\147\157\162\x69\x74\150\155", $wl);
-        $mw = $this->createNewSignNode("\x44\151\147\145\163\164\x56\141\154\x75\x65", $oN);
-        $S4->appendChild($mw);
+        Miu:
+        goto e9I;
+        fte:
+        $Wb = $this->createNewSignNode("\124\x72\141\156\x73\x66\157\162\x6d");
+        $V5->appendChild($Wb);
+        $Wb->setAttribute("\x41\x6c\147\x6f\x72\151\164\x68\x6d", $this->canonicalMethod);
+        e9I:
+        $FC = $this->processTransforms($kQ, $e3);
+        $lD = $this->calculateDigest($gZ, $FC);
+        $QO = $this->createNewSignNode("\x44\x69\x67\145\163\x74\x4d\145\x74\x68\x6f\144");
+        $kQ->appendChild($QO);
+        $QO->setAttribute("\101\154\x67\x6f\x72\151\164\x68\x6d", $gZ);
+        $u8 = $this->createNewSignNode("\104\151\x67\145\x73\164\126\141\154\x75\x65", $lD);
+        $kQ->appendChild($u8);
     }
-    public function addReference($pi, $wl, $co = null, $M4 = null)
+    public function addReference($e3, $gZ, $Ty = null, $NZ = null)
     {
-        if (!($TB = $this->getXPathObj())) {
-            goto DI1;
+        if (!($yJ = $this->getXPathObj())) {
+            goto b6d;
         }
-        $Gy = "\56\57\163\145\x63\144\163\x69\147\x3a\x53\x69\x67\x6e\x65\144\x49\156\146\157";
-        $Un = $TB->query($Gy, $this->sigNode);
-        if (!($nN = $Un->item(0))) {
-            goto vzN;
+        $IC = "\56\x2f\x73\145\143\144\x73\151\147\x3a\x53\x69\147\156\145\x64\111\156\x66\x6f";
+        $do = $yJ->query($IC, $this->sigNode);
+        if (!($xF = $do->item(0))) {
+            goto W6n;
         }
-        $this->addRefInternal($nN, $pi, $wl, $co, $M4);
-        vzN:
-        DI1:
+        $this->addRefInternal($xF, $e3, $gZ, $Ty, $NZ);
+        W6n:
+        b6d:
     }
-    public function addReferenceList($OQ, $wl, $co = null, $M4 = null)
+    public function addReferenceList($Rh, $gZ, $Ty = null, $NZ = null)
     {
-        if (!($TB = $this->getXPathObj())) {
-            goto mFg;
+        if (!($yJ = $this->getXPathObj())) {
+            goto AMG;
         }
-        $Gy = "\56\x2f\x73\145\x63\x64\x73\151\x67\x3a\123\x69\147\x6e\x65\144\x49\x6e\x66\x6f";
-        $Un = $TB->query($Gy, $this->sigNode);
-        if (!($nN = $Un->item(0))) {
-            goto UQ0;
+        $IC = "\56\x2f\x73\x65\143\x64\x73\151\147\72\123\x69\147\x6e\x65\x64\x49\156\x66\157";
+        $do = $yJ->query($IC, $this->sigNode);
+        if (!($xF = $do->item(0))) {
+            goto ti4;
         }
-        foreach ($OQ as $pi) {
-            $this->addRefInternal($nN, $pi, $wl, $co, $M4);
-            wvv:
+        foreach ($Rh as $e3) {
+            $this->addRefInternal($xF, $e3, $gZ, $Ty, $NZ);
+            toK:
         }
-        Zix:
-        UQ0:
-        mFg:
+        OZi:
+        ti4:
+        AMG:
     }
-    public function addObject($Qk, $DY = null, $Gz = null)
+    public function addObject($cd, $a6 = null, $J2 = null)
     {
-        $Kg = $this->createNewSignNode("\117\142\152\x65\x63\164");
-        $this->sigNode->appendChild($Kg);
-        if (empty($DY)) {
-            goto yv3;
+        $Ox = $this->createNewSignNode("\x4f\x62\x6a\x65\x63\164");
+        $this->sigNode->appendChild($Ox);
+        if (empty($a6)) {
+            goto wE3;
         }
-        $Kg->setAttribute("\115\151\155\x65\x54\171\x70\x65", $DY);
-        yv3:
-        if (empty($Gz)) {
-            goto eIU;
+        $Ox->setAttribute("\x4d\x69\x6d\145\124\x79\160\x65", $a6);
+        wE3:
+        if (empty($J2)) {
+            goto JNC;
         }
-        $Kg->setAttribute("\x45\x6e\143\x6f\144\x69\x6e\x67", $Gz);
-        eIU:
-        if ($Qk instanceof DOMElement) {
-            goto Oxm;
+        $Ox->setAttribute("\105\156\x63\x6f\x64\x69\x6e\147", $J2);
+        JNC:
+        if ($cd instanceof DOMElement) {
+            goto hTo;
         }
-        $Wj = $this->sigNode->ownerDocument->createTextNode($Qk);
-        goto Dzq;
-        Oxm:
-        $Wj = $this->sigNode->ownerDocument->importNode($Qk, true);
-        Dzq:
-        $Kg->appendChild($Wj);
-        return $Kg;
+        $Wu = $this->sigNode->ownerDocument->createTextNode($cd);
+        goto S0q;
+        hTo:
+        $Wu = $this->sigNode->ownerDocument->importNode($cd, true);
+        S0q:
+        $Ox->appendChild($Wu);
+        return $Ox;
     }
-    public function locateKey($pi = null)
+    public function locateKey($e3 = null)
     {
-        if (!empty($pi)) {
-            goto Rwi;
+        if (!empty($e3)) {
+            goto ySp;
         }
-        $pi = $this->sigNode;
-        Rwi:
-        if ($pi instanceof DOMNode) {
-            goto P2d;
+        $e3 = $this->sigNode;
+        ySp:
+        if ($e3 instanceof DOMNode) {
+            goto phf;
         }
         return null;
-        P2d:
-        if (!($pf = $pi->ownerDocument)) {
-            goto T2U;
+        phf:
+        if (!($R0 = $e3->ownerDocument)) {
+            goto hXY;
         }
-        $TB = new DOMXPath($pf);
-        $TB->registerNamespace("\x73\x65\143\x64\x73\x69\147", self::XMLDSIGNS);
-        $Gy = "\x73\164\x72\151\x6e\147\50\56\x2f\x73\145\x63\x64\163\x69\147\x3a\x53\151\147\156\145\144\x49\156\146\x6f\57\163\x65\x63\144\x73\x69\147\x3a\123\151\x67\156\x61\x74\165\x72\x65\115\x65\x74\x68\x6f\x64\57\x40\x41\x6c\x67\x6f\x72\x69\164\x68\155\x29";
-        $wl = $TB->evaluate($Gy, $pi);
-        if (!$wl) {
-            goto Uvd;
+        $yJ = new DOMXPath($R0);
+        $yJ->registerNamespace("\x73\145\x63\x64\163\x69\x67", self::XMLDSIGNS);
+        $IC = "\x73\164\162\x69\x6e\147\x28\x2e\x2f\x73\145\143\144\x73\x69\x67\x3a\123\x69\x67\156\x65\x64\x49\x6e\x66\x6f\x2f\x73\145\143\144\x73\x69\x67\72\123\x69\x67\x6e\x61\x74\165\x72\x65\115\145\164\150\x6f\144\x2f\x40\x41\154\147\x6f\162\151\164\x68\x6d\51";
+        $gZ = $yJ->evaluate($IC, $e3);
+        if (!$gZ) {
+            goto wXc;
         }
         try {
-            $c8 = new XMLSecurityKey($wl, array("\164\171\x70\x65" => "\160\165\x62\x6c\x69\x63"));
-        } catch (Exception $sL) {
+            $dM = new XMLSecurityKey($gZ, array("\164\171\x70\145" => "\160\165\142\x6c\151\x63"));
+        } catch (Exception $XE) {
             return null;
         }
-        return $c8;
-        Uvd:
-        T2U:
+        return $dM;
+        wXc:
+        hXY:
         return null;
     }
-    public function verify($c8)
+    public function verify($dM)
     {
-        $pf = $this->sigNode->ownerDocument;
-        $TB = new DOMXPath($pf);
-        $TB->registerNamespace("\x73\x65\x63\x64\163\151\x67", self::XMLDSIGNS);
-        $Gy = "\163\x74\x72\151\x6e\x67\x28\56\x2f\x73\x65\143\x64\163\x69\x67\72\x53\151\147\x6e\x61\164\x75\x72\x65\x56\141\154\165\x65\51";
-        $uM = $TB->evaluate($Gy, $this->sigNode);
-        if (!empty($uM)) {
-            goto Dpc;
+        $R0 = $this->sigNode->ownerDocument;
+        $yJ = new DOMXPath($R0);
+        $yJ->registerNamespace("\163\x65\x63\x64\163\151\x67", self::XMLDSIGNS);
+        $IC = "\163\164\162\x69\x6e\x67\50\56\x2f\x73\145\x63\x64\x73\x69\147\72\123\151\147\x6e\141\x74\x75\162\145\x56\x61\x6c\165\145\x29";
+        $Z_ = $yJ->evaluate($IC, $this->sigNode);
+        if (!empty($Z_)) {
+            goto wQR;
         }
-        throw new Exception("\x55\x6e\x61\x62\154\x65\x20\164\x6f\x20\x6c\x6f\143\141\164\x65\x20\123\151\x67\156\141\x74\165\162\145\126\x61\154\165\x65");
-        Dpc:
-        return $c8->verifySignature($this->signedInfo, base64_decode($uM));
+        throw new Exception("\x55\x6e\x61\142\154\145\x20\x74\x6f\x20\x6c\x6f\143\141\x74\145\x20\x53\151\x67\156\x61\164\165\x72\x65\126\141\x6c\x75\145");
+        wQR:
+        return $dM->verifySignature($this->signedInfo, base64_decode($Z_));
     }
-    public function signData($c8, $Qk)
+    public function signData($dM, $cd)
     {
-        return $c8->signData($Qk);
+        return $dM->signData($cd);
     }
-    public function sign($c8, $TU = null)
+    public function sign($dM, $Vh = null)
     {
-        if (!($TU != null)) {
-            goto eNs;
+        if (!($Vh != null)) {
+            goto hI7;
         }
         $this->resetXPathObj();
-        $this->appendSignature($TU);
-        $this->sigNode = $TU->lastChild;
-        eNs:
-        if (!($TB = $this->getXPathObj())) {
-            goto y_A;
+        $this->appendSignature($Vh);
+        $this->sigNode = $Vh->lastChild;
+        hI7:
+        if (!($yJ = $this->getXPathObj())) {
+            goto cUQ;
         }
-        $Gy = "\56\57\x73\x65\x63\x64\163\151\x67\x3a\123\151\x67\x6e\x65\x64\111\156\x66\x6f";
-        $Un = $TB->query($Gy, $this->sigNode);
-        if (!($nN = $Un->item(0))) {
-            goto aQt;
+        $IC = "\56\x2f\163\145\x63\x64\163\x69\147\72\x53\151\147\156\x65\144\111\156\x66\157";
+        $do = $yJ->query($IC, $this->sigNode);
+        if (!($xF = $do->item(0))) {
+            goto wyu;
         }
-        $Gy = "\x2e\57\x73\145\x63\144\163\x69\147\72\x53\x69\147\x6e\x61\x74\165\162\145\115\x65\x74\150\157\x64";
-        $Un = $TB->query($Gy, $nN);
-        $lD = $Un->item(0);
-        $lD->setAttribute("\x41\x6c\x67\157\162\151\164\x68\x6d", $c8->type);
-        $Qk = $this->canonicalizeData($nN, $this->canonicalMethod);
-        $uM = base64_encode($this->signData($c8, $Qk));
-        $Z2 = $this->createNewSignNode("\123\x69\x67\x6e\141\x74\x75\x72\x65\126\x61\154\165\x65", $uM);
-        if ($qM = $nN->nextSibling) {
-            goto l1j;
+        $IC = "\56\x2f\x73\x65\143\x64\x73\151\147\72\123\151\147\x6e\x61\x74\x75\x72\x65\x4d\x65\164\150\x6f\x64";
+        $do = $yJ->query($IC, $xF);
+        $ZM = $do->item(0);
+        $ZM->setAttribute("\101\x6c\x67\157\x72\151\x74\x68\x6d", $dM->type);
+        $cd = $this->canonicalizeData($xF, $this->canonicalMethod);
+        $Z_ = base64_encode($this->signData($dM, $cd));
+        $LS = $this->createNewSignNode("\x53\151\x67\156\x61\164\x75\x72\145\x56\x61\x6c\165\145", $Z_);
+        if ($W0 = $xF->nextSibling) {
+            goto POU;
         }
-        $this->sigNode->appendChild($Z2);
-        goto cmP;
-        l1j:
-        $qM->parentNode->insertBefore($Z2, $qM);
-        cmP:
-        aQt:
-        y_A:
+        $this->sigNode->appendChild($LS);
+        goto nfO;
+        POU:
+        $W0->parentNode->insertBefore($LS, $W0);
+        nfO:
+        wyu:
+        cUQ:
     }
     public function appendCert()
     {
     }
-    public function appendKey($c8, $UF = null)
+    public function appendKey($dM, $T5 = null)
     {
-        $c8->serializeKey($UF);
+        $dM->serializeKey($T5);
     }
-    public function insertSignature($pi, $Fm = null)
+    public function insertSignature($e3, $xj = null)
     {
-        $X8 = $pi->ownerDocument;
-        $FK = $X8->importNode($this->sigNode, true);
-        if ($Fm == null) {
-            goto GZ0;
+        $qW = $e3->ownerDocument;
+        $p5 = $qW->importNode($this->sigNode, true);
+        if ($xj == null) {
+            goto FWB;
         }
-        return $pi->insertBefore($FK, $Fm);
-        goto WrT;
-        GZ0:
-        return $pi->insertBefore($FK);
-        WrT:
+        return $e3->insertBefore($p5, $xj);
+        goto iNB;
+        FWB:
+        return $e3->insertBefore($p5);
+        iNB:
     }
-    public function appendSignature($Ik, $zP = false)
+    public function appendSignature($jK, $BF = false)
     {
-        $Fm = $zP ? $Ik->firstChild : null;
-        return $this->insertSignature($Ik, $Fm);
+        $xj = $BF ? $jK->firstChild : null;
+        return $this->insertSignature($jK, $xj);
     }
-    public static function get509XCert($em, $Ke = true)
+    public static function get509XCert($Va, $Mw = true)
     {
-        $Y0 = self::staticGet509XCerts($em, $Ke);
-        if (empty($Y0)) {
-            goto LQN;
+        $nN = self::staticGet509XCerts($Va, $Mw);
+        if (empty($nN)) {
+            goto pya;
         }
-        return $Y0[0];
-        LQN:
+        return $nN[0];
+        pya:
         return '';
     }
-    public static function staticGet509XCerts($Y0, $Ke = true)
+    public static function staticGet509XCerts($nN, $Mw = true)
     {
-        if ($Ke) {
-            goto Me2;
+        if ($Mw) {
+            goto b_e;
         }
-        return array($Y0);
-        goto XfB;
-        Me2:
-        $Qk = '';
-        $Sh = array();
-        $iN = explode("\12", $Y0);
-        $vB = false;
-        foreach ($iN as $cs) {
-            if (!$vB) {
-                goto ieD;
+        return array($nN);
+        goto x11;
+        b_e:
+        $cd = '';
+        $cS = array();
+        $QG = explode("\12", $nN);
+        $HK = false;
+        foreach ($QG as $aZ) {
+            if (!$HK) {
+                goto XcI;
             }
-            if (!(strncmp($cs, "\x2d\x2d\x2d\x2d\55\105\x4e\x44\x20\x43\x45\122\124\x49\x46\111\x43\101\x54\x45", 20) == 0)) {
-                goto Ige;
+            if (!(strncmp($aZ, "\x2d\x2d\x2d\x2d\55\105\116\x44\40\x43\105\x52\x54\x49\106\111\103\101\x54\x45", 20) == 0)) {
+                goto B_Q;
             }
-            $vB = false;
-            $Sh[] = $Qk;
-            $Qk = '';
-            goto TJg;
-            Ige:
-            $Qk .= trim($cs);
-            goto vMh;
-            ieD:
-            if (!(strncmp($cs, "\x2d\55\55\x2d\x2d\x42\x45\x47\x49\x4e\x20\103\x45\122\x54\111\106\111\x43\101\124\105", 22) == 0)) {
-                goto m2s;
+            $HK = false;
+            $cS[] = $cd;
+            $cd = '';
+            goto YC5;
+            B_Q:
+            $cd .= trim($aZ);
+            goto RPS;
+            XcI:
+            if (!(strncmp($aZ, "\55\55\x2d\x2d\55\102\x45\x47\111\x4e\x20\103\105\122\124\x49\x46\111\x43\x41\124\105", 22) == 0)) {
+                goto CCA;
             }
-            $vB = true;
-            m2s:
-            vMh:
-            TJg:
+            $HK = true;
+            CCA:
+            RPS:
+            YC5:
         }
-        qWy:
-        return $Sh;
-        XfB:
+        iHq:
+        return $cS;
+        x11:
     }
-    public static function staticAdd509Cert($Th, $em, $Ke = true, $pw = false, $TB = null, $M4 = null)
+    public static function staticAdd509Cert($d9, $Va, $Mw = true, $CZ = false, $yJ = null, $NZ = null)
     {
-        if (!$pw) {
-            goto iwe;
+        if (!$CZ) {
+            goto w0r;
         }
-        $em = file_get_contents($em);
-        iwe:
-        if ($Th instanceof DOMElement) {
-            goto X7l;
+        $Va = file_get_contents($Va);
+        w0r:
+        if ($d9 instanceof DOMElement) {
+            goto COW;
         }
-        throw new Exception("\x49\156\x76\141\x6c\x69\144\40\x70\x61\162\145\x6e\x74\40\x4e\157\144\x65\40\160\x61\x72\x61\x6d\145\164\145\162");
-        X7l:
-        $cA = $Th->ownerDocument;
-        if (!empty($TB)) {
-            goto k29;
+        throw new Exception("\111\156\166\141\154\151\x64\40\160\x61\x72\145\x6e\x74\40\x4e\157\144\145\x20\x70\141\x72\x61\x6d\145\x74\x65\x72");
+        COW:
+        $IQ = $d9->ownerDocument;
+        if (!empty($yJ)) {
+            goto GnP;
         }
-        $TB = new DOMXPath($Th->ownerDocument);
-        $TB->registerNamespace("\x73\145\143\x64\163\x69\147", self::XMLDSIGNS);
-        k29:
-        $Gy = "\x2e\x2f\163\145\143\144\163\x69\x67\72\113\145\x79\x49\156\x66\157";
-        $Un = $TB->query($Gy, $Th);
-        $fL = $Un->item(0);
-        $zR = '';
-        if (!$fL) {
-            goto o4s;
+        $yJ = new DOMXPath($d9->ownerDocument);
+        $yJ->registerNamespace("\x73\145\143\144\163\151\x67", self::XMLDSIGNS);
+        GnP:
+        $IC = "\56\x2f\x73\x65\x63\x64\x73\x69\x67\x3a\113\x65\171\x49\156\146\x6f";
+        $do = $yJ->query($IC, $d9);
+        $au = $do->item(0);
+        $u9 = '';
+        if (!$au) {
+            goto Wai;
         }
-        $qI = $fL->lookupPrefix(self::XMLDSIGNS);
-        if (empty($qI)) {
-            goto R1x;
+        $yy = $au->lookupPrefix(self::XMLDSIGNS);
+        if (empty($yy)) {
+            goto J6x;
         }
-        $zR = $qI . "\72";
-        R1x:
-        goto PCV;
-        o4s:
-        $qI = $Th->lookupPrefix(self::XMLDSIGNS);
-        if (empty($qI)) {
-            goto sHo;
+        $u9 = $yy . "\72";
+        J6x:
+        goto TtT;
+        Wai:
+        $yy = $d9->lookupPrefix(self::XMLDSIGNS);
+        if (empty($yy)) {
+            goto yNh;
         }
-        $zR = $qI . "\x3a";
-        sHo:
-        $GO = false;
-        $fL = $cA->createElementNS(self::XMLDSIGNS, $zR . "\113\145\171\111\x6e\x66\x6f");
-        $Gy = "\56\57\x73\x65\x63\144\x73\x69\147\72\117\x62\x6a\145\143\164";
-        $Un = $TB->query($Gy, $Th);
-        if (!($fN = $Un->item(0))) {
-            goto ITy;
+        $u9 = $yy . "\72";
+        yNh:
+        $le = false;
+        $au = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\113\x65\x79\x49\x6e\146\x6f");
+        $IC = "\56\57\x73\x65\143\x64\163\x69\147\72\117\x62\x6a\x65\143\x74";
+        $do = $yJ->query($IC, $d9);
+        if (!($ev = $do->item(0))) {
+            goto BQK;
         }
-        $fN->parentNode->insertBefore($fL, $fN);
-        $GO = true;
-        ITy:
-        if ($GO) {
-            goto jzK;
+        $ev->parentNode->insertBefore($au, $ev);
+        $le = true;
+        BQK:
+        if ($le) {
+            goto vR7;
         }
-        $Th->appendChild($fL);
-        jzK:
-        PCV:
-        $Y0 = self::staticGet509XCerts($em, $Ke);
-        $Oe = $cA->createElementNS(self::XMLDSIGNS, $zR . "\x58\65\x30\x39\x44\141\x74\141");
-        $fL->appendChild($Oe);
-        $CS = false;
-        $VO = false;
-        if (!is_array($M4)) {
-            goto L3o;
+        $d9->appendChild($au);
+        vR7:
+        TtT:
+        $nN = self::staticGet509XCerts($Va, $Mw);
+        $cL = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\130\x35\60\71\104\x61\x74\x61");
+        $au->appendChild($cL);
+        $IY = false;
+        $U7 = false;
+        if (!is_array($NZ)) {
+            goto LrT;
         }
-        if (empty($M4["\151\163\163\165\145\162\x53\145\x72\151\x61\x6c"])) {
-            goto ZjC;
+        if (empty($NZ["\151\x73\x73\x75\145\x72\x53\x65\x72\x69\141\x6c"])) {
+            goto L9U;
         }
-        $CS = true;
-        ZjC:
-        if (empty($M4["\163\x75\142\x6a\145\143\x74\116\x61\x6d\145"])) {
-            goto kBS;
+        $IY = true;
+        L9U:
+        if (empty($NZ["\x73\165\x62\x6a\x65\143\x74\116\x61\x6d\145"])) {
+            goto YOJ;
         }
-        $VO = true;
-        kBS:
-        L3o:
-        foreach ($Y0 as $Pk) {
-            if (!($CS || $VO)) {
-                goto OlI;
+        $U7 = true;
+        YOJ:
+        LrT:
+        foreach ($nN as $JQ) {
+            if (!($IY || $U7)) {
+                goto yIl;
             }
-            if (!($qB = openssl_x509_parse("\x2d\55\55\x2d\x2d\x42\105\107\111\116\40\x43\105\x52\124\111\x46\111\x43\101\124\x45\55\55\55\x2d\x2d\xa" . chunk_split($Pk, 64, "\xa") . "\55\55\x2d\55\55\105\x4e\x44\x20\x43\x45\122\124\111\x46\111\103\101\124\105\x2d\55\55\x2d\55\xa"))) {
-                goto ehc;
+            if (!($xv = openssl_x509_parse("\55\x2d\x2d\55\x2d\x42\x45\x47\x49\x4e\40\103\105\122\x54\111\x46\x49\103\101\124\105\x2d\x2d\55\x2d\55\xa" . chunk_split($JQ, 64, "\xa") . "\55\x2d\x2d\x2d\55\x45\116\x44\40\x43\x45\122\x54\111\106\111\103\101\124\105\x2d\x2d\x2d\55\x2d\12"))) {
+                goto uWz;
             }
-            if (!($VO && !empty($qB["\x73\165\x62\152\145\x63\164"]))) {
-                goto lfJ;
+            if (!($U7 && !empty($xv["\x73\165\142\x6a\x65\143\x74"]))) {
+                goto foS;
             }
-            if (is_array($qB["\163\165\142\x6a\x65\x63\x74"])) {
-                goto U3u;
+            if (is_array($xv["\163\165\142\152\145\x63\164"])) {
+                goto z1a;
             }
-            $QF = $qB["\151\x73\163\x75\145\162"];
-            goto G0c;
-            U3u:
-            $iV = array();
-            foreach ($qB["\x73\x75\142\x6a\145\x63\164"] as $k3 => $zw) {
-                if (is_array($zw)) {
-                    goto O3k;
+            $ds = $xv["\151\x73\x73\x75\145\x72"];
+            goto pG4;
+            z1a:
+            $xc = array();
+            foreach ($xv["\x73\x75\x62\152\145\x63\164"] as $ES => $DE) {
+                if (is_array($DE)) {
+                    goto Z7F;
                 }
-                array_unshift($iV, "{$k3}\x3d{$zw}");
-                goto xrI;
-                O3k:
-                foreach ($zw as $wc) {
-                    array_unshift($iV, "{$k3}\75{$wc}");
-                    gcC:
+                array_unshift($xc, "{$ES}\75{$DE}");
+                goto hYA;
+                Z7F:
+                foreach ($DE as $EA) {
+                    array_unshift($xc, "{$ES}\x3d{$EA}");
+                    vS7:
                 }
-                wac:
-                xrI:
-                R3D:
+                Iab:
+                hYA:
+                gCI:
             }
-            yTh:
-            $QF = implode("\54", $iV);
-            G0c:
-            $uX = $cA->createElementNS(self::XMLDSIGNS, $zR . "\x58\x35\60\71\123\165\x62\152\x65\143\x74\x4e\x61\x6d\145", $QF);
-            $Oe->appendChild($uX);
-            lfJ:
-            if (!($CS && !empty($qB["\x69\163\x73\165\145\x72"]) && !empty($qB["\x73\x65\x72\x69\141\x6c\116\x75\155\x62\x65\162"]))) {
-                goto WlG;
+            M31:
+            $ds = implode("\x2c", $xc);
+            pG4:
+            $RG = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\x58\x35\60\x39\x53\165\x62\152\145\143\x74\x4e\141\155\x65", $ds);
+            $cL->appendChild($RG);
+            foS:
+            if (!($IY && !empty($xv["\151\163\163\x75\145\162"]) && !empty($xv["\163\145\x72\x69\141\154\116\165\155\x62\x65\x72"]))) {
+                goto gJp;
             }
-            if (is_array($qB["\x69\163\x73\165\145\x72"])) {
-                goto nsb;
+            if (is_array($xv["\x69\x73\163\165\145\162"])) {
+                goto sbk;
             }
-            $Tf = $qB["\x69\163\163\165\x65\x72"];
-            goto pXV;
-            nsb:
-            $iV = array();
-            foreach ($qB["\151\x73\163\x75\x65\162"] as $k3 => $zw) {
-                array_unshift($iV, "{$k3}\x3d{$zw}");
-                vE2:
+            $hs = $xv["\x69\x73\x73\165\145\x72"];
+            goto uZY;
+            sbk:
+            $xc = array();
+            foreach ($xv["\x69\163\163\x75\145\x72"] as $ES => $DE) {
+                array_unshift($xc, "{$ES}\75{$DE}");
+                JWg:
             }
-            wLc:
-            $Tf = implode("\x2c", $iV);
-            pXV:
-            $j8 = $cA->createElementNS(self::XMLDSIGNS, $zR . "\130\65\x30\71\x49\x73\163\x75\x65\x72\123\145\x72\151\x61\x6c");
-            $Oe->appendChild($j8);
-            $oK = $cA->createElementNS(self::XMLDSIGNS, $zR . "\x58\65\60\x39\x49\163\163\165\x65\162\x4e\141\x6d\145", $Tf);
-            $j8->appendChild($oK);
-            $oK = $cA->createElementNS(self::XMLDSIGNS, $zR . "\130\x35\x30\71\123\145\162\x69\141\154\116\165\155\142\145\162", $qB["\x73\145\162\151\141\154\x4e\x75\x6d\x62\x65\162"]);
-            $j8->appendChild($oK);
-            WlG:
-            ehc:
-            OlI:
-            $Gd = $cA->createElementNS(self::XMLDSIGNS, $zR . "\x58\x35\x30\x39\103\x65\x72\x74\151\x66\151\143\x61\x74\x65", $Pk);
-            $Oe->appendChild($Gd);
-            gBd:
+            JYH:
+            $hs = implode("\54", $xc);
+            uZY:
+            $hr = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\x58\x35\60\x39\111\x73\163\165\x65\x72\123\x65\162\x69\x61\154");
+            $cL->appendChild($hr);
+            $Mc = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\x58\65\x30\71\111\163\x73\165\145\x72\x4e\x61\155\145", $hs);
+            $hr->appendChild($Mc);
+            $Mc = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\x58\x35\60\71\x53\145\x72\151\141\154\116\x75\x6d\x62\145\x72", $xv["\163\145\x72\x69\141\x6c\x4e\x75\155\142\x65\x72"]);
+            $hr->appendChild($Mc);
+            gJp:
+            uWz:
+            yIl:
+            $ze = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\x58\x35\60\71\x43\x65\x72\x74\151\146\151\x63\141\164\x65", $JQ);
+            $cL->appendChild($ze);
+            Qy8:
         }
-        Tvo:
+        Lck:
     }
-    public function add509Cert($em, $Ke = true, $pw = false, $M4 = null)
+    public function add509Cert($Va, $Mw = true, $CZ = false, $NZ = null)
     {
-        if (!($TB = $this->getXPathObj())) {
-            goto fVX;
+        if (!($yJ = $this->getXPathObj())) {
+            goto XK6;
         }
-        self::staticAdd509Cert($this->sigNode, $em, $Ke, $pw, $TB, $M4);
-        fVX:
+        self::staticAdd509Cert($this->sigNode, $Va, $Mw, $CZ, $yJ, $NZ);
+        XK6:
     }
-    public function appendToKeyInfo($pi)
+    public function appendToKeyInfo($e3)
     {
-        $Th = $this->sigNode;
-        $cA = $Th->ownerDocument;
-        $TB = $this->getXPathObj();
-        if (!empty($TB)) {
-            goto p0U;
+        $d9 = $this->sigNode;
+        $IQ = $d9->ownerDocument;
+        $yJ = $this->getXPathObj();
+        if (!empty($yJ)) {
+            goto PsF;
         }
-        $TB = new DOMXPath($Th->ownerDocument);
-        $TB->registerNamespace("\163\x65\143\144\x73\151\x67", self::XMLDSIGNS);
-        p0U:
-        $Gy = "\56\57\x73\x65\143\144\x73\x69\147\x3a\x4b\145\x79\111\x6e\x66\157";
-        $Un = $TB->query($Gy, $Th);
-        $fL = $Un->item(0);
-        if ($fL) {
-            goto P4p;
+        $yJ = new DOMXPath($d9->ownerDocument);
+        $yJ->registerNamespace("\163\x65\x63\x64\163\x69\x67", self::XMLDSIGNS);
+        PsF:
+        $IC = "\x2e\57\163\145\x63\x64\x73\x69\x67\72\x4b\145\171\x49\x6e\x66\157";
+        $do = $yJ->query($IC, $d9);
+        $au = $do->item(0);
+        if ($au) {
+            goto ioT;
         }
-        $zR = '';
-        $qI = $Th->lookupPrefix(self::XMLDSIGNS);
-        if (empty($qI)) {
-            goto gBD;
+        $u9 = '';
+        $yy = $d9->lookupPrefix(self::XMLDSIGNS);
+        if (empty($yy)) {
+            goto iVU;
         }
-        $zR = $qI . "\72";
-        gBD:
-        $GO = false;
-        $fL = $cA->createElementNS(self::XMLDSIGNS, $zR . "\113\x65\x79\111\156\x66\x6f");
-        $Gy = "\x2e\x2f\163\145\x63\144\x73\x69\147\72\117\142\152\145\143\x74";
-        $Un = $TB->query($Gy, $Th);
-        if (!($fN = $Un->item(0))) {
-            goto U3U;
+        $u9 = $yy . "\72";
+        iVU:
+        $le = false;
+        $au = $IQ->createElementNS(self::XMLDSIGNS, $u9 . "\x4b\145\171\111\x6e\146\x6f");
+        $IC = "\x2e\x2f\x73\145\x63\x64\x73\151\x67\72\117\142\x6a\x65\x63\x74";
+        $do = $yJ->query($IC, $d9);
+        if (!($ev = $do->item(0))) {
+            goto YZI;
         }
-        $fN->parentNode->insertBefore($fL, $fN);
-        $GO = true;
-        U3U:
-        if ($GO) {
-            goto xrn;
+        $ev->parentNode->insertBefore($au, $ev);
+        $le = true;
+        YZI:
+        if ($le) {
+            goto bKY;
         }
-        $Th->appendChild($fL);
-        xrn:
-        P4p:
-        $fL->appendChild($pi);
-        return $fL;
+        $d9->appendChild($au);
+        bKY:
+        ioT:
+        $au->appendChild($e3);
+        return $au;
     }
     public function getValidatedNodes()
     {

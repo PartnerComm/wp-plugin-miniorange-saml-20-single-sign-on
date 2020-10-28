@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\120\111\x4e\x43")) {
-    goto dqP;
+if (defined("\127\120\111\116\x43")) {
+    goto I7;
 }
 die;
-dqP:
+I7:
