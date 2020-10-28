@@ -12,54 +12,54 @@ class AssertionChain
     private $defaultPropertyPath;
     private $alwaysValid = false;
     private $all = false;
-    private $assertionClassName = "\x41\x73\x73\145\162\164\134\101\x73\x73\x65\x72\164\x69\157\x6e";
-    public function __construct($zw, $dx = null, $mi = null)
+    private $assertionClassName = "\x41\x73\163\145\162\x74\134\x41\163\x73\145\x72\x74\151\157\x6e";
+    public function __construct($DE, $K3 = null, $hG = null)
     {
-        $this->value = $zw;
-        $this->defaultMessage = $dx;
-        $this->defaultPropertyPath = $mi;
+        $this->value = $DE;
+        $this->defaultMessage = $K3;
+        $this->defaultPropertyPath = $hG;
     }
-    public function __call($IQ, $yL)
+    public function __call($Mx, $Ib)
     {
         if (!(true === $this->alwaysValid)) {
-            goto II9;
+            goto LvA;
         }
         return $this;
-        II9:
-        if (\method_exists($this->assertionClassName, $IQ)) {
-            goto t99;
+        LvA:
+        if (\method_exists($this->assertionClassName, $Mx)) {
+            goto FyH;
         }
-        throw new \RuntimeException("\101\163\x73\x65\162\x74\151\157\156\40\x27" . $IQ . "\47\x20\x64\x6f\x65\163\40\x6e\157\164\40\145\170\151\x73\164\x2e");
-        t99:
-        $Ah = new ReflectionClass($this->assertionClassName);
-        $CG = $Ah->getMethod($IQ);
-        \array_unshift($yL, $this->value);
-        $N4 = $CG->getParameters();
-        foreach ($N4 as $vM => $b3) {
-            if (!isset($yL[$vM])) {
-                goto C1P;
+        throw new \RuntimeException("\x41\163\163\x65\x72\164\x69\x6f\x6e\40\x27" . $Mx . "\x27\40\144\157\145\x73\x20\x6e\157\164\40\145\x78\151\x73\164\x2e");
+        FyH:
+        $hL = new ReflectionClass($this->assertionClassName);
+        $XC = $hL->getMethod($Mx);
+        \array_unshift($Ib, $this->value);
+        $Na = $XC->getParameters();
+        foreach ($Na as $dx => $gs) {
+            if (!isset($Ib[$dx])) {
+                goto Jst;
             }
-            goto CNY;
-            C1P:
-            if (!("\155\145\163\x73\141\x67\145" == $b3->getName())) {
-                goto kmE;
+            goto wpi;
+            Jst:
+            if (!("\155\145\x73\163\x61\147\145" == $gs->getName())) {
+                goto YLM;
             }
-            $yL[$vM] = $this->defaultMessage;
-            kmE:
-            if (!("\160\162\157\160\145\x72\x74\171\x50\141\x74\x68" == $b3->getName())) {
-                goto QSr;
+            $Ib[$dx] = $this->defaultMessage;
+            YLM:
+            if (!("\x70\162\x6f\160\x65\x72\x74\x79\120\141\x74\150" == $gs->getName())) {
+                goto umo;
             }
-            $yL[$vM] = $this->defaultPropertyPath;
-            QSr:
-            CNY:
+            $Ib[$dx] = $this->defaultPropertyPath;
+            umo:
+            wpi:
         }
-        zLo:
+        qO5:
         if (!$this->all) {
-            goto EKI;
+            goto MiD;
         }
-        $IQ = "\141\154\x6c" . $IQ;
-        EKI:
-        \call_user_func_array(array($this->assertionClassName, $IQ), $yL);
+        $Mx = "\141\x6c\x6c" . $Mx;
+        MiD:
+        \call_user_func_array(array($this->assertionClassName, $Mx), $Ib);
         return $this;
     }
     public function all()
@@ -70,25 +70,25 @@ class AssertionChain
     public function nullOr()
     {
         if (!(null === $this->value)) {
-            goto c_r;
+            goto JtA;
         }
         $this->alwaysValid = true;
-        c_r:
+        JtA:
         return $this;
     }
-    public function setAssertionClassName($B_)
+    public function setAssertionClassName($LI)
     {
-        if (\is_string($B_)) {
-            goto B02;
+        if (\is_string($LI)) {
+            goto hfJ;
         }
-        throw new LogicException("\105\170\143\145\x70\164\x69\157\156\x20\143\x6c\141\x73\x73\40\156\141\155\145\x20\x6d\x75\x73\164\x20\x62\x65\x20\x70\141\x73\x73\145\x64\x20\141\163\x20\x61\40\x73\164\162\x69\x6e\147");
-        B02:
-        if (!("\x41\x73\x73\145\x72\164\134\101\163\x73\x65\162\164\x69\157\156" !== $B_ && !\is_subclass_of($B_, "\101\x73\163\145\x72\164\134\101\163\163\145\x72\x74\151\x6f\x6e"))) {
-            goto y_q;
+        throw new LogicException("\x45\170\x63\145\x70\164\151\x6f\156\x20\143\154\x61\163\x73\x20\156\141\x6d\x65\x20\155\x75\163\164\40\x62\145\40\160\141\163\x73\145\x64\x20\x61\163\x20\x61\40\x73\164\162\x69\156\147");
+        hfJ:
+        if (!("\x41\163\163\x65\162\164\134\x41\x73\x73\145\x72\x74\151\x6f\156" !== $LI && !\is_subclass_of($LI, "\x41\163\x73\x65\x72\164\x5c\x41\x73\163\x65\162\164\151\157\x6e"))) {
+            goto ZFd;
         }
-        throw new LogicException($B_ . "\x20\x69\163\x20\x6e\x6f\164\x20\x28\x61\40\x73\165\x62\x63\x6c\141\x73\163\40\157\146\x29\x20\x41\163\x73\145\x72\164\134\x41\x73\x73\x65\x72\164\x69\x6f\x6e");
-        y_q:
-        $this->assertionClassName = $B_;
+        throw new LogicException($LI . "\40\x69\163\40\156\x6f\164\x20\50\x61\x20\163\x75\x62\143\154\x61\x73\163\40\x6f\146\x29\x20\101\163\x73\145\x72\x74\x5c\101\x73\163\x65\162\x74\151\157\156");
+        ZFd:
+        $this->assertionClassName = $LI;
         return $this;
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\x50\x49\x4e\x43")) {
-    goto U9m;
+if (defined("\127\120\111\x4e\103")) {
+    goto LD;
 }
 die;
-U9m:
+LD:

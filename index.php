@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\x49\x4e\x43")) {
-    goto z8;
+if (defined("\127\120\x49\116\103")) {
+    goto h8;
 }
 die;
-z8:
+h8:

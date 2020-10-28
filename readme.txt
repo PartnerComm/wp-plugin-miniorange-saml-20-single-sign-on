@@ -3,8 +3,8 @@ Contributors: miniOrange
 Donate link: http://miniorange.com
 Tags: saml, single sign on, SSO, single sign on saml, sso saml, sso integration WordPress, sso using SAML, SAML 2.0 Service Provider, Wordpress SAML, SAML Single Sign-On, SSO using SAML, SAML 2.0, SAML 20, Wordpress Single Sign On, ADFS, Okta, Google Apps, Google for Work, Salesforce, Shibboleth, SimpleSAMLphp, OpenAM, Centrify, Ping, RSA, IBM, Oracle, OneLogin, Bitium, WSO2, NetIQ, Novell Access Manager
 Requires at least: 3.5
-Tested up to: 5.3
-Stable tag: 12.0.1
+Tested up to: 5.5.1
+Stable tag: 12.0.2
 Requires PHP: 5.4
 License URI: http://miniorange.com/usecases/miniOrange_User_Agreement.pdf
 
@@ -63,6 +63,16 @@ Visit Help & FAQ section in the plugin OR email us at info@xecurify.com or <a hr
 3. Configure your IdP in your Wordpress site.
 
 == Changelog ==
+
+= 12.0.2 =
+Fixed IdP-initiated SLO
+Vulnerability fixes
+Fixed attribute display issue on Users menu
+Fixed email update issue for existing users
+Compatibility with WordPress 5.5.1
+Fixed compatibility issue with PHP 5.4
+Added new certificates
+Fixed keycloak metadata upload issue
 
 = 12.0.1 =
 Added Logout Relay State feature
@@ -164,6 +174,13 @@ UI Improvements.
 * this is the first release.
 
 == Upgrade Notice ==
+
+= 12.0.2 =
+Fixed IdP-initiated SLO
+Vulnerability fixes
+Fixed attribute display issue on Users menu
+Compatibility with WordPress 5.4.1
+Fixed compatibility issue with PHP 5.4
 
 = 12.0.1 =
 Added Logout Relay State feature

@@ -3,17 +3,17 @@
 
 namespace Assert;
 
-function that($zw, $dx = null, $mi = null)
+function that($DE, $K3 = null, $hG = null)
 {
-    return Assert::that($zw, $dx, $mi);
+    return Assert::that($DE, $K3, $hG);
 }
-function thatAll($Uj, $dx = null, $mi = null)
+function thatAll($XV, $K3 = null, $hG = null)
 {
-    return Assert::thatAll($Uj, $dx, $mi);
+    return Assert::thatAll($XV, $K3, $hG);
 }
-function thatNullOr($zw, $dx = null, $mi = null)
+function thatNullOr($DE, $K3 = null, $hG = null)
 {
-    return Assert::thatNullOr($zw, $dx, $mi);
+    return Assert::thatNullOr($DE, $K3, $hG);
 }
 function lazy()
 {

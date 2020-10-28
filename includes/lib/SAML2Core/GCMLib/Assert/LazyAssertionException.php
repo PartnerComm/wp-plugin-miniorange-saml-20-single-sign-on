@@ -8,18 +8,18 @@ class LazyAssertionException extends InvalidArgumentException
     private $errors = array();
     public static function fromErrors(array $errors)
     {
-        $Ew = \sprintf("\124\x68\x65\x20\146\157\154\154\157\x77\x69\156\x67\40\45\x64\x20\141\x73\163\x65\x72\164\x69\157\156\163\40\x66\141\151\x6c\x65\x64\72", \count($errors)) . "\12";
-        $lp = 1;
-        foreach ($errors as $oP) {
-            $Ew .= \sprintf("\45\144\51\x20\x25\163\72\x20\x25\163\12", $lp++, $oP->getPropertyPath(), $oP->getMessage());
-            Z9I:
+        $tj = \sprintf("\124\150\x65\40\x66\x6f\154\x6c\x6f\167\151\156\x67\x20\45\x64\x20\x61\x73\163\x65\162\x74\151\x6f\156\x73\x20\146\x61\x69\154\x65\144\72", \count($errors)) . "\xa";
+        $gJ = 1;
+        foreach ($errors as $xl) {
+            $tj .= \sprintf("\x25\144\x29\40\45\x73\72\40\x25\163\xa", $gJ++, $xl->getPropertyPath(), $xl->getMessage());
+            R3P:
         }
-        JTi:
-        return new static($Ew, $errors);
+        Ys2:
+        return new static($tj, $errors);
     }
-    public function __construct($Ew, array $errors)
+    public function __construct($tj, array $errors)
     {
-        parent::__construct($Ew, 0, null, null);
+        parent::__construct($tj, 0, null, null);
         $this->errors = $errors;
     }
     public function getErrorExceptions()

@@ -5,19 +5,19 @@ namespace RobRichards\XMLSecLibs\Utils;
 
 class XPath
 {
-    const ALPHANUMERIC = "\x5c\x77\x5c\144";
-    const NUMERIC = "\134\x64";
-    const LETTERS = "\x5c\167";
-    const EXTENDED_ALPHANUMERIC = "\x5c\x77\x5c\x64\134\x73\134\55\x5f\x3a\134\56";
-    const SINGLE_QUOTE = "\x27";
-    const DOUBLE_QUOTE = "\x22";
-    const ALL_QUOTES = "\x5b\x27\x22\x5d";
-    public static function filterAttrValue($zw, $lA = self::ALL_QUOTES)
+    const ALPHANUMERIC = "\134\x77\134\x64";
+    const NUMERIC = "\134\144";
+    const LETTERS = "\134\167";
+    const EXTENDED_ALPHANUMERIC = "\134\167\134\x64\x5c\163\134\x2d\137\x3a\134\x2e";
+    const SINGLE_QUOTE = "\47";
+    const DOUBLE_QUOTE = "\42";
+    const ALL_QUOTES = "\x5b\47\x22\135";
+    public static function filterAttrValue($DE, $a7 = self::ALL_QUOTES)
     {
-        return preg_replace("\43" . $lA . "\43", '', $zw);
+        return preg_replace("\43" . $a7 . "\43", '', $DE);
     }
-    public static function filterAttrName($eB, $yZ = self::EXTENDED_ALPHANUMERIC)
+    public static function filterAttrName($ly, $NJ = self::EXTENDED_ALPHANUMERIC)
     {
-        return preg_replace("\x23\133\x5e" . $yZ . "\135\43", '', $eB);
+        return preg_replace("\43\x5b\x5e" . $NJ . "\x5d\43", '', $ly);
     }
 }

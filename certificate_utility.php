@@ -3,22 +3,22 @@
 
 class CertificateUtility
 {
-    public static function generate_certificate($xh, $AX, $DK)
+    public static function generate_certificate($J_, $j9, $vw)
     {
-        $zQ = openssl_pkey_new();
-        $L3 = openssl_csr_new($xh, $zQ, $AX);
-        $DA = openssl_csr_sign($L3, null, $zQ, $DK, $AX, time());
-        openssl_csr_export($L3, $Wk);
-        openssl_x509_export($DA, $Py);
-        openssl_pkey_export($zQ, $rp);
-        hpW:
-        if (!(($sL = openssl_error_string()) !== false)) {
-            goto jeX;
+        $xm = openssl_pkey_new();
+        $yZ = openssl_csr_new($J_, $xm, $j9);
+        $UY = openssl_csr_sign($yZ, null, $xm, $vw, $j9, time());
+        openssl_csr_export($yZ, $zh);
+        openssl_x509_export($UY, $n8);
+        openssl_pkey_export($xm, $OK);
+        Kp5:
+        if (!(($XE = openssl_error_string()) !== false)) {
+            goto IJJ;
         }
-        error_log("\x43\145\162\x74\x69\146\151\143\141\x74\145\x55\164\x69\154\151\164\171\x3a\x20\x45\162\162\157\162\40\x67\145\156\145\162\x61\164\151\x6e\x67\x20\143\x65\x72\164\x69\x66\x69\x63\x61\164\145\x2e\40" . $sL);
-        goto hpW;
-        jeX:
-        $li = array("\160\165\x62\x6c\151\x63\137\x6b\x65\171" => $Py, "\x70\162\151\166\141\x74\145\x5f\x6b\145\x79" => $rp);
-        return $li;
+        error_log("\x43\145\162\164\151\146\151\143\141\164\145\125\164\151\154\x69\x74\171\x3a\x20\105\x72\x72\x6f\162\40\147\x65\156\x65\162\141\x74\151\156\x67\x20\143\145\162\164\151\x66\x69\143\x61\164\x65\56\x20" . $XE);
+        goto Kp5;
+        IJJ:
+        $AQ = array("\160\x75\142\x6c\151\143\137\153\x65\x79" => $n8, "\x70\162\x69\166\141\164\x65\137\153\x65\x79" => $OK);
+        return $AQ;
     }
 }
