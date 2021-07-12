@@ -3,7 +3,7 @@
 
 function mo_saml_show_pricing_page()
 {
-    echo "\74\x73\x74\171\x6c\145\76\56\165\x70\x64\x61\x74\x65\55\x6e\141\x67\x2c\x20\x2e\x75\x70\x64\141\164\x65\x64\x2c\40\56\145\x72\x72\x6f\x72\54\40\56\x69\163\55\144\x69\x73\155\151\163\163\151\x62\x6c\145\x2c\x20\56\x6e\157\164\x69\x63\x65\x2c\x20\x2e\x6e\157\164\x69\x63\145\x2d\x65\162\x72\x6f\x72\x20\x7b\40\x64\151\163\x70\154\141\171\72\x20\x6e\157\x6e\145\73\x20\175\x3c\x2f\x73\x74\171\x6c\x65\76";
+    echo "\74\163\164\171\154\145\76\x2e\x75\x70\x64\141\164\145\55\156\141\x67\54\40\56\x75\160\x64\141\164\x65\x64\x2c\x20\x2e\x65\162\162\x6f\x72\x2c\x20\x2e\151\163\x2d\144\x69\x73\x6d\x69\x73\163\x69\x62\154\x65\54\x20\56\x6e\157\x74\151\x63\145\x2c\x20\x2e\x6e\x6f\x74\x69\143\x65\x2d\x65\162\x72\x6f\162\x20\173\40\x64\x69\163\x70\154\141\171\72\40\156\157\156\x65\x3b\x20\x7d\x3c\x2f\x73\x74\171\154\145\76";
     ?>
     <style>
         *, *::after, *::before {
@@ -42,8 +42,8 @@ function mo_saml_show_pricing_page()
         }
 
         .cd-pricing-container {
-            width: 90%;
-            max-width: 1170px;
+            width: 100%;
+            max-width: 1460px;
             margin: 4em auto;
         }
         @media only screen and (min-width: 768px) {
@@ -130,7 +130,7 @@ function mo_saml_show_pricing_page()
                 float: left;
             }
             .cd-has-margins .cd-pricing-list > li {
-                width: 32.3333333333%;
+                width: 23.333%;
                 float: left;
                 margin-right: 1.5%;
             }
@@ -347,7 +347,7 @@ function mo_saml_show_pricing_page()
         }
         @media only screen and (min-width: 768px) {
             .cd-pricing-header {
-                height: auto;
+                height: 200px;
                 padding: 1.9em 0.9em 1.6em;
                 pointer-events: auto;
                 text-align: center;
@@ -1120,487 +1120,838 @@ function mo_saml_show_pricing_page()
             max-width: 25%;
             width: 25%;
             border-radius: 5px;
-            container:body;
+			container:body;
         }
         .popover-header{ background: rgb(233, 125, 104); color: white;}
+		
+		a:not([href]):not([tabindex]) {
+			color: inherit;
+			text-decoration: none;
+		}
 
-        a:not([href]):not([tabindex]) {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .po{
-            text-align:center;
-            color:white;
-            padding:5px;
-        }
-
+		.po{
+			text-align:center;
+			color:white;
+			padding:5px;
+		}
+		
     </style>
 
-    <?php 
-    $qo = get_option("\155\157\137\154\x69\143\x65\156\163\145\x5f\160\154\x61\156\x5f\x66\162\157\x6d\137\146\145\x65\x64\142\141\143\153");
-    $sO = "\156\x6f\x6e\x65\73";
-    $rD = "\156\157\x6e\145\73";
-    $EE = "\x6e\x6f\156\x65\73";
-    $cr = "\x6e\x6f\x6e\145\x3b";
-    $UR = "\x6e\x6f\x6e\x65\73";
-    $Rs = "\x6e\157\x6e\145\73";
-    $FA = "\163\x69\156\147\x6c\145\163\x69\164\x65";
-    if ($qo == "\123\151\156\x67\154\145\x20\x53\151\x74\145\40\55\x20\x53\x74\141\x6e\144\x61\162\x64") {
-        goto Aj;
+<?php 
+    $QI = get_site_option("\155\157\x5f\154\151\143\145\x6e\163\145\x5f\160\154\141\156\x5f\146\162\157\155\x5f\x66\x65\x65\x64\x62\x61\143\x6b");
+    $Ch = "\x6e\157\x6e\145\73";
+    $lx = "\156\x6f\x6e\145\x3b";
+    $y3 = "\156\x6f\x6e\145\x3b";
+    $qn = "\156\x6f\156\145\73";
+    $w4 = "\x6e\157\x6e\145\73";
+    $Zk = "\156\157\156\145\x3b";
+    $Le = "\x73\151\156\x67\x6c\x65\x73\x69\x74\x65";
+    if ($QI == "\123\151\x6e\x67\x6c\x65\40\x53\151\164\145\40\55\x20\123\164\x61\x6e\144\x61\162\x64") {
+        goto c1;
     }
-    if ($qo == "\x53\x69\156\x67\154\x65\40\123\x69\164\145\x20\x2d\40\120\162\145\155\x69\165\x6d") {
-        goto dr;
+    if ($QI == "\x53\151\x6e\147\x6c\x65\x20\x53\151\x74\145\x20\x2d\x20\x50\x72\x65\155\x69\x75\x6d") {
+        goto wT;
     }
-    if ($qo == "\123\x69\156\x67\x6c\145\x20\123\x69\x74\145\40\55\40\105\156\164\145\x72\160\162\x69\x73\x65") {
-        goto Y6;
+    if ($QI == "\x53\151\156\147\x6c\145\40\x53\x69\164\x65\x20\55\40\x45\x6e\x74\x65\162\160\162\151\163\x65") {
+        goto E0;
     }
-    if ($qo == "\115\165\154\x74\151\163\x69\164\145\x20\x4e\145\164\167\157\162\x6b\x20\x2d\x20\x50\x72\x65\155\151\x75\155") {
-        goto W4;
+    if ($QI == "\x4d\165\154\164\x69\x73\x69\x74\x65\x20\x4e\145\x74\x77\157\x72\x6b\x20\x2d\40\120\x72\145\155\x69\165\x6d") {
+        goto pd;
     }
-    if ($qo == "\x4d\165\154\164\x69\x73\x69\x74\145\x20\116\x65\164\167\157\162\x6b\x20\55\40\x45\x6e\x74\x65\x72\160\162\151\163\x65") {
-        goto T0;
+    if ($QI == "\x4d\x75\x6c\164\x69\x73\x69\x74\x65\x20\x4e\x65\x74\x77\x6f\x72\x6b\x20\x2d\40\x45\x6e\x74\x65\x72\160\162\151\163\145") {
+        goto JK;
     }
-    if (!($qo == "\x4d\x75\154\164\151\x73\x69\164\145\x20\116\145\x74\167\x6f\162\153\40\x2d\40\102\165\163\x69\156\145\x73\x73")) {
-        goto Uo;
+    if (!($QI == "\115\165\154\x74\151\x73\151\x74\145\40\116\145\164\x77\157\x72\153\40\55\x20\x42\x75\x73\151\156\x65\x73\163")) {
+        goto St;
     }
-    $Rs = "\x38\160\x78\40\x73\x6f\x6c\151\144\x20\x72\145\x64\73";
-    $FA = "\155\165\x6c\164\x69\163\151\x74\145";
-    Uo:
-    goto IN;
-    T0:
-    $UR = "\70\160\170\x20\x73\x6f\x6c\151\144\x20\162\x65\144\73";
-    $FA = "\x6d\x75\x6c\164\151\x73\x69\x74\x65";
-    IN:
-    goto Qw;
-    W4:
-    $cr = "\70\x70\170\40\163\x6f\154\x69\144\x20\162\x65\144\x3b";
-    $FA = "\155\x75\154\x74\x69\x73\151\x74\x65";
-    Qw:
-    goto mq;
-    Y6:
-    $EE = "\x38\160\170\x20\163\157\154\x69\x64\40\x72\x65\144\x3b";
-    mq:
-    goto HR;
-    dr:
-    $rD = "\x38\x70\170\x20\x73\157\x6c\151\x64\40\162\145\x64\x3b";
-    HR:
-    goto Nu;
-    Aj:
-    $sO = "\70\x70\170\x20\x73\x6f\154\151\144\x20\162\145\144\x3b";
-    Nu:
+    $Zk = "\x38\x70\170\40\x73\x6f\154\x69\144\40\162\x65\144\x3b";
+    $Le = "\155\165\x6c\x74\x69\163\x69\164\145";
+    St:
+    goto G6;
+    JK:
+    $w4 = "\70\x70\170\x20\x73\x6f\x6c\x69\x64\40\162\x65\x64\73";
+    $Le = "\155\165\154\x74\151\163\151\x74\x65";
+    G6:
+    goto Bk;
+    pd:
+    $qn = "\70\160\x78\40\163\157\x6c\151\x64\x20\162\145\x64\x3b";
+    $Le = "\x6d\x75\154\164\x69\x73\x69\x74\x65";
+    Bk:
+    goto LH;
+    E0:
+    $y3 = "\70\160\170\x20\163\x6f\154\151\144\x20\x72\x65\x64\x3b";
+    LH:
+    goto pk;
+    wT:
+    $lx = "\70\160\170\x20\x73\157\x6c\151\144\40\x72\145\x64\x3b";
+    pk:
+    goto ro;
+    c1:
+    $Ch = "\x38\160\x78\x20\163\x6f\x6c\151\x64\x20\162\x65\x64\73";
+    ro:
     ?>
-    <div style="text-align: center; font-size: 14px; background: forestgreen; color: white; padding-top: 4px; padding-bottom: 4px; border-radius: 16px;"><?php 
-    echo get_option("\x6d\x6f\137\x73\x61\x6d\x6c\x5f\x6c\x69\143\x65\156\x73\145\137\x6d\x65\x73\x73\x61\x67\145");
+<div style="text-align: center; font-size: 14px; background: forestgreen; color: white; padding-top: 4px; padding-bottom: 4px; border-radius: 16px;"><?php 
+    echo get_site_option("\155\157\x5f\x73\x61\x6d\x6c\137\x6c\151\x63\x65\156\x73\x65\x5f\x6d\145\x73\x73\141\x67\145");
     ?>
 </div>
     <input type="hidden" id="mo_license_plan_selected" value="<?php 
-    echo $FA;
+    echo $Le;
     ?>
 " />
     <div class="tab-content">
-        <div class="tab-pane active text-center" id="cloud" >
+    <div class="tab-pane active text-center" id="cloud" >
 
-            <div class="cd-pricing-container cd-has-margins"><br>
-                <h1 style="font-size: 32px;">Choose Your Licensing Plan</h1>
-                <div class="cd-pricing-switcher">
-                    <p class="fieldset" style="background-color: #e97d68;">
-                        <input type="radio" name="sitetype" value="singlesite" id="singlesite" checked>
-                        <label for="singlesite">Single Site</label>
-                        <input type="radio" name="sitetype" value="multisite" id="multisite">
-                        <label for="multisite">Multisite Network</label>
-                        <span class="cd-switch"></span>
-                    </p>
+        <div class="cd-pricing-container cd-has-margins"><br>
+            <h1 style="font-size: 32px;">Choose Your Licensing Plan</h1>
+            <div class="cd-pricing-switcher">
+                <p class="fieldset" style="background-color: #e97d68;">
+                    <input type="radio" name="sitetype" value="singlesite" id="singlesite" checked>
+                    <label for="singlesite">Single Site</label>
+                    <input type="radio" name="sitetype" value="multisite" id="multisite">
+                    <label for="multisite">Multisite Network</label>
+                    <span class="cd-switch"></span>
+                </p>
+            </div>
+                <div style="background: #F2F5FB;border-radius:5px;font-size: large;margin-top:10px;padding:10px;border-style: solid;border-color: #2f6062">
+                    <span class="dashicons dashicons-info" style="vertical-align: bottom;"></span>
+                    <?php 
+    _e("\114\151\143\x65\x6e\163\x65\x20\x69\x73\x20\x6c\x69\x6e\x6b\x65\144\x20\164\157\x20\164\150\x65\40\144\157\x6d\141\151\156\x20\x6f\x66\40\164\x68\x65\x20\x57\x6f\162\144\x70\x72\x65\163\163\40\x69\156\163\164\x61\156\143\x65\x2c\x20\x73\x6f\40\x69\x66\40\x79\157\165\x20\150\141\166\145\x20\x64\145\x76\55\163\x74\x61\147\x69\156\147\55\x70\162\157\x64\40\x74\171\160\x65\40\x6f\x66\40\145\156\166\x69\162\157\x6e\x6d\x65\156\x74\x20\x74\x68\x65\156\40\171\x6f\x75\x20\167\x69\x6c\x6c\x20\x72\145\161\x75\x69\x72\145\x20\x33\x20\x6c\x69\x63\x65\156\163\x65\x73\40\x6f\146\x20\x74\150\145\40\160\x6c\165\147\151\156\x20\50\x77\x69\164\x68\40\144\151\163\x63\157\x75\x6e\164\163\x20\x61\160\160\154\151\143\141\x62\154\x65\x20\x6f\x6e\x20\160\x72\x65\55\x70\x72\157\144\x75\143\164\x69\157\x6e\x20\145\x6e\166\151\162\x6f\x6e\155\145\156\x74\163\51\56", "\155\151\x6e\x69\x6f\x72\141\x6e\x67\x65\55\x73\141\x6d\154\55\62\x30\55\163\151\156\147\x6c\x65\55\x73\151\x67\x6e\55\x6f\x6e");
+    _e("\x20\x43\157\156\x74\141\x63\164\40\x75\x73\40\141\x74\40\74\141\x20\x73\164\171\x6c\x65\x3d\42\143\x6f\x6c\x6f\x72\x3a\142\x6c\x75\145\42\x20\x68\162\x65\146\x3d\42\x6d\141\151\x6c\x74\x6f\72\163\141\x6d\x6c\163\x75\160\x70\157\162\x74\x40\x78\145\x63\x75\x72\x69\x66\x79\56\143\x6f\155\42\76\163\x61\x6d\154\163\x75\160\x70\x6f\162\x74\100\x78\145\x63\165\x72\x69\146\x79\56\143\x6f\155\74\57\x61\76\40\146\x6f\162\40\142\x75\x6c\153\x20\x64\151\163\x63\157\x75\x6e\164\163\x2e", "\x6d\x69\x6e\151\157\162\141\x6e\x67\145\55\163\x61\x6d\154\55\62\x30\55\x73\x69\x6e\x67\154\x65\55\163\151\x67\156\55\x6f\x6e");
+    ?>
                 </div>
-
-                <script>
-                    jQuery(document).ready(function(){
-                        jQuery("#popover").popover({ trigger: "hover"});
-                        jQuery("#popover1").popover({ trigger: "hover" });
-                        jQuery("#popover2").popover({ trigger: "hover" });
-                        jQuery("#popover3").popover({ trigger: "hover" });
-                        jQuery("#popover4").popover({ trigger: "hover" });
-                        jQuery("#popover5").popover({ trigger: "hover" });
-                        jQuery("#popoverfree").popover({ trigger: "focus" });
-
-
-                    });
-                </script>
-                <!-- .cd-pricing-switcher -->
+            <script>
+                jQuery(document).ready(function(){
+                    jQuery("#popover").popover({ trigger: "hover"});
+                    jQuery("#popover1").popover({ trigger: "hover" });
+                    jQuery("#popover2").popover({ trigger: "hover" });
+                    jQuery("#popover3").popover({ trigger: "hover" });
+                    jQuery("#popover4").popover({ trigger: "hover" });
+                    jQuery("#popover5").popover({ trigger: "hover" });
+                    jQuery("#popover6").popover({ trigger: "hover" });
+                    jQuery("#popoverfree").popover({ trigger: "focus" });
 
 
+                });
+            </script>
+            <!-- .cd-pricing-switcher -->
 
-                <!--div style="z-index: 1;position: relative;">
 
 
-                        <button type="button" data-toggle="modal" data-target="#standardPremiumModalCenter" >
-                            -COMPARE-
-                        </button>
+            <!--div style="z-index: 1;position: relative;">
 
-                    <button type="button" data-toggle="modal" data-target="#premiumEnterpriseModalCenter" style="cursor: pointer; font-size: 15px;background-color: #ba89b6;border-radius: 4px;padding: 5px;color: white;margin-left: 300px;">
+
+                    <button type="button" data-toggle="modal" data-target="#standardPremiumModalCenter" >
                         -COMPARE-
                     </button>
-                </div -->
+
+                <button type="button" data-toggle="modal" data-target="#premiumEnterpriseModalCenter" style="cursor: pointer; font-size: 15px;background-color: #ba89b6;border-radius: 4px;padding: 5px;color: white;margin-left: 300px;">
+                    -COMPARE-
+                </button>
+            </div -->
 
 
 
-                <input type="hidden" value="<?php 
+            <input type="hidden" value="<?php 
     echo mo_saml_is_customer_registered_saml(false);
     ?>
 " id="mo_customer_registered">
-                <ul class="cd-pricing-list cd-bounce-invert" >
-                    <li>
+            <ul id="list-type" class="cd-pricing-list cd-bounce-invert">
+                <li>
 
-                        <ul class="cd-pricing-wrapper">
-                            <li data-type="singlesite" class="mosslp is-visible" style="border: <?php 
-    echo $sO;
+                    <ul class="cd-pricing-wrapper">
+                        <li data-type="singlesite" class="mosslp is-visible" style="border: <?php 
+    echo $Ch;
     ?>
 ">
-                                <a id="popover" data-toggle="popover" title="<h3 class='po'>Why should I choose this plan?<h3>" data-placement="top" data-html="true"
-                                   data-content="<p>Choose this plan if you are looking for the features like <br /><b>Auto-Redirect to IdP</b><br /><b>Basic Attribute Mapping (Username, Email, First Name, Last Name, Display Name)</b><br /><span style='color:red;'><b>Note:</b></span> Single Logout & Role Mapping is not a part of this plan.</p>">
+                            <a id="popover" data-toggle="popover" title="<h3 class='po'>Why should I choose this plan?<h3>" data-placement="top" data-html="true"
+                               data-content="<p>Choose this plan if you are looking for the features like <br /><b>Auto-Redirect to IdP</b><br /><b>Basic Attribute Mapping (Username, Email, First Name, Last Name, Display Name)</b><br /><span style='color:red;'><b>Note:</b></span> Single Logout & Role Mapping is not a part of this plan.</p>">
+							   
+							<!-- <a href=# title="header" data-toggle="popover" data-content="some" data-trigger="hover" data-placement="top" data-html="true">-->
+							 
+                            <header class="cd-pricing-header">
 
-                                    <!-- <a href=# title="header" data-toggle="popover" data-content="some" data-trigger="hover" data-placement="top" data-html="true">-->
+                                <h2 style="margin-bottom: 10px" >Standard<span style="font-size:0.5em"></span></h2>
+                                <div style="height:90px;">
+                                    <h3 class = "subheading_plans" style="color:black; font-size: 16px;">Auto-Redirect to IdP</h3></div>
+                                <div class="cd-price" >
+                                    <span class="cd-currency">$</span>
+                                    <span class="cd-value">349*</span></span>
 
-                                    <header class="cd-pricing-header">
+                                </div>
 
-                                        <h2 style="margin-bottom: 10px" >Standard<span style="font-size:0.5em"></span></h2>
-                                        <h3 style="color:black;">(Auto-Redirect to IdP)<br /><br /></h3>
-                                        <div class="cd-price" >
-                                            <span class="cd-currency">$</span>
-                                            <span class="cd-value">349*</span></span>
+                            </header> <!-- .cd-pricing-header -->
+                           </a>
+                            <footer class="cd-pricing-footer">
+                                <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_standard_plan')" >Upgrade Now</a>
+                            </footer>
+                            <b style="color: coral;">See the Standard Plugin features list below</b>
+                            <div class="cd-pricing-body">
+                                <ul class="cd-pricing-features">
+                                    <li>Unlimited Authentications</li>
+                                    <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
+                                    <li>Widget,Shortcode to add IDP Login Link on your site</li>
+                                    <li>Step-by-step guide to setup IDP</li>
+                                    <li>Auto-Redirect to IDP from login page</li>
+                                    <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
+                                    <li>Change SP base Url and SP Entity ID</li>
+                                    <li>Options to select SAML Request binding type</li>
+                                    <li>Integrated Windows Authentication (supported with AD FS)</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                        <li>&nbsp;<br>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li><li style ="height:85px">&nbsp;</li>
+                                    <li>&nbsp;<br/></li>
+                                    <li>&nbsp;</li>
+                                        <li>&nbsp;<b>Add-Ons</b><br />Purchase Separately<br /><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br /><br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;</li>
 
-                                        </div>
+                                </ul>
+                            </div> <!-- .cd-pricing-body -->
+                        </li>
 
-                                    </header> <!-- .cd-pricing-header -->
-                                </a>
-                                <footer class="cd-pricing-footer">
-                                    <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_standard_plan')" >Upgrade Now</a>
-                                </footer>
-                                <b style="color: coral;">See the Standard Plugin features list below</b>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li>Unlimited Authentications</li>
-                                        <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
-                                        <li>Widget,Shortcode to add IDP Login Link on your site</li>
-                                        <li>Step-by-step guide to setup IDP</li>
-                                        <li>Auto-Redirect to IDP from login page</li>
-                                        <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
-                                        <li>Change SP base Url and SP Entity ID</li>
-                                        <li>Options to select SAML Request binding type</li>
-                                        <li>Integrated Windows Authentication (supported with AD FS)</li>
-                                        <li>&nbsp;</li>
-                                        <li>&nbsp;</li>
-                                        <li>&nbsp;</li>
-                                        <li>&nbsp;<br />&nbsp;</li>
-                                        <li>&nbsp;</li>
-                                        <li>&nbsp;</li>
-                                        <li>&nbsp;</li>
-                                        <li>&nbsp;<b>Add-Ons</b><br />Purchase Separately<br /><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br />&nbsp;<br />&nbsp;</li>
-
-                                    </ul>
-                                </div> <!-- .cd-pricing-body -->
-                            </li>
-
-                            <li data-type="multisite" class="momslp is-hidden" style="border: <?php 
-    echo $cr;
+                        <li data-type="multisite" class="momslp is-hidden" style="border: <?php 
+    echo $qn;
     ?>
 ">
-                                <a id="popover3" data-toggle="popover" data-trigger="hover" title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
-                                   data-content="<p>Choose this plan if you have Multisite Network Installation and are looking for the features like <br /><b>Subsite Specific SSO<br />Auto-Redirect to IdP<br />Advance Attribute Mapping<br />Role Mapping<br />IdP metadata sync<br />Support of custom SP and IdP certificate<br /></b><span style='color:red;'><b>Note:</b></span> Add-ons are not a part of this plan.</p>">
-                                    <header class="cd-pricing-header">
+                            <a id="popover3" data-toggle="popover"  title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
+                               data-content="<p>Choose this plan if you have Multisite Network Installation and are looking for the features like <br /><b>Subsite Specific SSO<br />Auto-Redirect to IdP<br />Advance Attribute Mapping<br />Role Mapping<br />IdP metadata sync<br />Support of custom SP and IdP certificate<br /></b><span style='color:red;'><b>Note:</b></span> Add-ons are not a part of this plan.</p>">
+                            <header class="cd-pricing-header">
 
-                                        <h2 style="margin-bottom: 10px" >Premium<span style="font-size:0.5em"></span></h2>
-                                        <h3 style="color:black;">(Multisite Network SSO)<br /><br /><br /></h3>
-                                        <div class="cd-price" >
-                                            <span class="cd-currency">$</span>
-                                            <span class="cd-value">449*</span></span>
+                                <h2 style="margin-bottom: 10px" >Premium<span style="font-size:0.5em"></span></h2>
+                                <div style="height: 90px;">
+                                    <h3 class = "subheading_plans" style="color:black; font-size: 16px;">Auto-Redirect to IdP<br />Attribute and Role Management<br />Connect all subsites to same IdP<br />Single Logout</h3></div>
+                                <div class="cd-price" >
+                                    <span class="cd-currency">$</span>
+                                    <span class="cd-value">449*</span></span>
 
-                                        </div>
+                                </div>
 
-                                    </header>
-                                </a>
-                                <!-- .cd-pricing-header -->
-                                <footer class="cd-pricing-footer">
-                                    <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_multisite_basic_plan')" >Upgrade Now</a>
-                                </footer>
-                                <b style="color: coral;">See the Multisite Premium Plugin features list below</b>
-                                <div class="cd-pricing-body">
+                            </header>
+                            </a>
+                            <!-- .cd-pricing-header -->
+                            <footer class="cd-pricing-footer">
+                                <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_multisite_basic_plan')" >Upgrade Now</a>
+                            </footer>
+                            <b style="color: coral;">See the Multisite Premium Plugin features list below</b>
+                            <div class="cd-pricing-body">
 
-                                    <ul class="cd-pricing-features">
-                                        <li>Unlimited Authentications</li>
-                                        <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
-                                        <li>Widget,Shortcode to add IDP Login Link on your site</li>
-                                        <li>Step-by-step guide to setup IDP</li>
-                                        <li>Auto-Redirect to IDP from login page</li>
-                                        <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
-                                        <li>Change SP base Url and SP Entity ID</li>
-                                        <li>Options to select SAML Request binding type</li>
-                                        <li>SAML Single Logout</li>
-                                        <li>Integrated Windows Authentication (supported with AD FS)</li>
-                                        <li>Customized Role Mapping</li>
-                                        <li>Auto-sync IdP Configuration from metadata</li>
-                                        <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
-                                        <li>Store Multiple IdP Certificates</li>
-                                        <li>Custom SP Certificate</li>
-                                        <li>Multi-Site Support</li>
-                                        <li>Sub-site specific SSO for Multisite</li>
-                                        <li>Auto-Redirection from specific subsites</li>
-                                        <li>&nbsp;<b>Add-Ons</b><br />Purchase Separately<br /><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br />&nbsp;<br />&nbsp;</li>
-                                        <li>&nbsp;</li>
+                                <ul class="cd-pricing-features">
+                                    <li>Unlimited Authentications</li>
+                                    <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
+                                    <li>Widget,Shortcode to add IDP Login Link on your site</li>
+                                    <li>Step-by-step guide to setup IDP</li>
+                                    <li>Auto-Redirect to IDP from login page</li>
+                                    <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
+                                    <li>Change SP base Url and SP Entity ID</li>
+                                    <li>Options to select SAML Request binding type</li>
+                                    <li>SAML Single Logout</li>
+                                    <li>Integrated Windows Authentication (supported with AD FS)</li>
+                                    <li>Customized Role Mapping</li>
+                                    <li>Auto-sync IdP Configuration from metadata</li>
+                                    <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
+                                    <li>Store Multiple IdP Certificates</li>
+                                    <li>Custom SP Certificate</li>
+                                    <li>Multi-Site Support</li>
+                                    <li>Sub-site specific SSO for Multisite</li>
+                                    <li>Auto-Redirection from specific subsites</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;<br/><br/></li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;<b>Add-Ons</b><br />Purchase Separately<br /><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br />&nbsp;<br />&nbsp;<br/><br/><br/><br/><br/><br/></li>
+                                </ul>
+                            </div> <!-- .cd-pricing-body -->
+                        </li>
+                    </ul> <!-- .cd-pricing-wrapper -->
+                </li>
+
+                <li class="cd-popular">
+                    <ul class="cd-pricing-wrapper">
+                        <li data-type="singlesite" class="mosslp is-visible" style="border: <?php 
+    echo $lx;
+    ?>
+">
+                                <a id="popover1" data-toggle="popover" title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
+                               data-content="<p>Choose this plan if you are looking for the features like <br /><b>Advance Attribute Mapping<br />Role Mapping<br />Single Logout<br />IdP metadata sync<br />Support of custom SP and IdP certificate<br /></b><span style='color:red;'><b>Note:</b></span> Add-ons are not a part of this plan. All features of Standard Plan are included here.</p>">
+                            <header class="cd-pricing-header">
+
+                                <h2 style="margin-bottom: 10px">Premium</h2>
+                                        <div style="height:90px;">
+                                            <h3 class = "subheading_plans" style="color:black; font-size: 16px;">Attribute & Role Management<br />Single Logout</h3></div>
+
+                                <div class="cd-price" >
+                                    <span class="cd-currency">$</span>
+                                    <span class="cd-value">449*</span></span>
+
+                                </div>
+
+
+                            </header> <!-- .cd-pricing-header -->
+                            </a>
+                            <footer class="cd-pricing-footer">
+                                <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_basic_plan')" >Upgrade Now</a>
+                            </footer>
+                            <b>See the Premium Plugin features list below</b>
+                            <div class="cd-pricing-body">
+                                <ul class="cd-pricing-features">
+                                    <li>Unlimited Authentications</li>
+                                    <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
+                                    <li>Widget,Shortcode to add IDP Login Link on your site</li>
+                                    <li>Step-by-step guide to setup IDP</li>
+                                    <li>Auto-Redirect to IDP from login page</li>
+                                    <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
+                                    <li>Change SP base Url and SP Entity ID</li>
+                                    <li>Options to select SAML Request binding type</li>
+                                    <li>Integrated Windows Authentication (supported with AD FS)</li>
+                                    <li>SAML Single Logout</li>
+                                    <li>Customized Role Mapping</li>
+                                    <li>Auto-sync IdP Configuration from metadata</li>
+                                    <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
+                                    <li>Store Multiple IdP Certificates</li>
+                                    <li>Custom SP Certificate</li>
+                                    <li>&nbsp;</li><li style ="height:85px">&nbsp;</li>
+                                    <li>&nbsp;<br/></li>
+                                    <li>&nbsp;</li>
+                                    <li>&nbsp;<b>Add-Ons</b><br />Purchase Separately<br /><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br /><br/><br/><br/><br/><br/><br/><br/></li>
+                                </ul>
+                            </div> <!-- .cd-pricing-body -->
+                        </li>
+
+                        <li data-type="multisite" class="momslp is-hidden" style="border: <?php 
+    echo $w4;
+    ?>
+">
+                                <a id="popover4" data-toggle="popover"  title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
+                                   data-content="<p>Choose this plan if you have Multisite Network installation and are looking for features like <br /><b>Mu Domain Mapping Support<br/>Easy migration from staging to prod<br/>Setup SSO with multiple IdPs<br/>Subsite Specific SSO<br/>Auto-Redirect to IdP<br/>Advance Attribute Mapping<br/>Role Mapping<br/>
+                               IdP metadata sync<br/>Support of custom SP and IdP certificate</b><br /></p>">
+                            <header class="cd-pricing-header">
+
+                                <h2 style="margin-bottom: 10px">Enterprise</h2>
+                                        <div style="height:90px;">
+                                            <h3 class = "subheading_plans" style="color:black; font-size: 16px;">Mu Domain Mapping Support<br />Easy migration from staging to prod<br />Setup SSO with multiple IdPs</h3></div>
+                                <div class="cd-price" >
+                                    <span class="cd-currency">$</span>
+                                    <span class="cd-value">549*</span></span>
+
+                                </div>
+
+
+                            </header> <!-- .cd-pricing-header -->
+                            </a>
+                            <footer class="cd-pricing-footer">
+                                <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_multisite_enterprise_plan')" >Upgrade Now</a>
+                            </footer>
+                            <b>See the Multisite Enterprise Plugin features list below</b>
+                            <div class="cd-pricing-body">
+                                <ul class="cd-pricing-features">
+                                    <li>Unlimited Authentications</li>
+                                    <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
+                                    <li>Widget,Shortcode to add IDP Login Link on your site</li>
+                                    <li>Step-by-step guide to setup IDP</li>
+                                    <li>Auto-Redirect to IDP from login page</li>
+                                    <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
+                                    <li>Change SP base Url and SP Entity ID</li>
+                                    <li>Options to select SAML Request binding type</li>
+                                    <li>SAML Single Logout</li>
+                                    <li>Integrated Windows Authentication (supported with AD FS)</li>
+                                    <li>Customized Role Mapping</li>
+                                    <li>Auto-sync IdP Configuration from metadata</li>
+                                    <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
+                                    <li>Store Multiple IdP Certificates</li>
+                                    <li>Custom SP Certificate</li>
+                                    <li>Multi-Site Support</li>
+                                    <li>Sub-site specific SSO for Multisite</li>
+                                    <li>Auto-Redirection from specific subsites</li>
+                                    <li>Mu Domain Mapping Support</li>
+                                    <li>Multiple IdP Support</li>
+                                    <li>Compatible with multiple environments in a hosting provider like Pantheon, WP-Engine, Wordpress VIP</li>
+                                    <li>&nbsp;</li>
+                                     <li>&nbsp;</li>
+                                    <li><b>Add-Ons</b><br />
+                                            SSO Login Audit<br/>Purchase Separately (Remaining)<br/><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br/><br/><br/><br/><br/><br/><br/></li>
+
+                                </ul>
+                            </div> <!-- .cd-pricing-body -->
+                        </li>
+
+                    </ul> <!-- .cd-pricing-wrapper -->
+                </li>
+
+                <li>
+                    <ul class="cd-pricing-wrapper">
+                        <li data-type="singlesite" class="mosslp is-visible" style="border: <?php 
+    echo $y3;
+    ?>
+">
+                            <a id="popover2" data-toggle="popover"  title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
+                               data-content="<p>Choose this plan if you are looking for features like <br /><b>Easy migration from dev to prod<br/>Support of multiple IdPs<br/>SSO Login Audit<br/>Advance Attribute Mapping<br/>Role Mapping<br/>IdP metadata sync<br />Support of custom SP and IdP certificate</b><br /><span style='color:red;'><b>Note:</b></span> Add-ons are not a part of this plan. All features of Premium Plan are included here.</p>">
+                                <header class="cd-pricing-header">
+                                    <h2 style="margin-bottom:10px;">Enterprise</h2>
+                                    <div style="height:90px;">
+                                        <h3 class = "subheading_plans" style="color:black ;font-size: 16px;">Easy migration from dev to prod<br />Multiple IdP Support<br />SSO Login Audit</h3></div>
+                                <div class="cd-price" >
+                                    <span class="cd-currency">$</span>
+                                    <span class="cd-value">549*</span></span>
+
+                                </div>
+                            </header> <!-- .cd-pricing-header -->
+                            </a>
+                            <footer class="cd-pricing-footer">
+                                <!--a class="cd-select" href="businessfreetrial" target="_blank" >Upgrade now</a -->
+                                    <!--<div class="btn-group" style="width:100%;">
+                                    <button type="button" class="btn btn-default dropdown-toggle cd-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
+                                        Upgrade now <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="width: 100%; padding-left: 10px; padding-right: 10px;">
+                                        <li style="font-size: 16px;"><a href="#" style="color: #2f6062;" onclick="upgradeform('wp_saml_sso_enterprise_plan')">SINGLE IdP: <span style="font-size:12px;">Select this if you want to setup the SSO with 1 IdP</span></a></li>
+                                        <li style="font-size: 16px;"><a href="#" style="color: #2f6062;" onclick="upgradeform('wp_saml_sso_multiple_idp_plan')">MULTIPLE IdP: <span style="font-size:12px;">Select this if you want to setup the SSO in your site with more than 1 IdP</span></a></li>
                                     </ul>
-                                </div> <!-- .cd-pricing-body -->
-                            </li>
-                        </ul> <!-- .cd-pricing-wrapper -->
-                    </li>
+                                    </div>-->
+                                    <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_multiple_idp_plan')" ><?php 
+    _e("\x55\160\147\162\x61\x64\x65\x20\116\157\167", "\155\x69\156\x69\x6f\x72\x61\156\147\x65\x2d\x73\x61\155\x6c\55\x32\60\x2d\x73\151\x6e\147\x6c\x65\55\x73\x69\147\156\x2d\x6f\156");
+    ?>
+</a>
+                            </footer>
+                            <b style="color: coral;">See the Enterprise Plugin features list below</b>
+                            <div class="cd-pricing-body">
+                                <ul class="cd-pricing-features ">
+                                    <li>Unlimited Authentications</li>
+                                    <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
+                                    <li>Widget,Shortcode to add IDP Login Link on your site</li>
+                                    <li>Step-by-step guide to setup IDP</li>
+                                    <li>Auto-Redirect to IDP from login page</li>
+                                    <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
+                                    <li>Change SP base Url and SP Entity ID</li>
+                                    <li>Options to select SAML Request binding type</li>
+                                    <li>Integrated Windows Authentication (supported with AD FS)</li>
+                                    <li>SAML Single Logout</li>
+                                    <li>Customized Role Mapping</li>
+                                    <li>Auto-sync IdP Configuration from metadata</li>
+                                    <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
+                                    <li>Store Multiple IdP Certificates</li>
+                                    <li>Custom SP Certificate</li>
+                                    <li>Multiple IDP Support</li>
+                                    <li>Compatible with multiple environments in a hosting provider like Pantheon, WP-Engine, Wordpress VIP</li>
+                                    <li>&nbsp;<br/></li>
+                                    <li>&nbsp;</li>
+                                    <li><b>Add-Ons</b><br />
+                                        SSO Login Audit Add-On<br/>Purchase Separately (Remaining)<br/><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br/><br/><br/><br/><br/><br/><br/></li>
+
+                                </ul>
+                            </div> <!-- .cd-pricing-body -->
+
+                        </li>
+
+                        <li data-type="multisite" class="momslp is-hidden" style="border: <?php 
+    echo $Zk;
+    ?>
+">
+                            <a id="popover5" data-toggle="popover" title="<h3><?php 
+    _e("\127\x68\x79\40\x73\x68\x6f\165\x6c\x64\40\x49\40\143\x68\157\x6f\x73\145\40\x74\150\151\163\40\x70\154\x61\156\x3f", "\x6d\x69\x6e\151\157\162\141\x6e\x67\145\55\x73\x61\x6d\154\55\62\60\x2d\x73\x69\156\x67\x6c\x65\55\x73\x69\147\156\x2d\x6f\x6e");
+    ?>
+</h3>" data-placement="top" data-html="true"
+                               data-content="<p><?php 
+    _e("\x43\150\x6f\x6f\x73\x65\x20\x74\150\151\x73\x20\160\154\141\156\x20\151\146\x20\x79\157\165\40\141\162\x65\40\154\x6f\x6f\x6b\151\156\147\40\146\x6f\162\x20", "\155\x69\156\151\x6f\162\x61\x6e\x67\145\55\x73\x61\x6d\154\x2d\62\60\x2d\163\151\x6e\147\154\x65\x2d\x73\151\147\156\x2d\x6f\156");
+    ?>
+<br /><b>
+                            <?php 
+    _e("\x41\154\x6c\x20\145\x78\x63\x6c\165\x73\x69\166\x65\x20\x66\x65\141\164\165\162\145\163\40\151\x6e\143\x6c\165\x64\x65\x64", "\x6d\151\x6e\151\157\162\x61\156\x67\x65\55\163\x61\155\x6c\55\62\60\x2d\x73\x69\x6e\x67\154\145\55\x73\x69\x67\x6e\x2d\x6f\x6e");
+    ?>
+<br />
+                            <?php 
+    _e("\101\144\x64\55\x6f\x6e\163\x20\x28\x50\141\147\x65\40\x52\145\x73\x74\162\x69\143\164\x69\157\x6e\x2c\40\x42\x75\144\144\171\x50\x72\x65\x73\163\40\101\x74\x74\162\x69\142\165\x74\145\x20\x4d\141\x70\x70\x69\x6e\x67\54\40\114\145\141\x72\x6e\104\x61\163\x68\40\101\164\x74\x72\151\x62\165\x74\x65\40\x4d\x61\x70\x70\x69\x6e\x67\x2c\x20\x4d\x65\x64\x69\141\x20\122\145\163\164\x72\151\143\x74\x69\157\156\54\x20\101\x74\x74\162\x69\142\x75\x74\145\40\142\x61\163\145\144\40\122\145\x64\151\x72\x65\x63\x74\151\157\x6e\54\x20\106\145\144\145\162\x61\x74\x69\157\156\x20\123\123\x4f\54\40\123\103\111\115\55\125\163\145\x72\40\120\162\x6f\166\x69\x73\151\x6f\x6e\151\156\147\x2c\x20\x53\123\x4f\40\x53\x65\x73\x73\151\x6f\156\x20\115\141\x6e\141\x67\x65\155\x65\156\x74\54\x20\x53\123\117\x20\x4c\x6f\x67\151\156\40\x41\x75\144\x69\x74\x2c\51\x2e", "\155\x69\x6e\151\157\x72\141\x6e\147\145\55\x73\x61\x6d\x6c\x2d\x32\60\x2d\x73\151\156\x67\x6c\145\55\x73\x69\x67\x6e\55\x6f\x6e");
+    ?>
+</b><br /><span style='color:red;'><b><?php 
+    _e("\116\157\x74\x65", "\x6d\151\x6e\151\157\x72\x61\156\x67\x65\55\163\x61\155\154\x2d\x32\60\x2d\163\151\156\x67\x6c\x65\x2d\x73\151\147\x6e\x2d\157\156");
+    ?>
+:</b></span> <?php 
+    _e("\x41\x6c\x6c\x20\164\x68\145\40\101\x64\x64\x2d\x6f\156\x73\40\x61\162\x65\x20\x70\141\143\153\x61\x67\x65\x64\40\x77\151\x74\x68\40\x74\150\x69\163\40\160\x6c\x61\x6e\56\40\x41\154\154\x20\x66\145\x61\x74\x75\x72\x65\163\40\157\146\x20\x61\154\154\x20\164\x68\145\x20\115\x75\x6c\164\151\163\x69\x74\x65\40\x50\x6c\141\x6e\x73\40\141\x72\145\40\151\x6e\x63\x6c\165\144\x65\x64\40\x68\145\162\145\x2e", "\x6d\151\156\x69\157\x72\x61\156\147\x65\55\x73\x61\155\x6c\x2d\62\x30\55\x73\151\156\147\154\x65\x2d\163\151\147\x6e\55\x6f\156");
+    ?>
+</p>">
+                                <header class="cd-pricing-header">
+                                    <h2 style="margin-bottom:10px;"><?php 
+    _e("\x41\154\x6c\x2d\x49\x6e\x63\154\165\x73\151\x76\x65", "\155\151\x6e\x69\x6f\162\141\156\147\145\x2d\163\x61\x6d\154\x2d\x32\60\55\163\x69\x6e\x67\154\x65\55\x73\151\x67\x6e\55\x6f\156");
+    ?>
+</h2>
+                                    <div style="height:90px;">
+                                        <h3 class="subheading_plans" style="color:black; font-size: 16px;"><?php 
+    _e("\x4d\x75\x6c\x74\151\163\x69\164\x65\x20\x4e\x65\164\x77\x6f\x72\x6b\x20\x53\x53\117\x20\167\x69\x74\x68\x20\141\x6c\154\40\146\145\141\164\165\162\145\x73\x20\141\x6e\144\x20\x61\x6c\x6c\40\x74\150\145\x20\101\144\144\55\157\156\x73", "\x6d\x69\x6e\151\157\162\x61\156\147\x65\55\x73\141\155\x6c\55\62\x30\x2d\163\151\x6e\147\154\145\x2d\163\151\x67\156\x2d\157\156");
+    ?>
+</h3></div>
+                                    <div class="cd-price" >
+                                        <span class="cd-currency">$</span>
+                                        <span class="cd-value">649*</span>
+
+                                </div>
+                            </header> <!-- .cd-pricing-header -->
+                            </a>
+                            <footer class="cd-pricing-footer">
+                                <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_multisite_all_inclusive_plan')" ><?php 
+    _e("\125\160\147\162\141\144\x65\40\x4e\157\167", "\155\151\x6e\151\157\162\x61\x6e\x67\145\55\x73\x61\x6d\x6c\x2d\x32\60\55\x73\x69\x6e\147\154\x65\x2d\163\151\147\156\55\x6f\156");
+    ?>
+</a>
+                            </footer>
+                            <b style="color: coral;"><?php 
+    _e("\x53\x65\x65\40\164\150\145\40\x6d\165\x6c\x74\151\x73\x69\164\x65\40\x41\154\154\55\111\156\143\x6c\165\163\x69\x76\x65\40\x50\154\141\x6e\40\x66\x65\x61\164\165\x72\x65\x73\x20\154\x69\x73\164\x20\x62\x65\x6c\157\167", "\155\x69\x6e\x69\157\162\x61\156\x67\x65\55\163\x61\x6d\x6c\55\62\x30\x2d\163\x69\156\147\x6c\145\x2d\x73\x69\147\156\55\157\156");
+    ?>
+</b>
+                            <div class="cd-pricing-body">
+                                <ul class="cd-pricing-features">
+                                    <li><?php 
+    _e("\125\x6e\x6c\x69\x6d\x69\164\145\x64\x20\101\x75\164\150\145\x6e\x74\151\x63\141\x74\151\157\x6e\163", "\x6d\151\156\151\157\162\x61\156\147\145\55\163\x61\155\x6c\55\62\x30\x2d\163\151\x6e\x67\x6c\145\x2d\163\x69\x67\156\55\x6f\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x42\141\x73\x69\x63\x20\101\164\164\162\151\x62\x75\164\x65\40\x4d\141\x70\160\x69\x6e\147\40\50\125\x73\x65\162\156\141\155\145\x2c\40\105\155\x61\151\154\x2c\40\x46\151\162\163\164\x20\x4e\x61\x6d\145\x2c\x20\114\141\x73\164\x20\116\x61\x6d\145\x2c\104\151\x73\x70\x6c\141\x79\40\x4e\x61\x6d\145\51", "\x6d\151\x6e\151\157\162\141\x6e\147\145\55\x73\141\155\x6c\55\x32\60\55\163\x69\x6e\147\154\145\x2d\163\151\x67\x6e\x2d\x6f\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\127\151\144\x67\x65\164\54\x53\150\157\x72\164\143\x6f\x64\145\x20\164\x6f\x20\x61\x64\144\40\111\144\120\40\x4c\157\x67\151\156\40\x4c\151\156\x6b\x20\157\x6e\40\x79\x6f\165\x72\x20\163\151\x74\x65", "\155\151\x6e\151\x6f\162\x61\x6e\x67\x65\55\163\x61\155\154\x2d\x32\60\55\x73\151\x6e\x67\154\145\55\163\x69\147\x6e\55\157\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x53\x74\145\x70\x2d\x62\171\55\x73\164\x65\x70\40\x67\x75\151\x64\145\x20\x74\x6f\40\x73\145\164\x75\160\x20\x49\x64\120", "\x6d\151\156\x69\x6f\x72\x61\x6e\147\145\55\x73\141\155\154\x2d\x32\60\55\163\x69\156\147\154\x65\55\163\151\x67\x6e\55\157\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x41\165\x74\157\55\122\x65\144\151\162\x65\143\x74\x20\164\157\x20\111\144\x50\x20\x66\162\157\x6d\x20\x6c\157\x67\151\x6e\40\160\141\x67\x65", "\x6d\x69\x6e\151\x6f\x72\x61\156\x67\x65\x2d\163\141\155\154\55\x32\x30\55\163\x69\x6e\147\x6c\x65\55\163\x69\x67\x6e\x2d\157\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\120\x72\157\x74\145\x63\164\x20\171\x6f\165\x72\40\143\157\155\160\x6c\x65\164\145\x20\163\151\x74\145\x20\x28\x41\165\164\157\x2d\122\x65\144\151\162\x65\143\164\40\x74\157\x20\x49\144\120\40\146\x72\x6f\x6d\x20\x61\156\x79\40\x70\141\147\145\51", "\x6d\x69\x6e\151\x6f\162\141\156\x67\x65\x2d\163\141\x6d\x6c\55\62\60\55\163\x69\x6e\x67\x6c\x65\55\163\x69\x67\156\55\x6f\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x43\x68\141\x6e\x67\x65\40\123\120\x20\142\x61\163\145\x20\x55\162\x6c\40\141\x6e\x64\x20\x53\120\x20\x45\156\x74\151\x74\x79\x20\x49\x44", "\x6d\x69\156\x69\157\162\141\156\147\x65\x2d\x73\141\155\x6c\55\62\x30\55\x73\151\156\147\x6c\x65\x2d\x73\x69\x67\156\55\x6f\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\117\160\164\x69\x6f\156\163\x20\164\x6f\40\x73\x65\154\145\143\164\40\123\x41\x4d\114\x20\122\x65\161\165\x65\x73\x74\x20\x62\x69\x6e\144\151\x6e\x67\x20\164\x79\x70\x65", "\155\151\156\x69\157\162\x61\156\147\x65\x2d\x73\x61\155\154\55\62\x30\55\163\151\x6e\x67\x6c\145\x2d\x73\x69\x67\x6e\x2d\157\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\123\x41\115\114\x20\123\x69\x6e\x67\154\x65\40\x4c\157\x67\157\x75\164", "\155\x69\x6e\x69\x6f\x72\141\156\147\145\x2d\163\x61\155\154\55\62\60\x2d\x73\x69\x6e\147\154\145\55\163\x69\147\x6e\x2d\157\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\111\156\x74\x65\147\162\141\164\145\x64\40\x57\151\156\144\157\x77\163\40\x41\165\x74\150\145\156\164\x69\x63\x61\x74\x69\x6f\x6e\x20\x28\x73\x75\160\160\x6f\x72\164\145\x64\40\167\x69\x74\x68\40\101\x44\40\106\123\x29", "\155\x69\156\151\x6f\x72\x61\156\147\145\x2d\x73\141\155\154\x2d\62\x30\x2d\163\151\156\x67\154\x65\55\x73\x69\147\x6e\55\x6f\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\103\165\163\164\157\155\151\x7a\x65\x64\40\x52\157\154\x65\x20\115\x61\160\160\x69\x6e\147", "\155\x69\x6e\151\157\162\x61\156\147\x65\55\x73\141\x6d\x6c\x2d\x32\x30\x2d\163\x69\156\147\x6c\x65\x2d\x73\151\x67\156\55\157\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\101\165\x74\157\55\x73\171\x6e\143\x20\x49\144\120\40\103\x6f\156\x66\x69\x67\x75\162\141\164\x69\157\156\x20\146\x72\157\x6d\40\x6d\x65\164\141\x64\141\164\x61", "\155\151\156\x69\x6f\162\x61\x6e\147\145\x2d\163\x61\155\154\55\x32\x30\x2d\x73\x69\156\147\154\145\55\x73\x69\x67\156\x2d\157\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\103\165\163\x74\x6f\x6d\x20\101\x74\164\162\x69\x62\x75\164\145\40\115\x61\160\160\x69\x6e\147\40\x28\x41\x6e\x79\40\141\x74\164\x72\151\x62\x75\164\145\40\x77\150\151\143\x68\40\151\163\x20\163\x74\157\162\x65\144\40\x69\x6e\40\165\163\x65\162\x2d\x6d\145\164\x61\x20\x74\141\142\x6c\145\51", "\155\151\156\151\157\x72\141\x6e\147\x65\55\163\141\155\154\55\62\60\55\163\151\156\147\x6c\145\x2d\x73\x69\147\x6e\x2d\x6f\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\123\164\x6f\162\145\x20\115\165\x6c\164\x69\x70\x6c\x65\40\x49\x64\120\40\103\x65\x72\164\151\x66\151\143\x61\164\145\163", "\155\151\x6e\x69\x6f\x72\141\x6e\147\145\55\163\x61\x6d\154\x2d\62\x30\55\163\151\156\x67\154\x65\55\x73\151\x67\x6e\55\157\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\103\x75\x73\164\x6f\x6d\40\x53\120\40\103\x65\x72\x74\151\146\151\143\x61\164\145", "\x6d\151\156\151\x6f\162\x61\156\x67\x65\x2d\163\141\155\154\x2d\62\x30\55\163\x69\x6e\147\154\x65\55\163\151\147\156\55\157\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\115\165\154\x74\151\55\x53\x69\x74\145\x20\x53\165\160\x70\157\162\x74", "\x6d\151\x6e\x69\x6f\162\141\x6e\x67\x65\55\x73\x61\155\154\x2d\62\x30\x2d\163\151\156\x67\x6c\145\55\x73\151\147\156\x2d\x6f\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x53\x75\x62\x2d\163\x69\164\145\x20\x73\160\x65\x63\151\146\x69\x63\x20\x53\123\x4f\x20\x66\x6f\162\x20\x4d\165\154\x74\x69\x73\x69\164\145", "\155\x69\x6e\x69\157\x72\x61\x6e\147\145\x2d\x73\141\x6d\x6c\55\x32\x30\55\163\151\156\x67\x6c\x65\55\x73\151\x67\x6e\55\157\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x41\165\164\157\x2d\x52\x65\x64\x69\x72\x65\x63\x74\x69\x6f\x6e\40\146\x72\x6f\x6d\x20\163\160\x65\x63\x69\x66\151\x63\40\x73\x75\142\x73\x69\x74\145\163", "\x6d\x69\x6e\151\x6f\162\141\x6e\147\145\x2d\163\x61\x6d\x6c\x2d\62\60\x2d\163\x69\x6e\x67\154\x65\55\x73\151\x67\x6e\x2d\x6f\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\115\165\x20\x44\157\155\141\x69\x6e\x20\115\141\160\x70\x69\156\x67\40\x53\165\160\160\x6f\x72\x74", "\x6d\x69\x6e\x69\x6f\x72\x61\x6e\x67\145\55\163\x61\x6d\154\x2d\x32\60\x2d\x73\151\x6e\147\154\x65\x2d\x73\x69\x67\156\55\157\156");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x4d\x75\154\164\x69\160\154\x65\40\111\144\x50\40\123\165\x70\160\x6f\162\164", "\x6d\151\x6e\x69\157\162\x61\x6e\147\x65\x2d\163\x61\155\x6c\55\62\60\x2d\x73\x69\156\x67\x6c\145\x2d\x73\x69\x67\156\x2d\157\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\103\x6f\x6d\160\x61\164\151\142\x6c\x65\x20\x77\151\x74\x68\40\x6d\x75\154\x74\151\160\x6c\x65\x20\x65\x6e\166\151\162\157\156\155\145\156\164\163\x20\x69\x6e\40\141\40\x68\x6f\163\164\x69\156\147\40\160\x72\x6f\166\151\144\145\162\40\154\x69\x6b\x65\40\120\x61\x6e\x74\150\145\x6f\156\54\x20\x57\120\55\105\x6e\x67\x69\x6e\145\54\x20\127\157\162\x64\x70\162\x65\x73\163\40\126\x49\x50", "\155\x69\156\151\x6f\x72\x61\156\147\145\x2d\x73\x61\155\x6c\x2d\x32\x30\55\163\151\156\147\x6c\145\x2d\163\x69\x67\156\x2d\x6f\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x43\165\163\x74\x6f\155\151\x7a\145\x20\x74\x68\145\40\x6d\145\x74\x61\144\141\x74\x61\x20\x63\157\156\164\141\143\164\x20\151\156\x66\x6f\x72\155\141\x74\151\x6f\156", "\155\x69\x6e\151\x6f\x72\141\156\x67\x65\x2d\x73\141\155\x6c\x2d\62\x30\x2d\163\151\x6e\x67\154\x65\x2d\x73\x69\147\x6e\x2d\x6f\x6e");
+    ?>
+</li>
+                                    <li><?php 
+    _e("\x43\x6f\x6e\146\x69\147\x75\162\x69\156\x67\x20\160\154\x75\x67\151\x6e\40\x75\x73\151\x6e\147\40\101\120\111\x73", "\x6d\151\156\x69\x6f\162\x61\x6e\x67\x65\x2d\x73\141\155\x6c\x2d\62\60\55\163\x69\156\x67\x6c\x65\x2d\x73\x69\147\x6e\55\157\156");
+    ?>
+</li>
+                                    <li><b><?php 
+    _e("\101\x64\144\55\117\x6e\163", "\x6d\x69\x6e\x69\157\162\141\x6e\147\145\x2d\x73\141\x6d\x6c\x2d\62\60\x2d\x73\x69\156\147\x6c\145\x2d\x73\x69\147\156\55\157\156");
+    ?>
+</b><br />
+                                        1. <?php 
+    _e("\x50\141\147\145\40\x52\145\x73\164\x72\x69\143\x74\151\x6f\156\x20\101\x64\x64\x2d\x4f\156", "\155\x69\156\x69\157\162\141\156\147\145\x2d\163\141\155\154\55\x32\60\55\163\x69\x6e\147\154\145\x2d\163\151\x67\x6e\x2d\157\x6e");
+    ?>
+<br />
+                                        2. <?php 
+    _e("\102\x75\144\x64\171\160\x72\145\x73\x73\x20\101\x74\164\162\x69\x62\x75\x74\x65\40\115\x61\160\x70\151\x6e\147\40\x41\144\144\55\x4f\x6e", "\x6d\x69\156\x69\157\162\x61\x6e\147\x65\55\163\x61\155\154\55\x32\x30\55\x73\151\x6e\147\x6c\x65\x2d\163\151\147\156\55\x6f\156");
+    ?>
+<br />
+                                        3. <?php 
+    _e("\x4c\x65\141\162\x6e\104\x61\x73\150\x20\101\x74\x74\x72\x69\142\165\x74\145\40\x49\x6e\164\145\x67\x72\x61\x74\151\157\x6e\40\101\144\144\x2d\117\156", "\155\x69\156\x69\x6f\162\141\156\147\145\55\x73\141\155\x6c\x2d\62\x30\x2d\x73\151\156\x67\154\145\x2d\x73\x69\147\156\55\157\156");
+    ?>
+<br />
+                                        4. <?php 
+    _e("\115\x65\144\151\x61\x20\122\x65\x73\164\x72\x69\x63\164\x69\x6f\x6e\40\101\x64\x64\55\117\x6e", "\155\151\x6e\x69\x6f\x72\x61\156\x67\x65\55\x73\141\x6d\154\x2d\x32\x30\55\163\x69\156\x67\x6c\x65\55\163\151\x67\x6e\x2d\157\156");
+    ?>
+<br/>
+                                        5. <?php 
+    _e("\101\x74\x74\162\x69\x62\x75\164\x65\40\x62\141\x73\145\x64\x20\x52\x65\x64\x69\x72\145\x63\164\151\157\x6e", "\x6d\151\156\x69\x6f\162\x61\156\x67\x65\x2d\163\141\x6d\x6c\x2d\62\x30\x2d\163\x69\x6e\x67\x6c\x65\55\163\x69\147\x6e\x2d\157\156");
+    ?>
+<br/>
+                                        6. <?php 
+    _e("\x46\x65\x64\x65\162\141\164\x69\x6f\156\40\123\x53\x4f\x20\101\144\144\x2d\117\156", "\155\151\x6e\151\x6f\x72\x61\156\x67\145\x2d\x73\141\x6d\x6c\55\x32\60\x2d\x73\151\156\147\x6c\145\55\163\x69\x67\156\55\157\156");
+    ?>
+<br/>
+                                        7. <?php 
+    _e("\x53\x43\111\115\x2d\125\163\145\162\x20\120\162\157\166\x69\163\x69\157\x6e\151\156\147", "\x6d\x69\156\151\x6f\x72\x61\x6e\147\145\55\163\x61\155\154\55\x32\x30\x2d\163\x69\156\147\154\145\x2d\x73\151\x67\156\55\x6f\x6e");
+    ?>
+<br/>
+                                        8. <?php 
+    _e("\x53\x53\117\40\x53\x65\163\163\151\x6f\156\40\115\x61\156\x61\147\x65\x6d\x65\156\x74", "\155\151\156\151\157\x72\141\x6e\x67\145\55\x73\x61\155\154\55\62\60\55\163\151\156\147\154\x65\x2d\163\151\x67\x6e\x2d\x6f\156");
+    ?>
+<br/>
+                                        9. <?php 
+    _e("\123\123\x4f\40\x4c\157\147\x69\156\40\x41\165\x64\x69\164", "\155\x69\156\x69\x6f\x72\x61\x6e\147\145\55\163\141\155\154\55\62\x30\55\163\x69\156\x67\154\x65\x2d\163\x69\x67\x6e\x2d\157\x6e");
+    ?>
+<br/>
+                                    </li>
+                                </ul>
+                            </div> <!-- .cd-pricing-body -->
+                        </li>
+                    </ul> <!-- .cd-pricing-wrapper -->
+                </li>
+
 
                     <li class="cd-popular">
                         <ul class="cd-pricing-wrapper">
                             <li data-type="singlesite" class="mosslp is-visible" style="border: <?php 
-    echo $rD;
+    echo $y3;
     ?>
 ">
-                                <a id="popover1" data-toggle="popover" data-trigger="hover" title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
-                                   data-content="<p>Choose this plan if you are looking for the features like <br /><b>Advance Attribute Mapping<br />Role Mapping<br />Single Logout<br />IdP metadata sync<br />Support of custom SP and IdP certificate<br /></b><span style='color:red;'><b>Note:</b></span> Add-ons are not a part of this plan. All features of Standard Plan are included here.</p>">
-                                    <header class="cd-pricing-header">
-
-                                        <h2 style="margin-bottom: 10px">Premium</h2>
-                                        <h3 style="color:black;">(Attribute & Role Management))<br /><br /></h3>
-
-                                        <div class="cd-price" >
-                                            <span class="cd-currency">$</span>
-                                            <span class="cd-value">449*</span></span>
-
-                                        </div>
-
-
-                                    </header> <!-- .cd-pricing-header -->
-                                </a>
-                                <footer class="cd-pricing-footer">
-                                    <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_basic_plan')" >Upgrade Now</a>
-                                </footer>
-                                <b>See the Premium Plugin features list below</b>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li>Unlimited Authentications</li>
-                                        <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
-                                        <li>Widget,Shortcode to add IDP Login Link on your site</li>
-                                        <li>Step-by-step guide to setup IDP</li>
-                                        <li>Auto-Redirect to IDP from login page</li>
-                                        <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
-                                        <li>Change SP base Url and SP Entity ID</li>
-                                        <li>Options to select SAML Request binding type</li>
-                                        <li>Integrated Windows Authentication (supported with AD FS)</li>
-                                        <li>SAML Single Logout</li>
-                                        <li>Customized Role Mapping</li>
-                                        <li>Auto-sync IdP Configuration from metadata</li>
-                                        <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
-                                        <li>Store Multiple IdP Certificates</li>
-                                        <li>Custom SP Certificate</li>
-                                        <li>&nbsp;</li>
-                                        <li>&nbsp;<b>Add-Ons</b><br />Purchase Separately<br /><a style="color:blue;" href="https://www.miniorange.com/contact" target="_blank"><b>Contact us</b></a><br />&nbsp;<br />&nbsp;</li>
-                                    </ul>
-                                </div> <!-- .cd-pricing-body -->
-                            </li>
-
-                            <li data-type="multisite" class="momslp is-hidden" style="border: <?php 
-    echo $UR;
+                                <a id="popover6" data-toggle="popover" title="<h3><?php 
+    _e("\127\x68\171\40\163\x68\157\165\154\x64\x20\111\x20\x63\150\x6f\157\x73\145\40\x74\x68\x69\x73\x20\x70\x6c\x61\x6e\77", "\155\151\156\151\x6f\x72\x61\x6e\147\145\x2d\163\x61\155\154\x2d\x32\60\x2d\x73\151\156\x67\x6c\145\x2d\x73\151\x67\156\55\157\x6e");
     ?>
-">
-                                <a id="popover4" data-toggle="popover" data-trigger="hover" title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
-                                   data-content="<p>Choose this plan if you have Multisite Network installation and are looking for features like <br /><b>Add-ons</b> (See the list of add-ons below in the feature list) along with the features listed in the Premium Plan like <br /><b>Subsite Specific SSO<br />Auto-Redirect to IdP<br />Advance Attribute Mapping<br />Role Mapping<br />IdP metadata sync<br />Support of custom SP and IdP certificate</b></p>">
-                                    <header class="cd-pricing-header">
-
-                                        <h2 style="margin-bottom: 10px">Enterprise</h2>
-
-                                        <h3 style="color:black;">(Multisite Network SSO packaged with Add-ons)<br /><br /></h3>
-                                        <div class="cd-price" >
-                                            <span class="cd-currency">$</span>
-                                            <span class="cd-value">549*</span></span>
-
-                                        </div>
-
-
-                                    </header> <!-- .cd-pricing-header -->
-                                </a>
-                                <footer class="cd-pricing-footer">
-                                    <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_multisite_enterprise_plan')" >Upgrade Now</a>
-                                </footer>
-                                <b>See the Multisite Enterprise Plugin features list below</b>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li>Unlimited Authentications</li>
-                                        <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
-                                        <li>Widget,Shortcode to add IDP Login Link on your site</li>
-                                        <li>Step-by-step guide to setup IDP</li>
-                                        <li>Auto-Redirect to IDP from login page</li>
-                                        <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
-                                        <li>Change SP base Url and SP Entity ID</li>
-                                        <li>Options to select SAML Request binding type</li>
-                                        <li>SAML Single Logout</li>
-                                        <li>Integrated Windows Authentication (supported with AD FS)</li>
-                                        <li>Customized Role Mapping</li>
-                                        <li>Auto-sync IdP Configuration from metadata</li>
-                                        <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
-                                        <li>Store Multiple IdP Certificates</li>
-                                        <li>Custom SP Certificate</li>
-                                        <li>Multi-Site Support</li>
-                                        <li>Sub-site specific SSO for Multisite</li>
-                                        <li>Auto-Redirection from specific subsites</li>
-                                        <li><b>Add-Ons</b><br />
-                                            1. Page Restriction Add-On<br />
-                                            2. Buddypress Attribute Mapping Add-On<br />
-                                            3. LearnDash Attribute Integration Add-On<br />
-                                            4. SSO Login Audit Add-On</li>
-                                        <li>&nbsp;</li>
-
-                                    </ul>
-                                </div> <!-- .cd-pricing-body -->
-                            </li>
-
-                        </ul> <!-- .cd-pricing-wrapper -->
-                    </li>
-
-                    <li>
-                        <ul class="cd-pricing-wrapper">
-                            <li data-type="singlesite" class="mosslp is-visible" style="border: <?php 
-    echo $EE;
+</h3>" data-placement="top" data-html="true"
+                                   data-content="<p><?php 
+    _e("\x43\x68\157\x6f\x73\145\x20\x74\150\x69\x73\40\160\154\x61\156\x20\x69\146\40\171\157\x75\40\x61\162\145\x20\x6c\x6f\157\153\x69\156\147\x20\146\157\x72\x20", "\x6d\151\156\151\157\x72\141\156\147\145\x2d\x73\x61\155\154\x2d\62\x30\x2d\x73\151\156\147\154\x65\x2d\x73\151\147\156\x2d\157\x6e");
     ?>
-">
-                                <a id="popover2" data-toggle="popover" data-trigger="hover" title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
-                                   data-content="<p>Choose this plan if you are looking for features like <br /><b>Support of multiple IdPs<br />Add-ons (Page Restriction, BuddyPress Attribute Mapping, LearnDash Attribute Mapping, SSO Login Audit).</b><br />Click  on Upgrade now and Select Single IdP or Multiple IdP option depending on your requirement. <br /><span style='color:red;'><b>Note:</b></span> All the Add-ons are packaged with this plan. All features of Premium Plan are included here.</p>">
+<br /><b>
+                               <?php 
+    _e("\101\x6c\x6c\40\x65\x78\143\154\165\x73\x69\166\x65\x20\x66\x65\141\164\165\x72\145\163\40\151\156\x63\154\165\x64\145\144", "\155\x69\x6e\151\157\162\141\x6e\x67\x65\x2d\163\x61\155\154\x2d\62\60\x2d\x73\x69\156\x67\x6c\x65\x2d\x73\x69\147\156\55\157\x6e");
+    ?>
+<br />
+                               <?php 
+    _e("\101\x64\144\55\157\x6e\163\40\50\120\x61\147\145\40\x52\x65\163\x74\162\151\x63\x74\x69\157\156\x2c\40\102\165\x64\144\x79\x50\x72\145\163\x73\x20\101\164\164\162\x69\x62\x75\164\x65\x20\115\141\160\x70\151\156\147\x2c\x20\114\145\x61\x72\156\x44\x61\x73\x68\x20\101\x74\164\162\x69\x62\165\x74\145\40\115\141\x70\x70\151\x6e\147\54\40\x4d\x65\x64\151\141\x20\x52\145\163\x74\x72\x69\143\164\x69\x6f\x6e\54\40\101\164\164\162\151\142\165\164\x65\x20\x62\141\x73\145\x64\x20\122\145\x64\x69\162\145\x63\164\x69\x6f\x6e\54\40\x46\x65\x64\x65\162\x61\164\x69\x6f\x6e\40\x53\123\117\x2c\40\x53\x43\x49\115\x2d\125\163\145\x72\40\x50\x72\157\166\x69\x73\x69\x6f\156\x69\x6e\147\54\x20\123\123\x4f\x20\123\145\x73\163\151\x6f\x6e\40\x4d\141\156\141\147\145\x6d\x65\x6e\164\54\x20\123\x53\117\40\114\157\x67\x69\156\40\x41\165\144\x69\164\x2c\51\x2e", "\155\x69\x6e\151\x6f\162\141\x6e\x67\x65\55\163\x61\155\154\x2d\x32\x30\x2d\x73\x69\156\147\x6c\145\55\x73\x69\x67\x6e\55\x6f\x6e");
+    ?>
+</b><br />
+                               <span style='color:red;'><b><?php 
+    _e("\x4e\x6f\164\145\x3a", "\x6d\x69\156\x69\157\162\141\156\x67\145\55\163\141\155\x6c\x2d\62\x30\x2d\163\151\156\x67\x6c\145\x2d\163\151\147\x6e\x2d\x6f\156");
+    ?>
+</b></span>
+                                <?php 
+    _e("\101\x6c\x6c\40\x74\x68\145\x20\101\144\x64\55\157\156\x73\x20\x61\x72\145\x20\160\x61\x63\153\141\x67\x65\x64\x20\167\x69\x74\150\x20\164\150\151\163\40\x70\154\141\x6e\x2e\40\x41\x6c\154\x20\146\x65\141\164\x75\162\x65\163\40\x6f\146\x20\x61\x6c\154\40\x74\150\x65\40\120\x6c\141\x6e\163\x20\x61\162\145\x20\151\x6e\143\154\165\x64\x65\144\x20\x68\x65\x72\x65\x2e", "\155\x69\x6e\151\x6f\x72\141\x6e\147\145\x2d\x73\x61\x6d\154\x2d\x32\60\55\163\151\156\147\154\145\55\x73\x69\x67\x6e\55\x6f\156");
+    ?>
+</p>">
                                     <header class="cd-pricing-header">
-                                        <h2 style="margin-bottom:10px;">Enterprise</h2>
-                                        <h3 style="color:black;">(Multiple IdP & Add-Ons)<br /><br /></h3>
+                                        <h2 style="margin-bottom:10px;"><?php 
+    _e("\101\x6c\x6c\55\111\x6e\x63\x6c\x75\163\151\x76\145", "\x6d\151\156\x69\x6f\162\141\156\x67\145\x2d\x73\141\x6d\154\55\62\x30\55\163\151\156\x67\154\145\x2d\163\151\147\x6e\55\157\x6e");
+    ?>
+</h2>
+                                        <div style="height:90px;">
+                                            <h3 class="subheading_plans" style="color:black; font-size: 16px;"><?php 
+    _e("\101\x6c\x6c\40\x66\x65\141\164\165\162\x65\x73\x20\141\154\157\156\x67\40\x3c\x62\162\x3e\x77\x69\x74\150\x20\141\154\x6c\40\101\144\144\x2d\157\x6e\x73", "\155\151\156\151\x6f\162\141\x6e\147\x65\x2d\x73\x61\x6d\x6c\55\x32\60\55\x73\151\x6e\147\154\x65\x2d\163\x69\147\x6e\55\x6f\x6e");
+    ?>
+</h3></div>
                                         <div class="cd-price" >
                                             <span class="cd-currency">$</span>
-                                            <span class="cd-value">549*</span></span>
+                                            <span class="cd-value">649*</span></span>
 
                                         </div>
                                     </header> <!-- .cd-pricing-header -->
                                 </a>
                                 <footer class="cd-pricing-footer">
-                                    <!--a class="cd-select" href="businessfreetrial" target="_blank" >Upgrade now</a -->
-                                    <div class="btn-group" style="width:100%;">
-                                        <button type="button" class="btn btn-default dropdown-toggle cd-select" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100%">
-                                            Upgrade now <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" style="width: 100%; padding-left: 10px; padding-right: 10px;">
-                                            <li style="font-size: 16px;"><a href="#" style="color: #2f6062;" onclick="upgradeform('wp_saml_sso_enterprise_plan')">SINGLE IdP: <span style="font-size:12px;">Select this if you want to setup the SSO with 1 IdP</span></a></li>
-                                            <li style="font-size: 16px;"><a href="#" style="color: #2f6062;" onclick="upgradeform('wp_saml_sso_multiple_idp_plan')">MULTIPLE IdP: <span style="font-size:12px;">Select this if you want to setup the SSO in your site with more than 1 IdP</span></a></li>
-                                        </ul>
-                                    </div>
+                                    <a href="#" class="cd-select" onclick="upgradeform('wp_saml_sso_all_inclusive_plan')" ><?php 
+    _e("\x55\x70\147\x72\141\x64\x65\x20\116\157\x77", "\x6d\151\x6e\x69\x6f\x72\141\156\x67\145\x2d\163\x61\155\154\55\x32\x30\x2d\x73\x69\156\x67\154\x65\55\x73\151\x67\x6e\x2d\157\x6e");
+    ?>
+</a>
                                 </footer>
-                                <b style="color: coral;">See the Enterprise Plugin features list below</b>
+                                <b ><?php 
+    _e("\123\x65\x65\x20\164\150\x65\40\x41\x6c\x6c\55\x69\x6e\x63\x6c\x75\163\151\x76\145\x20\x50\x6c\x75\x67\x69\x6e\x20\146\145\x61\x74\x75\162\145\x73\40\x6c\151\x73\x74\40\142\x65\x6c\157\167", "\x6d\x69\156\x69\x6f\162\x61\x6e\147\x65\x2d\x73\141\155\x6c\x2d\x32\x30\x2d\163\151\x6e\x67\x6c\145\x2d\163\151\x67\x6e\x2d\x6f\x6e");
+    ?>
+</b>
                                 <div class="cd-pricing-body">
                                     <ul class="cd-pricing-features ">
-                                        <li>Unlimited Authentications</li>
-                                        <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
-                                        <li>Widget,Shortcode to add IDP Login Link on your site</li>
-                                        <li>Step-by-step guide to setup IDP</li>
-                                        <li>Auto-Redirect to IDP from login page</li>
-                                        <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
-                                        <li>Change SP base Url and SP Entity ID</li>
-                                        <li>Options to select SAML Request binding type</li>
-                                        <li>Integrated Windows Authentication (supported with AD FS)</li>
-                                        <li>SAML Single Logout</li>
-                                        <li>Customized Role Mapping</li>
-                                        <li>Auto-sync IdP Configuration from metadata</li>
-                                        <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
-                                        <li>Store Multiple IdP Certificates</li>
-                                        <li>Custom SP Certificate</li>
-                                        <li>Multiple IDP's Supported</li>
-                                        <li><b>Add-Ons</b><br />
-                                            1. Page Restriction Add-On<br />
-                                            2. Buddypress Attribute Mapping Add-On<br />
-                                            3. LearnDash Attribute Integration Add-On<br />
-                                            4. SSO Login Audit Add-On</li>
-
-                                    </ul>
-                                </div> <!-- .cd-pricing-body -->
-
-                            </li>
-
-                            <li data-type="multisite" class="momslp is-hidden" style="border: <?php 
-    echo $Rs;
+                                        <li><?php 
+    _e("\125\x6e\154\x69\x6d\x69\x74\145\144\40\101\x75\164\x68\145\x6e\x74\151\x63\x61\164\151\157\x6e\x73", "\155\x69\x6e\151\157\162\x61\x6e\x67\x65\x2d\x73\141\x6d\x6c\55\62\x30\x2d\163\151\x6e\x67\x6c\145\x2d\163\151\147\x6e\55\157\156");
     ?>
-">
-                                <a id="popover5" data-toggle="popover" data-trigger="hover" title="<h3>Why should I choose this plan?</h3>" data-placement="top" data-html="true"
-                                   data-content="<p>We are Single Sign-On experts. Talk to us for your Single Sign-On requirement. Our technical lead will contact you and will help you in designing the SSO architecture for you.</p>">
-                                    <header class="cd-pricing-header">
-                                        <h2 style="margin-bottom:10px;">Business</h2>
-                                        <h3 style="color:black;">(Multisite Network with Multiple IdP Support and Service Provider Usecase)<br /><br /></h3>
-                                        <div class="cd-price" >
-                                            <span class="cd-currency"></span>
-                                            <span class="cd-value"></span>
+</li>
+                                        <li><?php 
+    _e("\x42\141\x73\151\143\40\101\164\x74\162\151\x62\x75\x74\x65\x20\115\x61\x70\x70\151\156\147\40\50\125\163\145\x72\156\141\x6d\x65\54\x20\x45\x6d\x61\x69\154\54\x20\106\151\x72\x73\164\x20\116\141\x6d\145\x2c\x20\114\141\163\164\40\x4e\x61\155\x65\54\x44\x69\x73\160\154\141\x79\x20\x4e\x61\x6d\145\51", "\x6d\x69\156\x69\157\162\141\156\147\145\x2d\x73\x61\155\154\x2d\62\x30\55\x73\151\156\147\x6c\x65\x2d\x73\x69\x67\156\x2d\157\x6e");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x57\x69\x64\147\x65\164\x2c\x53\150\157\x72\x74\x63\x6f\x64\145\x20\164\x6f\40\x61\144\144\40\x49\144\x50\40\114\x6f\x67\x69\x6e\40\x4c\151\156\x6b\x20\157\156\40\x79\157\x75\162\x20\163\x69\x74\145", "\x6d\x69\156\151\157\x72\141\x6e\147\145\x2d\163\141\x6d\x6c\x2d\x32\x30\x2d\163\x69\156\x67\x6c\145\55\x73\x69\147\156\x2d\157\x6e");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x53\x74\145\x70\55\x62\171\x2d\163\x74\x65\x70\40\147\x75\151\x64\145\40\164\157\40\163\x65\164\165\x70\x20\111\x64\120", "\155\151\x6e\x69\157\162\x61\x6e\x67\x65\55\x73\x61\155\x6c\x2d\62\60\55\x73\x69\x6e\147\x6c\145\x2d\163\x69\x67\x6e\55\x6f\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x41\165\164\157\55\122\145\144\151\162\145\x63\x74\x20\164\x6f\x20\111\x64\120\40\x66\162\x6f\x6d\40\x6c\157\147\151\156\40\160\141\147\x65", "\155\x69\156\151\157\x72\141\x6e\147\x65\55\163\x61\155\154\x2d\x32\x30\x2d\x73\x69\156\x67\154\145\55\163\151\x67\x6e\x2d\157\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x50\162\157\x74\145\x63\x74\40\171\157\165\162\40\x63\x6f\x6d\x70\154\145\164\x65\x20\163\x69\164\145\40\x28\x41\165\x74\x6f\55\122\x65\x64\151\162\145\x63\164\x20\x74\x6f\40\111\144\120\x20\146\162\157\155\x20\141\x6e\171\x20\x70\141\147\145\51", "\x6d\151\156\x69\157\162\x61\156\x67\145\55\163\141\155\x6c\55\x32\x30\55\x73\151\x6e\x67\154\145\x2d\163\151\x67\x6e\x2d\157\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x43\150\x61\x6e\147\x65\40\123\x50\x20\142\x61\163\x65\40\x55\x72\154\40\x61\x6e\144\40\123\x50\x20\x45\156\x74\x69\x74\171\40\111\104", "\155\x69\x6e\x69\157\162\141\156\147\145\55\163\x61\155\154\x2d\x32\60\55\163\151\156\147\x6c\145\x2d\163\x69\x67\156\x2d\157\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x4f\160\164\151\157\156\163\40\164\x6f\40\163\x65\154\x65\143\x74\40\123\x41\115\114\x20\x52\x65\161\165\x65\163\x74\40\142\151\156\x64\x69\x6e\x67\40\164\x79\160\145", "\x6d\151\x6e\x69\157\x72\x61\x6e\x67\x65\55\163\141\155\154\55\x32\60\x2d\x73\151\156\x67\x6c\x65\55\163\151\147\156\x2d\x6f\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x49\156\x74\x65\x67\162\141\x74\145\x64\x20\127\x69\156\144\157\167\163\40\x41\165\164\x68\145\x6e\164\x69\x63\x61\164\151\157\x6e\x20\x28\163\165\x70\x70\x6f\x72\164\x65\x64\x20\x77\x69\164\150\40\x41\104\40\x46\x53\x29", "\155\x69\x6e\x69\157\162\x61\156\147\x65\55\x73\141\x6d\x6c\55\x32\x30\55\x73\151\156\x67\154\x65\55\x73\x69\147\x6e\x2d\157\x6e");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x53\x41\x4d\114\40\123\151\156\x67\154\x65\x20\114\x6f\147\x6f\165\x74", "\155\151\156\x69\157\162\x61\x6e\x67\x65\x2d\x73\141\x6d\x6c\x2d\62\60\55\x73\x69\156\x67\x6c\x65\55\x73\x69\147\x6e\55\157\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\103\x75\163\164\x6f\x6d\151\172\145\x64\40\122\x6f\154\145\x20\115\141\x70\x70\151\156\147", "\x6d\151\156\x69\157\162\x61\x6e\x67\x65\x2d\x73\x61\155\154\x2d\62\x30\55\163\151\156\147\154\145\55\163\151\x67\156\55\157\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x41\x75\x74\x6f\x2d\x73\171\156\143\40\x49\x64\x50\x20\x43\157\x6e\146\151\147\165\162\141\164\x69\x6f\x6e\x20\146\162\157\x6d\x20\155\145\164\141\144\x61\164\141", "\155\151\156\151\157\x72\141\x6e\147\x65\x2d\163\x61\x6d\x6c\55\62\60\55\163\x69\x6e\x67\154\x65\x2d\x73\x69\x67\x6e\55\x6f\x6e");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x43\x75\x73\x74\157\155\40\x41\164\x74\162\x69\142\165\164\x65\x20\x4d\x61\160\160\151\x6e\x67\x20\50\x41\156\x79\40\141\164\x74\x72\151\x62\x75\164\x65\40\167\x68\x69\x63\x68\40\151\x73\40\x73\x74\x6f\x72\x65\144\x20\151\x6e\x20\x75\x73\145\162\55\x6d\x65\164\x61\40\x74\x61\142\154\x65\x29", "\155\x69\x6e\151\157\x72\x61\156\147\x65\55\x73\x61\155\154\x2d\62\x30\55\163\151\x6e\147\154\x65\55\163\x69\x67\156\55\x6f\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\123\164\157\x72\x65\40\115\x75\154\x74\151\x70\x6c\145\x20\x49\x64\120\x20\x43\x65\x72\164\151\146\x69\x63\x61\x74\x65\163", "\155\x69\156\151\157\x72\141\156\x67\x65\x2d\x73\x61\155\154\x2d\x32\x30\x2d\x73\151\x6e\x67\x6c\145\55\x73\151\147\x6e\55\157\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x43\165\163\x74\157\155\40\x53\x50\40\103\145\x72\x74\x69\x66\x69\143\141\x74\145", "\x6d\151\x6e\x69\157\162\141\156\x67\145\x2d\163\141\x6d\154\55\62\x30\55\x73\151\156\x67\x6c\x65\55\x73\151\x67\x6e\55\x6f\x6e");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\x4d\165\x6c\x74\x69\160\154\x65\40\x49\x64\x50\40\x53\x75\x70\x70\157\162\164", "\155\x69\156\151\157\162\141\156\x67\x65\55\x73\141\x6d\x6c\55\62\x30\55\x73\x69\156\147\x6c\x65\x2d\x73\x69\x67\156\x2d\157\x6e");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\103\x6f\155\x70\141\x74\151\x62\154\x65\x20\167\x69\164\150\x20\x6d\165\154\x74\151\160\x6c\x65\40\x65\x6e\x76\x69\162\x6f\156\x6d\145\156\164\x73\x20\x69\x6e\40\141\40\x68\x6f\x73\x74\151\156\147\40\x70\x72\157\x76\x69\x64\x65\162\40\154\x69\153\145\x20\120\141\156\x74\150\x65\x6f\156\54\40\x57\120\55\105\x6e\x67\151\x6e\145\54\40\x57\157\x72\144\160\162\x65\163\x73\x20\126\111\120", "\155\x69\x6e\x69\x6f\x72\x61\156\x67\145\x2d\163\x61\x6d\154\55\62\x30\55\x73\x69\x6e\x67\154\145\55\163\151\x67\x6e\x2d\157\156");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\103\165\x73\x74\x6f\155\151\x7a\145\x20\164\x68\145\40\155\145\164\141\144\141\164\141\x20\143\157\x6e\164\x61\x63\164\x20\151\156\146\157\x72\x6d\x61\164\x69\157\x6e", "\x6d\151\156\151\157\x72\141\156\147\145\x2d\x73\141\155\x6c\x2d\x32\60\55\x73\151\156\147\154\x65\55\163\x69\147\x6e\x2d\157\x6e");
+    ?>
+</li>
+                                        <li><?php 
+    _e("\103\157\x6e\x66\x69\147\165\162\x69\x6e\147\40\x70\154\x75\147\x69\156\x20\165\163\151\x6e\147\x20\101\x50\111\x73", "\155\151\156\151\x6f\x72\x61\x6e\147\x65\55\163\x61\155\154\55\x32\x30\x2d\x73\x69\x6e\147\x6c\x65\55\x73\x69\x67\x6e\x2d\x6f\156");
+    ?>
+</li>
+                                        <li><b><?php 
+    _e("\101\x64\144\55\117\156\163", "\x6d\151\156\151\x6f\x72\141\156\x67\x65\x2d\163\141\155\154\55\62\60\55\x73\x69\156\x67\x6c\x65\55\163\x69\x67\156\x2d\157\x6e");
+    ?>
+ </b><br />
+                                            1. <?php 
+    _e("\120\141\147\145\x20\122\x65\x73\x74\x72\x69\143\164\151\157\x6e\40\101\x64\144\x2d\117\x6e", "\155\x69\156\151\157\x72\141\x6e\147\x65\x2d\163\141\x6d\x6c\x2d\x32\x30\x2d\163\151\x6e\147\154\145\x2d\x73\x69\147\156\x2d\157\156");
+    ?>
+<br />
+                                            2. <?php 
+    _e("\102\165\144\x64\x79\x70\x72\x65\163\x73\x20\101\x74\164\162\x69\142\165\x74\145\40\115\141\160\160\x69\156\147\40\x41\x64\x64\x2d\x4f\x6e", "\155\x69\156\151\x6f\162\141\x6e\147\x65\x2d\x73\141\155\154\55\x32\60\x2d\x73\151\156\147\154\x65\55\163\x69\x67\156\x2d\x6f\x6e");
+    ?>
+<br />
+                                            3. <?php 
+    _e("\114\145\141\x72\x6e\104\141\163\150\40\x41\x74\x74\x72\x69\x62\x75\x74\x65\40\111\156\x74\145\147\x72\141\x74\x69\157\x6e\x20\101\x64\144\55\117\156", "\155\x69\x6e\151\157\162\x61\x6e\x67\x65\x2d\163\141\155\154\55\62\60\55\x73\151\156\147\x6c\145\55\163\x69\147\156\55\x6f\x6e");
+    ?>
+<br />
+                                            4. <?php 
+    _e("\x4d\x65\144\151\x61\x20\x52\145\x73\x74\x72\151\143\x74\x69\x6f\x6e\x20\101\144\144\x2d\x4f\x6e", "\155\x69\x6e\151\x6f\162\141\156\x67\145\55\x73\x61\155\154\55\x32\60\x2d\163\x69\x6e\x67\x6c\x65\55\x73\151\x67\156\55\157\x6e");
+    ?>
+<br/>
+                                            5. <?php 
+    _e("\101\164\164\162\151\142\165\164\145\40\142\x61\x73\x65\144\40\122\145\x64\x69\x72\145\x63\x74\x69\x6f\156", "\x6d\151\x6e\151\157\162\x61\156\147\x65\x2d\x73\141\155\x6c\x2d\x32\x30\x2d\x73\151\156\x67\x6c\x65\55\x73\151\147\156\x2d\157\x6e");
+    ?>
+<br/>
+                                            6. <?php 
+    _e("\x46\145\x64\x65\x72\141\x74\x69\x6f\156\40\x53\123\x4f\x20\x41\144\144\x2d\x4f\x6e", "\x6d\151\156\151\x6f\162\141\x6e\x67\145\x2d\x73\x61\x6d\x6c\x2d\62\60\x2d\163\151\x6e\147\154\x65\x2d\x73\151\x67\156\55\x6f\156");
+    ?>
+<br/>
+                                            7. <?php 
+    _e("\x53\x43\111\115\55\125\163\x65\x72\40\x50\162\x6f\x76\x69\x73\x69\157\156\x69\156\147", "\x6d\151\x6e\x69\x6f\x72\141\x6e\x67\x65\x2d\163\141\155\154\55\62\x30\55\163\151\x6e\147\154\x65\55\x73\x69\147\x6e\x2d\157\x6e");
+    ?>
+<br/>
+                                            8. <?php 
+    _e("\123\x53\x4f\40\123\145\163\x73\151\x6f\156\40\x4d\141\156\x61\147\x65\155\x65\x6e\x74", "\155\151\x6e\151\157\162\141\156\147\145\55\163\x61\x6d\x6c\x2d\62\60\x2d\x73\x69\x6e\x67\x6c\145\55\163\151\x67\x6e\55\x6f\x6e");
+    ?>
+<br/>
+                                            9. <?php 
+    _e("\123\x53\x4f\x20\114\x6f\x67\151\156\40\x41\165\x64\x69\164", "\155\151\156\x69\157\x72\x61\156\147\x65\55\163\x61\155\x6c\55\x32\60\x2d\163\151\x6e\147\x6c\145\x2d\x73\x69\x67\156\55\157\156");
+    ?>
+<br/>
+                                        </li>
 
-                                        </div>
-                                    </header> <!-- .cd-pricing-header -->
-                                </a>
-                                <footer class="cd-pricing-footer">
-                                    <a class="cd-select" href="https://www.miniorange.com/contact" target="_blank">Contact Us</a>
-                                </footer>
-                                <b>See the Business Plan features list below</b>
-                                <div class="cd-pricing-body">
-                                    <ul class="cd-pricing-features">
-                                        <li>Unlimited Authentications</li>
-                                        <li>Basic Attribute Mapping (Username, Email, First Name, Last Name,Display Name)</li>
-                                        <li>Widget,Shortcode to add IDP Login Link on your site</li>
-                                        <li>Step-by-step guide to setup IDP</li>
-                                        <li>Auto-Redirect to IDP from login page</li>
-                                        <li>Protect your complete site (Auto-Redirect to IDP from any page)</li>
-                                        <li>Change SP base Url and SP Entity ID</li>
-                                        <li>Options to select SAML Request binding type</li>
-                                        <li>SAML Single Logout</li>
-                                        <li>Integrated Windows Authentication (supported with AD FS)</li>
-                                        <li>Customized Role Mapping</li>
-                                        <li>Auto-sync IdP Configuration from metadata</li>
-                                        <li>Custom Attribute Mapping (Any attribute which is stored in user-meta table)</li>
-                                        <li>Store Multiple IdP Certificates</li>
-                                        <li>Custom SP Certificate</li>
-                                        <li>Multi-Site Support</li>
-                                        <li>Sub-site specific SSO for Multisite</li>
-                                        <li>Auto-Redirection from specific subsites</li>
-                                        <li><b>Add-Ons</b><br />
-                                            1. Page Restriction Add-On<br />
-                                            2. Buddypress Attribute Mapping Add-On<br />
-                                            3. LearnDash Attribute Integration Add-On<br />
-                                            4. SSO Login Audit Add-On</li>
-                                        <li>Multiple IdP Support</li>
                                     </ul>
                                 </div> <!-- .cd-pricing-body -->
+
                             </li>
-                        </ul> <!-- .cd-pricing-wrapper -->
-                    </li>
-                </ul> <!-- .cd-pricing-list -->
-            </div> <!-- .cd-pricing-container -->
-            <div style="text-align:left; font-size:12px; padding-left:30px; padding-right:30px;">
-                <h3>Steps to Upgrade to Plugin -</h3>
-                <p>1. Click on 'Upgrade now' button of the required licensing plan. You will be redirected to miniOrange Login Console. Enter your password with which you created an account
-                    with us. After that you will be redirected to payment page.</p>
-                <p>2. Enter your card details and complete the payment. On successful payment completion, you will see the link
-                    to download the plugin.</p>
-                <p>3. To install the plugin, first deactivate and delete the current version of the plugin. Enable the "Keep Configuration Intact" checkbox before deactivating and deleting the plugin. By doing so, your saved configurations of the plugin will not get lost.
 
-                <p>4. From this point on, do not update the plugin from the Wordpress store.</p>
+            </ul> <!-- .cd-pricing-list -->
+        </div> <!-- .cd-pricing-container -->
+            <div style="text-align:left; font-size:12px; padding-right:30px;">
+            <h3>Steps to Upgrade Plugin -</h3>
+            <p>1. Click on 'Upgrade now' button of the required licensing plan. You will be redirected to miniOrange Login Console. Enter your password with which you created an account
+                with us. After that you will be redirected to payment page.</p>
+                <p>2. Enter you card details and complete the payment. On successful payment completion, you will see the link
+                to download the plugin.</p>
+                <p>3. To install the plugin, first deactivate and delete the current version of the plugin. <b>Enable the "Keep Configuration Intact" checkbox before deactivating and deleting the plugin.</b> By doing so, your saved configurations of the plugin will not get lost.
 
-                <h3>* Cost applicable for one instance only. Licenses are perpetual and the Support Plan includes 12 months of maintenance (support and version updates). You can renew maintenance after 12 months at 50% of the current license cost.</h3>
-                <br />
-                <h3>* MultiSite Network Support - </h3>
-                <p>There is additional cost for the number of subsites in Multisite Network .</p>
+                <p>4. From this point on, do not update the premium plugin from the Wordpress store.</p>
 
-                <h3>** Multiple IdPs Supported - </h3>
-                <p>There is additional cost for the IdPs if number of IdP is more than 1.</p>
-                <h3>10 Days Return Policy -</h3>
-                At miniOrange, we want to ensure you are 100% happy with your purchase. If the premium plugin you purchased is
-                not working as advertised and you've attempted to resolve any issues with our support team, which couldn't get
-                resolved. We will refund the whole amount within 10 days of the purchase. Please email us at info@xecurify.com
-                for any queries regarding the return policy.
+                <h3><br>* Cost applicable for one instance only. Licenses are perpetual and the Support Plan includes 12 months of maintenance (support and version updates). You can renew maintenance after 12 months at 50% of the current license cost.</h3>
+            <br />
+            <h3>* MultiSite Network Support - </h3>
+            <p>There is additional cost for the number of subsites in Multisite Network .</p>
 
-            </div>
-
-
+            <h3>** Multiple IdPs Supported - </h3>
+            <p>There is additional cost for the IdPs if number of IdP is more than 1.</p>
+            <h3>10 Days Return Policy -</h3>
+            At miniOrange, we want to ensure you are 100% happy with your purchase. If the premium plugin you purchased is
+            not working as advertised and you've attempted to resolve any issues with our support team, which couldn't get
+            resolved. We will refund the whole amount within 10 days of the purchase. Please email us at info@xecurify.com
+            for any queries regarding the return policy.
 
         </div>
+		
+		
+		
+    </div>
     </div>
 
     <!-- Modal -->
@@ -1618,7 +1969,7 @@ function mo_saml_show_pricing_page()
                     <h3>Please select the options as per your requirement and we will point you to the right licensing plan.</h3><br />
                     <form name="licensingplanselectionform" action="" method="post">
                         <?php 
-    wp_nonce_field("\x6d\157\154\x69\143\x65\156\x73\151\156\x67\x70\154\141\x6e\163\x65\x6c\145\x63\x74\151\x6f\x6e");
+    wp_nonce_field("\155\x6f\x6c\151\143\x65\x6e\x73\x69\156\x67\160\154\141\156\x73\x65\x6c\x65\x63\x74\x69\157\156");
     ?>
                         <input name="option" value="molicensingplanselection" type="hidden" />
                     <h4>Select the your site installation type:</h4>
@@ -1656,27 +2007,30 @@ function mo_saml_show_pricing_page()
                 </div>
             </div>
         </div>-->
-
-
-
-    <script>
+		
+		
+		
+		<script>
 
         jQuery("input[name=sitetype]:radio").change(function() {
 
-            if (this.value == 'multisite') {
+            if (this.value === 'multisite') {
                 jQuery('.mosslp').removeClass('is-visible').addClass('is-hidden');
                 jQuery('.momslp').addClass('is-visible').removeClass('is-hidden is-selected');
-
+                document.getElementById("list-type").style.width = "133%";
+            }
+            else{
+                document.getElementById("list-type").style.width = "100%";
             }
         });
 
         jQuery(document).ready(function($){
-
-            /*$(document).ready(function(){
-                //alert("asas");
-                $('[data-toggle="popover"]').popover();
-                $(this).data('placement','top');
-            });*/
+			
+		/*$(document).ready(function(){
+			//alert("asas");
+			$('[data-toggle="popover"]').popover(); 
+			$(this).data('placement','top');
+		});*/
 
             //document.getElementById("multisite").checked = true;
             if(jQuery('#mo_license_plan_selected').val() == 'multisite'){
@@ -1769,9 +2123,9 @@ function mo_saml_show_pricing_page()
             }
         });
     </script>
-
+	
     </div>
-
+	
 
     <style>
 
@@ -1892,8 +2246,8 @@ function mo_saml_show_pricing_page()
             opacity: .3;
         }
     </style>
-    <?php 
-    echo "\x3c\146\x6f\x72\155\x20\163\x74\171\154\x65\75\x22\x64\x69\x73\x70\x6c\x61\x79\x3a\156\x6f\x6e\145\73\x22\40\x69\x64\75\42\154\151\143\x65\x6e\x73\145\146\157\162\155\x22\x20\141\143\x74\151\x6f\156\75\x22" . get_option("\155\x6f\137\163\141\155\x6c\x5f\x68\157\163\x74\x5f\156\x61\x6d\145") . "\x2f\x6d\x6f\141\163\x2f\154\x6f\147\151\x6e\42\15\xa\x9\11\x74\141\162\147\x65\x74\x3d\x22\x5f\x62\x6c\x61\156\153\x22\40\x6d\x65\164\150\x6f\144\75\x22\x70\x6f\163\164\x22\76\xd\12\x9\11\x3c\151\156\x70\165\164\40\164\171\x70\145\75\42\x65\155\x61\x69\x6c\x22\x20\x6e\141\x6d\x65\x3d\x22\x75\163\145\162\x6e\x61\x6d\145\42\40\x76\x61\x6c\x75\x65\75\x22" . get_option("\x6d\x6f\137\163\141\x6d\x6c\x5f\141\x64\x6d\x69\x6e\137\145\155\x61\x69\x6c") . "\42\40\x2f\76\15\xa\11\11\74\151\156\x70\x75\164\40\x74\x79\160\145\x3d\42\x74\145\170\x74\x22\40\x6e\x61\155\145\75\42\162\x65\144\151\x72\x65\x63\164\125\162\x6c\x22\40\x76\x61\x6c\165\145\x3d\42" . get_option("\x6d\x6f\x5f\x73\141\155\154\x5f\150\157\x73\164\137\156\141\155\x65") . "\57\155\157\x61\x73\57\151\x6e\151\x74\151\x61\154\x69\172\x65\160\141\x79\x6d\145\x6e\x74\x22\40\57\76\74\x69\156\x70\165\164\40\164\171\x70\145\x3d\x22\164\145\x78\164\42\40\156\141\x6d\145\x3d\x22\162\145\161\165\145\163\164\117\162\x69\147\151\x6e\x22\x20\x69\144\x3d\x22\162\145\161\165\x65\x73\164\117\x72\x69\147\151\156\x32\42\40\x20\x2f\x3e\15\xa\x9\x9\x3c\57\x66\x6f\162\x6d\76\15\xa\x9\x9\74\x66\157\162\x6d\x20\156\x61\x6d\145\x3d\x22\146\42\40\x6d\145\x74\x68\x6f\x64\x3d\42\160\x6f\x73\x74\42\40\141\x63\164\151\x6f\156\75\42\42\x20\x69\x64\75\x22\155\157\137\x73\x61\155\154\x5f\x63\150\x65\143\x6b\137\154\151\x63\x65\x6e\163\x65\x22\x3e";
-    wp_nonce_field("\x6d\x6f\x5f\x73\141\155\154\x5f\x63\x68\x65\x63\153\x5f\154\151\x63\145\x6e\x73\145");
-    echo "\x3c\151\156\x70\165\164\x20\x74\171\x70\145\75\42\150\x69\144\144\145\x6e\42\x20\x6e\141\155\145\x3d\x22\x6f\x70\x74\x69\x6f\156\42\x20\166\x61\x6c\165\x65\x3d\42\155\x6f\x5f\163\x61\155\154\x5f\143\x68\145\x63\153\x5f\154\151\143\145\156\x73\x65\x22\57\x3e\xd\12\11\x9\74\57\x66\157\x72\155\x3e\xd\12\x9\x9\74\x73\143\x72\x69\x70\x74\x3e\xd\xa\xd\xa\xd\xa\x9\x9\11\x66\165\x6e\143\164\x69\157\156\x20\x75\x70\147\x72\x61\x64\145\x66\157\162\155\50\x70\154\141\x6e\124\x79\160\145\x29\x7b\15\12\x9\x9\11\x9\152\121\x75\145\x72\171\50\x22\43\162\x65\161\x75\145\163\x74\x4f\162\x69\147\151\156\x32\42\51\x2e\166\x61\154\x28\160\x6c\x61\x6e\x54\x79\x70\x65\51\x3b\15\xa\x9\11\x9\11\x6a\x51\x75\145\x72\171\50\42\x23\154\151\x63\x65\156\163\145\146\157\162\x6d\x22\x29\x2e\x73\x75\x62\x6d\151\164\50\51\73\15\12\x9\x9\11\175\15\12\15\xa\x9\x9\x9\xd\12\11\11\x3c\57\163\143\162\x69\x70\x74\x3e";
+<?php 
+    echo "\x3c\146\x6f\162\x6d\x20\x73\x74\x79\154\x65\75\42\144\151\x73\x70\154\x61\x79\x3a\x6e\x6f\156\x65\73\x22\40\x69\144\x3d\42\x6c\x69\143\145\156\x73\145\146\157\x72\155\x22\x20\x61\143\164\151\157\x6e\75\x22" . mo_options_plugin_constants::HOSTNAME . "\57\155\x6f\141\x73\57\x6c\157\147\151\156\42\15\12\11\11\x74\141\162\147\x65\x74\x3d\42\137\x62\x6c\141\x6e\x6b\x22\40\x6d\145\x74\x68\157\144\75\x22\x70\x6f\163\x74\42\x3e\15\xa\x9\x9\74\151\x6e\160\x75\164\x20\164\171\x70\x65\75\42\145\155\141\151\x6c\x22\x20\156\x61\x6d\145\x3d\42\165\163\145\x72\156\x61\155\x65\x22\40\x76\141\154\x75\145\x3d\42" . get_site_option("\155\x6f\137\x73\141\155\154\x5f\x61\144\x6d\151\x6e\x5f\x65\155\x61\151\x6c") . "\42\40\57\x3e\xd\xa\x9\11\74\x69\156\x70\165\x74\40\164\171\x70\x65\75\42\x74\145\170\x74\x22\x20\x6e\141\155\x65\x3d\x22\162\x65\x64\x69\162\x65\143\x74\x55\x72\154\42\x20\x76\x61\154\x75\145\x3d\42" . mo_options_plugin_constants::HOSTNAME . "\57\x6d\157\141\163\57\x69\156\x69\x74\x69\141\154\x69\x7a\x65\160\141\x79\x6d\x65\156\164\42\40\x2f\76\74\151\156\160\165\164\x20\x74\171\160\145\75\42\x74\145\x78\164\42\x20\156\x61\x6d\x65\x3d\42\x72\145\x71\x75\145\x73\164\117\162\x69\147\151\156\42\40\151\x64\75\x22\x72\x65\161\165\145\163\164\x4f\162\151\147\x69\x6e\x32\x22\40\x20\x2f\x3e\15\xa\11\11\x3c\57\x66\x6f\162\155\76\15\xa\11\x9\74\146\157\162\155\40\x6e\x61\x6d\x65\75\42\x66\x22\x20\155\x65\164\150\157\144\x3d\42\x70\x6f\163\164\42\40\141\x63\x74\x69\x6f\156\x3d\42\x22\x20\151\144\x3d\x22\x6d\x6f\x5f\163\x61\155\154\137\x63\150\145\143\153\x5f\x6c\x69\x63\145\x6e\163\x65\x22\76";
+    wp_nonce_field("\x6d\157\x5f\x73\x61\x6d\154\x5f\x63\150\145\x63\153\x5f\154\151\143\145\156\163\x65");
+    echo "\x3c\x69\156\x70\165\164\40\x74\171\x70\145\x3d\x22\150\151\x64\x64\x65\156\42\x20\x6e\x61\155\x65\x3d\42\157\160\164\x69\157\x6e\x22\x20\x76\141\154\165\x65\x3d\42\x6d\x6f\x5f\163\x61\155\154\x5f\143\x68\x65\143\153\x5f\x6c\151\x63\145\156\x73\145\42\x2f\76\xd\12\11\x9\x3c\x2f\146\x6f\x72\x6d\x3e\xd\12\x9\11\74\x73\143\162\x69\160\164\76\xd\xa\15\12\xd\12\x9\x9\x9\x66\165\x6e\x63\x74\151\x6f\156\40\165\160\x67\x72\x61\x64\x65\146\x6f\162\155\50\160\154\141\156\x54\171\160\x65\x29\x7b\xd\xa\x9\x9\x9\x9\152\121\x75\x65\162\x79\50\42\43\x72\145\161\165\x65\163\164\117\x72\151\147\x69\156\62\x22\x29\x2e\x76\141\x6c\50\x70\154\x61\156\x54\171\160\145\x29\73\15\12\11\11\x9\11\x6a\121\x75\x65\x72\171\50\x22\x23\x6c\x69\143\x65\156\163\x65\x66\x6f\x72\155\42\x29\56\x73\165\x62\x6d\151\x74\x28\x29\x3b\15\12\x9\11\11\175\15\xa\xd\12\x9\x9\x9\xd\12\11\11\x3c\x2f\x73\x63\x72\151\160\164\x3e";
 }

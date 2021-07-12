@@ -1,6 +1,6 @@
 {
     "name": "pcomm/miniorange-saml-20-single-sign-on",
-    "version": "12.0.2",
+    "version": "12.0.4",
     "description": "miniOrange SSO using SAML 2.0",
     "type": "wordpress-plugin",
     "authors": [

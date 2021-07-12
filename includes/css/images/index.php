@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\111\116\x43")) {
-    goto I7;
+if (defined("\x57\x50\x49\116\103")) {
+    goto kNB;
 }
 die;
-I7:
+kNB:

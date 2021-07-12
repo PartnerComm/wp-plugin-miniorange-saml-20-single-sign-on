@@ -182,3 +182,7 @@ function getlicensekeysform(){
 				jQuery("#loginform").submit();
 }
 
+function confirmlicenseform() {
+	jQuery("#mo_saml_check_license").submit();
+}
+
