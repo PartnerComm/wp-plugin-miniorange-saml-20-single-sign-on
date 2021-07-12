@@ -1,61 +1,61 @@
 <?php
 
 
-include "\101\163\163\145\x72\164\151\157\156\x2e\160\x68\160";
+include "\101\x73\x73\145\162\164\x69\157\156\x2e\x70\150\x70";
 class SAML2SPResponse
 {
     private $assertions;
     private $destination;
     private $certificates;
     private $signatureData;
-    public function __construct(DOMElement $aX = NULL, $ls)
+    public function __construct(DOMElement $DG = NULL, $ou)
     {
         $this->assertions = array();
         $this->certificates = array();
-        if (!($aX === NULL)) {
-            goto EW;
+        if (!($DG === NULL)) {
+            goto YT;
         }
         return;
-        EW:
-        $lf = SAMLSPUtilities::validateElement($aX);
-        if (!($lf !== FALSE)) {
-            goto LO;
+        YT:
+        $uZ = SAMLSPUtilities::validateElement($DG);
+        if (!($uZ !== FALSE)) {
+            goto rA;
         }
-        $this->certificates = $lf["\x43\x65\162\x74\x69\146\151\143\x61\164\x65\163"];
-        $this->signatureData = $lf;
-        LO:
-        if (!$aX->hasAttribute("\x44\145\163\164\x69\156\x61\164\151\157\156")) {
-            goto Oi;
+        $this->certificates = $uZ["\103\x65\162\x74\151\146\x69\x63\x61\164\145\x73"];
+        $this->signatureData = $uZ;
+        rA:
+        if (!$DG->hasAttribute("\104\x65\163\164\x69\156\x61\164\151\157\x6e")) {
+            goto c6;
         }
-        $this->destination = $aX->getAttribute("\x44\145\163\164\151\x6e\x61\164\151\157\156");
-        Oi:
-        $e3 = $aX->firstChild;
-        bh:
-        if (!($e3 !== NULL)) {
-            goto dw;
+        $this->destination = $DG->getAttribute("\104\x65\x73\x74\151\x6e\x61\x74\x69\157\156");
+        c6:
+        $gC = $DG->firstChild;
+        p4:
+        if (!($gC !== NULL)) {
+            goto W4;
         }
-        if (!($e3->namespaceURI !== "\165\162\x6e\72\x6f\x61\x73\151\163\x3a\x6e\141\155\x65\x73\72\164\x63\72\123\101\115\x4c\72\x32\x2e\60\72\x61\x73\x73\145\x72\x74\151\x6f\156")) {
-            goto vs;
+        if (!($gC->namespaceURI !== "\x75\x72\156\72\x6f\141\x73\x69\163\x3a\156\x61\x6d\x65\x73\x3a\x74\143\x3a\123\x41\x4d\114\72\x32\x2e\60\72\x61\x73\163\x65\162\x74\151\157\x6e")) {
+            goto bb;
         }
-        goto GC;
-        vs:
-        if (!($e3->localName === "\101\x73\163\145\x72\164\x69\x6f\156" || $e3->localName === "\105\156\143\162\x79\x70\164\x65\144\x41\163\x73\x65\x72\164\151\x6f\156")) {
-            goto tU;
+        goto u6;
+        bb:
+        if (!($gC->localName === "\101\x73\163\145\162\164\151\x6f\156" || $gC->localName === "\x45\x6e\x63\x72\171\x70\x74\145\x64\101\163\163\x65\x72\164\151\157\156")) {
+            goto lA;
         }
-        $this->assertions[] = new SAML2SPAssertion($e3, $ls);
-        tU:
-        GC:
-        $e3 = $e3->nextSibling;
-        goto bh;
-        dw:
+        $this->assertions[] = new SAML2SPAssertion($gC, $ou);
+        lA:
+        u6:
+        $gC = $gC->nextSibling;
+        goto p4;
+        W4:
     }
     public function getAssertions()
     {
         return $this->assertions;
     }
-    public function setAssertions(array $WV)
+    public function setAssertions(array $tG)
     {
-        $this->assertions = $WV;
+        $this->assertions = $tG;
     }
     public function getDestination()
     {

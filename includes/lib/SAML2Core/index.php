@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\120\x49\x4e\x43")) {
-    goto aFs;
+if (defined("\127\120\111\116\x43")) {
+    goto xqE;
 }
 die;
-aFs:
+xqE:

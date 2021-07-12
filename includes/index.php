@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\120\x49\x4e\x43")) {
-    goto w4;
+if (defined("\x57\120\x49\116\103")) {
+    goto hpz;
 }
 die;
-w4:
+hpz:

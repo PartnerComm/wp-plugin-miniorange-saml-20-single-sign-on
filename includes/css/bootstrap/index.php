@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\120\111\116\103")) {
-    goto sP;
+if (defined("\127\x50\111\116\x43")) {
+    goto VNn;
 }
 die;
-sP:
+VNn:
