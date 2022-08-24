@@ -5,107 +5,107 @@ class LicenseObject
 {
     private $wp_site_url;
     private $plugin_settings = array();
-    public function __construct($P9)
+    public function __construct($kM)
     {
-        $this->wp_site_url = $P9;
+        $this->wp_site_url = $kM;
     }
     public function getWpSiteUrl()
     {
         return $this->wp_site_url;
     }
-    public function setWpSiteUrl($P9)
+    public function setWpSiteUrl($kM)
     {
-        $this->wp_site_url = $P9;
+        $this->wp_site_url = $kM;
     }
     public function getPluginSettings()
     {
         return $this->plugin_settings;
     }
-    public function setPluginSettings($D7, $uy = false)
+    public function setPluginSettings($Hi, $QR = false)
     {
-        if ($uy) {
-            goto MS;
+        if ($QR) {
+            goto np;
         }
-        $this->plugin_settings = $D7;
-        goto NE;
-        MS:
-        foreach (mo_options_enum_service_provider::getConstants() as $vR) {
-            if ($vR == mo_options_enum_service_provider::Request_signed || $vR == mo_options_enum_service_provider::Is_encoding_enabled) {
-                goto mk;
+        $this->plugin_settings = $Hi;
+        goto yu;
+        np:
+        foreach (mo_options_enum_service_provider::getConstants() as $bh) {
+            if ($bh == mo_options_enum_service_provider::Request_signed || $bh == mo_options_enum_service_provider::Is_encoding_enabled) {
+                goto B7;
             }
-            if (!isset($D7[$vR])) {
-                goto Ew;
+            if (!isset($Hi[$bh])) {
+                goto fx;
             }
-            if (!($vR == mo_options_enum_service_provider::X509_certificate)) {
-                goto RK;
+            if (!($bh == mo_options_enum_service_provider::X509_certificate)) {
+                goto Hg;
             }
-            $xY = $D7[mo_options_enum_service_provider::X509_certificate];
-            $Pd = array();
-            foreach ($xY as $Ej => $j1) {
-                if (empty($j1)) {
-                    goto UM;
+            $x6 = $Hi[mo_options_enum_service_provider::X509_certificate];
+            $Wq = array();
+            foreach ($x6 as $N5 => $x9) {
+                if (empty($x9)) {
+                    goto Ka;
                 }
-                $Pd[$Ej] = SAMLSPUtilities::sanitize_certificate($j1);
-                if (@openssl_x509_read($Pd[$Ej])) {
-                    goto fF;
+                $Wq[$N5] = SAMLSPUtilities::sanitize_certificate($x9);
+                if (@openssl_x509_read($Wq[$N5])) {
+                    goto Ro;
                 }
-                update_option("\155\157\137\x73\x61\x6d\154\137\x6d\x65\163\163\141\147\145", "\x49\156\166\141\154\151\144\40\x63\x65\x72\164\151\146\151\143\141\164\145\72\x20\120\154\145\141\x73\x65\40\160\x72\x6f\166\x69\x64\x65\x20\141\x20\x76\x61\154\151\x64\x20\143\x65\x72\x74\151\146\151\143\141\x74\x65\56");
-                delete_option("\x73\141\155\154\137\170\x35\x30\x39\x5f\x63\145\162\164\151\x66\x69\143\x61\164\x65");
+                update_option("\x6d\x6f\137\163\x61\x6d\154\137\x6d\145\163\163\x61\147\x65", "\x49\156\x76\x61\154\151\x64\40\x63\x65\x72\x74\151\146\151\x63\141\x74\145\72\x20\120\154\145\141\163\x65\40\x70\x72\157\166\151\144\x65\40\141\40\x76\x61\x6c\151\144\40\x63\145\162\164\151\146\x69\143\141\x74\145\56");
+                delete_option("\x73\x61\x6d\154\137\x78\x35\x30\x39\x5f\x63\145\162\164\x69\146\151\143\141\164\145");
                 return;
-                fF:
-                goto Mp;
-                UM:
-                unset($xY[$Ej]);
-                Mp:
-                Yh:
+                Ro:
+                goto r9;
+                Ka:
+                unset($x6[$N5]);
+                r9:
+                OT:
             }
-            oe:
-            $D7[$vR] = maybe_serialize($Pd);
-            RK:
-            $this->plugin_settings[$vR] = htmlspecialchars(trim($D7[$vR]));
-            Ew:
-            goto D8;
-            mk:
-            if (isset($D7[$vR]) and !empty($D7[$vR])) {
-                goto by;
+            xj:
+            $Hi[$bh] = maybe_serialize($Wq);
+            Hg:
+            $this->plugin_settings[$bh] = htmlspecialchars(trim($Hi[$bh]));
+            fx:
+            goto s5;
+            B7:
+            if (isset($Hi[$bh]) and !empty($Hi[$bh])) {
+                goto a4;
             }
-            $D7[$vR] = "\165\x6e\143\150\x65\143\x6b\x65\144";
-            goto AE;
-            by:
-            $D7[$vR] = "\x63\150\145\143\153\x65\144";
-            AE:
-            $this->plugin_settings[$vR] = htmlspecialchars(trim($D7[$vR]));
-            D8:
-            WX:
+            $Hi[$bh] = "\x75\x6e\x63\x68\x65\x63\153\145\x64";
+            goto ni;
+            a4:
+            $Hi[$bh] = "\x63\x68\x65\143\x6b\x65\144";
+            ni:
+            $this->plugin_settings[$bh] = htmlspecialchars(trim($Hi[$bh]));
+            s5:
+            Ht:
         }
-        Tv:
-        foreach (mo_options_enum_attribute_mapping::getConstants() as $vR) {
-            if (!isset($D7[$vR])) {
-                goto XG;
+        Jz:
+        foreach (mo_options_enum_attribute_mapping::getConstants() as $bh) {
+            if (!isset($Hi[$bh])) {
+                goto Ki;
             }
-            $this->plugin_settings[$vR] = htmlspecialchars(trim($D7[$vR]));
-            XG:
-            Lb:
+            $this->plugin_settings[$bh] = htmlspecialchars(trim($Hi[$bh]));
+            Ki:
+            Xd:
         }
-        ti:
-        foreach (mo_options_enum_domain_restriction::getConstants() as $vR) {
-            if (!isset($D7[$vR])) {
-                goto pq;
+        ng:
+        foreach (mo_options_enum_domain_restriction::getConstants() as $bh) {
+            if (!isset($Hi[$bh])) {
+                goto ow;
             }
-            $this->plugin_settings[$vR] = htmlspecialchars(trim($D7[$vR]));
-            pq:
-            eX:
+            $this->plugin_settings[$bh] = htmlspecialchars(trim($Hi[$bh]));
+            ow:
+            S5:
         }
-        fm:
-        foreach (mo_options_enum_role_mapping::getConstants() as $vR) {
-            if (!isset($D7[$vR])) {
-                goto pK;
+        mD:
+        foreach (mo_options_enum_role_mapping::getConstants() as $bh) {
+            if (!isset($Hi[$bh])) {
+                goto eH;
             }
-            $this->plugin_settings[$vR] = htmlspecialchars(trim($D7[$vR]));
-            pK:
-            Vl:
+            $this->plugin_settings[$bh] = htmlspecialchars(trim($Hi[$bh]));
+            eH:
+            XQ:
         }
-        XR:
-        NE:
+        Uj:
+        yu:
     }
 }

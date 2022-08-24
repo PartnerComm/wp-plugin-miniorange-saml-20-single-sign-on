@@ -5,160 +5,160 @@ class LicenseHelper
 {
     public static function getBasePluginConfigurationArray()
     {
-        $Ko = array();
-        foreach (mo_options_enum_service_provider::getConstants() as $vR) {
-            $Ko[$vR] = get_option($vR);
-            KH:
+        $pi = array();
+        foreach (mo_options_enum_service_provider::getConstants() as $bh) {
+            $pi[$bh] = get_option($bh);
+            FL:
         }
-        Dw:
-        foreach (mo_options_enum_attribute_mapping::getConstants() as $vR) {
-            $Ko[$vR] = get_option($vR);
-            ZN:
+        k2:
+        foreach (mo_options_enum_attribute_mapping::getConstants() as $bh) {
+            $pi[$bh] = get_option($bh);
+            YZ:
         }
-        HB:
-        foreach (mo_options_enum_domain_restriction::getConstants() as $vR) {
-            $Ko[$vR] = get_option($vR);
-            eS:
+        c6:
+        foreach (mo_options_enum_domain_restriction::getConstants() as $bh) {
+            $pi[$bh] = get_option($bh);
+            Jv:
         }
-        wg:
-        foreach (mo_options_enum_role_mapping::getConstants() as $vR) {
-            $Ko[$vR] = get_option($vR);
-            UT:
+        Pi:
+        foreach (mo_options_enum_role_mapping::getConstants() as $bh) {
+            $pi[$bh] = get_option($bh);
+            oI:
         }
-        vj:
-        return $Ko;
+        Fb:
+        return $pi;
     }
-    public static function getPluginConfiguration($qZ = '')
+    public static function getPluginConfiguration($rt = '')
     {
-        $uG = get_option("\155\x6f\x5f\145\x6e\141\142\x6c\x65\x5f\x6d\165\x6c\164\151\160\154\145\137\x6c\151\143\145\156\x73\145\163");
-        if ($uG) {
-            goto Y0;
+        $VF = get_option("\x6d\x6f\x5f\145\156\141\x62\x6c\x65\x5f\x6d\x75\x6c\x74\x69\160\154\145\137\x6c\151\143\x65\156\x73\145\x73");
+        if ($VF) {
+            goto PP;
         }
         return self::getBasePluginConfigurationArray();
-        Y0:
-        $qW = get_option("\155\x6f\x5f\x73\141\x6d\x6c\x5f\145\156\166\151\x72\x6f\x6e\x6d\x65\x6e\x74\x5f\x6f\142\x6a\145\143\164\x73");
-        $TE = self::getSelectedEnvironment();
-        if (!is_array($qW)) {
-            goto dV;
+        PP:
+        $Bc = get_option("\x6d\x6f\x5f\x73\x61\155\x6c\x5f\145\156\x76\x69\162\x6f\x6e\155\x65\x6e\x74\137\x6f\x62\152\145\143\x74\x73");
+        $W2 = self::getSelectedEnvironment();
+        if (!is_array($Bc)) {
+            goto AR;
         }
-        if (array_key_exists($qZ, $qW)) {
-            goto Wr;
+        if (array_key_exists($rt, $Bc)) {
+            goto el;
         }
-        if (!array_key_exists($TE, $qW)) {
-            goto x5;
+        if (!array_key_exists($W2, $Bc)) {
+            goto hd;
         }
-        return $qW[$TE]->getPluginSettings();
-        x5:
-        goto JA;
-        Wr:
-        return $qW[$qZ]->getPluginSettings();
-        JA:
-        dV:
+        return $Bc[$W2]->getPluginSettings();
+        hd:
+        goto Q8;
+        el:
+        return $Bc[$rt]->getPluginSettings();
+        Q8:
+        AR:
         return self::getBasePluginConfigurationArray();
     }
-    public static function getOptionForSelectedEnvironment($vR)
+    public static function getOptionForSelectedEnvironment($bh)
     {
-        $RQ = self::getPluginConfiguration();
-        if (isset($RQ[$vR])) {
-            goto Dy;
+        $Wz = self::getPluginConfiguration();
+        if (isset($Wz[$bh])) {
+            goto qK;
         }
         return false;
-        goto dH;
-        Dy:
-        return $RQ[$vR];
-        dH:
+        goto tu;
+        qK:
+        return $Wz[$bh];
+        tu:
     }
     public static function getCurrentEnvironment()
     {
-        $FI = site_url();
-        $zG = get_option("\x6d\157\x5f\163\141\x6d\x6c\x5f\145\x6e\166\x69\162\x6f\156\155\x65\156\164\x5f\157\142\152\145\x63\164\163");
-        $MM = '';
-        if (!is_array($zG)) {
-            goto GS;
+        $su = site_url();
+        $Hh = get_option("\x6d\x6f\x5f\163\x61\155\x6c\x5f\145\x6e\x76\x69\x72\157\156\x6d\145\156\164\137\157\142\x6a\x65\143\x74\163");
+        $J7 = '';
+        if (!is_array($Hh)) {
+            goto Xz;
         }
-        foreach ($zG as $kc => $Pa) {
-            if (!(self::parseEnvironmentUrl($Pa->getWpSiteUrl()) == self::parseEnvironmentUrl($FI))) {
-                goto Ag;
+        foreach ($Hh as $TT => $gB) {
+            if (!(self::parseEnvironmentUrl($gB->getWpSiteUrl()) == self::parseEnvironmentUrl($su))) {
+                goto r7;
             }
-            $MM = $kc;
-            Ag:
-            ZS:
+            $J7 = $TT;
+            r7:
+            Gu:
         }
-        GI:
-        GS:
-        return $MM;
+        mz:
+        Xz:
+        return $J7;
     }
-    public static function parseEnvironmentUrl($xz)
+    public static function parseEnvironmentUrl($hD)
     {
-        $qt = parse_url($xz, PHP_URL_SCHEME);
-        $xz = str_replace($qt . "\x3a\x2f\57", '', $xz);
-        return $xz;
+        $vW = parse_url($hD, PHP_URL_SCHEME);
+        $hD = str_replace($vW . "\x3a\x2f\x2f", '', $hD);
+        return $hD;
     }
-    public static function getCurrentOption($i8)
+    public static function getCurrentOption($FL)
     {
-        $zh = self::getPluginConfiguration(self::getCurrentEnvironment());
-        if ($i8 == "\163\141\155\154\x5f\170\65\60\x39\x5f\x63\x65\x72\x74\151\x66\151\143\x61\164\x65") {
-            goto XY;
+        $Hc = self::getPluginConfiguration(self::getCurrentEnvironment());
+        if ($FL == "\x73\x61\x6d\154\x5f\x78\65\x30\x39\137\x63\145\x72\164\x69\146\x69\143\x61\164\x65") {
+            goto G2;
         }
-        $xX = isset($zh[$i8]) ? $zh[$i8] : false;
-        goto ev;
-        XY:
-        $xX = isset($zh[$i8]) ? maybe_unserialize(htmlspecialchars_decode($zh[$i8])) : false;
-        ev:
-        return $xX;
+        $WX = isset($Hc[$FL]) ? $Hc[$FL] : false;
+        goto jJ;
+        G2:
+        $WX = isset($Hc[$FL]) ? maybe_unserialize(htmlspecialchars_decode($Hc[$FL])) : false;
+        jJ:
+        return $WX;
     }
-    public static function getNewEnvironmentObject($Nj)
+    public static function getNewEnvironmentObject($Yn)
     {
-        $vY = new LicenseObject($Nj);
-        $vY->setPluginSettings(self::getBasePluginConfigurationArray());
-        return $vY;
+        $p7 = new LicenseObject($Yn);
+        $p7->setPluginSettings(self::getBasePluginConfigurationArray());
+        return $p7;
     }
-    public static function fetchExistingEnvironmentName($kc, $Nj)
+    public static function fetchExistingEnvironmentName($TT, $Yn)
     {
-        $zG = get_option("\x6d\x6f\x5f\x73\141\155\154\x5f\145\x6e\x76\151\x72\x6f\x6e\x6d\x65\x6e\164\x5f\x6f\x62\x6a\x65\143\x74\163");
-        if (!empty($zG)) {
-            goto CV;
+        $Hh = get_option("\155\157\137\x73\141\x6d\154\137\145\156\x76\x69\x72\x6f\x6e\x6d\145\156\x74\137\157\x62\152\145\143\x74\x73");
+        if (!empty($Hh)) {
+            goto aR;
         }
         return false;
-        CV:
-        if (array_key_exists($kc, $zG)) {
-            goto c4;
+        aR:
+        if (array_key_exists($TT, $Hh)) {
+            goto kC;
         }
-        foreach ($zG as $kc => $J7) {
-            if (!(self::parseEnvironmentUrl($J7->getWpSiteUrl()) == self::parseEnvironmentUrl($Nj))) {
-                goto wO;
+        foreach ($Hh as $TT => $co) {
+            if (!(self::parseEnvironmentUrl($co->getWpSiteUrl()) == self::parseEnvironmentUrl($Yn))) {
+                goto ji;
             }
-            return $kc;
-            wO:
-            Go:
+            return $TT;
+            ji:
+            e6:
         }
-        xJ:
-        goto Yx;
-        c4:
-        return $kc;
-        Yx:
+        XD:
+        goto Lt;
+        kC:
+        return $TT;
+        Lt:
         return false;
     }
     public static function getSelectedEnvironment()
     {
-        $TE = get_option("\x6d\x6f\137\163\141\155\154\137\163\145\154\145\x63\164\145\144\137\145\156\x76\151\162\x6f\156\155\145\x6e\164");
-        $zG = get_option("\155\x6f\137\163\141\155\x6c\137\x65\x6e\x76\x69\x72\157\x6e\155\145\156\x74\x5f\157\x62\152\x65\143\x74\x73");
-        if (!(empty($TE) || !array_key_exists($TE, $zG))) {
-            goto Fr;
+        $W2 = get_option("\x6d\x6f\x5f\163\x61\x6d\x6c\x5f\163\145\154\145\143\x74\145\x64\x5f\x65\156\166\151\162\x6f\156\x6d\x65\156\x74");
+        $Hh = get_option("\x6d\x6f\137\x73\141\x6d\x6c\x5f\145\156\166\x69\162\x6f\156\x6d\x65\156\164\137\157\x62\152\145\143\164\x73");
+        if (!(empty($W2) || !array_key_exists($W2, $Hh))) {
+            goto VD;
         }
-        $TE = self::getCurrentEnvironment();
-        Fr:
-        return $TE;
+        $W2 = self::getCurrentEnvironment();
+        VD:
+        return $W2;
     }
     public static function migrateExistingEnvironments()
     {
-        $zx = get_option("\x65\156\166\x69\162\157\156\155\x65\x6e\x74\137\157\142\x6a\145\143\164\x73");
-        $i1 = get_option("\x6d\x6f\137\163\x61\x6d\154\137\x65\x6e\x76\x69\162\157\156\155\x65\x6e\164\x5f\x6f\142\152\x65\x63\164\x73");
-        if (!(!empty($zx) and empty($i1))) {
-            goto I3;
+        $Vr = get_option("\145\x6e\x76\x69\x72\157\x6e\x6d\145\156\x74\137\157\x62\x6a\145\143\x74\x73");
+        $EA = get_option("\155\157\x5f\163\141\x6d\154\137\x65\156\x76\151\162\x6f\x6e\155\145\x6e\x74\x5f\x6f\142\x6a\145\x63\164\163");
+        if (!(!empty($Vr) and empty($EA))) {
+            goto xl;
         }
-        $i1 = $zx;
-        update_option("\x6d\x6f\137\163\x61\155\154\x5f\x65\x6e\166\x69\x72\x6f\x6e\x6d\145\156\x74\137\157\142\152\145\143\164\x73", $i1);
-        I3:
+        $EA = $Vr;
+        update_option("\x6d\157\137\x73\x61\x6d\154\137\x65\x6e\166\151\162\x6f\156\155\x65\x6e\164\x5f\x6f\x62\x6a\145\143\x74\163", $EA);
+        xl:
     }
 }
