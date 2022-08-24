@@ -1,10 +1,10 @@
-=== miniOrange SAML 2.0 Single Sign On ===
+﻿=== miniOrange SAML 2.0 Single Sign On ===
 Contributors: miniOrange
 Donate link: http://miniorange.com
 Tags: saml, single sign on, SSO, single sign on saml, sso saml, sso integration WordPress, sso using SAML, SAML 2.0 Service Provider, Wordpress SAML, SAML Single Sign-On, SSO using SAML, SAML 2.0, SAML 20, Wordpress Single Sign On, ADFS, Okta, Google Apps, Google for Work, Salesforce, Shibboleth, SimpleSAMLphp, OpenAM, Centrify, Ping, RSA, IBM, Oracle, OneLogin, Bitium, WSO2, NetIQ, Novell Access Manager
 Requires at least: 3.5
-Tested up to: 5.7
-Stable tag: 12.0.4
+Tested up to: 6.0
+Stable tag: 12.0.8
 Requires PHP: 5.4
 License URI: http://miniorange.com/usecases/miniOrange_User_Agreement.pdf
 
@@ -63,6 +63,25 @@ Visit Help & FAQ section in the plugin OR email us at info@xecurify.com or <a hr
 3. Configure your IdP in your Wordpress site.
 
 == Changelog ==
+
+= 12.0.8 =
+Added compatibility with WordPress 6.0
+Fixed logout redirect issues
+Fixed access restriction for the resource files
+
+= 12.0.7 =
+Added support for WP-CLI
+UI changes
+Security fixes
+
+= 12.0.6 =
+Compatibility with WordPress 5.9
+Minor UI changes
+
+= 12.0.5 =
+Compatibility with WordPress 5.8
+Minor UI fixes
+Iconv fix
 
 = 12.0.4 =
 Updated Licensing page
@@ -187,6 +206,25 @@ UI Improvements.
 * this is the first release.
 
 == Upgrade Notice ==
+
+= 12.0.8 =
+Added compatibility with WordPress 6.0
+Fixed logout redirect issues
+Fixed access restriction for the resource files
+
+= 12.0.7 =
+Added support for WP-CLI
+UI changes
+Security fixes
+
+= 12.0.6 =
+Compatibility with WordPress 5.9
+Minor UI changes
+
+= 12.0.5 =
+Compatibility with WordPress 5.8
+Minor UI fixes
+Iconv fix
 
 = 12.0.4 =
 Updated Licensing page

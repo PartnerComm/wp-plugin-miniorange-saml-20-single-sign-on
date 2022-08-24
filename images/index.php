@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\x50\x49\x4e\x43")) {
-    goto Db;
+if (defined("\x57\x50\x49\x4e\103")) {
+    goto hX;
 }
 die;
-Db:
+hX:

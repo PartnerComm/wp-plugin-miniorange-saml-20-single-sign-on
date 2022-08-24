@@ -1,4 +1,4 @@
-Options All -Indexes
+Options -Indexes
 
 <Files ~ "\.(crt|cer|key|pem)$">
     Order allow,deny

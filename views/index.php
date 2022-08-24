@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\120\111\x4e\x43")) {
-    goto bh;
+if (defined("\127\x50\x49\116\103")) {
+    goto hdj;
 }
 die;
-bh:
+hdj:

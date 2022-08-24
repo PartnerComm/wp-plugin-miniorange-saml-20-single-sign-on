@@ -7,33 +7,33 @@ abstract class BasicEnum
     public static function getConstants()
     {
         if (!(self::$constCacheArray == NULL)) {
-            goto vf8;
+            goto et;
         }
-        self::$constCacheArray = array();
-        vf8:
-        $Ip = get_called_class();
-        if (array_key_exists($Ip, self::$constCacheArray)) {
-            goto eJs;
+        self::$constCacheArray = [];
+        et:
+        $c0 = get_called_class();
+        if (array_key_exists($c0, self::$constCacheArray)) {
+            goto mT;
         }
-        $S3 = new ReflectionClass($Ip);
-        self::$constCacheArray[$Ip] = $S3->getConstants();
-        eJs:
-        return self::$constCacheArray[$Ip];
+        $cD = new ReflectionClass($c0);
+        self::$constCacheArray[$c0] = $cD->getConstants();
+        mT:
+        return self::$constCacheArray[$c0];
     }
-    public static function isValidName($Ze, $Tp = false)
+    public static function isValidName($lK, $Mc = false)
     {
-        $Su = self::getConstants();
-        if (!$Tp) {
-            goto lJi;
+        $a_ = self::getConstants();
+        if (!$Mc) {
+            goto zB;
         }
-        return array_key_exists($Ze, $Su);
-        lJi:
-        $wA = array_map("\163\x74\x72\x74\x6f\x6c\157\x77\145\x72", array_keys($Su));
-        return in_array(strtolower($Ze), $wA);
+        return array_key_exists($lK, $a_);
+        zB:
+        $Tp = array_map("\163\x74\x72\164\157\154\x6f\167\145\x72", array_keys($a_));
+        return in_array(strtolower($lK), $Tp);
     }
-    public static function isValidValue($j1, $Tp = true)
+    public static function isValidValue($x9, $Mc = true)
     {
-        $Sr = array_values(self::getConstants());
-        return in_array($j1, $Sr, $Tp);
+        $oG = array_values(self::getConstants());
+        return in_array($x9, $oG, $Mc);
     }
 }
