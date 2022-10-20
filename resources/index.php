@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\x49\x4e\x43")) {
-    goto Wzd;
+if (defined("\x57\x50\x49\x4e\x43")) {
+    goto jKc;
 }
 die;
-Wzd:
+jKc:

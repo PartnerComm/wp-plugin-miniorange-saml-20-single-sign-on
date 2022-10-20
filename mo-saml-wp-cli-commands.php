@@ -3,72 +3,72 @@
 
 class mo_saml_wp_cli_commands
 {
-    private function check_for_empty_or_null($wM, $N5)
+    private function check_for_empty_or_null($aa, $U6)
     {
-        if (!empty($wM)) {
-            goto LT;
+        if (!empty($aa)) {
+            goto XC;
         }
-        WP_CLI::error("\124\x68\145\162\145\x20\150\141\x73\x20\x62\145\145\x6e\x20\x65\162\x72\157\162\x20\160\162\x6f\x63\x65\163\x73\151\156\x67\x20\x79\x6f\x75\x72\x20\x72\145\161\165\x65\163\x74\x2e\x20" . $N5 . "\40\151\x73\x20\145\151\x74\x68\145\x72\x20\x65\x6d\160\164\x79\x20\x6f\x72\40\x6e\x75\x6c\154");
-        LT:
+        WP_CLI::error("\x54\150\145\x72\145\x20\150\x61\163\x20\x62\145\145\x6e\40\145\162\x72\157\162\40\160\x72\x6f\x63\x65\163\x73\x69\156\147\x20\171\x6f\x75\162\40\x72\145\161\x75\145\163\x74\56\40" . $U6 . "\40\151\x73\x20\x65\x69\x74\x68\x65\x72\x20\x65\x6d\x70\x74\x79\40\x6f\162\x20\156\165\154\154");
+        XC:
     }
-    private function file_checks($sx)
+    private function file_checks($Fc)
     {
-        if (file_exists($sx)) {
-            goto V0;
+        if (file_exists($Fc)) {
+            goto ur;
         }
         WP_CLI::error(mo_saml_cli_error::File_Not_Found);
-        V0:
-        $xZ = filetype($sx);
-        if (!($xZ != "\152\163\157\156")) {
-            goto e3;
+        ur:
+        $Ej = filetype($Fc);
+        if (!($Ej != "\152\x73\157\x6e")) {
+            goto I4;
         }
         WP_CLI::error(mo_saml_cli_error::Incorrect_File_Format);
-        e3:
+        I4:
     }
-    public function fetch($fa, $wA)
+    public function fetch($gX, $Gz)
     {
-        $this->check_for_empty_or_null($wA["\143\157\156\x66\x69\x67"], "\111\156\160\x75\x74");
-        $sx = dirname(__FILE__) . "\57" . $wA["\x63\x6f\156\146\151\147"];
-        $this->file_checks($sx);
-        $yC = file_get_contents($sx);
-        $yC = json_decode($yC, true);
+        $this->check_for_empty_or_null($Gz["\143\x6f\x6e\146\x69\147"], "\x49\156\x70\x75\164");
+        $Fc = dirname(__FILE__) . "\x2f" . $Gz["\143\x6f\156\x66\x69\147"];
+        $this->file_checks($Fc);
+        $ID = file_get_contents($Fc);
+        $ID = json_decode($ID, true);
         if (!(json_last_error() !== JSON_ERROR_NONE)) {
-            goto NS;
+            goto Vd;
         }
         WP_CLI::error(mo_saml_cli_error::Invalid_JSON);
-        NS:
-        mo_update_configuration_array($yC);
-        WP_CLI::success("\x53\145\164\x74\151\x6e\147\163\40\141\x70\x70\x6c\151\x65\144\x20\x73\x75\x63\x63\x65\x73\163\146\x75\154\x6c\171\x2e");
+        Vd:
+        mo_update_configuration_array($ID);
+        WP_CLI::success("\x53\145\x74\164\151\156\147\x73\x20\141\160\x70\x6c\151\x65\144\40\x73\165\143\143\x65\163\x73\x66\x75\154\x6c\171\56");
         exit;
     }
-    public function activate($fa, $wA)
+    public function activate($gX, $Gz)
     {
-        $this->check_for_empty_or_null($wA["\146\151\x6c\145"], "\106\x69\x6c\x65");
-        $this->check_for_empty_or_null($wA["\144\x6f\155\x61\x69\x6e"], "\x44\157\155\x61\x69\x6e");
-        $sx = dirname(__FILE__) . "\57" . $wA["\x66\151\x6c\x65"];
-        $this->file_checks($sx);
-        $B1 = file_get_contents($sx);
-        $rM = json_decode($B1);
+        $this->check_for_empty_or_null($Gz["\x66\151\x6c\x65"], "\x46\151\x6c\145");
+        $this->check_for_empty_or_null($Gz["\144\157\x6d\x61\151\156"], "\x44\157\x6d\141\151\x6e");
+        $Fc = dirname(__FILE__) . "\x2f" . $Gz["\x66\151\154\x65"];
+        $this->file_checks($Fc);
+        $lp = file_get_contents($Fc);
+        $H2 = json_decode($lp);
         if (!(json_last_error() !== JSON_ERROR_NONE)) {
-            goto fH;
+            goto Kf;
         }
         WP_CLI::error(mo_saml_cli_error::Invalid_JSON);
-        fH:
-        $Ef = $rM->customer_key;
-        $ry = $rM->customer_api_key;
-        $m3 = $rM->customer_token_key;
-        $Z3 = $rM->admin_email;
-        $this->check_for_empty_or_null($Ef, "\x43\165\163\x74\x6f\155\x65\x72\x20\113\145\x79");
-        $this->check_for_empty_or_null($ry, "\x43\x75\x73\164\157\155\x65\162\40\x41\120\x49\x20\113\145\171");
-        $this->check_for_empty_or_null($m3, "\x43\165\163\x74\x6f\155\x65\162\x20\124\x6f\x6b\145\x6e");
-        $this->check_for_empty_or_null($Z3, "\x41\144\155\x69\x6e\x20\105\x6d\x61\151\154");
-        $ng = $wA["\x64\157\155\x61\151\x6e"];
-        $x_ = $rM->{$ng};
-        $ei = $x_->mo_saml_license_key;
-        $this->check_for_empty_or_null($ei, "\x4c\x69\x63\145\156\x73\x65\40\113\145\x79");
-        $p2 = new saml_mo_login();
-        $p2->mo_sso_saml_deactivate();
-        $p2->mo_cli_save_details($Ef, $ry, $m3, $Z3, $ei);
+        Kf:
+        $xl = $H2->customer_key;
+        $nW = $H2->customer_api_key;
+        $Y_ = $H2->customer_token_key;
+        $jL = $H2->admin_email;
+        $this->check_for_empty_or_null($xl, "\103\165\163\164\x6f\155\145\162\40\113\x65\x79");
+        $this->check_for_empty_or_null($nW, "\x43\165\163\x74\x6f\155\145\162\x20\x41\x50\111\40\113\x65\x79");
+        $this->check_for_empty_or_null($Y_, "\103\165\163\164\x6f\155\x65\162\40\124\157\x6b\145\156");
+        $this->check_for_empty_or_null($jL, "\101\x64\155\x69\156\40\105\155\x61\151\154");
+        $VX = $Gz["\144\157\155\x61\x69\156"];
+        $oU = $H2->{$VX};
+        $lV = $oU->mo_saml_license_key;
+        $this->check_for_empty_or_null($lV, "\x4c\x69\143\x65\x6e\x73\x65\x20\x4b\145\x79");
+        $pl = new saml_mo_login();
+        $pl->mo_sso_saml_deactivate();
+        $pl->mo_cli_save_details($xl, $nW, $Y_, $jL, $lV);
     }
 }
-WP_CLI::add_command("\163\141\155\x6c", "\155\x6f\137\x73\x61\155\154\x5f\x77\x70\137\143\154\151\x5f\x63\x6f\155\155\x61\x6e\x64\163");
+WP_CLI::add_command("\x73\141\x6d\x6c", "\155\x6f\137\x73\141\155\x6c\137\167\160\x5f\143\x6c\151\x5f\x63\x6f\155\155\x61\x6e\x64\x73");

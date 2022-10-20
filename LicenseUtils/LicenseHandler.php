@@ -3,118 +3,118 @@
 
 function initializeLicenseObjectArray()
 {
-    $m_ = get_bloginfo("\x6e\x61\x6d\145");
-    $JN = site_url();
-    if (!empty(get_option("\x6d\x6f\x5f\163\x61\155\154\137\145\156\x76\x69\x72\x6f\156\155\145\156\x74\137\157\x62\x6a\x65\143\x74\x73"))) {
-        goto gs;
+    $cE = get_bloginfo("\x6e\x61\x6d\x65");
+    $b6 = site_url();
+    if (!empty(get_option("\x6d\157\x5f\163\141\155\x6c\137\145\156\166\x69\162\157\x6e\x6d\145\x6e\164\x5f\x6f\x62\x6a\x65\143\164\x73"))) {
+        goto Df;
     }
-    $Hh = array($m_ => LicenseHelper::getNewEnvironmentObject($JN));
-    update_option("\155\157\137\163\141\x6d\154\137\145\156\166\151\x72\x6f\x6e\155\x65\156\x74\x5f\157\142\152\145\x63\x74\x73", $Hh);
-    gs:
-    update_option("\155\x6f\x5f\163\141\x6d\154\137\x73\x65\x6c\145\143\x74\x65\144\137\x65\x6e\166\x69\x72\x6f\x6e\155\145\156\x74", $m_);
+    $I7 = array($cE => LicenseHelper::getNewEnvironmentObject($b6));
+    update_option("\155\x6f\x5f\x73\x61\155\x6c\137\145\156\166\151\162\157\x6e\x6d\x65\x6e\x74\137\x6f\x62\152\x65\143\x74\x73", $I7);
+    Df:
+    update_option("\x6d\x6f\x5f\163\141\x6d\154\x5f\x73\x65\x6c\x65\143\164\x65\144\x5f\145\156\x76\151\162\157\156\155\145\x6e\164", $cE);
 }
-function updateLicenseObjects($QR)
+function updateLicenseObjects($Hx)
 {
-    $MS = array();
-    $pv = array();
-    if (!checkIssetAndEmpty($QR, "\x6d\x6f\137\163\141\155\x6c\137\145\156\x76\x69\x72\x6f\156\x6d\x65\x6e\x74\137\156\x61\155\145\163")) {
-        goto Jk;
+    $ub = array();
+    $xh = array();
+    if (!checkIssetAndEmpty($Hx, "\x6d\157\137\x73\141\155\154\137\x65\x6e\166\x69\162\157\156\155\x65\156\164\x5f\156\x61\x6d\x65\163")) {
+        goto E2;
     }
-    $MS = $QR["\155\157\137\x73\141\x6d\x6c\x5f\145\x6e\166\151\162\x6f\x6e\x6d\145\156\x74\137\156\141\x6d\145\x73"];
-    Jk:
-    if (!checkIssetAndEmpty($QR, "\x6d\157\x5f\163\141\x6d\x6c\137\145\x6e\166\151\162\x6f\156\155\145\156\x74\137\165\162\154\163")) {
-        goto Wz;
+    $ub = $Hx["\155\x6f\x5f\163\141\x6d\x6c\137\x65\x6e\x76\x69\162\157\156\155\145\156\x74\137\x6e\141\155\145\163"];
+    E2:
+    if (!checkIssetAndEmpty($Hx, "\x6d\157\137\x73\141\x6d\154\x5f\145\156\x76\151\x72\x6f\x6e\155\145\x6e\164\137\165\x72\x6c\163")) {
+        goto eZ;
     }
-    $pv = $QR["\155\157\137\x73\141\155\x6c\x5f\145\156\x76\151\x72\x6f\x6e\x6d\x65\x6e\164\x5f\x75\x72\154\163"];
-    Wz:
-    if (!(isArrayWithDuplicateEntries($MS) || isArrayWithDuplicateEntries($pv) || isCurrentEnvironmentRemoved($pv))) {
-        goto Se;
+    $xh = $Hx["\x6d\157\137\x73\141\x6d\x6c\x5f\145\x6e\166\x69\x72\x6f\x6e\x6d\x65\156\x74\137\x75\x72\x6c\163"];
+    eZ:
+    if (!(isArrayWithDuplicateEntries($ub) || isArrayWithDuplicateEntries($xh) || isCurrentEnvironmentRemoved($xh))) {
+        goto bm;
     }
     return false;
-    Se:
-    $Ie = array_combine($MS, $pv);
-    $Ie = array_filter($Ie);
-    $Bc = createEnvironmentObjectsForEnvironments($Ie);
-    update_option("\x6d\157\137\x73\141\x6d\154\x5f\145\x6e\x76\151\x72\x6f\156\x6d\x65\x6e\x74\x5f\157\x62\x6a\x65\x63\x74\x73", $Bc);
+    bm:
+    $CN = array_combine($ub, $xh);
+    $CN = array_filter($CN);
+    $oa = createEnvironmentObjectsForEnvironments($CN);
+    update_option("\x6d\x6f\x5f\163\141\x6d\154\137\145\x6e\x76\151\x72\157\156\x6d\x65\156\164\x5f\157\x62\152\145\x63\164\x73", $oa);
     return true;
 }
-function checkIssetAndEmpty($iR, $QP)
+function checkIssetAndEmpty($CP, $o8)
 {
-    if (!(isset($iR[$QP]) and !empty($iR[$QP]))) {
-        goto TX;
+    if (!(isset($CP[$o8]) and !empty($CP[$o8]))) {
+        goto nC;
     }
     return true;
-    TX:
+    nC:
     return false;
 }
-function mo_saml_filter_environmentObjects($Bc, $Ie)
+function mo_saml_filter_environmentObjects($oa, $CN)
 {
-    foreach ($Bc as $TT => $co) {
-        if (!(empty($TT) || empty($co->getWpSiteUrl()) || !array_key_exists($TT, $Ie))) {
-            goto JM;
+    foreach ($oa as $Ng => $cM) {
+        if (!(empty($Ng) || empty($cM->getWpSiteUrl()) || !array_key_exists($Ng, $CN))) {
+            goto nX;
         }
-        unset($Bc[$TT]);
-        JM:
-        g_:
+        unset($oa[$Ng]);
+        nX:
+        f0:
     }
-    Ke:
-    return $Bc;
+    Ub:
+    return $oa;
 }
-function isArrayWithDuplicateEntries($Ie)
+function isArrayWithDuplicateEntries($CN)
 {
-    $JB = array_unique($Ie);
-    if (count($Ie) != count($JB)) {
-        goto XZ;
+    $Ty = array_unique($CN);
+    if (count($CN) != count($Ty)) {
+        goto Xy;
     }
     return false;
-    goto it;
-    XZ:
+    goto f9;
+    Xy:
     return true;
-    it:
+    f9:
 }
-function createEnvironmentObjectsForEnvironments($Ie)
+function createEnvironmentObjectsForEnvironments($CN)
 {
-    $Bc = get_option("\155\x6f\137\163\x61\155\x6c\x5f\145\x6e\x76\x69\162\157\156\x6d\145\156\x74\137\157\142\x6a\x65\143\164\163");
-    $J7 = LicenseHelper::getCurrentEnvironment();
-    $Wc = isset($Bc[$J7]) ? $Bc[$J7]->getPluginSettings() : null;
-    foreach ($Ie as $rt => $hD) {
-        $eG = $hD;
-        if (!(substr($eG, -1) == "\57")) {
-            goto p4;
+    $oa = get_option("\155\x6f\137\x73\141\155\x6c\137\145\x6e\x76\x69\x72\157\x6e\x6d\x65\x6e\x74\x5f\157\142\x6a\145\x63\164\x73");
+    $ts = LicenseHelper::getCurrentEnvironment();
+    $ut = isset($oa[$ts]) ? $oa[$ts]->getPluginSettings() : null;
+    foreach ($CN as $ks => $GV) {
+        $uV = $GV;
+        if (!(substr($uV, -1) == "\x2f")) {
+            goto E7;
         }
-        $eG = substr($eG, 0, -1);
-        p4:
-        $wH = LicenseHelper::fetchExistingEnvironmentName($rt, $hD);
-        if (!empty($wH)) {
-            goto WR;
+        $uV = substr($uV, 0, -1);
+        E7:
+        $DL = LicenseHelper::fetchExistingEnvironmentName($ks, $GV);
+        if (!empty($DL)) {
+            goto lA;
         }
-        $Vg = new LicenseObject($eG);
-        $Bc[$rt] = $Vg;
-        $Vg->setPluginSettings($Wc);
-        goto ft;
-        WR:
-        $c6 = $Bc[$wH];
-        $c6->setWpSiteUrl($eG);
-        unset($Bc[$wH]);
-        $Bc[$rt] = $c6;
-        ft:
-        XS:
+        $pb = new LicenseObject($uV);
+        $oa[$ks] = $pb;
+        $pb->setPluginSettings($ut);
+        goto AV;
+        lA:
+        $hA = $oa[$DL];
+        $hA->setWpSiteUrl($uV);
+        unset($oa[$DL]);
+        $oa[$ks] = $hA;
+        AV:
+        Hh:
     }
-    eB:
-    $Bc = mo_saml_filter_environmentObjects($Bc, $Ie);
-    return $Bc;
+    rP:
+    $oa = mo_saml_filter_environmentObjects($oa, $CN);
+    return $oa;
 }
-function isCurrentEnvironmentRemoved($pv)
+function isCurrentEnvironmentRemoved($xh)
 {
-    $su = LicenseHelper::parseEnvironmentUrl(site_url());
-    foreach ($pv as $Yn) {
-        if (!($su == LicenseHelper::parseEnvironmentUrl($Yn))) {
-            goto NE;
+    $Tz = LicenseHelper::parseEnvironmentUrl(site_url());
+    foreach ($xh as $la) {
+        if (!($Tz == LicenseHelper::parseEnvironmentUrl($la))) {
+            goto vE;
         }
         return false;
-        NE:
-        Xu:
+        vE:
+        dh:
     }
-    Ot:
+    AJ:
     return true;
 }
