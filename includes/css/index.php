@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\111\116\103")) {
-    goto fD;
+if (defined("\127\x50\x49\116\103")) {
+    goto XV;
 }
 die;
-fD:
+XV:

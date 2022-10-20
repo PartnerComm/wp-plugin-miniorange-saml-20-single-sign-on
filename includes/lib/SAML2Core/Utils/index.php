@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\x50\111\116\103")) {
-    goto UC;
+if (defined("\127\120\111\116\103")) {
+    goto Ad;
 }
 die;
-UC:
+Ad:

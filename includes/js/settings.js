@@ -314,8 +314,7 @@ jQuery(document).ready(function () {
         document.getElementById("mo_saml_identity_provider_identifier_name").value = jQuery(this).html().split('<br>')[1].split('<h4>')[1].split('</h4>')[0];
         if(document.getElementById("mo_saml_identity_provider_identifier_name").value==="Custom IDP"){
             document.getElementById('custom_idp_selected').style.display = "block";
-            document.getElementById("custom_idp_selected").innerHTML = "<p style=\"font-size: 18px;background: #f3f5f6;padding-top: 10px;padding-bottom: 10px;padding-left: 9px;border-radius: 16px;\"><i><b><?php _e('Note:','miniorange-saml-20-single-sign-on');?></b> <?php _e('Please feel free to reach out to us in case of any issues for setting up the Custom IDP using the Contact Us dialog.','miniorange-saml-20-single-sign-on');?></i></p>"
-        }
+            document.getElementById("custom_idp_selected").innerHTML = "<p style=\"font-size: 15px;background: #f3f5f6;padding-top: 10px;padding-bottom: 10px;padding-left: 9px;border-radius: 16px;\"><i><b>Note: </b>Please feel free to reach out to us in case of any issues for setting up the Custom IDP using the Contact Us dialog</i></p>"        }
         else{
             document.getElementById('custom_idp_selected').style.display = "none";
         }
