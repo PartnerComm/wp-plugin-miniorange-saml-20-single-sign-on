@@ -1,8 +1,8 @@
 <?php
 
 
-include_once "\125\x74\151\154\151\164\x69\145\x73\56\160\150\x70";
-include_once "\x78\x6d\x6c\x73\145\143\154\x69\142\163\x2e\160\x68\160";
+include_once 'Utilities.php';
+include_once 'xmlseclibs.php';
 use RobRichards\XMLSecLibs\XMLSecurityKey;
 use RobRichards\XMLSecLibs\XMLSecurityDSig;
 use RobRichards\XMLSecLibs\XMLSecEnc;
@@ -19,204 +19,204 @@ class SAML2SPLogoutRequest
     private $encryptedNameId;
     private $nameId;
     private $sessionIndexes;
-    public function __construct(DOMElement $wI = NULL)
+    public function __construct(DOMElement $l3 = NULL)
     {
-        $this->tagName = "\114\157\147\x6f\x75\164\x52\x65\161\x75\145\x73\164";
+        $this->tagName = "\114\x6f\147\x6f\165\x74\122\x65\x71\x75\x65\x73\x74";
         $this->id = SAMLSPUtilities::generateID();
         $this->issueInstant = time();
         $this->certificates = array();
         $this->validators = array();
-        if (!($wI === NULL)) {
-            goto qr;
+        if (!($l3 === NULL)) {
+            goto x4;
         }
         return;
-        qr:
-        if ($wI->hasAttribute("\111\104")) {
-            goto v_;
+        x4:
+        if ($l3->hasAttribute("\x49\104")) {
+            goto Wp;
         }
-        throw new Exception("\x4d\151\x73\163\151\156\x67\x20\111\x44\40\x61\164\x74\x72\x69\x62\165\164\145\x20\x6f\156\x20\x53\101\x4d\x4c\40\x6d\x65\x73\163\x61\147\x65\x2e");
-        v_:
-        $this->id = $wI->getAttribute("\111\x44");
-        if (!($wI->getAttribute("\x56\145\x72\163\x69\157\156") !== "\x32\x2e\60")) {
-            goto eR;
+        throw new Exception("\115\x69\x73\x73\151\156\x67\x20\111\x44\x20\x61\164\x74\162\151\x62\165\x74\145\x20\157\156\x20\x53\x41\115\114\40\155\145\163\x73\141\x67\145\x2e");
+        Wp:
+        $this->id = $l3->getAttribute("\111\x44");
+        if (!($l3->getAttribute("\x56\x65\x72\163\x69\157\x6e") !== "\62\x2e\x30")) {
+            goto F1;
         }
-        throw new Exception("\125\156\163\165\160\160\157\162\164\145\x64\40\166\x65\162\x73\x69\x6f\156\x3a\40" . $wI->getAttribute("\126\145\x72\163\151\x6f\156"));
-        eR:
-        $this->issueInstant = SAMLSPUtilities::xsDateTimeToTimestamp($wI->getAttribute("\x49\163\163\x75\x65\x49\156\x73\164\x61\x6e\x74"));
-        if (!$wI->hasAttribute("\x44\x65\x73\x74\151\156\x61\x74\151\157\156")) {
-            goto gB;
+        throw new Exception("\x55\x6e\x73\x75\160\x70\157\162\x74\145\144\40\166\145\x72\x73\x69\157\156\x3a\40" . $l3->getAttribute("\126\145\x72\x73\x69\157\x6e"));
+        F1:
+        $this->issueInstant = SAMLSPUtilities::xsDateTimeToTimestamp($l3->getAttribute("\111\163\163\x75\x65\x49\x6e\x73\164\141\156\x74"));
+        if (!$l3->hasAttribute("\104\x65\163\x74\x69\x6e\x61\164\151\x6f\156")) {
+            goto FK;
         }
-        $this->destination = $wI->getAttribute("\104\145\x73\x74\x69\156\141\x74\x69\x6f\x6e");
-        gB:
-        $rk = SAMLSPUtilities::xpQuery($wI, "\x2e\57\x73\141\x6d\x6c\137\x61\163\x73\145\162\x74\151\x6f\156\72\111\163\163\165\145\x72");
-        if (empty($rk)) {
-            goto ZT;
+        $this->destination = $l3->getAttribute("\x44\145\x73\x74\x69\x6e\141\x74\151\x6f\156");
+        FK:
+        $Ai = SAMLSPUtilities::xpQuery($l3, "\x2e\x2f\163\141\x6d\154\x5f\x61\163\163\x65\162\x74\151\157\156\x3a\111\163\x73\165\x65\x72");
+        if (empty($Ai)) {
+            goto H2;
         }
-        $this->issuer = trim($rk[0]->textContent);
-        ZT:
+        $this->issuer = trim($Ai[0]->textContent);
+        H2:
         try {
-            $fa = SAMLSPUtilities::validateElement($wI);
-            if (!($fa !== FALSE)) {
-                goto bl;
+            $rl = SAMLSPUtilities::validateElement($l3);
+            if (!($rl !== FALSE)) {
+                goto ab;
             }
-            $this->certificates = $fa["\x43\145\x72\x74\151\146\151\x63\x61\164\145\163"];
-            $this->validators[] = array("\106\x75\x6e\x63\x74\x69\x6f\156" => array("\125\x74\151\x6c\151\164\151\x65\163", "\166\141\x6c\151\x64\x61\164\145\123\x69\x67\x6e\141\x74\165\162\145"), "\104\x61\164\141" => $fa);
-            bl:
-        } catch (Exception $F5) {
+            $this->certificates = $rl["\103\145\x72\x74\151\x66\x69\x63\x61\x74\145\x73"];
+            $this->validators[] = array("\106\165\x6e\x63\164\151\157\156" => array("\x55\164\151\154\151\164\x69\x65\163", "\166\141\154\151\144\141\x74\x65\123\151\x67\x6e\141\164\165\x72\x65"), "\104\x61\x74\x61" => $rl);
+            ab:
+        } catch (Exception $qc) {
         }
         $this->sessionIndexes = array();
-        if (!$wI->hasAttribute("\x4e\157\164\117\156\117\x72\x41\146\164\x65\x72")) {
-            goto Qk;
+        if (!$l3->hasAttribute("\x4e\157\x74\x4f\156\117\162\101\146\x74\145\x72")) {
+            goto hi;
         }
-        $this->notOnOrAfter = SAMLSPUtilities::xsDateTimeToTimestamp($wI->getAttribute("\x4e\157\x74\x4f\x6e\x4f\162\101\x66\x74\145\x72"));
-        Qk:
-        $vk = SAMLSPUtilities::xpQuery($wI, "\x2e\x2f\x73\x61\155\x6c\x5f\x61\163\x73\x65\162\164\151\x6f\x6e\72\116\141\155\145\x49\x44\x20\174\40\56\57\x73\x61\x6d\x6c\x5f\x61\x73\163\145\162\x74\151\x6f\156\72\105\156\x63\162\171\x70\164\145\x64\x49\104\x2f\170\145\156\143\72\105\x6e\143\162\171\160\164\145\x64\x44\141\164\x61");
-        if (empty($vk)) {
-            goto Ep;
+        $this->notOnOrAfter = SAMLSPUtilities::xsDateTimeToTimestamp($l3->getAttribute("\116\x6f\x74\117\156\117\x72\x41\146\164\145\162"));
+        hi:
+        $OJ = SAMLSPUtilities::xpQuery($l3, "\56\57\163\141\x6d\x6c\137\x61\x73\163\x65\x72\164\151\x6f\x6e\x3a\116\141\155\145\x49\x44\40\174\x20\56\x2f\163\x61\x6d\x6c\137\141\163\163\x65\x72\x74\151\x6f\156\72\x45\x6e\143\162\171\x70\164\145\144\111\104\57\x78\145\x6e\143\72\105\156\x63\162\x79\x70\164\145\x64\104\x61\x74\x61");
+        if (empty($OJ)) {
+            goto gX;
         }
-        if (count($vk) > 1) {
-            goto sV;
+        if (count($OJ) > 1) {
+            goto nK;
         }
-        goto ls;
-        Ep:
-        throw new Exception("\115\x69\x73\163\151\156\147\x20\74\x73\141\x6d\154\72\116\141\x6d\145\x49\x44\x3e\x20\x6f\162\x20\x3c\163\x61\x6d\x6c\x3a\x45\156\x63\x72\171\x70\164\x65\144\x49\104\x3e\x20\151\x6e\x20\74\x73\x61\155\x6c\160\72\x4c\x6f\x67\157\165\x74\x52\x65\161\x75\145\x73\x74\x3e\56");
-        goto ls;
-        sV:
-        throw new Exception("\115\157\162\x65\x20\164\x68\x61\156\40\x6f\x6e\145\40\x3c\x73\141\x6d\154\x3a\116\141\x6d\145\x49\x44\76\40\157\x72\40\x3c\x73\x61\155\154\72\x45\156\x63\x72\171\160\x74\x65\144\104\x3e\40\151\x6e\x20\x3c\x73\x61\155\x6c\160\x3a\114\x6f\147\157\165\x74\x52\x65\161\165\x65\x73\x74\x3e\56");
-        ls:
-        $vk = $vk[0];
-        if ($vk->localName === "\x45\x6e\x63\x72\171\x70\164\x65\144\104\x61\x74\x61") {
-            goto qi;
+        goto Ob;
+        gX:
+        throw new Exception("\115\x69\163\163\151\x6e\147\x20\74\163\x61\155\x6c\72\116\x61\x6d\145\x49\x44\76\40\157\162\40\x3c\x73\141\155\154\x3a\105\x6e\143\x72\171\160\164\x65\x64\111\104\x3e\40\x69\x6e\x20\x3c\163\141\x6d\154\x70\x3a\x4c\157\x67\157\165\x74\122\x65\x71\165\145\x73\x74\x3e\56");
+        goto Ob;
+        nK:
+        throw new Exception("\115\x6f\162\x65\x20\164\x68\141\x6e\40\157\x6e\145\40\74\x73\x61\x6d\x6c\x3a\116\141\x6d\x65\111\104\76\40\x6f\162\40\x3c\x73\x61\155\x6c\x3a\x45\156\x63\162\x79\160\x74\x65\144\x44\x3e\40\x69\156\x20\x3c\163\141\x6d\x6c\160\72\x4c\x6f\147\x6f\165\164\122\x65\161\x75\145\163\164\x3e\56");
+        Ob:
+        $OJ = $OJ[0];
+        if ($OJ->localName === "\x45\156\x63\162\171\x70\x74\145\144\104\141\x74\x61") {
+            goto LR;
         }
-        $this->nameId = SAMLSPUtilities::parseNameId($vk);
-        goto Gk;
-        qi:
-        $this->encryptedNameId = $vk;
-        Gk:
-        $W7 = SAMLSPUtilities::xpQuery($wI, "\56\57\163\141\x6d\154\x5f\x70\x72\x6f\164\157\x63\157\x6c\x3a\x53\145\x73\x73\x69\157\x6e\111\156\x64\145\x78");
-        foreach ($W7 as $U2) {
-            $this->sessionIndexes[] = trim($U2->textContent);
-            yd:
+        $this->nameId = SAMLSPUtilities::parseNameId($OJ);
+        goto B5;
+        LR:
+        $this->encryptedNameId = $OJ;
+        B5:
+        $lF = SAMLSPUtilities::xpQuery($l3, "\56\x2f\x73\141\x6d\154\x5f\160\162\157\x74\157\143\x6f\154\72\x53\145\163\163\x69\x6f\156\x49\x6e\144\x65\170");
+        foreach ($lF as $VU) {
+            $this->sessionIndexes[] = trim($VU->textContent);
+            Yx:
         }
-        X9:
+        WL:
     }
     public function getNotOnOrAfter()
     {
         return $this->notOnOrAfter;
     }
-    public function setNotOnOrAfter($I3)
+    public function setNotOnOrAfter($ef)
     {
-        $this->notOnOrAfter = $I3;
+        $this->notOnOrAfter = $ef;
     }
     public function isNameIdEncrypted()
     {
         if (!($this->encryptedNameId !== NULL)) {
-            goto Rh;
+            goto dl;
         }
         return TRUE;
-        Rh:
+        dl:
         return FALSE;
     }
-    public function encryptNameId(XMLSecurityKey $U6)
+    public function encryptNameId(XMLSecurityKey $WO)
     {
-        $Ud = new DOMDocument();
-        $gS = $Ud->createElement("\162\x6f\157\164");
-        $Ud->appendChild($gS);
-        SAML2_Utils::addNameId($gS, $this->nameId);
-        $vk = $gS->firstChild;
-        SAML2_Utils::getContainer()->debugMessage($vk, "\145\x6e\143\162\x79\x70\x74");
-        $vv = new XMLSecEnc();
-        $vv->setNode($vk);
-        $vv->type = XMLSecEnc::Element;
-        $Bt = new XMLSecurityKey(XMLSecurityKey::AES128_CBC);
-        $Bt->generateSessionKey();
-        $vv->encryptKey($U6, $Bt);
-        $this->encryptedNameId = $vv->encryptNode($Bt);
+        $ik = new DOMDocument();
+        $Bf = $ik->createElement("\x72\x6f\x6f\164");
+        $ik->appendChild($Bf);
+        SAML2_Utils::addNameId($Bf, $this->nameId);
+        $OJ = $Bf->firstChild;
+        SAML2_Utils::getContainer()->debugMessage($OJ, "\x65\x6e\x63\x72\x79\x70\x74");
+        $NA = new XMLSecEnc();
+        $NA->setNode($OJ);
+        $NA->type = XMLSecEnc::Element;
+        $Z3 = new XMLSecurityKey(XMLSecurityKey::AES128_CBC);
+        $Z3->generateSessionKey();
+        $NA->encryptKey($WO, $Z3);
+        $this->encryptedNameId = $NA->encryptNode($Z3);
         $this->nameId = NULL;
     }
-    public function decryptNameId(XMLSecurityKey $U6, array $XR = array())
+    public function decryptNameId(XMLSecurityKey $WO, array $io = array())
     {
         if (!($this->encryptedNameId === NULL)) {
-            goto P7;
+            goto Ih;
         }
         return;
-        P7:
-        $vk = SAML2_Utils::decryptElement($this->encryptedNameId, $U6, $XR);
-        SAML2_Utils::getContainer()->debugMessage($vk, "\x64\x65\x63\162\171\x70\x74");
-        $this->nameId = SAML2_Utils::parseNameId($vk);
+        Ih:
+        $OJ = SAML2_Utils::decryptElement($this->encryptedNameId, $WO, $io);
+        SAML2_Utils::getContainer()->debugMessage($OJ, "\x64\x65\143\x72\x79\160\x74");
+        $this->nameId = SAML2_Utils::parseNameId($OJ);
         $this->encryptedNameId = NULL;
     }
     public function getNameId()
     {
         if (!($this->encryptedNameId !== NULL)) {
-            goto Hc;
+            goto qf;
         }
-        throw new Exception("\x41\x74\164\x65\x6d\160\164\x65\x64\x20\x74\x6f\40\162\x65\x74\162\x69\145\x76\145\x20\145\x6e\x63\x72\x79\160\164\x65\x64\x20\116\141\155\145\x49\104\40\x77\151\164\x68\x6f\165\x74\x20\144\x65\x63\162\171\x70\164\151\156\147\x20\151\x74\x20\146\x69\x72\163\164\x2e");
-        Hc:
+        throw new Exception("\x41\x74\164\x65\155\x70\164\x65\x64\40\x74\157\40\162\x65\164\162\x69\145\166\x65\40\x65\x6e\143\x72\x79\x70\164\x65\144\40\116\141\155\x65\111\x44\x20\167\151\164\150\x6f\x75\x74\x20\x64\145\143\162\x79\160\x74\151\x6e\x67\x20\151\x74\x20\x66\151\x72\163\x74\x2e");
+        qf:
         return $this->nameId;
     }
-    public function setNameId($vk)
+    public function setNameId($OJ)
     {
-        $this->nameId = $vk;
+        $this->nameId = $OJ;
     }
     public function getSessionIndexes()
     {
         return $this->sessionIndexes;
     }
-    public function setSessionIndexes(array $W7)
+    public function setSessionIndexes(array $lF)
     {
-        $this->sessionIndexes = $W7;
+        $this->sessionIndexes = $lF;
     }
     public function getSessionIndex()
     {
         if (!empty($this->sessionIndexes)) {
-            goto Er;
+            goto xa;
         }
         return NULL;
-        Er:
+        xa:
         return $this->sessionIndexes[0];
     }
-    public function setSessionIndex($U2)
+    public function setSessionIndex($VU)
     {
-        if (is_null($U2)) {
-            goto d1;
+        if (is_null($VU)) {
+            goto PB;
         }
-        $this->sessionIndexes = array($U2);
-        goto Tp;
-        d1:
+        $this->sessionIndexes = array($VU);
+        goto cy;
+        PB:
         $this->sessionIndexes = array();
-        Tp:
+        cy:
     }
     public function getId()
     {
         return $this->id;
     }
-    public function setId($Sy)
+    public function setId($It)
     {
-        $this->id = $Sy;
+        $this->id = $It;
     }
     public function getIssueInstant()
     {
         return $this->issueInstant;
     }
-    public function setIssueInstant($Oz)
+    public function setIssueInstant($kC)
     {
-        $this->issueInstant = $Oz;
+        $this->issueInstant = $kC;
     }
     public function getDestination()
     {
         return $this->destination;
     }
-    public function setDestination($P9)
+    public function setDestination($tG)
     {
-        $this->destination = $P9;
+        $this->destination = $tG;
     }
     public function getIssuer()
     {
         return $this->issuer;
     }
-    public function setIssuer($rk)
+    public function setIssuer($Ai)
     {
-        $this->issuer = $rk;
+        $this->issuer = $Ai;
     }
 }

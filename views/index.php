@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\x50\x49\116\x43")) {
-    goto lW2;
+if (defined("\x57\x50\x49\x4e\103")) {
+    goto hMJ;
 }
 die;
-lW2:
+hMJ:

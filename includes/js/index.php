@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\x50\111\116\x43")) {
-    goto Fw;
+if (defined("\127\120\111\x4e\x43")) {
+    goto Ej;
 }
 die;
-Fw:
+Ej:

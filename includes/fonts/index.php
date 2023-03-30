@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\x50\111\116\x43")) {
-    goto ll;
+if (defined("\x57\120\111\x4e\103")) {
+    goto QC;
 }
 die;
-ll:
+QC:

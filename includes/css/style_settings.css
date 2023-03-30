@@ -37,9 +37,8 @@
     margin-bottom: 10px;
 }
 
-.mo_saml_table_layout td {}
 
-.mo_saml_table_layout input['type=text'] {
+.mo_saml_table_layout input[type='text'] {
     width: 80%;
 }
 
@@ -686,7 +685,7 @@ button.close {
     opacity: 0;
 }
 
-.modal-backdrop.in {
+.modal-backdrop.show {
     filter: alpha(opacity=50);
     opacity: .5;
 }
@@ -956,7 +955,7 @@ a:visited {
     margin-left: 0
 }
 
-td.text-left {
+td.text-start {
     padding: 10px 15px
 }
 
@@ -1041,7 +1040,8 @@ td.text-left {
     display: none;
     border-top: 1px solid #f4f4f4;
     text-align: left;
-    font-size: 1rem
+    font-size: 1rem;
+    padding-top: 10px;
 }
 
 .faq.active .faq-text {
@@ -1217,7 +1217,7 @@ td.text-left {
 }
 
 .clk-icn {
-    border: .2px solid rgb(0 0 0);
+    border: .2px solid rgb(0 0 0) !important;
     font-weight: 700;
     margin-top: 2em;
     padding: .5em 2em;

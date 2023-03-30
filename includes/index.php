@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\120\x49\116\x43")) {
-    goto n_;
+if (defined("\127\120\x49\x4e\103")) {
+    goto O6;
 }
 die;
-n_:
+O6:

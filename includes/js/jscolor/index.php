@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\x50\x49\x4e\x43")) {
-    goto Sl;
+if (defined("\x57\x50\111\116\103")) {
+    goto i5;
 }
 die;
-Sl:
+i5:

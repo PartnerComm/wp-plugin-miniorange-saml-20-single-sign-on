@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\111\116\103")) {
-    goto Ad;
+if (defined("\127\120\x49\116\x43")) {
+    goto T6;
 }
 die;
-Ad:
+T6:

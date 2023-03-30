@@ -2,7 +2,7 @@
 
 
 if (defined("\x57\120\111\116\x43")) {
-    goto hJ;
+    goto Tp;
 }
 die;
-hJ:
+Tp:
