@@ -1,34 +1,34 @@
 <?php
 
 
-include_once "\x55\x74\x69\154\x69\x74\151\x65\163\56\160\150\160";
+include_once 'Utilities.php';
 class IDPMetadataReader
 {
     private $identityProviders;
     private $serviceProviders;
-    public function __construct(DOMNode $wI = NULL)
+    public function __construct(DOMNode $l3 = NULL)
     {
         $this->identityProviders = array();
         $this->serviceProviders = array();
-        $W0 = SAMLSPUtilities::xpQuery($wI, "\x2e\x2f\x73\141\155\x6c\137\155\145\164\x61\x64\x61\164\141\72\105\x6e\164\151\x74\151\x65\163\x44\145\x73\143\162\151\x70\x74\157\x72");
-        if (!empty($W0)) {
-            goto fM;
+        $v4 = SAMLSPUtilities::xpQuery($l3, "\x2e\x2f\163\x61\155\x6c\137\x6d\145\164\141\144\x61\164\141\x3a\x45\x6e\164\151\164\x69\x65\163\104\145\x73\143\162\x69\x70\164\157\162");
+        if (!empty($v4)) {
+            goto F_;
         }
-        $aX = SAMLSPUtilities::xpQuery($wI, "\x2e\x2f\163\x61\155\x6c\137\155\145\x74\x61\x64\141\164\x61\72\x45\x6e\164\151\x74\171\104\145\x73\143\162\x69\160\164\x6f\162");
-        goto P4;
-        fM:
-        $aX = SAMLSPUtilities::xpQuery($W0[0], "\x2e\57\x73\x61\155\x6c\x5f\x6d\x65\164\141\x64\x61\164\141\x3a\105\x6e\164\151\164\x79\x44\145\163\x63\x72\151\160\x74\x6f\162");
-        P4:
-        foreach ($aX as $Hz) {
-            $M3 = SAMLSPUtilities::xpQuery($Hz, "\x2e\57\x73\x61\155\x6c\x5f\155\145\x74\x61\x64\141\164\x61\72\x49\104\x50\x53\x53\x4f\104\145\163\x63\162\x69\160\164\157\162");
-            if (!(isset($M3) && !empty($M3))) {
-                goto cc;
+        $la = SAMLSPUtilities::xpQuery($l3, "\56\57\163\x61\155\154\137\x6d\145\x74\141\x64\141\164\141\72\x45\156\x74\x69\x74\171\104\145\163\x63\x72\151\x70\x74\x6f\x72");
+        goto Gh;
+        F_:
+        $la = SAMLSPUtilities::xpQuery($v4[0], "\56\57\x73\141\155\154\137\155\x65\x74\x61\x64\141\x74\x61\72\x45\156\x74\151\x74\x79\104\x65\x73\143\162\x69\x70\x74\x6f\162");
+        Gh:
+        foreach ($la as $W_) {
+            $wX = SAMLSPUtilities::xpQuery($W_, "\56\x2f\x73\x61\155\154\x5f\155\x65\164\x61\144\141\164\141\72\111\x44\x50\x53\123\x4f\x44\x65\x73\143\x72\x69\x70\164\157\x72");
+            if (empty($wX)) {
+                goto Rr;
             }
-            array_push($this->identityProviders, new IdentityProviders($Hz));
-            cc:
-            fm:
+            array_push($this->identityProviders, new IdentityProviders($W_));
+            Rr:
+            NR:
         }
-        Pj:
+        Tb:
     }
     public function getIdentityProviders()
     {
@@ -48,131 +48,131 @@ class IdentityProviders
     private $signingCertificate;
     private $encryptionCertificate;
     private $signedRequest;
-    public function __construct(DOMElement $wI = NULL)
+    public function __construct(DOMElement $l3 = NULL)
     {
         $this->idpName = '';
         $this->loginDetails = array();
         $this->logoutDetails = array();
         $this->signingCertificate = array();
         $this->encryptionCertificate = array();
-        if (!$wI->hasAttribute("\x65\x6e\x74\x69\x74\x79\111\x44")) {
-            goto ht;
+        if (!$l3->hasAttribute("\145\156\164\151\x74\x79\x49\x44")) {
+            goto W9;
         }
-        $this->entityID = $wI->getAttribute("\145\156\164\151\164\x79\111\x44");
-        ht:
-        if (!$wI->hasAttribute("\127\x61\x6e\x74\x41\165\x74\x68\156\122\x65\x71\x75\x65\x73\164\x73\123\151\x67\156\145\x64")) {
-            goto w0;
+        $this->entityID = $l3->getAttribute("\x65\x6e\x74\151\164\171\x49\x44");
+        W9:
+        if (!$l3->hasAttribute("\127\x61\x6e\x74\101\x75\x74\150\156\122\x65\161\165\x65\163\164\163\x53\x69\147\156\145\x64")) {
+            goto i3;
         }
-        $this->signedRequest = $wI->getAttribute("\x57\x61\x6e\x74\x41\165\x74\x68\x6e\122\x65\x71\165\x65\163\164\x73\x53\151\147\x6e\145\x64");
-        w0:
-        $M3 = SAMLSPUtilities::xpQuery($wI, "\x2e\x2f\x73\141\155\x6c\137\x6d\145\164\x61\144\141\x74\141\72\111\104\x50\123\x53\x4f\x44\145\x73\143\x72\151\x70\x74\x6f\162");
-        if (count($M3) > 1) {
-            goto y7;
+        $this->signedRequest = $l3->getAttribute("\127\x61\x6e\x74\101\x75\164\150\156\122\x65\161\165\145\163\164\163\x53\x69\x67\156\145\144");
+        i3:
+        $wX = SAMLSPUtilities::xpQuery($l3, "\x2e\x2f\163\x61\x6d\x6c\137\x6d\x65\164\x61\x64\141\164\x61\x3a\111\104\x50\123\x53\x4f\104\145\163\143\162\151\x70\x74\157\x72");
+        if (count($wX) > 1) {
+            goto cj;
         }
-        if (empty($M3)) {
-            goto dz;
+        if (empty($wX)) {
+            goto nY;
         }
-        goto Sk;
-        y7:
-        throw new Exception("\x4d\x6f\x72\145\x20\164\x68\x61\156\x20\x6f\156\145\40\74\111\x44\120\x53\123\117\x44\145\163\x63\x72\x69\160\x74\157\162\x3e\x20\x69\x6e\40\74\x45\156\x74\x69\164\171\104\145\x73\x63\162\x69\x70\x74\x6f\162\76\x2e");
-        goto Sk;
-        dz:
-        throw new Exception("\x4d\x69\163\163\151\156\147\x20\162\x65\161\x75\x69\162\145\144\40\x3c\111\x44\x50\x53\x53\x4f\x44\x65\x73\143\x72\x69\160\164\x6f\x72\76\40\x69\156\40\74\x45\x6e\x74\x69\x74\x79\104\x65\x73\143\x72\151\x70\x74\x6f\x72\76\56");
-        Sk:
-        $HZ = $M3[0];
-        $KY = SAMLSPUtilities::xpQuery($wI, "\x2e\57\x73\141\x6d\x6c\x5f\155\145\164\141\x64\141\164\x61\x3a\x45\x78\x74\x65\x6e\163\151\x6f\156\x73");
-        if (!$KY) {
-            goto X2;
+        goto o6;
+        cj:
+        throw new Exception("\115\x6f\x72\145\x20\x74\150\141\x6e\40\x6f\156\145\40\x3c\111\104\x50\123\123\117\x44\145\x73\143\x72\x69\x70\164\x6f\162\x3e\x20\x69\x6e\40\74\105\x6e\x74\151\x74\171\x44\145\163\x63\162\151\160\164\157\162\76\56");
+        goto o6;
+        nY:
+        throw new Exception("\115\151\163\x73\x69\x6e\x67\40\x72\145\161\x75\151\162\x65\x64\x20\74\x49\x44\120\x53\x53\117\104\145\163\x63\x72\x69\160\x74\x6f\x72\76\40\x69\x6e\40\x3c\105\156\164\151\x74\171\x44\145\x73\143\162\x69\160\x74\157\162\76\x2e");
+        o6:
+        $oR = $wX[0];
+        $Yx = SAMLSPUtilities::xpQuery($l3, "\56\57\163\x61\x6d\x6c\x5f\x6d\145\164\141\x64\141\164\x61\72\x45\x78\164\x65\x6e\163\151\x6f\x6e\163");
+        if (!$Yx) {
+            goto yX;
         }
-        $this->parseInfo($HZ);
-        X2:
-        $this->parseSSOService($HZ);
-        $this->parseSLOService($HZ);
-        $this->parsex509Certificate($HZ);
+        $this->parseInfo($oR);
+        yX:
+        $this->parseSSOService($oR);
+        $this->parseSLOService($oR);
+        $this->parsex509Certificate($oR);
     }
-    private function parseInfo($wI)
+    private function parseInfo($l3)
     {
-        $od = SAMLSPUtilities::xpQuery($wI, "\56\x2f\155\x64\165\151\x3a\125\x49\111\x6e\x66\157\57\155\144\x75\151\72\x44\151\x73\x70\154\x61\x79\x4e\x61\155\x65");
-        foreach ($od as $JI) {
-            if (!($JI->hasAttribute("\170\x6d\x6c\x3a\x6c\x61\x6e\147") && $JI->getAttribute("\170\155\154\72\154\x61\156\x67") == "\145\x6e")) {
-                goto NL;
+        $ZA = SAMLSPUtilities::xpQuery($l3, "\x2e\57\x6d\x64\x75\x69\72\125\x49\x49\156\x66\x6f\57\155\x64\x75\151\x3a\104\x69\x73\x70\x6c\141\171\116\141\x6d\145");
+        foreach ($ZA as $YB) {
+            if (!($YB->hasAttribute("\170\x6d\154\72\154\x61\156\147") && $YB->getAttribute("\170\155\154\x3a\x6c\141\x6e\147") == "\x65\x6e")) {
+                goto j6;
             }
-            $this->idpName = $JI->textContent;
-            NL:
-            Is:
+            $this->idpName = $YB->textContent;
+            j6:
+            ay:
         }
-        Md:
+        qn:
     }
-    private function parseSSOService($wI)
+    private function parseSSOService($l3)
     {
-        $ey = SAMLSPUtilities::xpQuery($wI, "\56\57\163\x61\x6d\154\x5f\x6d\145\x74\141\144\x61\164\x61\72\x53\151\156\x67\x6c\145\123\151\147\156\x4f\156\x53\x65\x72\x76\151\143\x65");
-        foreach ($ey as $Gx) {
-            $cb = str_replace("\165\x72\156\x3a\x6f\141\x73\151\x73\72\156\x61\x6d\145\163\72\164\x63\x3a\123\x41\115\x4c\x3a\62\x2e\60\x3a\142\x69\x6e\144\151\156\147\x73\x3a", '', $Gx->getAttribute("\102\x69\156\144\151\156\x67"));
-            $this->loginDetails = array_merge($this->loginDetails, array($cb => $Gx->getAttribute("\114\157\x63\141\x74\151\x6f\156")));
-            Ph:
+        $Zi = SAMLSPUtilities::xpQuery($l3, "\x2e\57\x73\x61\155\154\x5f\x6d\x65\x74\x61\144\x61\x74\x61\x3a\x53\x69\x6e\x67\x6c\145\123\151\147\156\117\156\123\x65\162\166\151\x63\145");
+        foreach ($Zi as $cu) {
+            $HH = str_replace("\165\162\x6e\72\x6f\141\163\x69\163\x3a\x6e\141\155\145\163\x3a\164\x63\72\x53\101\x4d\114\72\62\x2e\x30\x3a\x62\x69\156\144\151\x6e\x67\x73\x3a", '', $cu->getAttribute("\x42\151\x6e\x64\151\x6e\x67"));
+            $this->loginDetails = array_merge($this->loginDetails, array($HH => $cu->getAttribute("\114\157\x63\141\164\151\x6f\156")));
+            DQ:
         }
-        Le:
+        jT:
     }
-    private function parseSLOService($wI)
+    private function parseSLOService($l3)
     {
-        $sa = SAMLSPUtilities::xpQuery($wI, "\x2e\57\163\x61\155\x6c\137\x6d\x65\x74\x61\144\x61\x74\x61\72\x53\x69\156\x67\x6c\145\x4c\x6f\x67\157\165\164\123\x65\x72\166\151\143\x65");
-        if (!empty($sa)) {
-            goto IU;
+        $Xf = SAMLSPUtilities::xpQuery($l3, "\x2e\x2f\163\141\x6d\154\137\x6d\145\x74\x61\144\141\164\141\x3a\123\x69\156\147\154\145\x4c\x6f\147\157\165\164\x53\x65\x72\166\x69\143\x65");
+        if (!empty($Xf)) {
+            goto Ka;
         }
-        $this->logoutDetails = array("\110\x54\124\x50\55\122\x65\x64\151\x72\x65\x63\164" => '');
-        goto GX;
-        IU:
-        foreach ($sa as $VH) {
-            $cb = str_replace("\165\x72\156\x3a\x6f\x61\x73\x69\163\72\156\x61\x6d\145\163\x3a\164\143\72\123\101\115\114\72\62\x2e\x30\x3a\x62\151\x6e\x64\x69\x6e\x67\163\x3a", '', $VH->getAttribute("\102\x69\x6e\144\x69\x6e\147"));
-            $this->logoutDetails = array_merge($this->logoutDetails, array($cb => $VH->getAttribute("\x4c\x6f\143\x61\x74\x69\x6f\x6e")));
-            u4:
+        $this->logoutDetails = array("\110\x54\x54\120\x2d\122\145\144\x69\162\145\143\x74" => '');
+        goto UF;
+        Ka:
+        foreach ($Xf as $Fb) {
+            $HH = str_replace("\165\x72\x6e\x3a\x6f\141\163\x69\163\x3a\156\141\x6d\145\163\72\x74\x63\72\123\x41\115\x4c\x3a\x32\x2e\x30\x3a\x62\x69\x6e\144\x69\x6e\x67\163\72", '', $Fb->getAttribute("\102\151\x6e\x64\x69\x6e\147"));
+            $this->logoutDetails = array_merge($this->logoutDetails, array($HH => $Fb->getAttribute("\x4c\x6f\143\x61\164\x69\x6f\x6e")));
+            Ri:
         }
-        k1:
-        GX:
+        t_:
+        UF:
     }
-    private function parsex509Certificate($wI)
+    private function parsex509Certificate($l3)
     {
-        foreach (SAMLSPUtilities::xpQuery($wI, "\56\57\x73\141\x6d\x6c\137\x6d\145\164\141\x64\x61\x74\x61\72\113\145\x79\x44\x65\163\143\x72\151\160\x74\157\162") as $AK) {
-            if ($AK->hasAttribute("\x75\163\145")) {
-                goto qd;
+        foreach (SAMLSPUtilities::xpQuery($l3, "\56\x2f\163\141\155\154\137\155\x65\x74\141\x64\141\x74\141\72\113\145\171\104\x65\163\143\x72\151\160\164\x6f\x72") as $rF) {
+            if ($rF->hasAttribute("\165\x73\x65")) {
+                goto H_;
             }
-            $this->parseSigningCertificate($AK);
-            goto K_;
-            qd:
-            if ($AK->getAttribute("\165\163\145") == "\x65\x6e\x63\162\x79\x70\x74\x69\x6f\x6e") {
-                goto CB;
+            $this->parseSigningCertificate($rF);
+            goto F2;
+            H_:
+            if ($rF->getAttribute("\x75\163\x65") == "\x65\x6e\x63\162\x79\x70\164\x69\x6f\156") {
+                goto Gg;
             }
-            $this->parseSigningCertificate($AK);
-            goto Oq;
-            CB:
-            $this->parseEncryptionCertificate($AK);
-            Oq:
-            K_:
-            pN:
+            $this->parseSigningCertificate($rF);
+            goto op;
+            Gg:
+            $this->parseEncryptionCertificate($rF);
+            op:
+            F2:
+            MN:
         }
-        yq:
+        F9:
     }
-    private function parseSigningCertificate($wI)
+    private function parseSigningCertificate($l3)
     {
-        $N9 = SAMLSPUtilities::xpQuery($wI, "\56\x2f\144\163\x3a\x4b\145\x79\x49\x6e\x66\x6f\x2f\144\x73\x3a\x58\65\60\71\x44\141\x74\141\57\x64\163\x3a\x58\x35\x30\x39\103\145\x72\x74\151\146\x69\143\141\x74\x65");
-        $BI = trim($N9[0]->textContent);
-        $BI = str_replace(array("\xd", "\12", "\x9", "\x20"), '', $BI);
-        if (empty($N9)) {
-            goto kr;
+        $dy = SAMLSPUtilities::xpQuery($l3, "\x2e\57\144\x73\72\x4b\145\x79\111\x6e\146\157\57\x64\x73\x3a\130\65\60\x39\104\141\164\141\x2f\144\163\72\x58\x35\x30\x39\x43\145\x72\x74\151\x66\151\143\141\x74\x65");
+        $UN = trim($dy[0]->textContent);
+        $UN = str_replace(array("\xd", "\xa", "\11", "\40"), '', $UN);
+        if (empty($dy)) {
+            goto XH;
         }
-        array_push($this->signingCertificate, SAMLSPUtilities::sanitize_certificate($BI));
-        kr:
+        array_push($this->signingCertificate, SAMLSPUtilities::sanitize_certificate($UN));
+        XH:
     }
-    private function parseEncryptionCertificate($wI)
+    private function parseEncryptionCertificate($l3)
     {
-        $N9 = SAMLSPUtilities::xpQuery($wI, "\56\x2f\144\163\72\113\145\x79\x49\x6e\146\157\x2f\144\x73\72\x58\65\60\x39\x44\x61\x74\141\57\144\x73\72\x58\x35\60\x39\x43\145\162\x74\151\x66\x69\x63\141\164\145");
-        $BI = trim($N9[0]->textContent);
-        $BI = str_replace(array("\xd", "\xa", "\11", "\40"), '', $BI);
-        if (empty($N9)) {
-            goto CD;
+        $dy = SAMLSPUtilities::xpQuery($l3, "\56\x2f\x64\163\x3a\x4b\145\171\111\x6e\x66\x6f\x2f\x64\163\x3a\130\65\x30\x39\x44\x61\164\141\x2f\x64\x73\x3a\x58\x35\x30\71\x43\x65\x72\164\151\x66\151\x63\141\x74\x65");
+        $UN = trim($dy[0]->textContent);
+        $UN = str_replace(array("\xd", "\xa", "\11", "\40"), '', $UN);
+        if (empty($dy)) {
+            goto JA;
         }
-        array_push($this->encryptionCertificate, $BI);
-        CD:
+        array_push($this->encryptionCertificate, $UN);
+        JA:
     }
     public function getIdpName()
     {
@@ -182,13 +182,13 @@ class IdentityProviders
     {
         return $this->entityID;
     }
-    public function getLoginURL($cb)
+    public function getLoginURL($HH)
     {
-        return $this->loginDetails[$cb];
+        return $this->loginDetails[$HH];
     }
-    public function getLogoutURL($cb)
+    public function getLogoutURL($HH)
     {
-        return $this->logoutDetails[$cb];
+        return $this->logoutDetails[$HH];
     }
     public function getLoginDetails()
     {

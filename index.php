@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\x57\x50\x49\x4e\103")) {
-    goto Cu;
+if (defined("\x57\120\x49\x4e\103")) {
+    goto X8;
 }
 die;
-Cu:
+X8:

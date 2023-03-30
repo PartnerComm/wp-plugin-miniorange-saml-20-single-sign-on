@@ -1,8 +1,8 @@
 <?php
 
 
-if (defined("\127\120\x49\x4e\103")) {
-    goto AP;
+if (defined("\x57\120\x49\x4e\103")) {
+    goto bC;
 }
 die;
-AP:
+bC:
