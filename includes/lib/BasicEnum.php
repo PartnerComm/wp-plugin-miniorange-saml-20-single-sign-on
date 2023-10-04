@@ -1,39 +1,51 @@
 <?php
+/**
+ * This file is a part of the miniorange-saml-20-single-sign-on plugin.
+ *
+ * @link https://plugins.miniorange.com/
+ * @author miniOrange
+ * @package miniorange-saml-20-single-sign-on
+ */
 
 
-abstract class BasicEnum
+if (defined("\101\102\123\x50\x41\124\x48")) {
+    goto pm;
+}
+exit;
+pm:
+abstract class Mo_Saml_Basic_Enum
 {
-    private static $constCacheArray = NULL;
-    public static function getConstants()
+    private static $const_cache_array = null;
+    public static function get_constants()
     {
-        if (!(self::$constCacheArray == NULL)) {
-            goto Ad;
+        if (!(null === self::$const_cache_array)) {
+            goto zT;
         }
-        self::$constCacheArray = [];
-        Ad:
-        $Zh = get_called_class();
-        if (!empty(self::$constCacheArray[$Zh])) {
-            goto Z0;
+        self::$const_cache_array = array();
+        zT:
+        $AB = get_called_class();
+        if (!empty(self::$const_cache_array[$AB])) {
+            goto A3;
         }
-        $d5 = new ReflectionClass($Zh);
-        self::$constCacheArray[$Zh] = $d5->getConstants();
-        Z0:
-        return self::$constCacheArray[$Zh];
+        $B_ = new ReflectionClass($AB);
+        self::$const_cache_array[$AB] = $B_->getConstants();
+        A3:
+        return self::$const_cache_array[$AB];
     }
-    public static function isValidName($YB, $BF = false)
+    public static function is_valid_name($Zz, $Ce = false)
     {
-        $JL = self::getConstants();
-        if (!$BF) {
-            goto WW;
+        $Vf = self::get_constants();
+        if (!$Ce) {
+            goto rz;
         }
-        return !empty($JL[$YB]);
-        WW:
-        $lD = array_map("\163\x74\162\164\x6f\154\x6f\x77\x65\162", array_keys($JL));
-        return in_array(strtolower($YB), $lD);
+        return !empty($Vf[$Zz]);
+        rz:
+        $hl = array_map("\163\164\x72\164\157\154\157\167\x65\x72", array_keys($Vf));
+        return in_array(strtolower($Zz), $hl, true);
     }
-    public static function isValidValue($cK, $BF = true)
+    public static function is_valid_value($Wl, $Ce = true)
     {
-        $Yr = array_values(self::getConstants());
-        return in_array($cK, $Yr, $BF);
+        $o9 = array_values(self::get_constants());
+        return in_array($Wl, $o9, true);
     }
 }

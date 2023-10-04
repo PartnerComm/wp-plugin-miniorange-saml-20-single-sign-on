@@ -1,7 +1,13 @@
 <?php
+/**
+ * This file is a part of the miniorange-saml-20-single-sign-on plugin.
+ *
+ * @link https://plugins.miniorange.com/
+ * @author miniOrange
+ * @package miniorange-saml-20-single-sign-on
+ */
 
 
-include_once 'xmlseclibs.php';
 use RobRichards\XMLSecLibs\XMLSecurityKey;
 use RobRichards\XMLSecLibs\XMLSecurityDSig;
 use RobRichards\XMLSecLibs\XMLSecEnc;
@@ -11,853 +17,1040 @@ class SAMLSPUtilities
     {
         return "\x5f" . self::stringToHex(self::generateRandomBytes(21));
     }
-    public static function stringToHex($Ns)
+    public static function stringToHex($xQ)
     {
-        $Bx = '';
-        $lw = 0;
-        O1B:
-        if (!($lw < strlen($Ns))) {
-            goto FxX;
+        $q3 = '';
+        $p0 = 0;
+        hbz:
+        if (!($p0 < strlen($xQ))) {
+            goto lC2;
         }
-        $Bx .= sprintf("\45\60\62\170", ord($Ns[$lw]));
-        tSD:
-        $lw++;
-        goto O1B;
-        FxX:
-        return $Bx;
+        $q3 .= sprintf("\x25\60\62\x78", ord($xQ[$p0]));
+        M_7:
+        $p0++;
+        goto hbz;
+        lC2:
+        return $q3;
     }
-    public static function generateRandomBytes($PB, $hF = TRUE)
+    public static function generateRandomBytes($yW, $Zi = TRUE)
     {
-        return openssl_random_pseudo_bytes($PB);
+        return openssl_random_pseudo_bytes($yW);
     }
-    public static function createAuthnRequest($Uf, $Ai, $tG, $s2 = "\146\141\154\163\x65", $j5 = "\110\x74\164\x70\x52\145\x64\x69\x72\145\x63\x74", $So = '')
+    public static function createAuthnRequest($KG, $Og, $Mp, $qe = "\146\x61\x6c\163\145", $ab = "\110\164\164\160\122\145\x64\x69\x72\145\x63\x74", $Kp = '')
     {
-        $So = "\x75\x72\156\72\157\141\163\151\163\72\x6e\x61\x6d\x65\163\72\164\143\72\x53\101\x4d\x4c\x3a" . $So;
-        $JE = "\x3c\77\170\x6d\154\x20\x76\x65\x72\163\151\157\156\75\x22\61\x2e\60\x22\40\x65\x6e\143\x6f\144\151\156\147\x3d\42\125\124\106\x2d\70\42\x3f\76" . "\74\163\141\155\154\x70\72\101\x75\164\x68\156\x52\x65\161\165\x65\x73\164\x20\x78\x6d\154\156\163\x3a\x73\x61\155\x6c\x70\75\42\165\162\x6e\x3a\157\141\163\x69\x73\x3a\x6e\141\155\x65\163\72\164\x63\72\x53\x41\x4d\114\x3a\x32\56\x30\72\x70\x72\x6f\x74\x6f\143\157\x6c\x22\40\170\x6d\154\x6e\163\x3d\x22\165\162\x6e\x3a\157\141\163\151\x73\x3a\156\x61\x6d\145\x73\x3a\164\143\x3a\x53\101\x4d\x4c\x3a\x32\56\x30\72\x61\x73\x73\x65\162\164\151\x6f\x6e\x22\x20\x49\x44\x3d\42" . self::generateID() . "\42\40\x56\145\x72\x73\151\x6f\156\75\x22\62\x2e\x30\x22\40\111\163\x73\165\145\111\x6e\x73\164\141\x6e\164\x3d\x22" . self::generateTimestamp() . "\x22";
-        if (!($s2 == "\164\x72\x75\x65")) {
-            goto Om3;
+        $Kp = "\165\x72\x6e\72\157\x61\x73\151\x73\x3a\156\x61\155\145\163\x3a\x74\x63\x3a\x53\101\115\114\x3a" . $Kp;
+        $S9 = "\74\x3f\x78\155\154\40\166\145\x72\x73\x69\x6f\x6e\x3d\42\x31\x2e\x30\42\x20\x65\x6e\143\157\144\x69\156\147\x3d\x22\x55\124\106\55\70\x22\77\76" . "\x3c\163\141\155\154\x70\x3a\x41\x75\x74\150\x6e\x52\x65\x71\x75\145\x73\x74\x20\170\x6d\x6c\156\163\x3a\163\141\155\154\x70\75\42\x75\x72\x6e\x3a\157\141\163\x69\x73\72\x6e\x61\x6d\145\163\72\164\x63\72\x53\x41\x4d\114\x3a\x32\x2e\60\x3a\x70\162\x6f\164\157\143\x6f\154\42\x20\170\x6d\154\x6e\163\75\42\x75\162\156\x3a\157\141\x73\151\163\72\x6e\x61\x6d\145\163\x3a\x74\x63\72\x53\101\x4d\114\x3a\x32\x2e\x30\x3a\141\163\163\145\x72\x74\151\x6f\x6e\x22\40\x49\x44\x3d\x22" . self::generateID() . "\x22\40\x56\145\162\163\151\157\156\75\x22\62\56\60\42\40\111\163\x73\x75\145\111\156\x73\164\x61\x6e\164\75\x22" . self::generateTimestamp() . "\x22";
+        if (!($qe == "\x74\x72\165\x65")) {
+            goto pqm;
         }
-        $JE .= "\40\106\x6f\162\143\x65\x41\x75\x74\x68\x6e\75\42\x74\162\x75\x65\x22";
-        Om3:
-        $JE .= "\x20\x50\162\157\x74\157\143\157\154\102\151\156\144\151\x6e\147\75\42\x75\162\156\72\x6f\x61\x73\151\163\72\x6e\x61\155\145\163\72\164\x63\72\123\x41\x4d\114\72\62\x2e\60\x3a\x62\x69\156\x64\x69\156\147\x73\72\110\x54\124\x50\x2d\x50\117\x53\124\42\40\x41\163\163\x65\162\164\x69\157\156\x43\x6f\x6e\x73\165\x6d\145\162\x53\x65\162\166\151\143\145\125\x52\x4c\x3d\x22" . $Uf . "\42\x20\104\x65\163\x74\x69\x6e\141\164\x69\x6f\156\75\42" . htmlspecialchars($tG) . "\42\76\74\x73\141\155\154\x3a\x49\x73\163\165\145\x72\40\170\x6d\154\156\x73\72\163\x61\x6d\154\x3d\42\165\x72\x6e\x3a\157\x61\163\151\x73\x3a\156\141\155\x65\163\x3a\x74\143\72\123\101\115\114\72\62\56\60\x3a\141\x73\x73\x65\x72\164\x69\157\156\42\76" . $Ai . "\74\x2f\x73\141\155\x6c\x3a\111\163\x73\165\x65\x72\76\74\163\141\x6d\x6c\160\x3a\116\141\x6d\145\111\x44\120\157\x6c\x69\x63\171\40\x41\154\x6c\x6f\167\x43\162\x65\x61\164\145\x3d\x22\x74\162\165\x65\42\x20\106\x6f\162\x6d\x61\x74\75\42" . $So . "\42\xa\40\40\x20\40\40\x20\40\x20\40\40\40\40\40\40\x20\40\40\x20\40\40\x20\x20\x20\x20\x2f\76\x3c\x2f\163\x61\x6d\x6c\x70\x3a\x41\x75\164\x68\156\122\145\161\165\x65\163\x74\x3e";
-        if (empty($j5) || $j5 == "\110\x74\x74\160\x52\145\144\151\162\x65\143\164") {
-            goto g3x;
+        $S9 .= "\40\x46\157\162\x63\145\x41\x75\x74\150\156\x3d\x22\164\162\165\x65\42";
+        pqm:
+        $S9 .= "\40\x50\162\157\164\157\x63\x6f\x6c\x42\151\x6e\x64\x69\x6e\147\75\x22\165\x72\x6e\x3a\157\141\x73\x69\163\x3a\156\x61\x6d\x65\x73\x3a\x74\143\72\123\x41\115\114\72\62\56\x30\x3a\x62\x69\x6e\x64\x69\x6e\147\x73\x3a\110\x54\x54\x50\55\120\x4f\123\124\42\40\x41\163\x73\x65\x72\x74\151\x6f\x6e\x43\157\x6e\163\x75\x6d\x65\x72\x53\145\162\x76\151\x63\145\125\122\114\75\42" . $KG . "\42\40\x44\145\163\164\151\x6e\x61\x74\x69\x6f\156\75\42" . htmlspecialchars($Mp) . "\42\76\74\x73\141\x6d\154\72\x49\163\x73\165\145\x72\40\x78\x6d\154\x6e\163\72\163\x61\x6d\x6c\x3d\x22\x75\162\156\72\157\141\163\x69\x73\72\x6e\x61\x6d\x65\x73\x3a\164\x63\72\x53\101\115\x4c\72\x32\56\60\72\x61\163\x73\x65\x72\x74\x69\157\156\42\76" . $Og . "\74\57\163\x61\155\x6c\x3a\x49\x73\x73\165\x65\x72\76\74\163\141\155\154\160\x3a\x4e\141\155\x65\x49\x44\x50\x6f\154\151\143\171\40\101\x6c\x6c\x6f\167\103\x72\x65\x61\x74\x65\x3d\42\164\x72\165\x65\x22\40\106\157\162\155\141\x74\x3d\42" . $Kp . "\42\15\xa\x20\40\40\40\40\x20\40\40\40\x20\40\x20\x20\x20\40\40\40\x20\x20\x20\x20\x20\40\x20\x2f\x3e\74\x2f\x73\x61\155\154\x70\72\x41\165\164\x68\156\122\145\x71\x75\145\163\x74\x3e";
+        if (empty($ab) || $ab == "\x48\164\x74\x70\122\x65\144\x69\x72\x65\x63\164") {
+            goto URl;
         }
-        $gl = gzdeflate($JE);
-        $b5 = base64_encode($gl);
-        update_option("\x6d\x6f\137\x73\x61\155\x6c\x5f\x72\145\x71\x75\145\163\x74", $b5);
-        goto ufZ;
-        g3x:
-        $gl = gzdeflate($JE);
-        $b5 = base64_encode($gl);
-        update_option("\155\157\137\x73\141\x6d\154\137\162\x65\x71\x75\145\163\164", $b5);
-        $Av = urlencode($b5);
-        $JE = $Av;
-        ufZ:
-        return $JE;
+        $lC = gzdeflate($S9);
+        $Cj = base64_encode($lC);
+        update_option("\x6d\x6f\137\163\141\x6d\154\x5f\x72\145\161\165\x65\163\x74", $Cj);
+        goto N51;
+        URl:
+        $lC = gzdeflate($S9);
+        $Cj = base64_encode($lC);
+        update_option("\155\157\137\x73\x61\x6d\154\x5f\162\x65\161\165\x65\163\164", $Cj);
+        $Ds = urlencode($Cj);
+        $S9 = $Ds;
+        N51:
+        return $S9;
     }
-    public static function createLogoutRequest($OJ, $Ai, $tG, $VU = '', $eu = "\110\164\x74\160\122\x65\x64\151\162\x65\143\x74")
+    public static function createLogoutRequest($Ag, $Og, $Mp, $bZ = '', $rI = "\x48\x74\x74\x70\x52\145\x64\151\x72\145\143\x74")
     {
-        $JE = "\x3c\77\170\x6d\154\x20\x76\x65\x72\x73\x69\x6f\x6e\x3d\x22\x31\56\x30\x22\40\x65\x6e\143\157\144\x69\156\147\x3d\x22\x55\124\106\55\70\x22\77\x3e" . "\74\x73\141\x6d\x6c\160\72\x4c\x6f\x67\157\x75\x74\122\145\x71\165\145\163\164\x20\x78\x6d\x6c\x6e\163\72\x73\x61\155\154\160\75\42\165\162\x6e\72\157\x61\x73\151\163\x3a\x6e\x61\x6d\145\163\72\164\143\72\x53\101\x4d\x4c\72\x32\x2e\x30\72\160\162\157\x74\x6f\x63\x6f\x6c\42\x20\x78\x6d\x6c\x6e\163\72\163\x61\x6d\154\75\x22\165\x72\156\72\x6f\x61\x73\x69\163\x3a\x6e\141\155\x65\163\x3a\164\x63\x3a\x53\x41\x4d\x4c\x3a\62\x2e\60\x3a\141\x73\x73\x65\x72\164\151\157\156\x22\40\x49\104\75\x22" . self::generateID() . "\x22\40\111\x73\x73\x75\x65\111\156\163\164\x61\x6e\164\75\x22" . self::generateTimestamp() . "\42\40\x56\145\x72\163\x69\x6f\x6e\x3d\x22\x32\56\x30\x22\40\x44\x65\x73\x74\151\156\141\x74\x69\157\156\75\42" . htmlspecialchars($tG) . "\x22\x3e\12\x9\11\11\11\x9\x9\x3c\x73\141\155\x6c\72\x49\163\x73\x75\x65\162\x20\170\x6d\154\x6e\163\x3a\x73\141\x6d\154\75\x22\165\162\x6e\72\x6f\141\x73\x69\x73\x3a\156\141\x6d\145\163\72\164\143\72\123\x41\115\114\72\62\x2e\60\x3a\141\x73\163\145\162\164\x69\157\x6e\42\76" . $Ai . "\x3c\x2f\163\141\x6d\x6c\x3a\x49\163\163\165\x65\x72\x3e\xa\x9\11\x9\x9\11\11\x3c\163\x61\x6d\154\x3a\116\x61\155\145\111\104\40\x78\155\x6c\156\163\x3a\163\141\x6d\x6c\75\x22\165\x72\x6e\x3a\157\x61\x73\151\163\x3a\x6e\141\155\x65\163\72\x74\143\x3a\123\x41\115\x4c\72\x32\56\60\72\x61\x73\x73\145\x72\x74\151\157\x6e\42\x3e" . $OJ[0] . "\x3c\57\163\x61\x6d\x6c\x3a\x4e\141\155\x65\111\x44\x3e";
-        if (empty($VU)) {
-            goto S0R;
+        $S9 = "\x3c\x3f\170\155\154\x20\166\145\x72\x73\151\x6f\x6e\75\42\61\x2e\x30\x22\x20\x65\156\143\157\x64\151\156\147\x3d\42\125\124\106\x2d\70\x22\x3f\76" . "\x3c\x73\x61\155\154\160\72\x4c\x6f\147\157\x75\x74\x52\x65\x71\x75\145\163\164\40\x78\x6d\x6c\x6e\x73\x3a\163\x61\x6d\x6c\x70\75\42\x75\x72\156\72\157\x61\163\x69\x73\72\156\141\x6d\145\x73\72\164\x63\x3a\x53\x41\x4d\114\72\x32\56\60\x3a\160\162\157\164\157\x63\157\x6c\42\40\170\155\x6c\x6e\163\x3a\x73\141\155\x6c\x3d\x22\x75\162\x6e\x3a\157\x61\163\x69\x73\72\156\x61\x6d\x65\x73\x3a\164\143\72\x53\101\115\114\72\62\56\60\x3a\x61\x73\x73\x65\162\x74\x69\157\156\x22\x20\x49\104\x3d\42" . self::generateID() . "\42\x20\x49\163\163\165\145\x49\x6e\x73\164\141\156\164\x3d\x22" . self::generateTimestamp() . "\42\x20\x56\145\162\163\151\157\x6e\75\x22\x32\x2e\60\x22\x20\x44\x65\x73\x74\x69\x6e\x61\x74\151\157\x6e\75\42" . htmlspecialchars($Mp) . "\42\x3e\xd\12\11\x9\11\11\x9\x9\74\163\141\155\154\x3a\x49\x73\163\165\x65\162\40\170\x6d\154\x6e\163\72\x73\141\x6d\154\x3d\42\x75\x72\156\x3a\157\141\x73\x69\163\x3a\156\141\155\x65\163\72\x74\x63\x3a\x53\101\x4d\x4c\72\62\56\60\x3a\x61\163\x73\x65\x72\x74\x69\x6f\156\x22\x3e" . $Og . "\74\57\x73\x61\x6d\154\x3a\111\x73\163\165\x65\162\76\xd\xa\11\11\11\11\11\11\74\x73\141\x6d\154\x3a\x4e\141\x6d\145\111\104\x20\x78\x6d\x6c\156\x73\x3a\x73\x61\155\154\75\x22\165\162\156\x3a\x6f\141\163\151\x73\72\x6e\x61\x6d\x65\x73\72\x74\x63\72\x53\101\x4d\x4c\x3a\62\x2e\x30\x3a\141\163\163\x65\x72\164\151\x6f\156\42\x3e" . $Ag[0] . "\74\x2f\163\141\155\154\x3a\x4e\x61\x6d\x65\x49\104\x3e";
+        if (empty($bZ)) {
+            goto Dcp;
         }
-        $JE .= "\74\163\141\x6d\x6c\x70\72\x53\x65\163\163\x69\157\x6e\111\x6e\144\x65\x78\x3e" . $VU[0] . "\x3c\x2f\163\141\x6d\154\160\72\123\x65\163\163\151\x6f\x6e\x49\x6e\144\145\170\76";
-        S0R:
-        $JE .= "\74\57\163\141\155\x6c\x70\72\114\157\x67\x6f\x75\164\122\145\x71\x75\145\x73\x74\x3e";
-        if (!(empty($eu) || $eu == "\110\164\164\x70\122\145\144\151\162\145\143\164")) {
-            goto d5C;
+        $S9 .= "\74\163\x61\155\x6c\160\72\x53\x65\x73\x73\151\157\x6e\111\x6e\144\145\x78\76" . $bZ[0] . "\74\57\x73\x61\155\x6c\x70\x3a\x53\x65\x73\163\151\157\x6e\x49\156\x64\145\170\x3e";
+        Dcp:
+        $S9 .= "\74\x2f\x73\141\155\x6c\160\72\114\157\x67\157\x75\x74\122\145\161\x75\145\163\x74\x3e";
+        if (!(empty($rI) || $rI == "\110\x74\x74\160\x52\x65\144\151\162\145\x63\x74")) {
+            goto H4H;
         }
-        $gl = gzdeflate($JE);
-        $b5 = base64_encode($gl);
-        $Av = urlencode($b5);
-        $JE = $Av;
-        d5C:
-        return $JE;
+        $lC = gzdeflate($S9);
+        $Cj = base64_encode($lC);
+        $Ds = urlencode($Cj);
+        $S9 = $Ds;
+        H4H:
+        return $S9;
     }
-    public static function createLogoutResponse($WQ, $Ai, $tG, $eu = "\x48\x74\x74\x70\122\x65\144\x69\x72\145\143\x74")
+    public static function createLogoutResponse($KA, $Og, $Mp, $rI = "\110\x74\164\x70\x52\x65\x64\151\162\145\x63\x74")
     {
-        $JE = "\74\77\x78\155\x6c\x20\x76\145\x72\163\x69\x6f\156\x3d\x22\x31\56\60\x22\x20\x65\156\143\x6f\144\151\156\x67\x3d\42\125\124\106\55\70\42\77\x3e" . "\x3c\163\141\x6d\154\160\72\x4c\157\x67\x6f\x75\x74\x52\145\163\x70\157\156\163\x65\x20\170\155\154\x6e\x73\72\163\141\155\x6c\x70\75\x22\x75\x72\x6e\72\x6f\x61\163\151\x73\x3a\x6e\141\x6d\x65\x73\x3a\164\143\72\123\x41\115\x4c\x3a\62\56\x30\72\x70\x72\157\164\157\143\157\154\42\40\x78\155\154\x6e\163\x3a\x73\141\155\x6c\75\42\x75\162\156\72\x6f\141\x73\x69\x73\x3a\x6e\141\155\145\163\x3a\164\143\x3a\123\101\x4d\114\x3a\x32\x2e\60\x3a\x61\163\x73\145\x72\164\x69\157\156\x22\x20" . "\111\x44\x3d\42" . self::generateID() . "\42\x20" . "\126\x65\x72\163\x69\157\156\75\42\x32\56\60\42\40\x49\163\x73\165\x65\x49\156\163\x74\x61\156\x74\75\42" . self::generateTimestamp() . "\42\x20" . "\x44\x65\163\x74\x69\156\x61\x74\151\157\156\x3d\42" . $tG . "\x22\x20" . "\111\x6e\122\x65\x73\160\x6f\156\x73\x65\124\157\75\42" . $WQ . "\x22\76" . "\x3c\163\141\x6d\154\72\111\x73\x73\165\145\162\40\170\x6d\154\x6e\163\x3a\x73\141\155\154\x3d\42\165\x72\156\72\157\141\x73\x69\x73\x3a\156\x61\x6d\145\163\x3a\x74\x63\x3a\x53\x41\x4d\114\72\62\56\x30\x3a\141\x73\x73\x65\x72\164\x69\157\156\42\x3e" . $Ai . "\74\57\163\141\155\154\72\111\163\163\x75\145\162\76" . "\x3c\163\x61\155\154\x70\x3a\x53\164\141\164\x75\163\x3e\74\163\141\x6d\154\160\x3a\123\164\x61\x74\165\163\x43\157\x64\x65\40\126\x61\x6c\165\145\75\x22\165\162\156\x3a\x6f\x61\x73\151\x73\72\156\x61\155\145\x73\72\164\143\72\123\x41\115\x4c\x3a\62\56\60\x3a\163\164\x61\x74\x75\163\x3a\123\165\x63\143\x65\163\x73\42\x2f\x3e\74\x2f\x73\141\x6d\x6c\x70\x3a\x53\164\x61\x74\165\163\x3e\x3c\57\163\x61\155\154\160\72\x4c\x6f\147\157\x75\164\x52\145\163\x70\x6f\x6e\x73\x65\76";
-        if (!(empty($eu) || $eu == "\x48\164\164\160\x52\145\x64\151\162\x65\x63\x74")) {
-            goto QNW;
+        $S9 = "\x3c\77\x78\155\x6c\40\166\x65\x72\x73\151\157\x6e\75\x22\61\x2e\60\42\x20\x65\156\x63\157\x64\x69\x6e\x67\x3d\x22\125\x54\x46\55\70\x22\x3f\x3e" . "\74\163\x61\155\x6c\160\x3a\x4c\x6f\x67\x6f\x75\x74\x52\x65\x73\160\157\156\x73\x65\40\x78\x6d\x6c\156\163\x3a\x73\141\x6d\x6c\160\x3d\42\x75\162\x6e\72\157\x61\x73\x69\163\72\x6e\x61\x6d\x65\163\x3a\164\x63\72\x53\x41\x4d\114\x3a\x32\56\60\x3a\x70\162\157\164\157\143\x6f\154\42\x20\x78\155\x6c\156\163\x3a\x73\x61\x6d\154\75\x22\165\162\156\72\157\x61\x73\x69\x73\72\x6e\x61\155\145\163\x3a\x74\143\x3a\x53\x41\115\114\x3a\x32\x2e\60\x3a\x61\x73\x73\x65\x72\x74\x69\157\156\x22\x20" . "\x49\x44\75\x22" . self::generateID() . "\42\40" . "\126\145\x72\163\x69\157\156\x3d\x22\62\x2e\x30\42\x20\111\163\163\x75\x65\111\x6e\x73\164\141\156\164\75\x22" . self::generateTimestamp() . "\x22\x20" . "\104\145\163\164\151\x6e\141\164\x69\157\x6e\x3d\x22" . $Mp . "\x22\40" . "\111\x6e\x52\145\163\x70\x6f\156\x73\145\x54\157\x3d\42" . $KA . "\x22\76" . "\74\x73\x61\x6d\154\x3a\x49\x73\163\165\145\x72\x20\x78\x6d\154\x6e\x73\72\x73\141\x6d\x6c\x3d\42\x75\162\x6e\x3a\157\141\x73\x69\163\x3a\x6e\x61\155\145\163\x3a\x74\143\x3a\123\101\x4d\114\x3a\62\x2e\60\72\x61\163\163\145\162\x74\x69\157\x6e\x22\x3e" . $Og . "\x3c\x2f\163\x61\x6d\154\x3a\111\x73\x73\165\x65\162\76" . "\74\x73\x61\x6d\x6c\160\72\x53\x74\141\164\165\x73\x3e\74\x73\x61\x6d\154\160\72\x53\x74\x61\164\x75\x73\x43\x6f\144\x65\x20\126\x61\154\165\145\75\x22\x75\162\x6e\x3a\157\141\163\151\x73\x3a\156\x61\x6d\145\x73\x3a\x74\143\72\123\101\x4d\114\72\x32\56\60\72\163\x74\x61\x74\165\x73\72\x53\165\143\143\x65\x73\163\x22\x2f\x3e\x3c\x2f\x73\141\155\x6c\x70\x3a\123\x74\141\164\x75\163\76\x3c\57\x73\141\155\154\160\72\x4c\157\147\x6f\165\x74\x52\145\x73\160\x6f\156\x73\145\x3e";
+        if (!(empty($rI) || $rI == "\x48\164\164\160\122\x65\144\151\x72\x65\143\164")) {
+            goto RYY;
         }
-        $gl = gzdeflate($JE);
-        $b5 = base64_encode($gl);
-        $Av = urlencode($b5);
-        $JE = $Av;
-        QNW:
-        return $JE;
+        $lC = gzdeflate($S9);
+        $Cj = base64_encode($lC);
+        $Ds = urlencode($Cj);
+        $S9 = $Ds;
+        RYY:
+        return $S9;
     }
-    public static function generateTimestamp($hx = NULL)
+    public static function generateTimestamp($XZ = NULL)
     {
-        if (!($hx === NULL)) {
-            goto i6u;
+        if (!($XZ === NULL)) {
+            goto ykP;
         }
-        $hx = time();
-        i6u:
-        return gmdate("\x59\55\155\55\144\134\x54\110\72\151\72\x73\134\132", $hx);
+        $XZ = time();
+        ykP:
+        return gmdate("\131\x2d\x6d\55\x64\x5c\x54\x48\x3a\x69\x3a\x73\134\x5a", $XZ);
     }
-    public static function xpQuery(DOMNode $Kp, $Ws)
+    public static function xpQuery(DOMNode $XX, $CI)
     {
-        static $wn = NULL;
-        if ($Kp instanceof DOMDocument) {
-            goto ZFD;
+        static $XO = NULL;
+        if ($XX instanceof DOMDocument) {
+            goto a1g;
         }
-        $ik = $Kp->ownerDocument;
-        goto Hqg;
-        ZFD:
-        $ik = $Kp;
-        Hqg:
-        if (!($wn === NULL || !$wn->document->isSameNode($ik))) {
-            goto AkE;
+        $GD = $XX->ownerDocument;
+        goto E0R;
+        a1g:
+        $GD = $XX;
+        E0R:
+        if (!($XO === NULL || !$XO->document->isSameNode($GD))) {
+            goto lwD;
         }
-        $wn = new DOMXPath($ik);
-        $wn->registerNamespace("\x73\157\x61\x70\x2d\x65\x6e\166", "\150\164\x74\160\x3a\57\x2f\x73\143\x68\x65\x6d\x61\x73\x2e\x78\x6d\x6c\163\157\x61\160\56\x6f\x72\147\x2f\163\x6f\x61\160\57\145\x6e\x76\145\154\157\160\x65\x2f");
-        $wn->registerNamespace("\x73\x61\155\x6c\137\x70\x72\x6f\x74\157\x63\x6f\154", "\165\x72\156\x3a\x6f\x61\163\151\163\72\x6e\x61\155\x65\163\x3a\x74\x63\72\123\101\115\x4c\x3a\62\56\x30\x3a\160\x72\x6f\x74\157\143\157\154");
-        $wn->registerNamespace("\163\x61\x6d\154\x5f\141\163\163\x65\x72\x74\151\x6f\156", "\165\x72\x6e\x3a\x6f\141\163\151\x73\72\x6e\141\155\145\x73\x3a\x74\143\72\x53\101\x4d\114\x3a\x32\56\x30\x3a\x61\163\x73\145\x72\x74\151\x6f\156");
-        $wn->registerNamespace("\163\141\155\154\x5f\x6d\x65\x74\141\x64\x61\x74\x61", "\165\x72\156\72\157\141\x73\x69\x73\72\x6e\x61\155\145\163\72\164\143\x3a\x53\x41\x4d\x4c\x3a\x32\x2e\x30\72\x6d\x65\x74\x61\x64\141\x74\141");
-        $wn->registerNamespace("\x64\163", "\x68\x74\x74\160\72\x2f\x2f\x77\x77\167\x2e\x77\x33\56\157\162\x67\x2f\x32\x30\60\x30\57\x30\x39\x2f\x78\x6d\x6c\144\x73\x69\147\43");
-        $wn->registerNamespace("\170\145\x6e\143", "\150\x74\x74\160\x3a\57\57\x77\x77\167\56\x77\63\x2e\x6f\x72\147\57\62\x30\x30\x31\x2f\60\x34\x2f\x78\x6d\x6c\145\156\x63\43");
-        AkE:
-        $vR = $wn->query($Ws, $Kp);
-        $Bx = array();
-        $lw = 0;
-        DVu:
-        if (!($lw < $vR->length)) {
-            goto Xlb;
+        $XO = new DOMXPath($GD);
+        $XO->registerNamespace("\163\x6f\141\160\55\x65\156\x76", "\x68\x74\x74\x70\72\57\57\x73\x63\x68\145\155\141\x73\x2e\x78\x6d\x6c\x73\157\141\160\x2e\157\162\x67\x2f\x73\x6f\141\160\57\145\x6e\x76\x65\154\x6f\160\145\x2f");
+        $XO->registerNamespace("\163\x61\x6d\154\137\x70\162\157\164\x6f\x63\157\154", "\165\x72\156\72\157\x61\163\x69\x73\x3a\x6e\141\155\x65\163\72\164\143\x3a\x53\x41\x4d\114\72\x32\x2e\x30\72\160\162\x6f\x74\157\x63\x6f\x6c");
+        $XO->registerNamespace("\x73\x61\155\x6c\137\x61\163\x73\x65\x72\x74\x69\157\x6e", "\x75\162\x6e\x3a\157\141\163\x69\163\72\x6e\141\155\x65\x73\72\164\143\72\123\101\115\x4c\72\x32\x2e\x30\x3a\141\163\x73\145\x72\x74\151\x6f\156");
+        $XO->registerNamespace("\x73\x61\x6d\x6c\x5f\155\145\164\x61\x64\x61\164\x61", "\165\162\156\x3a\x6f\141\163\x69\163\72\156\x61\155\145\163\x3a\164\143\72\x53\x41\115\114\x3a\x32\x2e\60\72\x6d\x65\164\141\144\141\x74\x61");
+        $XO->registerNamespace("\144\163", "\x68\164\164\160\72\57\57\x77\x77\167\56\x77\x33\56\157\162\147\57\62\60\x30\60\x2f\60\x39\57\170\x6d\154\144\163\x69\x67\x23");
+        $XO->registerNamespace("\170\145\156\x63", "\x68\x74\x74\160\x3a\x2f\x2f\167\x77\x77\56\167\63\56\x6f\x72\147\x2f\62\x30\x30\61\57\x30\64\x2f\170\x6d\x6c\x65\156\143\43");
+        lwD:
+        $a5 = $XO->query($CI, $XX);
+        $q3 = array();
+        $p0 = 0;
+        uVm:
+        if (!($p0 < $a5->length)) {
+            goto I2b;
         }
-        $Bx[$lw] = $vR->item($lw);
-        QzT:
-        $lw++;
-        goto DVu;
-        Xlb:
-        return $Bx;
+        $q3[$p0] = $a5->item($p0);
+        Rk_:
+        $p0++;
+        goto uVm;
+        I2b:
+        return $q3;
     }
-    public static function parseNameId(DOMElement $l3)
+    public static function parseNameId(DOMElement $jn)
     {
-        $Bx = array("\x56\x61\154\x75\x65" => trim($l3->textContent));
-        foreach (array("\116\141\x6d\x65\121\x75\141\x6c\151\x66\x69\x65\162", "\123\120\116\x61\155\145\121\x75\141\154\x69\x66\151\145\x72", "\x46\x6f\162\155\141\164") as $IT) {
-            if (!$l3->hasAttribute($IT)) {
-                goto xPR;
+        $q3 = array("\126\x61\x6c\x75\x65" => trim($jn->textContent));
+        foreach (array("\x4e\x61\155\145\x51\165\x61\154\151\146\x69\145\162", "\x53\x50\x4e\x61\155\x65\x51\x75\x61\154\151\146\151\145\162", "\106\157\162\155\x61\164") as $z1) {
+            if (!$jn->hasAttribute($z1)) {
+                goto VJs;
             }
-            $Bx[$IT] = $l3->getAttribute($IT);
-            xPR:
-            huc:
+            $q3[$z1] = $jn->getAttribute($z1);
+            VJs:
+            Npd:
         }
-        AeQ:
-        return $Bx;
+        jA3:
+        return $q3;
     }
-    public static function xsDateTimeToTimestamp($Xv)
+    public static function xsDateTimeToTimestamp($Lv)
     {
-        $Hp = array();
-        $iL = "\57\136\x28\x5c\144\x5c\144\x5c\x64\134\x64\x29\55\50\x5c\144\134\144\x29\55\50\x5c\144\134\x64\x29\124\50\x5c\x64\x5c\144\x29\72\50\x5c\x64\x5c\x64\51\x3a\x28\134\144\x5c\x64\51\50\77\72\134\x2e\134\x64\53\x29\x3f\x5a\44\x2f\104";
-        if (!(preg_match($iL, $Xv, $Hp) == 0)) {
-            goto lDh;
+        $K6 = array();
+        $c_ = "\x2f\x5e\50\134\144\x5c\x64\134\x64\134\x64\51\55\x28\x5c\144\x5c\144\x29\x2d\50\134\x64\x5c\x64\x29\124\x28\134\x64\134\x64\51\x3a\x28\134\x64\134\144\51\x3a\x28\134\x64\x5c\x64\51\50\77\x3a\x5c\x2e\134\x64\53\51\x3f\x5a\44\x2f\104";
+        if (!(preg_match($c_, $Lv, $K6) == 0)) {
+            goto Pqq;
         }
-        echo sprintf("\x6e\x76\x61\154\x69\x64\x20\123\101\115\x4c\x32\40\164\151\155\x65\x73\x74\141\x6d\160\40\160\141\x73\x73\145\144\x20\x74\157\40\x78\163\x44\141\x74\x65\124\x69\155\x65\x54\x6f\x54\x69\x6d\145\x73\x74\141\155\x70\72\40" . $Xv);
+        echo sprintf("\x6e\166\x61\x6c\x69\x64\40\x53\101\115\x4c\x32\x20\x74\151\155\145\x73\x74\x61\155\x70\x20\160\141\x73\163\145\144\40\x74\157\40\170\163\x44\141\x74\145\x54\151\155\145\124\157\124\151\155\145\163\x74\141\155\x70\72\x20" . $Lv);
         exit;
-        lDh:
-        $In = intval($Hp[1]);
-        $Y3 = intval($Hp[2]);
-        $wP = intval($Hp[3]);
-        $Fl = intval($Hp[4]);
-        $R3 = intval($Hp[5]);
-        $YI = intval($Hp[6]);
-        $ot = gmmktime($Fl, $R3, $YI, $Y3, $wP, $In);
-        return $ot;
+        Pqq:
+        $XU = intval($K6[1]);
+        $j2 = intval($K6[2]);
+        $tL = intval($K6[3]);
+        $eE = intval($K6[4]);
+        $O2 = intval($K6[5]);
+        $zf = intval($K6[6]);
+        $UM = gmmktime($eE, $O2, $zf, $j2, $tL, $XU);
+        return $UM;
     }
-    public static function extractStrings(DOMElement $Lb, $IM, $qQ)
+    public static function extractStrings(DOMElement $TS, $rj, $MM)
     {
-        $Bx = array();
-        $Kp = $Lb->firstChild;
-        e8v:
-        if (!($Kp !== NULL)) {
-            goto yfd;
+        $q3 = array();
+        $XX = $TS->firstChild;
+        lQ8:
+        if (!($XX !== NULL)) {
+            goto Z2K;
         }
-        if (!($Kp->namespaceURI !== $IM || $Kp->localName !== $qQ)) {
-            goto CD5;
+        if (!($XX->namespaceURI !== $rj || $XX->localName !== $MM)) {
+            goto l9J;
         }
-        goto fLd;
-        CD5:
-        $Bx[] = trim($Kp->textContent);
-        fLd:
-        $Kp = $Kp->nextSibling;
-        goto e8v;
-        yfd:
-        return $Bx;
+        goto zc0;
+        l9J:
+        $q3[] = trim($XX->textContent);
+        zc0:
+        $XX = $XX->nextSibling;
+        goto lQ8;
+        Z2K:
+        return $q3;
     }
-    public static function validateElement(DOMElement $Bf)
+    public static function validateElement(DOMElement $Z0)
     {
-        $fG = new XMLSecurityDSig();
-        $fG->idKeys[] = "\x49\104";
-        $QF = self::xpQuery($Bf, "\x2e\57\x64\163\x3a\123\x69\147\x6e\141\164\165\x72\x65");
-        if (count($QF) === 0) {
-            goto WIO;
+        $J4 = new XMLSecurityDSig();
+        $J4->idKeys[] = "\111\x44";
+        $F_ = self::xpQuery($Z0, "\56\x2f\x64\x73\x3a\123\x69\147\156\141\x74\165\162\x65");
+        if (count($F_) === 0) {
+            goto DRw;
         }
-        if (count($QF) > 1) {
-            goto GAZ;
+        if (count($F_) > 1) {
+            goto GQ2;
         }
-        goto hT8;
-        WIO:
+        goto MOy;
+        DRw:
         return FALSE;
-        goto hT8;
-        GAZ:
-        echo sprintf("\130\115\114\x53\x65\143\72\40\155\x6f\x72\x65\40\x74\150\x61\x6e\x20\x6f\x6e\145\x20\x73\x69\147\156\x61\164\165\162\x65\x20\145\x6c\145\155\x65\x6e\x74\x20\151\x6e\40\162\157\157\164\x2e");
+        goto MOy;
+        GQ2:
+        echo sprintf("\x58\x4d\x4c\x53\x65\x63\72\40\155\x6f\x72\x65\40\164\x68\x61\x6e\x20\x6f\x6e\145\40\163\x69\147\x6e\141\164\165\x72\x65\40\145\x6c\x65\x6d\x65\x6e\x74\40\x69\156\x20\162\157\x6f\x74\x2e");
         exit;
-        hT8:
-        $QF = $QF[0];
-        $fG->sigNode = $QF;
-        $fG->canonicalizeSignedInfo();
-        if ($fG->validateReference()) {
-            goto Zv_;
+        MOy:
+        $F_ = $F_[0];
+        $J4->sigNode = $F_;
+        $J4->canonicalizeSignedInfo();
+        if ($J4->validateReference()) {
+            goto q2n;
         }
-        echo sprintf("\x58\115\114\163\145\143\72\40\144\151\147\145\163\164\40\x76\141\154\151\144\x61\164\x69\x6f\x6e\x20\x66\141\x69\154\145\x64");
+        echo sprintf("\x58\115\114\163\x65\x63\x3a\40\x64\x69\x67\145\x73\164\x20\166\141\154\151\x64\x61\164\x69\157\x6e\x20\146\x61\x69\x6c\x65\x64");
         exit;
-        Zv_:
-        $GO = FALSE;
-        foreach ($fG->getValidatedNodes() as $M6) {
-            if ($M6->isSameNode($Bf)) {
-                goto htq;
+        q2n:
+        $RN = FALSE;
+        foreach ($J4->getValidatedNodes() as $L0) {
+            if ($L0->isSameNode($Z0)) {
+                goto eCe;
             }
-            if ($Bf->parentNode instanceof DOMDocument && $M6->isSameNode($Bf->ownerDocument)) {
-                goto XW4;
+            if ($Z0->parentNode instanceof DOMDocument && $L0->isSameNode($Z0->ownerDocument)) {
+                goto VMT;
             }
-            goto UHI;
-            htq:
-            $GO = TRUE;
-            goto KSH;
-            goto UHI;
-            XW4:
-            $GO = TRUE;
-            goto KSH;
-            UHI:
-            Tup:
+            goto h9o;
+            eCe:
+            $RN = TRUE;
+            goto Wm5;
+            goto h9o;
+            VMT:
+            $RN = TRUE;
+            goto Wm5;
+            h9o:
+            elM:
         }
-        KSH:
-        if ($GO) {
-            goto wAJ;
+        Wm5:
+        if ($RN) {
+            goto fB4;
         }
-        echo sprintf("\x58\115\x4c\x53\145\x63\72\x20\x54\150\x65\x20\162\157\x6f\x74\40\x65\x6c\x65\x6d\x65\156\x74\40\151\163\x20\x6e\x6f\164\x20\163\151\x67\156\145\x64\x2e");
+        echo sprintf("\x58\115\x4c\123\145\x63\x3a\40\124\x68\x65\40\x72\157\x6f\x74\x20\x65\x6c\x65\155\145\156\x74\x20\151\163\40\x6e\157\164\x20\163\x69\x67\156\145\x64\x2e");
         exit;
-        wAJ:
-        $mG = array();
-        foreach (self::xpQuery($QF, "\56\x2f\144\163\x3a\x4b\145\171\x49\x6e\146\157\57\x64\163\x3a\130\x35\60\x39\x44\x61\164\141\57\144\x73\x3a\130\x35\60\71\103\x65\x72\x74\x69\x66\151\x63\141\x74\145") as $dy) {
-            $UN = trim($dy->textContent);
-            $UN = str_replace(array("\15", "\12", "\11", "\x20"), '', $UN);
-            $mG[] = $UN;
-            W7I:
+        fB4:
+        $GU = array();
+        foreach (self::xpQuery($F_, "\56\57\x64\x73\72\x4b\145\x79\111\156\x66\157\57\x64\163\x3a\x58\65\x30\x39\104\x61\x74\141\57\144\163\x3a\x58\65\x30\71\x43\x65\x72\164\151\146\151\x63\141\x74\x65") as $Sx) {
+            $WZ = trim($Sx->textContent);
+            $WZ = str_replace(array("\15", "\12", "\x9", "\40"), '', $WZ);
+            $GU[] = $WZ;
+            NMp:
         }
-        P0C:
-        $Bx = array("\x53\151\x67\x6e\x61\164\x75\x72\x65" => $fG, "\x43\145\x72\164\x69\x66\x69\143\x61\x74\x65\x73" => $mG);
-        return $Bx;
+        rx6:
+        $q3 = array("\x53\x69\147\156\x61\x74\x75\x72\145" => $J4, "\x43\x65\162\x74\151\x66\151\143\141\x74\145\x73" => $GU);
+        return $q3;
     }
-    public static function validateSignature(array $Yx, XMLSecurityKey $WO)
+    public static function validateSignature(array $fj, XMLSecurityKey $mr)
     {
-        $fG = $Yx["\x53\151\147\x6e\141\x74\165\162\x65"];
-        $nd = self::xpQuery($fG->sigNode, "\x2e\57\x64\163\x3a\x53\x69\147\x6e\145\x64\x49\x6e\146\157\57\144\163\x3a\x53\x69\x67\x6e\141\164\165\x72\x65\x4d\x65\164\150\x6f\x64");
-        if (!empty($nd)) {
-            goto tsw;
+        $J4 = $fj["\x53\x69\x67\156\141\x74\165\162\145"];
+        $am = self::xpQuery($J4->sigNode, "\x2e\x2f\144\x73\x3a\x53\151\147\156\145\144\x49\156\146\x6f\x2f\x64\x73\72\x53\151\147\x6e\141\164\165\162\x65\115\145\164\x68\x6f\144");
+        if (!empty($am)) {
+            goto vaF;
         }
-        echo sprintf("\x4d\151\x73\163\x69\156\147\x20\x53\x69\x67\x6e\141\164\165\162\145\x4d\x65\164\150\x6f\x64\x20\145\x6c\x65\x6d\145\x6e\x74");
+        echo sprintf("\x4d\x69\x73\163\x69\156\147\40\123\151\x67\x6e\141\164\165\x72\x65\115\x65\x74\150\x6f\144\x20\145\154\145\155\145\156\164");
         exit;
-        tsw:
-        $nd = $nd[0];
-        if ($nd->hasAttribute("\x41\154\x67\157\x72\151\x74\x68\x6d")) {
-            goto cAk;
+        vaF:
+        $am = $am[0];
+        if ($am->hasAttribute("\101\154\147\x6f\162\x69\164\150\155")) {
+            goto sZb;
         }
-        echo sprintf("\x4d\151\x73\163\x69\x6e\147\40\x41\154\147\x6f\162\x69\x74\x68\x6d\x2d\141\x74\164\162\x69\142\165\x74\x65\40\x6f\x6e\x20\123\x69\147\156\141\164\x75\x72\145\115\x65\x74\x68\157\x64\x20\x65\154\145\x6d\145\156\164\56");
+        echo sprintf("\115\151\x73\x73\151\x6e\147\40\x41\154\x67\x6f\x72\151\x74\150\x6d\x2d\141\164\x74\162\x69\x62\x75\164\x65\40\x6f\x6e\x20\123\151\147\x6e\x61\x74\x75\x72\145\x4d\x65\164\150\x6f\x64\40\x65\x6c\x65\x6d\145\156\164\x2e");
         exit;
-        cAk:
-        $yu = $nd->getAttribute("\x41\154\147\157\162\x69\x74\150\x6d");
-        if (!($WO->type === XMLSecurityKey::RSA_SHA1 && $yu !== $WO->type)) {
-            goto icb;
+        sZb:
+        $qm = $am->getAttribute("\101\x6c\x67\157\162\151\x74\150\x6d");
+        if (!($mr->type === XMLSecurityKey::RSA_SHA1 && $qm !== $mr->type)) {
+            goto zAc;
         }
-        $WO = self::castKey($WO, $yu);
-        icb:
-        if ($fG->verify($WO)) {
-            goto aAH;
+        $mr = self::castKey($mr, $qm);
+        zAc:
+        if ($J4->verify($mr)) {
+            goto xOp;
         }
-        echo sprintf("\x55\x6e\141\142\154\145\40\164\157\x20\x76\x61\154\151\144\141\164\x65\x20\x53\151\x67\x6e\x61\164\165\162\145");
+        echo sprintf("\x55\156\x61\x62\x6c\145\x20\x74\157\x20\x76\x61\154\151\144\x61\164\145\40\123\x69\147\156\x61\x74\x75\x72\145");
         exit;
-        aAH:
+        xOp:
     }
-    public static function castKey(XMLSecurityKey $WO, $by, $YE = "\x70\165\142\154\151\143")
+    public static function castKey(XMLSecurityKey $mr, $iL, $PU = "\160\165\x62\x6c\x69\x63")
     {
-        if (!($WO->type === $by)) {
-            goto HLn;
+        if (!($mr->type === $iL)) {
+            goto o2o;
         }
-        return $WO;
-        HLn:
-        $I1 = openssl_pkey_get_details($WO->key);
-        if (!($I1 === FALSE)) {
-            goto FDY;
+        return $mr;
+        o2o:
+        $Tq = openssl_pkey_get_details($mr->key);
+        if (!($Tq === FALSE)) {
+            goto Nh7;
         }
-        echo sprintf("\125\156\x61\142\x6c\x65\x20\164\157\40\147\145\x74\40\153\145\171\40\144\x65\164\x61\x69\x6c\163\x20\x66\x72\157\155\x20\x58\115\114\x53\x65\x63\x75\162\151\x74\171\113\x65\171\56");
+        echo sprintf("\x55\x6e\141\142\154\x65\x20\x74\157\x20\147\x65\x74\40\153\x65\x79\40\144\145\x74\141\151\154\163\x20\146\x72\157\x6d\x20\130\115\x4c\x53\145\x63\x75\x72\x69\x74\171\x4b\x65\x79\x2e");
         exit;
-        FDY:
-        if (!empty($I1["\x6b\145\171"])) {
-            goto Ugv;
+        Nh7:
+        if (!empty($Tq["\x6b\145\171"])) {
+            goto xnu;
         }
-        echo sprintf("\x4d\x69\163\x73\151\x6e\147\x20\153\x65\x79\x20\151\x6e\x20\160\165\x62\x6c\x69\x63\x20\153\145\171\40\144\x65\164\141\151\x6c\x73\56");
+        echo sprintf("\x4d\151\x73\x73\151\x6e\147\x20\153\x65\x79\40\151\x6e\x20\160\x75\142\154\151\143\40\x6b\x65\171\x20\x64\145\164\x61\x69\x6c\163\56");
         exit;
-        Ugv:
-        $mM = new XMLSecurityKey($by, array("\x74\x79\160\x65" => $YE));
-        $mM->loadKey($I1["\x6b\145\171"]);
-        return $mM;
+        xnu:
+        $h5 = new XMLSecurityKey($iL, array("\164\x79\x70\145" => $PU));
+        $h5->loadKey($Tq["\153\145\x79"]);
+        return $h5;
     }
-    public static function processResponse($Wa, $o2, $XS, SAML2SPResponse $Oc, $f9, $tr)
+    public static function processResponse($X5, $So, $j0, SAML2SPResponse $eq, $Tk, $WF)
     {
-        $q5 = current($Oc->getAssertions());
-        $vN = $q5->getNotBefore();
-        if (!($vN !== NULL && $vN > time() + 60)) {
-            goto IiL;
+        $AX = current($eq->getAssertions());
+        $UX = $AX->getNotBefore();
+        if (!($UX !== NULL && $UX > time() + 60)) {
+            goto ybi;
         }
-        wp_die("\x52\145\x63\145\x69\x76\145\x64\40\141\156\x20\141\163\163\145\x72\x74\x69\x6f\156\x20\164\x68\x61\x74\x20\x69\x73\40\166\x61\x6c\151\x64\x20\151\x6e\x20\x74\150\x65\x20\x66\165\x74\165\162\145\x2e\40\x43\x68\145\143\153\x20\x63\154\157\x63\x6b\40\x73\x79\156\143\x68\162\157\x6e\x69\172\141\164\151\157\x6e\x20\157\156\x20\x49\144\x50\40\141\x6e\x64\40\123\x50\x2e");
-        IiL:
-        $ef = $q5->getNotOnOrAfter();
-        if (!($ef !== NULL && $ef <= time() - 60)) {
-            goto lIr;
+        wp_die("\x52\145\143\x65\x69\x76\145\x64\x20\x61\x6e\40\x61\163\163\x65\162\164\x69\x6f\x6e\40\x74\150\x61\164\x20\151\x73\40\x76\141\154\x69\x64\40\151\x6e\40\x74\x68\145\40\146\165\164\165\x72\145\x2e\x20\x43\150\x65\x63\153\x20\x63\x6c\157\x63\x6b\x20\x73\x79\156\143\x68\x72\x6f\x6e\151\172\141\x74\x69\x6f\x6e\x20\157\x6e\x20\x49\x64\x50\40\x61\x6e\144\x20\x53\x50\56");
+        ybi:
+        $WB = $AX->getNotOnOrAfter();
+        if (!($WB !== NULL && $WB <= time() - 60)) {
+            goto DZQ;
         }
-        wp_die("\122\x65\x63\x65\x69\166\x65\x64\x20\141\x6e\x20\141\x73\x73\145\x72\164\151\x6f\x6e\40\164\150\x61\164\x20\150\x61\163\40\x65\170\x70\x69\x72\x65\144\56\40\x43\150\145\x63\153\x20\x63\154\157\x63\x6b\x20\x73\171\156\x63\150\162\157\x6e\x69\x7a\x61\164\x69\x6f\156\40\x6f\x6e\40\x49\x64\x50\x20\141\156\144\x20\123\120\56");
-        lIr:
-        $Zm = $q5->getSessionNotOnOrAfter();
-        if (!($Zm !== NULL && $Zm <= time() - 60)) {
-            goto PW2;
+        wp_die("\x52\145\143\x65\x69\166\145\144\x20\141\156\x20\141\x73\x73\x65\162\164\151\157\x6e\40\x74\150\x61\164\40\x68\141\x73\40\145\x78\x70\x69\162\145\x64\56\40\103\150\145\x63\x6b\x20\143\154\157\x63\153\x20\x73\171\x6e\143\x68\162\157\156\151\x7a\141\164\x69\157\x6e\40\x6f\x6e\40\x49\x64\120\40\x61\x6e\144\40\x53\120\56");
+        DZQ:
+        $ly = $AX->getSessionNotOnOrAfter();
+        if (!($ly !== NULL && $ly <= time() - 60)) {
+            goto XPs;
         }
-        wp_die("\x52\145\x63\x65\151\x76\x65\x64\40\141\156\40\141\x73\x73\x65\162\x74\151\x6f\x6e\x20\x77\x69\x74\x68\x20\141\40\163\x65\163\x73\x69\157\x6e\40\x74\x68\141\164\x20\x68\141\x73\x20\145\x78\x70\151\x72\145\144\56\40\103\150\145\x63\x6b\40\x63\x6c\157\x63\153\40\163\x79\156\143\150\x72\157\156\x69\172\141\x74\151\157\156\x20\x6f\156\x20\x49\x64\120\x20\141\156\144\x20\x53\x50\56");
-        PW2:
-        $Uj = $Oc->getDestination();
-        if (!(substr($Uj, -1) == "\57")) {
-            goto gkX;
+        wp_die("\122\145\x63\145\151\166\x65\144\x20\141\x6e\40\x61\163\x73\x65\x72\164\x69\157\156\x20\x77\151\164\150\40\141\x20\x73\145\x73\x73\151\x6f\156\x20\x74\150\141\164\x20\x68\x61\163\x20\x65\170\x70\x69\x72\x65\x64\56\x20\x43\x68\x65\x63\153\x20\143\x6c\x6f\x63\x6b\x20\163\x79\156\143\150\162\x6f\x6e\x69\x7a\141\164\151\x6f\156\x20\157\156\40\111\144\120\40\141\156\144\40\x53\x50\x2e");
+        XPs:
+        $by = $eq->getDestination();
+        if (!(substr($by, -1) == "\x2f")) {
+            goto yq1;
         }
-        $Uj = substr($Uj, 0, -1);
-        gkX:
-        if (!(substr($Wa, -1) == "\x2f")) {
-            goto YZS;
+        $by = substr($by, 0, -1);
+        yq1:
+        if (!(substr($X5, -1) == "\x2f")) {
+            goto JI3;
         }
-        $Wa = substr($Wa, 0, -1);
-        YZS:
-        if (!($Uj !== NULL && $Uj !== $Wa)) {
-            goto VwU;
+        $X5 = substr($X5, 0, -1);
+        JI3:
+        if (!($by !== NULL && $by !== $X5)) {
+            goto bUu;
         }
-        echo "\104\145\x73\164\151\156\x61\164\x69\x6f\156\x20\151\156\40\x72\x65\163\x70\x6f\156\163\x65\x20\x64\x6f\145\163\156\x27\164\x20\155\x61\164\143\x68\40\164\x68\x65\40\x63\165\162\162\145\156\164\40\125\122\114\56\40\104\145\163\x74\151\x6e\141\x74\x69\x6f\x6e\x20\151\163\x20\x22" . htmlspecialchars($Uj) . "\42\54\x20\x63\x75\x72\x72\145\156\164\x20\125\122\x4c\x20\151\163\x20\x22" . htmlspecialchars($Wa) . "\42\56";
+        echo "\x44\145\x73\x74\x69\x6e\141\164\151\x6f\156\40\151\156\40\162\x65\x73\160\157\156\163\145\x20\144\x6f\x65\163\x6e\x27\x74\40\155\x61\164\143\150\40\164\x68\145\40\x63\x75\x72\162\145\156\x74\40\x55\x52\x4c\56\x20\x44\145\163\164\x69\x6e\141\164\x69\x6f\x6e\40\x69\163\x20\42" . htmlspecialchars($by) . "\42\x2c\x20\143\165\x72\162\x65\x6e\x74\x20\125\122\114\40\151\x73\x20\42" . htmlspecialchars($X5) . "\42\x2e";
         exit;
-        VwU:
-        $zz = self::checkSign($o2, $XS, $f9, $tr);
-        return $zz;
+        bUu:
+        $Ov = self::checkSign($So, $j0, $Tk, $WF);
+        return $Ov;
     }
-    public static function checkSign($o2, $XS, $f9, $tr)
+    public static function checkSign($So, $j0, $Tk, $WF)
     {
-        $mG = $XS["\x43\x65\x72\x74\x69\x66\151\143\141\x74\x65\x73"];
-        if (count($mG) === 0) {
-            goto tse;
+        $GU = $j0["\x43\145\x72\x74\x69\x66\151\143\x61\x74\x65\163"];
+        if (count($GU) === 0) {
+            goto EXa;
         }
-        $Hy = array();
-        $Hy[] = $o2;
-        $CX = self::findCertificate($Hy, $mG, $tr);
-        if (!($CX == false)) {
-            goto pjM;
+        $Jd = array();
+        $Jd[] = $So;
+        $wg = self::findCertificate($Jd, $GU, $WF);
+        if (!($wg == false)) {
+            goto jYy;
         }
         return false;
-        pjM:
-        goto tnE;
-        tse:
-        $F0 = maybe_unserialize(get_option("\163\141\155\x6c\x5f\x78\x35\60\x39\137\143\x65\162\164\151\x66\151\143\x61\164\x65"));
-        $CX = $F0[$f9];
-        tnE:
-        $wy = NULL;
-        $WO = new XMLSecurityKey(XMLSecurityKey::RSA_SHA1, array("\x74\171\x70\145" => "\160\x75\x62\x6c\x69\x63"));
-        $WO->loadKey($CX);
+        jYy:
+        goto lEe;
+        EXa:
+        $Yb = maybe_unserialize(get_option("\163\x61\x6d\x6c\x5f\x78\x35\60\x39\137\143\x65\162\164\151\146\x69\143\x61\x74\145"));
+        $wg = $Yb[$Tk];
+        lEe:
+        $Is = NULL;
+        $mr = new XMLSecurityKey(XMLSecurityKey::RSA_SHA1, array("\164\171\160\x65" => "\160\x75\142\x6c\x69\143"));
+        $mr->loadKey($wg);
         try {
-            self::validateSignature($XS, $WO);
+            self::validateSignature($j0, $mr);
             return TRUE;
-        } catch (Exception $qc) {
-            $wy = $qc;
+        } catch (Exception $cN) {
+            $Is = $cN;
         }
-        if ($wy !== NULL) {
-            goto yqB;
+        if ($Is !== NULL) {
+            goto hNm;
         }
         return FALSE;
-        goto Z_u;
-        yqB:
-        throw $wy;
-        Z_u:
+        goto jMY;
+        hNm:
+        throw $Is;
+        jMY:
     }
-    public static function validateIssuerAndAudience($fe, $VC, $dl, $tr)
+    public static function mo_saml_is_valid_audience($ge, $g8)
     {
-        $Ai = current($fe->getAssertions())->getIssuer();
-        $q5 = current($fe->getAssertions());
-        $lQ = $q5->getValidAudiences();
-        if (strcmp($dl, $Ai) === 0) {
-            goto f2x;
+        $AX = current($ge->getAssertions());
+        $Hy = $AX->getValidAudiences();
+        if (empty($Hy)) {
+            goto U39;
         }
-        if ($tr == "\164\x65\163\164\x56\x61\154\151\144\x61\164\145" or $tr == "\164\x65\163\164\x4e\x65\167\x43\x65\162\164\x69\x66\x69\143\141\x74\145") {
-            goto Eg6;
+        if (!(is_array($Hy) && in_array($g8, $Hy, true))) {
+            goto qer;
         }
-        wp_die("\127\x65\40\143\x6f\x75\154\x64\x20\x6e\157\164\40\163\151\147\x6e\x20\x79\157\165\40\x69\x6e\56\x20\x50\154\145\x61\x73\x65\x20\143\157\156\x74\x61\143\x74\40\171\157\x75\x72\40\x41\x64\x6d\151\156\151\163\164\x72\141\164\157\x72", "\105\x72\x72\x6f\x72\40\72\x49\x73\x73\x75\145\x72\x20\143\x61\156\x6e\157\x74\x20\x62\145\40\x76\x65\162\151\146\151\145\144");
-        goto jrd;
-        Eg6:
-        ob_end_clean();
-        $DP = mo_options_error_constants::Error_issuer_not_verfied;
-        $aS = mo_options_error_constants::Cause_issuer_not_verfied;
-        echo "\x3c\144\x69\x76\40\163\164\171\154\x65\75\42\x66\157\156\164\55\x66\141\155\x69\x6c\x79\72\103\141\x6c\x69\x62\x72\151\73\160\141\x64\x64\x69\156\x67\x3a\60\x20\63\x25\x3b\x22\x3e";
-        echo "\x3c\144\x69\166\x20\x73\x74\x79\x6c\145\75\42\143\157\154\x6f\x72\x3a\x20\x23\x61\x39\x34\64\64\x32\73\x62\141\x63\153\147\162\157\165\156\144\x2d\143\x6f\x6c\157\162\72\40\43\146\62\144\145\144\145\x3b\x70\x61\x64\x64\x69\156\147\72\x20\x31\65\160\170\73\155\141\162\147\x69\x6e\55\142\157\164\x74\157\155\72\40\62\x30\160\170\x3b\x74\145\170\x74\x2d\141\154\151\147\x6e\x3a\x63\145\x6e\x74\x65\x72\73\142\x6f\x72\x64\x65\x72\72\61\160\170\40\163\157\154\151\144\x20\43\x45\66\102\x33\102\x32\73\x66\x6f\156\164\x2d\163\x69\172\x65\x3a\61\x38\160\x74\x3b\x22\x3e\40\x45\x52\122\117\122\x3c\x2f\x64\x69\x76\x3e\xa\x9\x9\x9\40\74\144\x69\166\x20\x73\164\171\x6c\x65\x3d\42\x63\157\x6c\157\x72\72\40\x23\x61\x39\64\x34\x34\x32\73\146\x6f\x6e\x74\x2d\x73\151\x7a\145\x3a\61\64\x70\164\73\40\155\141\x72\147\x69\x6e\55\142\x6f\164\x74\x6f\x6d\72\x32\x30\x70\x78\73\42\x3e\x3c\160\76\74\x73\x74\162\x6f\156\x67\76\x45\x72\x72\x6f\x72\72\x20\74\x2f\163\x74\162\157\156\147\x3e\x49\x73\163\x75\145\162\x20\x63\x61\x6e\x6e\157\164\x20\142\x65\x20\x76\x65\x72\151\x66\151\145\x64\x2e\x3c\57\x70\x3e\12\11\x9\x9\x20\x3c\x70\76\x50\x6c\145\x61\163\x65\40\143\x6f\156\164\141\x63\x74\40\x79\x6f\x75\x72\40\x61\144\x6d\151\156\151\163\164\x72\x61\164\x6f\x72\x20\x61\156\x64\x20\162\x65\160\x6f\162\x74\40\x74\150\x65\x20\x66\x6f\x6c\154\157\x77\151\x6e\147\x20\145\x72\x72\x6f\162\x3a\74\57\x70\x3e\xa\x9\11\11\x20\x3c\x70\x3e\x3c\163\164\162\x6f\156\147\76\x50\157\x73\163\151\x62\154\x65\x20\x43\x61\x75\163\x65\72\x20\74\x2f\x73\164\x72\x6f\x6e\x67\76\111\144\120\40\x45\x6e\x74\151\x74\x79\40\x49\104\40\143\157\x6e\146\151\x67\165\x72\x65\x64\40\x69\x6e\x20\164\x68\145\x20\160\x6c\x75\x67\151\156\40\x69\163\x20\151\x6e\143\x6f\162\162\145\x63\x74\x3c\x2f\x70\x3e\12\11\x9\11\40\x3c\160\76\74\x73\x74\162\x6f\156\x67\76\x45\156\x74\151\164\x79\40\111\x44\x20\x69\x6e\40\x53\101\x4d\114\40\x52\145\163\160\x6f\x6e\x73\145\x3a\x20\74\57\163\164\x72\x6f\156\x67\x3e" . esc_html($Ai) . "\x3c\160\x3e\xa\x9\11\11\x20\x3c\160\x3e\74\x73\164\162\157\156\x67\76\x45\x6e\164\151\x74\x79\x20\111\104\x20\143\x6f\x6e\146\151\147\x75\162\x65\144\x20\x69\x6e\x20\x74\150\145\40\x70\x6c\x75\x67\151\x6e\x3a\40\74\x2f\x73\164\x72\x6f\156\147\x3e" . esc_html($dl) . "\74\57\160\x3e\12\x9\x9\11\40\x3c\160\76\x3c\x73\164\x72\157\156\x67\76\x53\x6f\154\x75\164\x69\x6f\x6e\x3a\74\57\163\x74\162\x6f\156\147\76\x3c\x2f\160\76\xa\11\11\x9\11\74\157\154\76\xa\x9\11\x9\x9\x9\x3c\154\x69\x3e\x43\x6f\x70\171\x20\x74\x68\145\x20\x45\x6e\164\151\x74\171\40\111\x44\40\x6f\x66\x20\x53\x41\x4d\x4c\40\x52\145\x73\x70\157\x6e\x73\145\40\x66\x72\x6f\x6d\x20\141\x62\157\x76\145\x20\x61\x6e\x64\40\x70\x61\163\164\x65\40\151\x74\x20\151\156\x20\x45\x6e\164\151\x74\x79\x20\x49\104\x20\x6f\x72\x20\x49\x73\163\165\x65\162\x20\x66\x69\x65\154\x64\x20\165\156\x64\x65\162\x20\123\x65\162\x76\151\143\145\x20\120\x72\157\x76\x69\144\x65\162\40\123\145\x74\165\x70\40\x74\141\x62\56\x3c\57\154\x69\x3e\xa\11\11\11\11\x3c\x2f\x6f\x6c\x3e\xa\11\11\x9\x20\x3c\x2f\x64\151\x76\x3e\12\x9\x9\11\x20\x3c\144\x69\166\x20\x73\x74\171\x6c\145\75\42\x6d\141\x72\x67\151\x6e\x3a\x33\45\73\144\151\163\160\x6c\141\x79\x3a\x62\x6c\157\143\153\73\164\x65\x78\x74\x2d\x61\154\151\x67\x6e\72\x63\x65\x6e\x74\145\162\73\42\76\xa\11\11\x9\x20\x3c\144\x69\166\x20\163\x74\171\154\145\x3d\x22\x6d\141\x72\x67\x69\x6e\72\63\x25\x3b\144\x69\163\160\x6c\x61\x79\x3a\x62\x6c\x6f\143\153\73\x74\145\170\x74\55\x61\154\x69\x67\x6e\72\143\145\x6e\164\145\162\x3b\42\76\x3c\151\156\x70\165\x74\x20\163\x74\x79\154\145\x3d\42\x70\141\144\x64\x69\156\147\72\x31\x25\x3b\x77\151\144\164\x68\x3a\61\60\x30\160\170\73\142\x61\x63\x6b\147\162\x6f\165\156\x64\x3a\x20\x23\x30\60\71\61\103\104\x20\x6e\x6f\x6e\x65\x20\x72\145\x70\145\x61\x74\x20\x73\x63\162\x6f\154\x6c\40\x30\x25\x20\60\x25\x3b\x63\x75\x72\163\x6f\162\x3a\x20\x70\x6f\151\156\x74\145\x72\73\x66\157\x6e\164\55\x73\x69\172\145\x3a\x31\x35\160\x78\x3b\142\157\x72\144\145\x72\55\x77\151\x64\164\x68\72\x20\61\160\170\x3b\x62\157\x72\x64\x65\162\x2d\163\x74\x79\154\145\x3a\40\x73\x6f\154\x69\144\x3b\x62\x6f\x72\144\x65\162\x2d\162\x61\x64\151\165\x73\x3a\40\63\x70\170\x3b\x77\150\x69\x74\x65\x2d\163\160\x61\x63\145\x3a\x20\x6e\157\167\x72\141\160\73\x62\x6f\x78\x2d\163\x69\172\x69\156\x67\x3a\x20\142\157\x72\x64\x65\x72\x2d\142\157\x78\73\x62\x6f\x72\144\x65\162\x2d\143\157\x6c\157\162\72\40\x23\60\60\x37\x33\101\x41\73\x62\157\170\55\163\x68\x61\x64\x6f\167\72\x20\60\160\170\40\61\160\170\x20\x30\160\x78\x20\x72\x67\142\x61\x28\x31\62\60\54\x20\62\x30\x30\54\x20\x32\63\60\54\x20\60\x2e\66\51\x20\151\156\163\145\x74\x3b\x63\x6f\x6c\x6f\162\72\x20\43\x46\x46\x46\73\42\164\x79\160\145\75\x22\142\x75\x74\164\x6f\156\42\x20\x76\141\154\x75\x65\75\42\x44\x6f\156\145\42\x20\157\x6e\103\x6c\x69\x63\153\x3d\42\163\x65\154\x66\x2e\x63\x6c\157\163\x65\50\x29\x3b\x22\x3e\74\57\144\151\166\76";
-        mo_saml_download_logs($DP, $aS);
-        exit;
-        jrd:
-        goto GoW;
-        f2x:
-        if (empty($lQ)) {
-            goto B4u;
-        }
-        if (in_array($VC, $lQ, TRUE)) {
-            goto uvz;
-        }
-        if ($tr == "\x74\x65\163\x74\126\141\154\x69\x64\x61\x74\x65" or $tr == "\164\x65\x73\x74\116\145\167\x43\145\x72\164\151\x66\151\x63\x61\x74\145") {
-            goto IH7;
-        }
-        wp_die("\x57\145\40\x63\x6f\165\x6c\144\x20\156\157\x74\x20\x73\151\x67\156\x20\x79\x6f\165\40\x69\x6e\56\40\120\x6c\x65\141\163\145\40\143\x6f\156\x74\x61\143\164\x20\171\x6f\165\x72\x20\x41\144\x6d\151\x6e\x69\163\x74\x72\x61\x74\157\162", "\105\162\162\157\x72\40\x3a\111\156\x76\x61\154\x69\x64\x20\101\x75\x64\151\145\x6e\143\x65\x20\125\122\x49");
-        goto gdO;
-        IH7:
-        $DP = mo_options_error_constants::Error_invalid_audience;
-        $aS = mo_options_error_constants::Cause_invalid_audience;
-        ob_end_clean();
-        echo "\x3c\x64\151\x76\40\163\x74\x79\x6c\145\x3d\42\146\x6f\x6e\164\55\146\x61\x6d\151\x6c\171\x3a\x43\x61\154\151\x62\x72\x69\x3b\x70\141\x64\x64\x69\156\x67\72\x30\40\x33\x25\73\42\x3e";
-        echo "\74\x64\151\166\x20\x73\164\x79\x6c\145\75\42\x63\x6f\154\157\162\72\x20\43\x61\x39\x34\64\x34\62\73\x62\141\x63\153\x67\x72\157\x75\x6e\144\55\143\157\154\x6f\162\72\40\43\x66\62\x64\x65\144\x65\x3b\160\141\x64\x64\151\x6e\x67\x3a\40\61\x35\x70\x78\73\155\x61\x72\x67\151\x6e\x2d\x62\157\x74\164\x6f\x6d\x3a\x20\x32\60\x70\x78\x3b\164\145\170\x74\55\x61\x6c\151\x67\156\x3a\x63\x65\156\x74\x65\x72\x3b\142\157\x72\144\145\x72\x3a\x31\160\x78\40\163\x6f\x6c\x69\x64\40\43\x45\66\102\63\102\x32\x3b\146\157\x6e\164\55\x73\x69\172\145\72\61\x38\160\164\73\x22\x3e\x20\105\x52\x52\117\x52\x3c\57\x64\x69\166\x3e\12\x20\40\x20\x20\40\40\40\40\x20\40\40\x20\40\40\40\x20\40\x20\x20\x20\74\144\151\x76\40\163\164\171\x6c\145\x3d\x22\x63\x6f\x6c\x6f\162\72\40\43\141\x39\64\64\64\x32\x3b\x66\157\x6e\164\x2d\163\x69\172\145\x3a\61\x34\160\x74\x3b\40\x6d\141\162\147\x69\x6e\55\142\x6f\x74\164\x6f\155\x3a\62\60\160\x78\x3b\42\76\74\160\76\74\163\x74\x72\157\x6e\147\76\105\x72\162\x6f\162\72\x20\x3c\x2f\x73\x74\162\x6f\x6e\x67\76\x49\156\166\x61\x6c\x69\x64\x20\101\x75\144\151\x65\156\x63\x65\40\x55\x52\111\56\74\x2f\160\x3e\12\40\x20\40\x20\x20\x20\40\x20\x20\x20\40\x20\40\40\40\x20\x20\40\40\x20\74\160\76\120\154\x65\141\x73\145\x20\x63\157\156\x74\141\x63\164\x20\171\x6f\x75\162\40\x61\144\x6d\151\x6e\x69\163\x74\162\141\164\x6f\162\40\141\x6e\144\40\162\x65\160\x6f\162\x74\x20\x74\150\145\x20\146\x6f\154\x6c\x6f\167\151\x6e\147\x20\x65\x72\162\x6f\162\72\74\x2f\160\x3e\12\40\x20\40\x20\40\40\x20\x20\40\x20\40\x20\40\x20\x20\x20\40\40\40\40\74\160\x3e\74\163\164\x72\x6f\x6e\147\76\120\157\x73\163\x69\142\x6c\145\x20\103\141\x75\163\145\72\x20\x3c\x2f\x73\x74\x72\x6f\x6e\x67\76\124\150\x65\40\166\x61\x6c\x75\x65\40\x6f\146\x20\47\x41\165\144\151\145\156\x63\x65\40\125\122\111\x27\x20\x66\151\x65\154\144\40\157\x6e\x20\x49\144\145\156\x74\x69\164\171\x20\x50\162\x6f\x76\x69\x64\x65\x72\47\x73\x20\x73\151\144\145\x20\151\x73\x20\151\156\x63\x6f\162\x72\x65\x63\164\x3c\x2f\x70\76\xa\x20\40\40\40\x20\x20\40\40\40\x20\x20\x20\40\40\40\x20\40\40\40\x20\74\160\x3e\x45\170\x70\x65\x63\x74\x65\144\40\157\156\145\40\x6f\146\40\164\x68\x65\40\x41\165\x64\151\x65\x6e\x63\x65\x73\x20\164\157\x20\142\145\x3a\40" . esc_html($VC) . "\74\160\76\xa\11\11\x9\11\x9\x3c\x70\x3e\x3c\x73\164\x72\x6f\x6e\x67\x3e\x53\x6f\x6c\x75\164\x69\157\x6e\x3a\74\x2f\x73\x74\162\157\x6e\x67\x3e\74\x2f\160\76\xa\x9\11\x9\x9\x9\74\157\x6c\76\xa\x9\11\x9\11\x9\11\74\154\x69\76\103\157\160\171\40\x74\x68\x65\x20\x45\170\160\x65\x63\x74\145\x64\40\101\165\x64\151\145\156\x63\145\x20\125\x52\x49\40\x66\x72\x6f\155\40\141\142\x6f\166\x65\x20\x61\x6e\144\40\160\x61\x73\164\x65\x20\151\x74\40\151\156\40\x74\150\x65\40\x41\x75\144\151\145\x6e\143\x65\40\125\122\x49\40\146\x69\145\154\144\40\x61\164\x20\x49\144\145\x6e\164\151\x74\x79\40\120\162\157\166\x69\x64\x65\x72\x20\x73\x69\144\x65\56\x3c\57\154\151\x3e\12\11\11\x9\x9\11\x3c\x2f\x6f\154\x3e\12\x9\11\x9\11\11\x3c\x2f\144\151\x76\76\xa\40\40\40\40\x20\40\x20\x20\x20\x20\x20\40\40\40\x20\x20\40\x20\40\40\x3c\144\x69\x76\x20\163\x74\x79\154\145\x3d\x22\155\141\x72\x67\151\x6e\72\x33\45\73\x64\151\163\160\x6c\x61\x79\72\x62\154\157\x63\153\x3b\164\145\x78\x74\55\x61\x6c\x69\147\x6e\x3a\143\145\156\x74\145\162\73\42\x3e\xa\40\x20\x20\40\40\40\40\x20\40\x20\x20\x20\x20\40\40\x20\40\x20\x20\x20\x3c\144\151\166\40\163\x74\x79\154\x65\75\x22\155\141\162\x67\151\156\72\63\x25\x3b\x64\x69\x73\x70\x6c\x61\x79\x3a\x62\154\x6f\143\153\73\164\x65\x78\164\55\141\154\151\147\x6e\x3a\143\145\156\164\145\x72\73\42\76\x3c\x69\156\160\165\164\x20\x73\164\171\154\145\x3d\42\160\141\144\144\x69\156\x67\72\x31\x25\73\167\x69\144\164\150\x3a\x31\x30\60\160\x78\73\x62\141\143\x6b\x67\162\157\165\156\144\72\x20\x23\x30\x30\71\x31\x43\104\40\156\x6f\156\145\x20\162\x65\160\x65\141\164\40\163\143\x72\x6f\154\x6c\x20\60\45\x20\x30\x25\73\143\165\x72\x73\x6f\x72\72\40\160\157\x69\156\x74\145\x72\x3b\x66\157\156\164\x2d\163\x69\172\x65\72\61\x35\160\x78\73\142\x6f\162\144\145\x72\x2d\167\151\x64\x74\x68\x3a\x20\61\160\170\73\x62\157\x72\144\145\x72\55\x73\164\x79\x6c\x65\72\x20\163\x6f\154\x69\x64\73\142\x6f\162\x64\x65\162\x2d\x72\141\144\x69\x75\163\72\x20\x33\160\x78\x3b\167\150\151\164\145\55\163\160\141\143\145\72\x20\x6e\x6f\167\x72\141\160\73\x62\x6f\170\55\163\151\x7a\x69\x6e\x67\x3a\x20\x62\x6f\x72\x64\145\162\55\142\157\170\x3b\x62\157\x72\x64\145\x72\55\x63\157\x6c\157\162\72\40\x23\x30\60\67\x33\101\101\73\x62\x6f\x78\55\x73\x68\141\144\157\167\x3a\x20\x30\160\170\x20\x31\160\170\40\60\160\170\x20\x72\147\x62\141\50\x31\x32\60\x2c\40\62\60\x30\x2c\40\x32\63\x30\x2c\40\x30\x2e\66\51\40\151\156\x73\145\x74\x3b\143\x6f\x6c\157\162\x3a\x20\x23\106\x46\x46\x3b\x22\x74\171\x70\x65\x3d\x22\x62\x75\164\164\x6f\x6e\x22\x20\x76\x61\x6c\165\145\75\42\x44\157\156\x65\x22\x20\x6f\x6e\103\x6c\x69\143\153\75\x22\163\x65\154\x66\56\x63\154\x6f\163\145\50\51\x3b\x22\x3e\74\57\144\151\x76\76";
-        exit;
-        mo_saml_download_logs($DP, $aS);
-        gdO:
-        goto AEw;
-        uvz:
-        return TRUE;
-        AEw:
-        B4u:
-        GoW:
+        return true;
+        qer:
+        return false;
+        U39:
+        return true;
     }
-    private static function findCertificate(array $MZ, array $mG, $tr)
+    public static function mo_saml_get_saml_response_from_xml($Jl, $d2)
     {
-        $j6 = array();
-        foreach ($mG as $zM) {
-            $eA = strtolower(sha1(base64_decode($zM)));
-            if (in_array($eA, $MZ, TRUE)) {
-                goto Jak;
+        if ("\x74\145\x73\x74\x4e\145\167\x43\x65\x72\x74\151\x66\151\x63\141\x74\x65" === $d2) {
+            goto L29;
+        }
+        return new SAML2SPResponse($Jl, get_option("\x6d\x6f\x5f\x73\x61\155\x6c\x5f\143\165\x72\x72\x65\156\164\137\x63\x65\162\x74\x5f\x70\162\x69\166\141\x74\x65\x5f\153\145\x79"));
+        goto dnC;
+        L29:
+        $iS = file_get_contents(plugin_dir_path(__FILE__) . "\162\x65\163\x6f\x75\x72\143\145\163" . DIRECTORY_SEPARATOR . "\x6d\151\x6e\x69\157\162\141\x6e\147\x65\55\163\160\x2d\x63\x65\162\x74\151\146\151\143\141\164\x65\55\160\162\151\x76\x2e\153\x65\171");
+        return new SAML2SPResponse($Jl, $iS);
+        dnC:
+    }
+    public static function validateIssuer($vH, $n2, $WF)
+    {
+        $Og = current($vH->getAssertions())->getIssuer();
+        if (!(strcmp($n2, $Og) !== 0)) {
+            goto VmP;
+        }
+        if ($WF === "\x74\x65\163\164\126\x61\154\x69\144\x61\x74\145" or $WF === "\164\x65\163\x74\x4e\145\x77\103\x65\x72\x74\x69\x66\151\x63\141\x74\x65") {
+            goto e6y;
+        }
+        wp_die("\x57\x65\40\x63\157\165\154\144\x20\x6e\x6f\x74\x20\163\x69\x67\156\40\171\x6f\x75\40\151\156\56\40\x50\154\145\141\x73\145\40\143\x6f\x6e\164\x61\x63\164\x20\171\x6f\x75\x72\40\101\x64\x6d\x69\156\x69\163\x74\x72\141\x74\157\162", "\105\x72\x72\x6f\x72\40\72\x49\x73\163\165\145\162\x20\143\141\156\x6e\x6f\164\40\142\145\40\x76\145\162\151\146\x69\x65\144");
+        goto Gue;
+        e6y:
+        ob_end_clean();
+        $FO = Mo_Saml_Options_Error_Constants::ERROR_ISSUER_NOT_VERIFIED;
+        $of = Mo_Saml_Options_Error_Constants::CAUSE_ISSUER_NOT_VERIFIED;
+        echo "\74\x64\x69\x76\40\163\164\171\x6c\145\75\x22\146\157\x6e\x74\55\146\x61\x6d\x69\154\171\x3a\x43\x61\x6c\x69\142\162\x69\73\160\x61\x64\x64\x69\156\147\x3a\60\40\x33\x25\73\x22\x3e";
+        echo "\74\x64\x69\x76\x20\x73\164\171\x6c\145\x3d\x22\x63\157\x6c\x6f\162\72\x20\43\141\x39\x34\x34\64\x32\x3b\142\141\x63\x6b\x67\x72\x6f\x75\156\x64\55\143\x6f\154\157\162\72\40\43\x66\x32\144\x65\144\x65\73\160\x61\144\x64\x69\x6e\x67\72\x20\x31\65\x70\x78\x3b\x6d\141\162\147\151\156\55\142\x6f\164\x74\157\155\x3a\40\62\x30\x70\170\x3b\x74\x65\x78\x74\x2d\x61\154\151\147\x6e\72\x63\145\x6e\164\145\x72\73\142\157\162\144\145\x72\x3a\x31\160\170\40\163\157\x6c\151\144\x20\43\x45\66\102\x33\102\62\x3b\146\x6f\x6e\x74\55\163\x69\172\x65\x3a\x31\x38\160\164\x3b\x22\76\x20\x45\122\122\117\x52\x3c\57\144\151\x76\76\xd\12\x9\x9\11\x20\x3c\x64\x69\166\40\x73\x74\x79\154\145\75\x22\x63\x6f\154\157\162\x3a\x20\43\x61\71\64\64\x34\62\73\146\157\x6e\x74\x2d\163\151\x7a\145\72\x31\64\160\164\73\x20\x6d\141\x72\147\x69\156\x2d\142\157\164\164\157\x6d\72\x32\60\160\x78\73\42\x3e\74\x70\x3e\74\163\164\162\157\x6e\147\x3e\x45\x72\x72\157\162\72\x20\74\57\x73\x74\162\x6f\156\x67\76\x49\163\163\165\145\x72\x20\x63\x61\156\156\157\164\40\x62\145\40\x76\145\x72\151\146\x69\145\144\x2e\74\x2f\160\76\15\12\11\x9\x9\40\x3c\160\x3e\x50\x6c\x65\141\163\145\40\143\x6f\x6e\x74\141\x63\x74\x20\x79\x6f\x75\x72\x20\x61\x64\x6d\x69\x6e\x69\163\164\162\141\164\157\x72\x20\x61\x6e\144\x20\x72\x65\160\x6f\162\164\40\164\x68\145\40\146\157\x6c\x6c\x6f\x77\151\156\x67\40\x65\x72\x72\x6f\x72\x3a\74\57\x70\76\15\12\x9\x9\11\x20\x3c\x70\76\74\x73\x74\x72\x6f\x6e\147\76\120\x6f\x73\x73\x69\x62\x6c\x65\x20\x43\x61\x75\x73\x65\72\x20\x3c\x2f\x73\164\162\x6f\x6e\x67\76\x49\x64\x50\40\x45\156\164\x69\x74\171\40\111\104\x20\x63\157\x6e\146\151\x67\x75\162\x65\144\40\151\156\40\x74\150\x65\40\x70\x6c\165\x67\x69\156\40\x69\163\x20\151\156\x63\157\x72\162\145\x63\x74\x3c\57\160\x3e\15\xa\11\x9\x9\x20\x3c\160\x3e\74\x73\164\162\x6f\156\x67\x3e\x45\156\164\x69\164\171\40\111\104\40\151\x6e\40\123\101\x4d\114\40\122\x65\x73\160\x6f\x6e\163\145\x3a\x20\74\x2f\163\x74\162\x6f\x6e\x67\x3e" . esc_html($Og) . "\x3c\x70\76\15\xa\11\x9\x9\40\74\x70\x3e\x3c\163\x74\x72\157\156\x67\x3e\x45\x6e\164\151\164\171\x20\111\x44\x20\143\157\156\x66\x69\147\x75\162\145\x64\x20\151\x6e\40\164\x68\x65\x20\160\x6c\x75\147\151\x6e\72\40\x3c\x2f\163\x74\162\x6f\156\x67\x3e" . esc_html($n2) . "\74\x2f\x70\x3e\xd\xa\x9\x9\11\x20\x3c\x70\76\x3c\x73\164\x72\x6f\156\147\x3e\x53\157\x6c\165\x74\151\x6f\x6e\72\74\57\163\x74\x72\x6f\x6e\147\76\74\57\160\x3e\15\12\11\x9\x9\11\x3c\157\x6c\x3e\xd\xa\11\11\11\x9\11\x3c\x6c\151\x3e\103\x6f\x70\x79\40\164\150\145\x20\105\156\164\151\164\x79\x20\x49\x44\x20\157\146\x20\x53\101\115\114\40\122\145\x73\160\x6f\156\x73\x65\x20\x66\x72\157\155\x20\141\142\x6f\x76\145\40\x61\156\144\40\x70\x61\x73\x74\x65\x20\151\x74\x20\151\x6e\x20\105\x6e\164\151\164\x79\x20\111\x44\40\x6f\162\40\111\163\x73\x75\145\x72\x20\x66\x69\145\x6c\x64\x20\165\x6e\x64\145\162\x20\123\145\162\166\151\143\x65\x20\120\x72\x6f\x76\x69\144\x65\162\40\x53\x65\x74\165\x70\x20\164\141\142\56\x3c\57\154\x69\x3e\15\12\11\11\11\x9\x3c\57\x6f\154\x3e\xd\12\x9\11\11\x20\74\57\144\x69\166\76\xd\xa\11\x9\11\x20\x3c\144\151\166\x20\163\164\x79\154\x65\x3d\42\x6d\141\162\x67\151\156\72\x33\x25\73\144\151\x73\160\154\141\x79\x3a\142\154\157\x63\x6b\73\164\x65\x78\164\x2d\141\x6c\151\x67\156\x3a\143\145\156\x74\x65\162\x3b\x22\x3e\xd\12\11\11\11\x20\74\144\x69\x76\40\163\164\171\x6c\145\x3d\x22\155\141\x72\147\x69\x6e\x3a\63\45\x3b\144\151\x73\x70\154\141\171\x3a\x62\x6c\157\143\153\73\164\x65\170\164\x2d\x61\x6c\x69\x67\x6e\72\143\145\156\x74\x65\x72\x3b\x22\x3e\74\151\156\x70\165\164\x20\163\164\171\x6c\x65\75\x22\160\141\x64\x64\151\x6e\x67\72\x31\45\73\167\x69\x64\x74\150\x3a\x31\60\60\160\170\x3b\142\x61\x63\x6b\x67\x72\157\x75\156\x64\x3a\40\43\60\60\x39\61\x43\104\x20\x6e\157\156\145\40\x72\x65\160\145\141\164\x20\x73\143\162\x6f\x6c\154\x20\60\x25\40\60\x25\73\x63\165\x72\163\157\162\x3a\x20\160\157\151\x6e\x74\145\162\73\146\x6f\x6e\x74\x2d\163\151\x7a\145\x3a\x31\x35\x70\170\x3b\x62\157\x72\x64\145\162\55\x77\151\144\164\x68\x3a\40\61\160\170\73\x62\x6f\162\x64\x65\162\x2d\163\x74\171\x6c\x65\x3a\40\x73\x6f\x6c\x69\144\x3b\x62\157\x72\x64\145\162\x2d\x72\x61\144\151\165\163\72\40\x33\x70\x78\73\x77\150\151\164\145\55\163\x70\141\x63\145\x3a\x20\x6e\157\x77\162\141\x70\73\142\157\170\55\163\x69\x7a\x69\x6e\x67\x3a\x20\x62\x6f\x72\x64\x65\x72\x2d\x62\x6f\x78\x3b\x62\157\x72\144\x65\162\x2d\143\x6f\154\x6f\x72\x3a\x20\x23\x30\60\x37\x33\x41\x41\x3b\x62\x6f\170\x2d\x73\x68\141\x64\157\x77\72\40\x30\x70\x78\40\61\160\x78\x20\x30\x70\x78\40\x72\147\x62\x61\x28\x31\x32\60\54\x20\x32\x30\60\54\x20\62\x33\60\54\x20\60\56\66\x29\40\x69\156\x73\145\x74\73\x63\x6f\x6c\x6f\162\x3a\x20\x23\106\x46\x46\x3b\42\x74\x79\160\145\75\x22\x62\x75\x74\x74\x6f\x6e\42\x20\166\x61\154\x75\145\x3d\42\104\157\x6e\x65\42\x20\157\156\x43\154\x69\143\x6b\75\x22\163\x65\x6c\146\x2e\x63\154\x6f\163\145\50\51\73\42\76\74\57\x64\x69\x76\76";
+        mo_saml_download_logs($FO, $of);
+        exit;
+        Gue:
+        VmP:
+    }
+    private static function findCertificate(array $nb, array $GU, $WF)
+    {
+        $W0 = array();
+        foreach ($GU as $sp) {
+            $EL = strtolower(sha1(base64_decode($sp)));
+            if (in_array($EL, $nb, TRUE)) {
+                goto oFS;
             }
-            $j6[] = $eA;
+            $W0[] = $EL;
             return false;
-            Jak:
-            $iK = "\x2d\x2d\55\x2d\55\102\105\x47\111\x4e\40\x43\x45\122\x54\111\106\111\x43\x41\124\105\x2d\55\55\55\55\xa" . chunk_split($zM, 64) . "\x2d\55\55\55\x2d\105\x4e\104\x20\103\x45\x52\124\x49\106\x49\x43\x41\124\x45\x2d\55\55\x2d\55\12";
-            return $iK;
-            Vq5:
+            oFS:
+            $Tz = "\x2d\x2d\55\55\x2d\102\105\x47\111\116\40\103\105\x52\124\x49\106\111\x43\101\x54\x45\x2d\55\x2d\x2d\x2d\xa" . chunk_split($sp, 64) . "\55\55\55\55\x2d\x45\x4e\104\x20\x43\x45\x52\x54\x49\106\111\x43\101\124\x45\x2d\x2d\55\55\55\xa";
+            return $Tz;
+            bqz:
         }
-        o6k:
-        if ($tr == "\164\x65\163\x74\126\x61\x6c\x69\x64\x61\164\x65" or $tr == "\164\145\163\164\x4e\x65\167\x43\145\162\x74\151\146\151\x63\141\x74\145") {
-            goto Q76;
+        Tlg:
+        if ($WF === "\x74\145\163\x74\x56\x61\154\x69\x64\141\164\x65" or $WF === "\x74\x65\163\164\x4e\145\x77\x43\145\x72\164\x69\x66\151\143\141\164\145") {
+            goto rU6;
         }
-        wp_die("\x57\x65\x20\x63\157\165\x6c\144\40\x6e\157\x74\40\x73\151\x67\156\40\171\x6f\165\40\151\x6e\56\x20\x50\x6c\145\x61\163\145\40\x63\x6f\156\x74\x61\143\164\x20\171\x6f\165\162\x20\101\x64\155\151\156\x69\x73\164\x72\141\x74\157\162", "\105\x72\162\x6f\162\x20\72\x43\145\x72\164\151\x66\x69\x63\141\x74\x65\40\x6e\x6f\164\x20\146\157\x75\156\144");
-        goto u4U;
-        Q76:
-        $iK = "\x2d\55\55\x2d\55\102\x45\x47\x49\116\40\x43\x45\122\124\x49\106\111\103\x41\124\105\x2d\x2d\x2d\55\55\x3c\142\x72\76" . chunk_split($zM, 64) . "\74\142\x72\76\55\x2d\x2d\55\55\x45\116\x44\x20\103\105\x52\124\111\x46\111\103\101\124\105\x2d\55\55\55\55";
-        echo "\74\144\151\x76\40\163\x74\x79\x6c\145\x3d\x22\146\157\156\164\x2d\146\141\155\151\154\171\72\103\x61\154\151\x62\162\151\x3b\160\x61\x64\144\x69\156\x67\x3a\x30\x20\63\x25\73\x22\76";
-        echo "\74\x64\151\166\40\x73\164\x79\154\x65\75\x22\x63\x6f\154\157\x72\x3a\x20\x23\141\x39\64\x34\64\x32\73\x62\141\143\x6b\x67\x72\x6f\x75\x6e\x64\55\143\157\x6c\157\x72\72\x20\43\x66\x32\144\x65\144\x65\73\x70\x61\144\x64\x69\x6e\147\72\x20\61\x35\160\170\x3b\155\x61\162\147\151\156\x2d\x62\157\164\x74\x6f\155\x3a\40\62\x30\x70\x78\73\164\x65\x78\164\x2d\141\154\x69\x67\156\72\x63\145\x6e\x74\x65\x72\x3b\142\x6f\x72\x64\x65\162\72\61\160\x78\40\163\157\154\x69\x64\x20\43\x45\66\102\63\x42\x32\x3b\x66\x6f\x6e\x74\55\163\x69\x7a\x65\x3a\61\70\160\164\x3b\42\x3e\x20\105\122\122\x4f\x52\x3c\x2f\144\x69\x76\x3e\12\11\x9\11\74\x64\151\x76\40\163\164\x79\x6c\x65\x3d\42\143\x6f\x6c\157\162\x3a\40\43\x61\71\x34\64\64\x32\73\x66\x6f\x6e\164\55\163\x69\x7a\145\72\61\64\160\164\73\x20\155\x61\162\147\151\x6e\x2d\142\x6f\x74\164\157\155\x3a\62\x30\160\170\x3b\x22\x3e\x3c\160\x3e\74\163\x74\162\157\156\x67\76\105\162\x72\x6f\162\72\x20\x3c\57\x73\164\162\x6f\156\147\76\x55\x6e\141\142\154\145\x20\164\157\40\146\x69\156\x64\x20\x61\40\x63\145\162\164\x69\146\x69\x63\x61\164\145\x20\155\141\x74\143\x68\x69\156\147\x20\164\150\x65\40\143\157\156\146\151\x67\165\x72\x65\x64\x20\146\x69\x6e\147\x65\x72\x70\x72\151\x6e\x74\x2e\74\57\x70\76\12\11\x9\11\x3c\x70\76\120\x6c\x65\141\x73\x65\x20\x63\157\x6e\164\141\x63\164\x20\x79\x6f\165\162\x20\x61\144\x6d\151\x6e\x69\x73\x74\x72\x61\164\x6f\x72\x20\141\156\144\x20\162\145\160\x6f\x72\x74\x20\x74\150\x65\x20\x66\x6f\154\154\157\x77\x69\156\x67\x20\x65\162\x72\157\x72\72\x3c\57\160\76\xa\11\11\x9\74\x70\76\x3c\163\164\x72\157\156\x67\76\120\x6f\x73\x73\151\142\154\x65\x20\103\x61\165\163\145\72\x20\x3c\x2f\163\x74\x72\157\156\x67\x3e\x27\130\x2e\x35\60\x39\40\x43\x65\162\164\x69\x66\151\143\x61\x74\x65\47\40\x66\151\x65\x6c\x64\x20\151\156\x20\160\x6c\165\x67\x69\156\40\144\x6f\x65\163\x20\156\157\164\40\155\x61\164\143\150\40\164\150\x65\x20\x63\x65\x72\164\x69\x66\x69\x63\x61\x74\145\40\x66\157\165\x6e\x64\x20\x69\x6e\40\x53\x41\115\114\40\x52\145\163\160\157\x6e\163\x65\x2e\74\x2f\x70\76\12\x9\x9\11\74\160\76\x3c\x73\164\x72\x6f\156\147\76\103\145\162\164\151\146\x69\143\x61\164\145\40\x66\x6f\165\x6e\x64\x20\x69\156\40\x53\101\115\114\40\x52\x65\163\x70\x6f\156\163\145\x3a\40\x3c\x2f\163\x74\162\x6f\156\x67\x3e\x3c\x62\162\76\x3c\142\162\x3e" . $iK . "\x3c\57\x70\76\12\11\x9\11\11\x9\x3c\57\x64\151\x76\76\xa\11\11\x9\11\x9\x3c\144\151\x76\40\x73\164\171\154\x65\75\x22\155\141\162\x67\x69\x6e\72\x33\45\x3b\x64\151\x73\x70\154\x61\171\72\x62\x6c\157\143\x6b\x3b\164\x65\x78\x74\55\141\x6c\x69\x67\156\72\143\x65\156\164\145\162\x3b\x22\76\xa\11\11\x9\11\x9\74\x64\151\x76\40\163\164\171\x6c\145\75\x22\155\x61\x72\147\151\156\72\x33\x25\73\x64\x69\163\x70\154\x61\x79\x3a\142\154\x6f\143\x6b\x3b\x74\x65\x78\164\55\141\x6c\x69\147\156\72\143\x65\156\x74\145\x72\73\x22\76\74\151\x6e\160\165\x74\x20\163\164\x79\x6c\x65\75\x22\160\x61\x64\x64\x69\x6e\x67\72\61\x25\73\x77\151\144\164\x68\x3a\61\x30\x30\x70\x78\73\x62\141\143\153\x67\x72\157\165\x6e\x64\x3a\40\43\60\60\71\61\x43\x44\40\x6e\x6f\156\145\x20\x72\145\x70\145\141\164\40\163\x63\x72\x6f\x6c\x6c\40\60\x25\x20\60\x25\x3b\143\x75\x72\x73\157\162\72\x20\x70\157\151\x6e\164\145\162\x3b\x66\x6f\156\164\x2d\163\151\x7a\x65\x3a\61\65\x70\x78\x3b\x62\x6f\x72\x64\145\x72\x2d\x77\x69\x64\164\150\72\x20\61\x70\170\73\142\157\x72\x64\x65\x72\x2d\163\x74\171\x6c\x65\x3a\x20\x73\x6f\154\151\x64\x3b\x62\x6f\x72\144\x65\162\55\x72\141\x64\151\x75\x73\72\x20\63\160\170\73\167\150\x69\x74\145\55\163\x70\x61\x63\x65\x3a\x20\156\x6f\x77\x72\x61\160\73\x62\157\170\x2d\x73\151\x7a\151\x6e\147\x3a\x20\142\x6f\162\x64\x65\x72\x2d\142\x6f\x78\73\142\157\162\144\145\x72\55\143\x6f\x6c\157\x72\x3a\x20\x23\60\x30\67\63\101\101\73\x62\x6f\170\55\163\x68\x61\x64\x6f\167\72\40\60\160\170\40\61\160\170\40\x30\x70\x78\40\162\x67\142\141\50\61\x32\x30\54\40\x32\60\x30\x2c\40\62\63\60\x2c\x20\60\56\66\x29\40\x69\x6e\163\x65\x74\x3b\x63\x6f\154\x6f\x72\x3a\x20\43\106\x46\x46\73\42\x74\171\160\x65\75\x22\x62\165\x74\x74\x6f\x6e\42\x20\x76\141\x6c\165\145\x3d\x22\104\x6f\156\145\x22\x20\x6f\156\103\x6c\151\x63\153\x3d\42\163\x65\x6c\x66\56\x63\154\157\163\x65\50\x29\x3b\x22\76\74\57\144\x69\x76\76";
+        wp_die("\x57\x65\40\143\x6f\165\x6c\x64\x20\156\x6f\x74\x20\x73\151\147\x6e\x20\x79\157\x75\40\151\x6e\56\40\x50\x6c\145\141\163\145\x20\143\x6f\156\164\x61\143\164\x20\x79\157\165\162\40\101\144\155\151\x6e\x69\163\164\162\141\164\x6f\x72", "\105\x72\x72\x6f\x72\x20\x3a\x43\x65\162\x74\151\x66\151\143\141\164\145\40\x6e\157\x74\40\x66\x6f\x75\156\x64");
+        goto Klu;
+        rU6:
+        $Tz = "\55\x2d\55\x2d\x2d\x42\x45\107\x49\116\x20\x43\105\122\x54\111\x46\x49\x43\101\124\x45\x2d\55\x2d\55\55\x3c\142\162\x3e" . chunk_split($sp, 64) . "\x3c\x62\162\76\55\x2d\55\x2d\x2d\105\116\x44\40\x43\x45\122\x54\111\x46\x49\103\x41\124\x45\55\55\55\x2d\55";
+        echo "\74\144\x69\166\40\x73\164\x79\154\145\x3d\x22\146\157\156\x74\x2d\x66\x61\155\x69\154\171\72\x43\141\154\151\x62\162\x69\73\160\141\x64\x64\x69\156\x67\72\60\40\63\x25\73\42\76";
+        echo "\x3c\144\151\x76\x20\163\x74\171\154\x65\x3d\42\x63\x6f\x6c\157\162\72\x20\x23\x61\71\64\x34\64\62\x3b\x62\141\143\153\147\162\x6f\x75\x6e\x64\x2d\143\157\154\157\162\72\40\43\146\x32\144\145\144\x65\x3b\160\141\144\x64\151\x6e\147\72\x20\x31\65\160\x78\73\x6d\x61\162\x67\x69\156\x2d\x62\x6f\x74\164\x6f\155\x3a\x20\x32\60\x70\x78\73\x74\145\x78\164\55\x61\x6c\x69\x67\156\x3a\143\x65\x6e\164\x65\x72\73\142\x6f\x72\144\145\x72\x3a\61\x70\x78\40\x73\157\x6c\151\x64\40\x23\105\66\x42\63\102\62\73\x66\x6f\156\164\x2d\163\x69\172\x65\72\61\x38\160\x74\x3b\x22\x3e\x20\x45\x52\x52\117\x52\74\x2f\144\x69\166\76\15\12\x9\11\11\x3c\144\x69\166\40\163\164\x79\154\145\75\x22\143\157\x6c\x6f\x72\x3a\40\x23\141\71\64\x34\x34\62\x3b\146\157\x6e\164\55\163\x69\172\x65\72\61\64\160\164\73\x20\x6d\141\x72\x67\x69\156\x2d\x62\157\164\x74\157\x6d\72\62\60\x70\170\x3b\42\x3e\x3c\160\76\x3c\163\164\162\157\x6e\147\x3e\105\x72\162\157\162\x3a\x20\x3c\x2f\163\164\x72\x6f\x6e\x67\76\125\x6e\141\142\x6c\x65\40\x74\x6f\x20\146\151\156\144\x20\x61\40\143\x65\162\x74\151\x66\151\x63\141\164\145\40\x6d\141\164\x63\x68\x69\156\147\x20\164\x68\145\40\143\157\x6e\146\151\147\165\162\x65\144\x20\x66\151\156\x67\x65\x72\160\x72\151\x6e\x74\x2e\x3c\57\160\x3e\xd\12\11\x9\x9\74\x70\x3e\x50\x6c\145\x61\163\x65\x20\143\157\156\164\x61\x63\x74\40\171\x6f\165\162\40\141\144\x6d\151\156\x69\163\x74\x72\141\164\157\x72\x20\141\x6e\144\40\x72\145\x70\x6f\162\x74\x20\164\150\x65\40\146\157\154\154\157\x77\x69\156\147\x20\145\162\162\157\162\x3a\x3c\57\x70\76\15\xa\11\11\11\x3c\160\76\74\x73\x74\162\157\156\147\x3e\x50\x6f\163\163\151\x62\x6c\x65\x20\103\x61\x75\x73\145\x3a\x20\x3c\x2f\x73\164\162\157\156\x67\76\47\x58\x2e\x35\60\x39\x20\103\145\x72\x74\151\146\151\x63\141\x74\x65\47\x20\x66\151\145\x6c\x64\x20\x69\x6e\x20\160\x6c\165\147\x69\x6e\x20\144\157\x65\x73\x20\x6e\x6f\x74\40\x6d\141\164\143\x68\40\164\150\x65\40\x63\145\x72\x74\151\x66\151\x63\x61\x74\145\x20\x66\x6f\165\156\144\x20\x69\x6e\x20\x53\101\x4d\114\x20\122\145\x73\160\157\156\163\x65\x2e\74\57\160\x3e\15\xa\x9\x9\11\x3c\x70\76\74\163\x74\162\157\x6e\147\76\103\145\x72\x74\x69\x66\151\143\141\164\145\40\x66\x6f\x75\x6e\144\40\x69\156\40\x53\101\115\x4c\40\122\145\x73\x70\157\x6e\x73\145\72\40\x3c\57\x73\x74\x72\x6f\156\147\x3e\x3c\x62\x72\76\74\142\x72\76" . $Tz . "\74\57\160\x3e\15\xa\11\x9\11\11\x9\x3c\x2f\144\x69\x76\x3e\15\xa\11\x9\x9\x9\11\x3c\144\151\x76\x20\x73\164\x79\154\x65\75\x22\x6d\141\x72\147\x69\x6e\72\63\45\73\144\x69\x73\160\x6c\x61\171\72\x62\154\x6f\143\153\73\164\145\x78\x74\55\x61\x6c\151\147\156\72\143\x65\x6e\164\x65\x72\x3b\x22\x3e\15\12\11\x9\11\11\11\x3c\144\x69\166\40\x73\164\171\154\145\x3d\42\155\141\x72\147\151\x6e\x3a\63\x25\73\x64\151\163\x70\154\x61\x79\x3a\142\154\157\x63\x6b\73\x74\145\x78\164\x2d\141\154\x69\x67\156\72\143\x65\x6e\x74\145\x72\73\x22\76\74\151\x6e\x70\165\164\40\163\x74\171\x6c\x65\x3d\42\160\x61\x64\x64\x69\156\147\x3a\61\45\73\x77\151\144\x74\x68\72\61\60\60\x70\170\73\x62\x61\x63\153\x67\x72\157\x75\x6e\x64\72\x20\43\x30\x30\71\61\103\x44\x20\x6e\157\x6e\x65\40\162\145\x70\145\x61\x74\x20\163\x63\162\x6f\x6c\154\x20\x30\x25\x20\x30\45\x3b\143\165\162\x73\157\162\x3a\x20\x70\x6f\151\156\164\x65\162\x3b\146\x6f\156\164\x2d\163\151\172\145\x3a\61\65\160\x78\x3b\142\157\162\144\x65\x72\x2d\x77\151\144\x74\150\72\40\61\x70\x78\73\142\157\162\x64\x65\x72\55\163\x74\x79\x6c\145\72\x20\163\157\x6c\x69\144\x3b\142\157\x72\x64\145\162\x2d\162\x61\x64\151\165\163\x3a\x20\x33\x70\x78\x3b\167\150\151\164\145\55\x73\x70\141\143\145\72\40\156\x6f\167\x72\141\160\73\142\157\x78\55\x73\x69\x7a\x69\x6e\x67\x3a\40\x62\x6f\162\x64\x65\x72\x2d\142\x6f\x78\x3b\142\157\x72\x64\x65\x72\55\x63\x6f\x6c\x6f\162\x3a\x20\x23\60\60\x37\x33\101\x41\x3b\x62\157\x78\55\x73\150\141\144\x6f\167\72\40\60\160\x78\x20\x31\x70\x78\x20\x30\160\x78\x20\x72\147\x62\141\50\x31\x32\x30\54\40\62\60\60\x2c\40\x32\x33\60\54\x20\60\x2e\66\51\40\151\x6e\x73\145\164\73\143\157\x6c\157\x72\72\x20\x23\106\x46\106\73\x22\x74\x79\160\x65\75\42\142\x75\164\164\x6f\156\42\40\166\x61\154\x75\x65\75\42\104\157\x6e\145\x22\x20\x6f\156\x43\x6c\x69\143\x6b\75\42\x73\x65\154\146\56\x63\x6c\157\x73\145\x28\51\x3b\x22\x3e\x3c\57\x64\x69\166\x3e";
         exit;
-        u4U:
+        Klu:
     }
-    private static function doDecryptElement(DOMElement $nT, XMLSecurityKey $lU, array &$io)
+    private static function doDecryptElement(DOMElement $Hw, XMLSecurityKey $fM, array &$a6)
     {
-        $NA = new XMLSecEnc();
-        $NA->setNode($nT);
-        $NA->type = $nT->getAttribute("\x54\x79\160\x65");
-        $Z3 = $NA->locateKey($nT);
-        if ($Z3) {
-            goto o9H;
+        $tM = new XMLSecEnc();
+        $tM->setNode($Hw);
+        $tM->type = $Hw->getAttribute("\x54\171\160\145");
+        $Y0 = $tM->locateKey($Hw);
+        if ($Y0) {
+            goto mec;
         }
-        echo sprintf("\x43\157\x75\154\144\40\156\157\164\40\154\157\143\141\164\145\x20\153\x65\x79\x20\x61\154\147\157\162\x69\164\150\155\x20\x69\156\40\145\156\x63\x72\171\x70\x74\x65\x64\40\x64\x61\164\141\56");
+        echo sprintf("\103\x6f\165\154\x64\40\x6e\157\164\40\154\157\x63\x61\164\x65\x20\x6b\x65\x79\40\141\154\x67\157\x72\x69\164\x68\x6d\x20\151\156\x20\145\x6e\143\162\x79\x70\x74\145\144\40\x64\141\164\141\56");
         exit;
-        o9H:
-        $kS = $NA->locateKeyInfo($Z3);
-        if ($kS) {
-            goto dz9;
+        mec:
+        $gE = $tM->locateKeyInfo($Y0);
+        if ($gE) {
+            goto mfk;
         }
-        echo sprintf("\x43\157\165\x6c\144\x20\x6e\x6f\164\40\x6c\157\x63\x61\164\x65\x20\74\144\x73\x69\147\x3a\x4b\145\171\x49\x6e\x66\157\76\40\146\x6f\162\40\164\150\145\40\145\x6e\143\x72\x79\160\164\x65\x64\x20\x6b\x65\x79\x2e");
+        echo sprintf("\103\x6f\x75\154\x64\x20\156\157\164\40\x6c\x6f\x63\x61\164\x65\x20\x3c\x64\x73\x69\x67\x3a\113\x65\x79\111\156\x66\x6f\76\40\x66\x6f\x72\40\164\x68\x65\40\145\x6e\143\x72\x79\160\x74\x65\x64\40\153\145\171\56");
         exit;
-        dz9:
-        $Wb = $lU->getAlgorith();
-        if ($kS->isEncrypted) {
-            goto YWW;
+        mfk:
+        $d1 = $fM->getAlgorith();
+        if ($gE->isEncrypted) {
+            goto KPm;
         }
-        $NN = $Z3->getAlgorith();
-        if (!($Wb !== $NN)) {
-            goto xs8;
+        $wY = $Y0->getAlgorith();
+        if (!($d1 !== $wY)) {
+            goto H87;
         }
-        echo esc_html(sprintf("\101\154\147\x6f\162\151\164\150\155\40\x6d\151\163\x6d\141\x74\143\150\40\142\145\164\x77\145\x65\156\40\x69\x6e\x70\x75\164\x20\153\145\x79\x20\x61\156\x64\40\x6b\145\x79\40\x69\x6e\x20\x6d\x65\x73\x73\141\x67\145\x2e\40" . "\113\145\171\x20\x77\141\163\x3a\40" . var_export($Wb, TRUE) . "\x3b\40\155\x65\x73\x73\141\147\x65\x20\167\x61\163\72\x20" . var_export($NN, TRUE)));
+        echo esc_html(sprintf("\x41\154\147\x6f\x72\151\x74\150\155\40\x6d\151\x73\x6d\141\164\x63\150\x20\x62\145\x74\167\145\145\x6e\40\151\x6e\160\x75\x74\40\153\x65\171\x20\x61\x6e\x64\x20\x6b\x65\171\40\151\156\40\155\145\x73\x73\141\x67\x65\x2e\40" . "\113\145\171\x20\x77\x61\x73\x3a\40" . var_export($d1, TRUE) . "\x3b\x20\155\145\163\163\x61\x67\x65\x20\167\141\x73\x3a\40" . var_export($wY, TRUE)));
         exit;
-        xs8:
-        $Z3 = $lU;
-        goto xZ6;
-        YWW:
-        $tj = $kS->getAlgorith();
-        if (!in_array($tj, $io, TRUE)) {
-            goto Tpt;
+        H87:
+        $Y0 = $fM;
+        goto txs;
+        KPm:
+        $iF = $gE->getAlgorith();
+        if (!in_array($iF, $a6, TRUE)) {
+            goto yKH;
         }
-        echo esc_html(sprintf("\x41\154\147\157\x72\x69\x74\150\155\x20\x64\x69\163\141\142\154\x65\144\x3a\40" . var_export($tj, TRUE)));
+        echo esc_html(sprintf("\x41\x6c\x67\x6f\162\151\164\x68\x6d\x20\x64\x69\163\141\142\154\x65\x64\72\x20" . var_export($iF, TRUE)));
         exit;
-        Tpt:
-        if (!($tj === XMLSecurityKey::RSA_OAEP_MGF1P && $Wb === XMLSecurityKey::RSA_1_5)) {
-            goto w6z;
+        yKH:
+        if (!($iF === XMLSecurityKey::RSA_OAEP_MGF1P && $d1 === XMLSecurityKey::RSA_1_5)) {
+            goto aCs;
         }
-        $Wb = XMLSecurityKey::RSA_OAEP_MGF1P;
-        w6z:
-        if (!($Wb !== $tj)) {
-            goto NE5;
+        $d1 = XMLSecurityKey::RSA_OAEP_MGF1P;
+        aCs:
+        if (!($d1 !== $iF)) {
+            goto Vam;
         }
-        echo esc_html(sprintf("\x41\154\147\157\162\x69\x74\150\x6d\x20\x6d\151\163\155\x61\164\143\x68\x20\142\x65\x74\x77\x65\x65\x6e\x20\151\156\160\x75\164\x20\153\x65\171\x20\141\x6e\x64\40\153\145\171\40\x75\163\145\x64\x20\x74\x6f\40\x65\x6e\143\x72\x79\x70\164\40" . "\x20\164\x68\145\40\x73\171\x6d\155\145\164\162\151\143\x20\x6b\x65\x79\x20\x66\x6f\162\x20\x74\x68\x65\x20\x6d\145\x73\x73\141\x67\x65\56\x20\113\145\x79\x20\x77\x61\163\x3a\40" . var_export($Wb, TRUE) . "\x3b\x20\x6d\145\163\x73\141\147\145\x20\167\141\163\72\40" . var_export($tj, TRUE)));
+        echo esc_html(sprintf("\101\x6c\147\x6f\x72\151\164\x68\155\40\155\x69\163\x6d\x61\x74\143\150\40\142\x65\x74\167\x65\145\x6e\x20\151\156\160\x75\x74\x20\x6b\145\171\40\141\x6e\x64\x20\153\x65\171\x20\x75\163\145\144\40\x74\x6f\x20\x65\156\143\x72\x79\160\164\40" . "\40\164\x68\145\x20\x73\x79\155\155\145\x74\162\151\x63\x20\153\x65\171\x20\146\x6f\162\x20\164\x68\145\x20\155\145\163\x73\x61\147\145\x2e\40\x4b\145\x79\40\167\141\163\72\x20" . var_export($d1, TRUE) . "\73\x20\155\145\x73\163\141\147\145\x20\167\141\163\x3a\x20" . var_export($iF, TRUE)));
         exit;
-        NE5:
-        $gV = $kS->encryptedCtx;
-        $kS->key = $lU->key;
-        $fn = $Z3->getSymmetricKeySize();
-        if (!($fn === NULL)) {
-            goto kwG;
+        Vam:
+        $cQ = $gE->encryptedCtx;
+        $gE->key = $fM->key;
+        $JT = $Y0->getSymmetricKeySize();
+        if (!($JT === NULL)) {
+            goto W69;
         }
-        echo esc_html(sprintf("\x55\156\153\x6e\x6f\167\156\40\153\x65\171\x20\x73\x69\x7a\x65\x20\x66\157\x72\x20\145\156\x63\x72\x79\x70\x74\151\x6f\156\x20\x61\x6c\147\157\x72\151\x74\150\155\72\x20" . var_export($Z3->type, TRUE)));
+        echo esc_html(sprintf("\x55\x6e\153\x6e\157\167\x6e\x20\153\x65\171\x20\x73\151\x7a\x65\x20\x66\x6f\162\x20\x65\x6e\x63\162\171\160\164\151\157\156\x20\141\154\x67\157\162\151\164\150\155\72\x20" . var_export($Y0->type, TRUE)));
         exit;
-        kwG:
+        W69:
         try {
-            $WO = $gV->decryptKey($kS);
-            if (!(strlen($WO) != $fn)) {
-                goto zXT;
+            $mr = $cQ->decryptKey($gE);
+            if (!(strlen($mr) != $JT)) {
+                goto Hse;
             }
-            echo esc_html(sprintf("\125\x6e\145\x78\160\x65\143\x74\145\144\40\x6b\145\171\40\x73\151\x7a\145\40\x28" . strlen($WO) * 8 . "\142\x69\164\x73\51\x20\x66\157\162\40\x65\x6e\x63\162\171\160\164\151\x6f\156\40\141\x6c\x67\x6f\x72\x69\x74\x68\155\x3a\x20" . var_export($Z3->type, TRUE)));
+            echo esc_html(sprintf("\125\156\145\170\160\145\x63\164\145\144\x20\x6b\145\x79\40\163\x69\172\x65\x20\x28" . strlen($mr) * 8 . "\142\151\164\x73\x29\x20\146\x6f\x72\x20\x65\x6e\x63\x72\171\x70\x74\151\157\156\x20\141\154\147\x6f\162\x69\x74\150\155\72\40" . var_export($Y0->type, TRUE)));
             exit;
-            zXT:
-        } catch (Exception $qc) {
-            $kN = $gV->getCipherValue();
-            $rq = openssl_pkey_get_details($kS->key);
-            $rq = sha1(serialize($rq), TRUE);
-            $WO = sha1($kN . $rq, TRUE);
-            if (strlen($WO) > $fn) {
-                goto gpv;
+            Hse:
+        } catch (Exception $cN) {
+            $VQ = $cQ->getCipherValue();
+            $GJ = openssl_pkey_get_details($gE->key);
+            $GJ = sha1(serialize($GJ), TRUE);
+            $mr = sha1($VQ . $GJ, TRUE);
+            if (strlen($mr) > $JT) {
+                goto od8;
             }
-            if (strlen($WO) < $fn) {
-                goto bVN;
+            if (strlen($mr) < $JT) {
+                goto hs8;
             }
-            goto jb9;
-            gpv:
-            $WO = substr($WO, 0, $fn);
-            goto jb9;
-            bVN:
-            $WO = str_pad($WO, $fn);
-            jb9:
+            goto L1o;
+            od8:
+            $mr = substr($mr, 0, $JT);
+            goto L1o;
+            hs8:
+            $mr = str_pad($mr, $JT);
+            L1o:
         }
-        $Z3->loadkey($WO);
-        xZ6:
-        $by = $Z3->getAlgorith();
-        if (!in_array($by, $io, TRUE)) {
-            goto fHK;
+        $Y0->loadkey($mr);
+        txs:
+        $iL = $Y0->getAlgorith();
+        if (!in_array($iL, $a6, TRUE)) {
+            goto EuH;
         }
-        echo esc_html(sprintf("\101\154\147\157\162\x69\164\150\x6d\x20\x64\151\163\x61\142\x6c\x65\x64\x3a\40" . var_export($by, TRUE)));
+        echo esc_html(sprintf("\101\154\147\157\162\x69\x74\x68\155\40\x64\151\x73\141\x62\154\145\144\72\x20" . var_export($iL, TRUE)));
         exit;
-        fHK:
-        $dK = $NA->decryptNode($Z3, FALSE);
-        $l3 = "\x3c\x72\x6f\157\164\x20\170\155\x6c\156\x73\72\163\141\155\x6c\x3d\x22\x75\x72\x6e\x3a\x6f\141\163\x69\x73\72\x6e\x61\x6d\x65\163\x3a\x74\x63\x3a\x53\101\115\114\72\x32\x2e\x30\72\x61\163\163\x65\162\164\x69\157\x6e\42\40" . "\170\155\x6c\x6e\x73\x3a\x78\163\x69\75\42\x68\x74\x74\x70\x3a\x2f\57\167\167\167\56\x77\63\x2e\157\162\x67\57\x32\x30\x30\x31\x2f\130\x4d\x4c\123\143\x68\x65\155\x61\55\151\x6e\163\x74\141\156\143\145\42\x3e" . $dK . "\x3c\x2f\162\x6f\157\164\x3e";
-        $y7 = new DOMDocument();
-        if (@$y7->loadXML($l3)) {
-            goto PzL;
+        EuH:
+        $qQ = $tM->decryptNode($Y0, FALSE);
+        $jn = "\x3c\x72\157\x6f\164\x20\170\x6d\x6c\x6e\x73\x3a\163\x61\x6d\x6c\75\42\x75\162\156\x3a\157\x61\163\x69\x73\x3a\156\x61\x6d\145\x73\x3a\x74\x63\72\123\x41\x4d\114\x3a\62\x2e\60\72\141\x73\x73\145\x72\x74\151\157\156\42\40" . "\170\155\x6c\x6e\163\72\170\163\x69\75\x22\x68\164\164\x70\72\57\57\x77\167\x77\56\x77\x33\x2e\x6f\x72\147\57\62\x30\x30\61\57\x58\115\x4c\123\143\x68\145\155\141\x2d\151\x6e\163\x74\x61\x6e\143\x65\42\76" . $qQ . "\74\57\162\157\157\164\76";
+        $Xj = new DOMDocument();
+        if (@$Xj->loadXML($jn)) {
+            goto Vn0;
         }
-        throw new Exception("\x46\141\x69\154\145\144\x20\164\x6f\40\x70\x61\162\163\x65\x20\144\145\x63\x72\x79\160\x74\145\x64\40\x58\115\x4c\56\40\115\x61\171\142\x65\40\x74\150\x65\x20\x77\x72\x6f\x6e\147\x20\163\x68\141\x72\x65\x64\x6b\x65\171\40\167\x61\163\40\x75\x73\145\x64\x3f");
-        PzL:
-        $pg = $y7->firstChild->firstChild;
-        if (!($pg === NULL)) {
-            goto E_3;
+        throw new Exception("\x46\141\x69\x6c\x65\x64\x20\x74\x6f\40\x70\141\x72\x73\x65\x20\x64\145\143\x72\171\160\x74\145\144\40\x58\x4d\114\56\40\x4d\x61\x79\142\x65\x20\164\150\x65\40\x77\162\x6f\156\147\x20\x73\150\x61\162\x65\x64\153\145\171\40\x77\141\x73\x20\x75\163\x65\144\x3f");
+        Vn0:
+        $Bs = $Xj->firstChild->firstChild;
+        if (!($Bs === NULL)) {
+            goto AVA;
         }
-        echo sprintf("\x4d\x69\163\x73\151\x6e\147\40\x65\x6e\143\x72\x79\x70\x74\x65\x64\40\145\154\x65\155\x65\x6e\164\56");
-        throw new Exception("\x4d\x69\163\x73\x69\x6e\x67\x20\145\156\143\x72\x79\160\164\145\144\40\x65\154\145\x6d\x65\x6e\x74\56");
-        E_3:
-        if ($pg instanceof DOMElement) {
-            goto lxp;
+        echo sprintf("\115\x69\163\x73\151\156\147\40\x65\156\143\162\x79\x70\x74\145\x64\x20\x65\x6c\x65\x6d\145\x6e\164\x2e");
+        throw new Exception("\115\x69\163\x73\151\156\147\x20\x65\x6e\x63\162\171\160\x74\145\144\x20\x65\154\x65\155\145\x6e\164\56");
+        AVA:
+        if ($Bs instanceof DOMElement) {
+            goto AOw;
         }
-        echo sprintf("\x44\x65\x63\162\x79\160\164\145\144\x20\x65\x6c\x65\x6d\145\156\x74\40\x77\x61\x73\x20\156\x6f\x74\40\x61\143\x74\165\x61\x6c\154\x79\40\x61\40\x44\x4f\x4d\105\154\145\155\145\156\x74\56");
-        lxp:
-        return $pg;
+        echo sprintf("\104\145\x63\x72\171\160\164\145\144\x20\x65\x6c\145\155\x65\156\x74\x20\167\141\163\40\x6e\157\164\x20\x61\x63\x74\x75\x61\154\x6c\171\x20\141\x20\x44\117\115\x45\154\145\x6d\x65\156\x74\56");
+        AOw:
+        return $Bs;
     }
-    public static function decryptElement(DOMElement $nT, XMLSecurityKey $lU, array $io = array(), XMLSecurityKey $Ce = NULL)
+    public static function decryptElement(DOMElement $Hw, XMLSecurityKey $fM, array $a6 = array(), XMLSecurityKey $T7 = NULL, $WF = null)
     {
         try {
-            return self::doDecryptElement($nT, $lU, $io);
-        } catch (Exception $qc) {
+            return self::doDecryptElement($Hw, $fM, $a6);
+        } catch (Exception $cN) {
             try {
-            } catch (Exception $wc) {
+            } catch (Exception $kS) {
             }
-            echo "\74\x64\151\x76\x20\163\x74\171\x6c\145\x3d\42\x66\x6f\x6e\x74\55\x66\x61\x6d\x69\154\171\72\103\141\154\151\142\x72\x69\x3b\160\x61\x64\144\x69\156\x67\72\60\40\x33\45\73\42\76";
-            echo "\x3c\144\x69\166\40\163\x74\171\154\x65\75\42\143\157\x6c\x6f\x72\x3a\40\43\141\71\64\64\x34\x32\x3b\x62\x61\x63\x6b\147\162\157\x75\156\144\x2d\x63\157\x6c\x6f\x72\72\40\43\146\62\144\x65\144\145\73\160\141\x64\144\x69\156\x67\72\x20\61\x35\x70\170\x3b\x6d\141\x72\x67\x69\156\55\x62\157\x74\164\x6f\155\72\x20\62\60\x70\170\x3b\164\x65\170\x74\x2d\141\154\151\x67\x6e\x3a\x63\145\x6e\164\x65\x72\73\142\157\x72\x64\x65\x72\72\61\160\x78\x20\x73\x6f\154\151\x64\x20\x23\x45\x36\102\x33\102\x32\73\x66\157\156\x74\x2d\x73\151\172\x65\x3a\61\70\x70\x74\73\42\76\x20\x45\x52\x52\117\x52\74\x2f\x64\x69\166\76\xa\40\x20\x20\40\40\40\40\x20\40\40\x20\40\x20\x20\x20\40\40\x20\x20\x20\74\144\151\x76\x20\x73\164\x79\154\x65\75\x22\x63\x6f\154\157\162\72\40\43\x61\x39\64\64\x34\x32\x3b\146\157\x6e\164\55\x73\151\x7a\145\72\61\64\160\x74\73\40\x6d\141\162\147\151\x6e\x2d\x62\157\164\164\x6f\x6d\x3a\62\x30\x70\x78\x3b\x22\76\x3c\160\x3e\74\163\164\162\x6f\156\x67\76\105\x72\162\157\x72\x3a\x20\74\57\x73\x74\162\157\x6e\x67\x3e\x49\x6e\x76\141\154\151\x64\40\x41\x75\144\151\x65\156\143\145\x20\125\122\111\x2e\74\57\160\x3e\xa\x20\x20\x20\x20\40\40\40\40\40\x20\40\40\40\40\40\40\x20\40\40\x20\74\x70\76\120\154\x65\141\x73\145\x20\143\157\x6e\164\141\143\164\40\x79\157\x75\162\40\141\144\155\x69\156\151\163\164\x72\x61\164\157\x72\x20\141\156\144\40\x72\x65\x70\157\x72\x74\x20\x74\x68\x65\40\x66\157\x6c\x6c\x6f\x77\151\x6e\147\40\145\162\x72\x6f\x72\72\x3c\57\160\76\12\40\x20\40\40\40\40\40\40\x20\40\x20\40\40\40\x20\x20\40\40\40\40\x3c\x70\76\x3c\163\x74\162\x6f\156\147\x3e\120\x6f\163\x73\151\x62\154\x65\x20\103\141\x75\x73\145\x3a\x20\x3c\57\x73\x74\x72\157\x6e\147\76\x49\156\143\x6f\x72\x72\145\143\x74\x20\143\145\162\x74\x69\146\151\x63\x61\164\145\40\141\144\x64\145\x64\x20\157\x6e\x20\164\150\145\x20\x49\144\x65\156\x74\151\x74\x79\x20\x50\x72\157\166\151\144\x65\x72\40\x66\157\x72\x20\x45\156\143\x72\x79\x70\x74\151\157\156\x3c\x2f\x70\76\xa\x9\11\11\11\11\x3c\160\76\74\163\x74\x72\x6f\156\147\76\123\x6f\154\165\x74\151\x6f\x6e\72\x3c\x2f\x73\x74\162\x6f\156\x67\x3e\40\x50\x6c\x65\x61\163\145\x20\143\150\x65\143\x6b\x20\x69\146\40\164\x68\x65\x20\143\145\162\x74\151\146\x69\143\141\164\x65\x20\141\x64\144\145\x64\x20\151\156\40\x49\144\145\156\164\x69\x74\x79\40\x50\162\157\166\x69\x64\x65\162\x20\x69\163\x20\x73\x61\x6d\x65\40\141\x73\x20\x74\150\x65\x20\143\145\162\x74\151\146\151\143\141\164\x65\x20\160\x72\157\x76\151\x64\x65\144\x20\151\x6e\40\x74\150\x65\x20\120\x6c\165\147\151\x6e\74\x2f\160\x3e\12\x9\x9\11\x9\11\74\57\144\151\x76\x3e\12\40\x20\x20\x20\40\x20\40\40\40\x20\40\x20\x20\x20\40\40\x20\40\x20\x20\74\x64\x69\166\x20\x73\164\171\154\145\75\42\155\x61\x72\x67\151\x6e\x3a\x33\45\73\x64\x69\x73\160\x6c\x61\x79\72\x62\154\157\143\153\x3b\x74\145\170\164\x2d\141\x6c\151\147\156\x3a\143\145\156\x74\145\x72\x3b\42\x3e\xa\40\x20\x20\40\40\x20\40\x20\x20\40\40\x20\40\40\40\x20\x20\x20\40\x20\74\x64\x69\166\x20\x73\x74\171\154\x65\75\x22\155\x61\162\147\x69\156\x3a\x33\45\73\x64\x69\163\160\x6c\141\171\x3a\x62\154\157\143\x6b\x3b\x74\145\170\x74\55\x61\154\x69\147\156\x3a\143\x65\x6e\x74\x65\162\x3b\42\x3e\74\x69\x6e\x70\165\x74\40\x73\x74\x79\x6c\145\75\42\160\x61\144\144\x69\156\x67\x3a\61\x25\73\167\x69\144\164\x68\x3a\61\60\60\160\x78\x3b\x62\x61\x63\153\x67\162\157\165\156\x64\72\x20\43\60\x30\71\61\x43\x44\40\156\x6f\156\145\40\x72\x65\x70\x65\x61\x74\40\x73\143\162\x6f\154\x6c\40\x30\x25\x20\x30\45\73\143\x75\162\x73\x6f\x72\x3a\x20\x70\157\x69\x6e\164\145\162\73\146\157\x6e\164\x2d\163\x69\172\x65\x3a\x31\x35\x70\x78\x3b\x62\x6f\162\x64\x65\162\x2d\x77\x69\x64\164\150\72\x20\61\160\x78\x3b\142\157\x72\x64\x65\162\55\x73\x74\171\154\145\x3a\x20\163\157\154\151\x64\x3b\x62\157\162\144\145\162\55\162\x61\144\151\x75\x73\x3a\40\x33\x70\x78\x3b\167\150\151\x74\x65\55\x73\x70\141\x63\145\72\x20\156\x6f\x77\162\141\160\73\142\157\170\x2d\163\x69\x7a\x69\x6e\147\x3a\x20\x62\157\162\144\x65\x72\55\142\x6f\170\x3b\x62\x6f\162\144\x65\x72\x2d\143\x6f\x6c\157\x72\72\x20\43\60\x30\x37\x33\101\101\73\142\x6f\170\55\163\150\141\144\x6f\167\72\x20\60\x70\170\40\61\160\170\x20\x30\x70\170\x20\x72\147\x62\x61\x28\61\x32\x30\x2c\40\x32\x30\x30\54\x20\x32\x33\60\x2c\40\60\x2e\x36\x29\x20\x69\156\x73\145\164\73\143\x6f\154\157\162\72\x20\x23\x46\x46\106\73\42\x74\x79\x70\x65\x3d\x22\142\x75\164\x74\x6f\x6e\x22\x20\166\141\x6c\165\145\75\42\104\x6f\x6e\x65\42\x20\157\x6e\x43\154\151\x63\x6b\75\42\x73\145\154\x66\x2e\x63\x6c\x6f\x73\x65\x28\x29\x3b\42\76\74\57\144\x69\166\76";
+            if ($WF === "\164\145\163\x74\x56\x61\154\151\144\x61\x74\x65" or $WF === "\x74\145\163\164\x4e\x65\x77\x43\145\x72\x74\x69\x66\151\x63\x61\164\x65") {
+                goto XCX;
+            }
+            wp_die("\x57\x65\x20\143\157\165\154\x64\x20\156\x6f\x74\x20\163\x69\147\x6e\40\171\157\x75\x20\x69\x6e\x2e\x20\x50\x6c\x65\x61\163\x65\x20\143\x6f\x6e\164\141\x63\x74\x20\x79\x6f\x75\x72\40\101\x64\155\x69\156\x69\163\164\162\141\x74\x6f\x72", "\105\x72\162\157\162\x20\72\105\x6e\x63\162\x79\160\x74\x69\x6f\156\x20\103\145\162\x74\x69\146\151\x63\x61\164\145\40\115\x69\163\155\x61\x74\x63\150");
+            goto mAJ;
+            XCX:
+            echo "\74\x64\151\x76\x20\x73\x74\171\x6c\145\75\42\146\157\x6e\164\x2d\x66\x61\x6d\151\x6c\171\x3a\103\141\154\x69\x62\x72\x69\x3b\x70\x61\144\x64\x69\156\x67\72\60\40\63\45\x3b\42\x3e";
+            echo "\74\144\151\166\x20\163\x74\171\x6c\x65\x3d\42\x63\157\154\157\162\x3a\x20\x23\x61\71\64\x34\64\62\x3b\142\x61\143\153\147\x72\x6f\165\156\x64\x2d\143\157\154\x6f\x72\72\x20\x23\146\x32\x64\145\144\145\73\160\x61\144\x64\x69\x6e\147\x3a\x20\61\x35\x70\x78\x3b\155\x61\162\x67\x69\x6e\55\142\157\164\x74\157\155\x3a\40\x32\60\x70\x78\x3b\x74\x65\x78\x74\55\x61\154\151\x67\x6e\x3a\x63\x65\156\164\x65\162\73\x62\157\162\x64\x65\x72\72\x31\160\x78\40\163\x6f\154\151\144\40\43\105\66\x42\x33\x42\62\73\146\157\x6e\164\x2d\x73\151\x7a\145\72\61\70\x70\164\73\42\76\x20\x45\122\x52\117\122\74\57\144\151\166\x3e\xd\xa\x20\x20\40\40\40\x20\x20\40\40\40\40\x20\40\x20\40\40\x20\40\x20\40\x3c\144\x69\x76\40\163\x74\171\x6c\x65\75\x22\143\157\154\157\162\72\40\43\141\71\x34\64\x34\x32\73\x66\x6f\156\x74\55\163\x69\172\145\x3a\x31\64\x70\x74\73\40\x6d\141\162\x67\151\156\x2d\x62\x6f\164\164\157\x6d\x3a\x32\x30\160\x78\73\42\76\74\160\76\x3c\x73\x74\x72\157\x6e\147\x3e\105\162\x72\157\x72\72\40\x3c\x2f\163\164\162\x6f\156\147\76\105\x6e\143\162\171\160\164\151\157\156\40\x43\x65\162\x74\x69\146\151\143\x61\x74\145\x20\x4d\x69\163\x6d\141\x74\x63\150\56\74\57\x70\76\xd\xa\x20\40\x20\x20\40\x20\40\40\40\x20\40\x20\40\40\x20\x20\x20\x20\40\40\74\160\76\x50\154\145\141\163\x65\x20\143\157\x6e\x74\x61\x63\x74\40\x79\157\x75\162\40\x61\144\155\x69\x6e\x69\163\164\162\x61\164\x6f\x72\40\141\x6e\144\x20\x72\145\160\157\x72\x74\40\164\150\x65\x20\x66\x6f\x6c\x6c\x6f\167\x69\x6e\x67\40\145\162\x72\x6f\162\72\74\57\160\x3e\15\12\40\40\40\40\x20\40\40\x20\x20\x20\40\x20\x20\x20\40\x20\x20\x20\x20\x20\74\x70\76\74\x73\x74\x72\x6f\156\147\76\x50\157\163\x73\x69\x62\x6c\x65\x20\103\x61\165\163\x65\72\x20\74\57\x73\x74\162\157\x6e\x67\x3e\x49\x6e\x63\x6f\x72\x72\145\x63\164\x20\x63\x65\x72\164\151\146\151\x63\x61\164\145\x20\141\x64\x64\x65\x64\40\x6f\156\40\x74\150\x65\x20\111\x64\145\x6e\x74\x69\x74\x79\40\120\x72\157\x76\151\144\145\x72\40\146\x6f\162\x20\105\x6e\143\162\x79\160\164\x69\x6f\x6e\x3c\x2f\160\x3e\15\12\11\11\x9\11\x9\74\160\x3e\74\x73\164\162\x6f\156\x67\x3e\123\x6f\154\165\164\x69\157\x6e\x3a\74\57\163\164\162\x6f\x6e\x67\76\40\120\x6c\x65\141\x73\x65\x20\143\150\x65\143\153\x20\151\x66\x20\164\x68\145\x20\x63\x65\162\164\151\146\151\x63\x61\164\145\x20\x61\x64\144\x65\144\40\x69\x6e\x20\111\x64\x65\x6e\164\151\x74\x79\40\120\x72\157\x76\x69\144\145\162\40\x69\x73\40\164\150\x65\x20\x73\x61\155\145\x20\141\163\40\164\x68\x65\x20\x63\x65\x72\x74\x69\x66\x69\143\x61\164\x65\x20\160\x72\157\166\151\144\x65\144\x20\151\156\40\x74\x68\145\40\x53\145\x72\166\151\x63\x65\40\120\x72\x6f\x76\x69\x64\145\162\40\115\145\x74\141\x64\x61\x74\x61\x20\x74\141\x62\x20\157\x66\40\164\150\x65\x20\x50\x6c\x75\x67\151\x6e\74\x2f\160\x3e\xd\12\11\x9\11\11\x9\74\57\144\151\166\76\xd\12\x20\40\x20\40\40\40\40\x20\40\x20\40\40\40\x20\x20\x20\x20\x20\40\x20\74\x64\x69\x76\40\163\164\171\x6c\145\x3d\42\155\x61\x72\147\x69\x6e\72\x33\45\x3b\x64\151\163\160\x6c\141\x79\x3a\142\154\157\143\153\73\x74\x65\170\164\x2d\x61\154\151\x67\156\x3a\x63\145\x6e\164\x65\x72\x3b\42\76\15\xa\x20\x20\40\40\x20\40\40\40\40\x20\40\x20\40\40\x20\x20\x20\x20\x20\40\74\x64\151\x76\40\x73\164\171\154\x65\x3d\42\x6d\141\x72\x67\151\x6e\72\x33\45\73\x64\151\x73\x70\x6c\141\x79\72\x62\x6c\157\x63\153\x3b\x74\145\x78\164\55\x61\154\x69\x67\156\72\x63\x65\156\164\145\162\x3b\x22\76\x3c\151\156\x70\165\164\40\163\x74\x79\x6c\x65\x3d\x22\x70\141\x64\144\x69\156\x67\72\x31\45\73\167\x69\144\x74\150\72\61\x30\x30\160\170\73\x62\x61\x63\x6b\147\162\x6f\x75\x6e\144\72\40\43\60\x30\x39\x31\x43\x44\x20\x6e\x6f\156\145\40\162\145\x70\145\x61\164\40\x73\143\162\157\x6c\x6c\x20\60\45\x20\60\x25\x3b\x63\x75\162\x73\157\162\72\x20\x70\157\x69\156\164\145\x72\x3b\x66\x6f\156\164\55\x73\151\172\145\72\61\65\x70\x78\73\142\157\x72\144\145\162\x2d\167\151\x64\164\150\72\x20\x31\160\170\73\142\157\162\x64\145\x72\55\163\x74\x79\x6c\145\x3a\x20\163\x6f\154\x69\144\73\142\x6f\x72\144\145\162\x2d\x72\141\x64\x69\165\163\x3a\40\63\160\170\x3b\167\150\151\x74\x65\55\x73\x70\x61\143\x65\x3a\40\x6e\x6f\x77\x72\141\x70\x3b\x62\x6f\x78\55\163\x69\172\x69\156\x67\72\x20\142\157\162\x64\x65\162\x2d\142\157\x78\73\x62\157\162\144\x65\162\55\143\157\154\157\162\x3a\40\43\60\60\67\63\101\x41\x3b\142\x6f\x78\55\163\150\141\x64\157\167\72\x20\60\x70\170\x20\x31\x70\170\40\x30\160\x78\x20\x72\x67\142\x61\x28\x31\x32\x30\x2c\x20\x32\x30\60\54\x20\62\x33\60\x2c\x20\60\56\66\51\x20\x69\156\163\145\x74\x3b\x63\x6f\x6c\157\162\x3a\x20\43\x46\x46\106\x3b\42\164\x79\x70\145\x3d\x22\x62\165\x74\x74\x6f\x6e\x22\40\166\141\154\x75\x65\75\x22\104\157\x6e\x65\42\x20\157\x6e\103\x6c\x69\143\153\75\42\163\x65\154\x66\56\143\154\x6f\x73\145\x28\51\73\42\76\x3c\x2f\144\151\166\76";
             exit;
             exit;
+            mAJ:
         }
     }
-    public static function get_mapped_groups($EP, $Xa)
+    public static function get_mapped_groups($q8, $pO)
     {
-        $ZX = array();
-        if (empty($Xa)) {
-            goto I_I;
+        $oR = array();
+        if (empty($pO)) {
+            goto aWI;
         }
-        $I4 = array();
-        $lw = 1;
-        Yh_:
-        if (!($lw < 10)) {
-            goto Bld;
+        $yM = array();
+        $p0 = 1;
+        WTl:
+        if (!($p0 < 10)) {
+            goto u2i;
         }
-        $AZ = $EP->get("\x67\x72\157\x75\160" . $lw . "\x5f\x6d\141\160");
-        $I4[$lw] = explode("\73", $AZ);
-        $lw++;
-        goto Yh_;
-        Bld:
-        I_I:
-        foreach ($Xa as $OO) {
-            if (empty($OO)) {
-                goto lxo;
+        $qU = $q8->get("\147\x72\x6f\165\x70" . $p0 . "\137\x6d\141\160");
+        $yM[$p0] = explode("\73", $qU);
+        $p0++;
+        goto WTl;
+        u2i:
+        aWI:
+        foreach ($pO as $Ps) {
+            if (empty($Ps)) {
+                goto jV3;
             }
-            $lw = 0;
-            $qD = false;
-            qOK:
-            if (!($lw < 9 && !$qD)) {
-                goto H0g;
+            $p0 = 0;
+            $o5 = false;
+            dSW:
+            if (!($p0 < 9 && !$o5)) {
+                goto n9S;
             }
-            if (!(!empty($I4[$lw]) && in_array($OO, $I4[$lw], TRUE))) {
-                goto ji2;
+            if (!(!empty($yM[$p0]) && in_array($Ps, $yM[$p0], TRUE))) {
+                goto Iib;
             }
-            $ZX[] = $EP->get("\147\x72\x6f\165\160" . $lw);
-            $qD = true;
-            ji2:
-            $lw++;
-            goto qOK;
-            H0g:
-            lxo:
-            I1Y:
+            $oR[] = $q8->get("\147\162\x6f\165\x70" . $p0);
+            $o5 = true;
+            Iib:
+            $p0++;
+            goto dSW;
+            n9S:
+            jV3:
+            Jhj:
         }
-        dS9:
-        return array_unique($ZX);
+        O5n:
+        return array_unique($oR);
     }
-    public static function getEncryptionAlgorithm($u0)
+    public static function getEncryptionAlgorithm($YW)
     {
-        switch ($u0) {
-            case "\150\x74\164\160\72\x2f\57\x77\x77\167\x2e\x77\63\56\x6f\162\147\57\x32\60\60\x31\x2f\x30\x34\57\170\155\154\x65\x6e\x63\x23\164\x72\x69\160\x6c\x65\144\x65\x73\55\x63\142\143":
+        switch ($YW) {
+            case "\x68\164\x74\x70\x3a\x2f\57\x77\167\167\56\x77\x33\x2e\x6f\162\x67\57\62\60\x30\x31\57\x30\x34\57\170\155\x6c\145\x6e\x63\x23\164\162\x69\160\x6c\145\x64\x65\x73\55\x63\142\x63":
                 return XMLSecurityKey::TRIPLEDES_CBC;
-                goto hCR;
-            case "\x68\x74\164\x70\72\57\57\167\x77\x77\x2e\x77\63\56\157\162\147\57\62\60\60\61\x2f\x30\64\57\170\155\154\x65\x6e\x63\x23\x61\x65\163\x31\62\x38\x2d\x63\x62\x63":
+                goto ruP;
+            case "\x68\164\x74\160\72\x2f\57\x77\167\167\x2e\x77\x33\x2e\x6f\162\x67\57\x32\60\60\x31\x2f\60\64\x2f\x78\x6d\x6c\x65\x6e\x63\x23\x61\x65\x73\x31\x32\70\x2d\143\142\x63":
                 return XMLSecurityKey::AES128_CBC;
-            case "\x68\164\x74\x70\x3a\x2f\57\167\x77\167\x2e\x77\63\56\157\x72\147\x2f\x32\60\x30\x31\x2f\60\64\x2f\170\155\x6c\145\156\x63\43\141\145\163\x31\x39\x32\x2d\x63\142\x63":
+            case "\x68\164\164\160\x3a\x2f\x2f\167\x77\167\56\167\63\56\157\x72\x67\x2f\x32\x30\60\x31\x2f\60\64\57\170\x6d\x6c\x65\x6e\x63\x23\141\145\163\61\71\x32\55\143\142\x63":
                 return XMLSecurityKey::AES192_CBC;
-                goto hCR;
-            case "\x68\x74\164\160\72\57\57\x77\167\x77\56\x77\x33\x2e\x6f\x72\147\x2f\x32\60\x30\61\x2f\x30\64\x2f\x78\x6d\154\x65\x6e\143\x23\x61\x65\x73\62\x35\66\55\x63\x62\x63":
+                goto ruP;
+            case "\x68\x74\x74\160\x3a\x2f\57\167\167\x77\x2e\x77\x33\x2e\x6f\162\x67\x2f\x32\x30\60\61\57\x30\64\x2f\170\x6d\x6c\145\x6e\143\x23\141\145\163\62\x35\66\55\143\x62\x63":
                 return XMLSecurityKey::AES256_CBC;
-                goto hCR;
-            case "\x68\164\164\160\72\57\57\167\167\x77\x2e\167\63\56\x6f\162\147\57\x32\x30\60\61\57\x30\x34\57\170\x6d\x6c\x65\156\x63\43\162\x73\141\55\x31\137\x35":
+                goto ruP;
+            case "\150\x74\164\x70\x3a\57\57\x77\167\x77\x2e\167\63\x2e\157\x72\x67\x2f\62\x30\60\x31\x2f\x30\x34\x2f\x78\155\x6c\145\156\x63\x23\162\163\141\55\61\x5f\x35":
                 return XMLSecurityKey::RSA_1_5;
-                goto hCR;
-            case "\150\x74\x74\x70\x3a\x2f\x2f\167\167\x77\x2e\x77\63\56\157\x72\x67\57\x32\60\60\61\57\60\64\57\170\x6d\x6c\x65\x6e\x63\43\x72\x73\141\55\x6f\141\145\x70\55\x6d\x67\x66\61\x70":
+                goto ruP;
+            case "\x68\x74\x74\160\72\57\57\x77\167\167\56\167\63\x2e\157\162\147\x2f\x32\60\60\61\x2f\x30\x34\57\x78\155\x6c\145\x6e\143\x23\x72\163\141\55\157\x61\145\160\55\x6d\147\x66\x31\160":
                 return XMLSecurityKey::RSA_OAEP_MGF1P;
-                goto hCR;
-            case "\x68\x74\164\x70\x3a\57\x2f\167\167\x77\x2e\x77\63\56\x6f\162\147\x2f\x32\60\x30\x30\57\x30\x39\57\x78\x6d\154\144\163\151\147\x23\144\163\x61\x2d\x73\x68\x61\x31":
+                goto ruP;
+            case "\150\x74\164\x70\x3a\x2f\x2f\167\x77\167\56\167\63\x2e\x6f\x72\147\x2f\x32\x30\x30\x30\57\x30\71\57\170\155\x6c\144\x73\x69\x67\x23\x64\163\x61\55\163\x68\141\x31":
                 return XMLSecurityKey::DSA_SHA1;
-                goto hCR;
-            case "\x68\164\x74\160\72\57\x2f\x77\x77\167\x2e\x77\x33\x2e\x6f\x72\x67\57\62\x30\x30\x30\x2f\x30\x39\x2f\x78\155\x6c\144\163\x69\147\43\162\163\x61\55\x73\150\141\61":
+                goto ruP;
+            case "\150\164\x74\160\72\57\x2f\x77\167\167\56\x77\63\x2e\x6f\x72\147\57\62\x30\x30\60\57\60\71\57\170\155\x6c\144\163\x69\147\43\x72\x73\141\x2d\x73\150\141\x31":
                 return XMLSecurityKey::RSA_SHA1;
-                goto hCR;
-            case "\150\164\164\160\x3a\x2f\x2f\x77\x77\x77\x2e\x77\x33\x2e\x6f\x72\147\x2f\x32\60\60\61\x2f\60\x34\x2f\170\155\154\144\163\x69\147\55\155\x6f\162\x65\x23\162\163\141\55\163\x68\141\62\65\x36":
+                goto ruP;
+            case "\x68\x74\x74\x70\x3a\57\x2f\x77\x77\167\56\x77\x33\x2e\157\162\x67\57\62\60\60\61\57\60\x34\57\x78\155\154\144\x73\x69\147\55\x6d\157\x72\x65\x23\162\x73\x61\55\163\150\141\62\x35\66":
                 return XMLSecurityKey::RSA_SHA256;
-                goto hCR;
-            case "\x68\164\x74\160\x3a\57\x2f\x77\167\167\x2e\167\63\x2e\157\162\x67\x2f\62\x30\60\61\x2f\x30\x34\x2f\170\155\154\144\163\151\147\55\155\x6f\162\x65\43\x72\163\141\55\163\x68\141\x33\x38\64":
+                goto ruP;
+            case "\150\164\164\x70\72\x2f\x2f\167\167\167\56\167\x33\x2e\x6f\x72\x67\57\62\60\x30\61\57\x30\x34\57\x78\155\x6c\144\x73\151\x67\55\155\157\x72\x65\x23\x72\163\141\x2d\x73\x68\x61\63\70\x34":
                 return XMLSecurityKey::RSA_SHA384;
-                goto hCR;
-            case "\150\x74\164\160\x3a\x2f\x2f\167\167\167\56\167\x33\x2e\x6f\162\x67\57\62\x30\x30\x31\x2f\60\64\57\170\x6d\x6c\x64\163\x69\147\x2d\x6d\x6f\162\x65\43\x72\163\x61\x2d\163\x68\x61\65\61\x32":
+                goto ruP;
+            case "\150\x74\164\160\x3a\57\x2f\x77\167\167\56\x77\63\x2e\x6f\x72\147\x2f\x32\x30\60\61\57\x30\64\57\170\x6d\x6c\144\163\x69\x67\x2d\155\157\162\145\43\162\x73\x61\x2d\x73\x68\141\x35\x31\62":
                 return XMLSecurityKey::RSA_SHA512;
-                goto hCR;
+                goto ruP;
             default:
-                echo esc_html(sprintf("\111\x6e\x76\x61\154\151\144\40\x45\156\143\162\x79\x70\164\x69\157\156\x20\115\145\x74\150\x6f\144\x3a\x20" . $u0));
+                echo esc_html(sprintf("\111\x6e\x76\x61\154\151\144\x20\x45\x6e\143\162\171\x70\x74\151\x6f\x6e\x20\x4d\x65\x74\x68\157\x64\x3a\x20" . $YW));
                 exit;
-                goto hCR;
+                goto ruP;
         }
-        XrW:
-        hCR:
+        xsH:
+        ruP:
     }
-    public static function insertSignature(XMLSecurityKey $WO, array $mG, DOMElement $Bf, DOMNode $Wh = NULL)
+    public static function insertSignature(XMLSecurityKey $mr, array $GU, DOMElement $Z0, DOMNode $x5 = NULL)
     {
-        $fG = new XMLSecurityDSig();
-        $fG->setCanonicalMethod(XMLSecurityDSig::EXC_C14N);
-        switch ($WO->type) {
+        $J4 = new XMLSecurityDSig();
+        $J4->setCanonicalMethod(XMLSecurityDSig::EXC_C14N);
+        switch ($mr->type) {
             case XMLSecurityKey::RSA_SHA256:
-                $YE = XMLSecurityDSig::SHA256;
-                goto jW7;
+                $PU = XMLSecurityDSig::SHA256;
+                goto dNG;
             case XMLSecurityKey::RSA_SHA384:
-                $YE = XMLSecurityDSig::SHA384;
-                goto jW7;
+                $PU = XMLSecurityDSig::SHA384;
+                goto dNG;
             case XMLSecurityKey::RSA_SHA512:
-                $YE = XMLSecurityDSig::SHA512;
-                goto jW7;
+                $PU = XMLSecurityDSig::SHA512;
+                goto dNG;
             default:
-                $YE = XMLSecurityDSig::SHA1;
+                $PU = XMLSecurityDSig::SHA1;
         }
-        wPL:
-        jW7:
-        $fG->addReferenceList(array($Bf), $YE, array("\150\164\164\x70\72\x2f\x2f\167\167\x77\56\167\x33\56\157\162\147\x2f\62\60\x30\x30\x2f\x30\x39\x2f\x78\x6d\x6c\144\x73\x69\x67\43\x65\x6e\x76\x65\154\157\160\145\x64\55\163\x69\147\x6e\x61\164\165\162\145", XMLSecurityDSig::EXC_C14N), array("\x69\144\x5f\156\141\x6d\x65" => "\x49\104", "\157\166\145\162\x77\x72\x69\x74\x65" => FALSE));
-        $fG->sign($WO);
-        foreach ($mG as $nV) {
-            $fG->add509Cert($nV, TRUE);
-            TAD:
+        UPm:
+        dNG:
+        $J4->addReferenceList(array($Z0), $PU, array("\x68\164\x74\160\x3a\57\57\167\167\x77\x2e\x77\63\56\x6f\162\x67\57\62\60\60\60\x2f\60\x39\x2f\170\155\x6c\144\163\x69\147\43\145\156\166\x65\154\x6f\x70\145\x64\x2d\163\x69\147\156\141\164\x75\162\145", XMLSecurityDSig::EXC_C14N), array("\151\144\137\156\141\x6d\x65" => "\x49\104", "\x6f\x76\145\x72\x77\162\151\x74\145" => FALSE));
+        $J4->sign($mr);
+        foreach ($GU as $oS) {
+            $J4->add509Cert($oS, TRUE);
+            F2Q:
         }
-        Oq8:
-        $fG->insertSignature($Bf, $Wh);
+        WAS:
+        $J4->insertSignature($Z0, $x5);
     }
     public static function getRemainingDaysOfCurrentCertificate()
     {
-        $nV = get_option("\x6d\157\x5f\163\141\155\x6c\x5f\x63\165\x72\162\145\x6e\x74\x5f\x63\x65\162\x74");
-        $Eq = openssl_x509_parse($nV);
-        $Ys = $Eq["\166\141\154\151\144\x54\x6f\137\164\151\155\x65\137\x74"];
-        $x6 = $Ys - time();
-        return round($x6 / (60 * 60 * 24));
+        $oS = get_option("\155\x6f\137\163\141\x6d\154\x5f\x63\165\162\162\x65\156\x74\137\x63\x65\162\164");
+        $FG = openssl_x509_parse($oS);
+        $CR = $FG["\166\x61\x6c\151\x64\x54\x6f\137\x74\x69\155\x65\x5f\164"];
+        $tx = $CR - time();
+        return round($tx / (60 * 60 * 24));
     }
     public static function getExpiryDateOfCurrentCertificate()
     {
-        $nV = get_option("\x6d\x6f\137\x73\141\155\154\137\x63\165\x72\x72\145\x6e\164\137\143\145\162\164");
-        $Eq = openssl_x509_parse($nV);
-        return $Eq["\x76\141\x6c\x69\x64\x54\157\137\164\x69\x6d\x65\x5f\164"];
+        $oS = get_option("\x6d\x6f\137\x73\x61\155\x6c\x5f\x63\x75\x72\162\x65\156\164\137\143\x65\x72\x74");
+        $FG = openssl_x509_parse($oS);
+        return $FG["\x76\x61\154\x69\x64\x54\157\137\x74\151\x6d\145\x5f\164"];
     }
-    public static function getExpiryDateOfCertificate($nV)
+    public static function getExpiryDateOfCertificate($oS)
     {
-        $Eq = openssl_x509_parse(trim($nV));
-        return $Eq["\166\141\x6c\x69\144\x54\157\x5f\x74\151\x6d\145\137\164"];
+        $FG = openssl_x509_parse(trim($oS));
+        return $FG["\x76\141\x6c\x69\144\124\157\x5f\164\151\x6d\x65\x5f\x74"];
     }
-    public static function signXML($l3, $fJ = '', $bX = false)
+    public static function signXML($jn, $Iu = '', $Qe = false)
     {
-        $Jp = array("\x74\x79\x70\x65" => "\160\x72\x69\166\x61\x74\x65");
-        $WO = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, $Jp);
-        if ($bX) {
-            goto WJw;
+        $t8 = array("\164\171\x70\x65" => "\x70\162\151\x76\x61\164\145");
+        $mr = new XMLSecurityKey(XMLSecurityKey::RSA_SHA256, $t8);
+        if ($Qe) {
+            goto dEN;
         }
-        $OY = get_option("\155\157\x5f\163\x61\155\154\137\143\165\x72\162\x65\156\164\x5f\x63\x65\162\x74\137\160\162\x69\166\141\164\x65\137\x6b\x65\x79");
-        $SG = get_option("\155\x6f\x5f\x73\x61\155\154\137\x63\165\162\162\145\156\x74\x5f\x63\x65\x72\164");
-        goto PIP;
-        WJw:
-        $OY = file_get_contents(plugin_dir_path(__FILE__) . "\162\x65\163\157\x75\x72\x63\x65\x73" . DIRECTORY_SEPARATOR . "\155\x69\156\x69\157\162\141\156\147\x65\x2d\x73\x70\x2d\x63\x65\x72\164\x69\146\151\x63\x61\164\x65\x2d\x70\x72\151\x76\56\x6b\x65\171");
-        $SG = file_get_contents(plugin_dir_path(__FILE__) . "\162\x65\163\x6f\165\162\143\145\163" . DIRECTORY_SEPARATOR . "\155\151\156\x69\157\162\x61\x6e\x67\x65\x2d\x73\x70\55\x63\x65\x72\164\151\x66\x69\143\x61\x74\x65\56\x63\162\x74");
-        PIP:
-        $WO->loadKey($OY, FALSE);
-        $HL = new DOMDocument();
-        $HL->loadXML($l3);
-        $SS = $HL->firstChild;
-        if (!empty($fJ)) {
-            goto khi;
+        $XD = get_option("\155\157\x5f\x73\x61\x6d\x6c\x5f\143\165\x72\x72\x65\x6e\x74\x5f\x63\145\162\x74\x5f\x70\162\x69\x76\x61\164\145\137\153\145\x79");
+        $YT = get_option("\155\x6f\137\x73\x61\155\x6c\x5f\143\165\x72\162\145\156\x74\x5f\x63\x65\x72\164");
+        goto oMj;
+        dEN:
+        $XD = file_get_contents(plugin_dir_path(__FILE__) . "\x72\145\163\157\x75\162\x63\145\x73" . DIRECTORY_SEPARATOR . "\155\151\x6e\151\x6f\x72\x61\x6e\x67\145\55\163\x70\x2d\143\145\162\164\151\146\x69\143\141\x74\145\x2d\x70\x72\151\166\x2e\153\x65\171");
+        $YT = file_get_contents(plugin_dir_path(__FILE__) . "\x72\145\x73\157\x75\162\143\145\163" . DIRECTORY_SEPARATOR . "\155\x69\156\x69\x6f\x72\141\x6e\x67\145\x2d\x73\160\55\143\145\162\164\151\x66\151\x63\141\164\145\56\143\x72\x74");
+        oMj:
+        $mr->loadKey($XD, FALSE);
+        $tR = new DOMDocument();
+        $tR->loadXML($jn);
+        $LQ = $tR->firstChild;
+        if (!empty($Iu)) {
+            goto hve;
         }
-        self::insertSignature($WO, array($SG), $SS);
-        goto zbx;
-        khi:
-        $eH = $HL->getElementsByTagName($fJ)->item(0);
-        self::insertSignature($WO, array($SG), $SS, $eH);
-        zbx:
-        $qH = $SS->ownerDocument->saveXML($SS);
-        $sw = base64_encode($qH);
-        return $sw;
+        self::insertSignature($mr, array($YT), $LQ);
+        goto el6;
+        hve:
+        $VI = $tR->getElementsByTagName($Iu)->item(0);
+        self::insertSignature($mr, array($YT), $LQ, $VI);
+        el6:
+        $GB = $LQ->ownerDocument->saveXML($LQ);
+        $ru = base64_encode($GB);
+        return $ru;
     }
-    public static function postSAMLRequest($of, $YL, $tr, $WY = '')
+    public static function postSAMLRequest($gA, $Sk, $WF, $TV = array(), $EQ = '')
     {
-        $S9 = "\74\x68\164\155\x6c\x3e\74\150\x65\x61\144\x3e\74\x73\x63\162\x69\x70\x74\x20\x73\x72\143\75\x27\150\x74\164\160\x73\72\x2f\57\x63\x6f\144\x65\56\x6a\161\x75\x65\x72\x79\x2e\x63\x6f\155\57\152\x71\165\x65\x72\171\x2d\61\56\61\x31\x2e\63\x2e\x6d\151\x6e\56\152\x73\47\x3e\x3c\57\x73\143\x72\151\x70\x74\x3e\x3c\x73\x63\162\151\160\x74\40\164\x79\160\x65\x3d\42\164\145\170\x74\57\x6a\x61\x76\141\163\x63\x72\151\160\164\x22\76\44\x28\x66\165\156\143\x74\x69\157\156\50\x29\x7b\144\157\143\165\155\x65\156\x74\x2e\x66\x6f\x72\155\x73\133\x27\x73\x61\155\x6c\x2d\162\x65\161\x75\145\163\164\55\146\x6f\x72\155\47\x5d\56\x73\x75\x62\x6d\151\164\50\51\x3b\x7d\x29\73\x3c\x2f\163\143\x72\x69\160\164\x3e\74\x2f\150\x65\141\x64\x3e\74\142\157\144\x79\76\x50\x6c\145\x61\x73\145\x20\167\x61\x69\164\x2e\x2e\56\x3c\146\x6f\x72\155\x20\141\143\164\151\x6f\156\x3d\x22" . $of . "\42\40\155\x65\164\x68\157\x64\75\42\160\157\163\x74\x22\x20\151\x64\75\x22\x73\141\x6d\154\x2d\162\145\161\x75\145\163\164\x2d\146\x6f\162\x6d\x22\x3e\x3c\151\156\160\x75\x74\40\x74\x79\160\x65\x3d\x22\x68\151\144\144\145\x6e\42\40\156\x61\155\x65\x3d\x22\123\101\x4d\x4c\122\x65\161\165\x65\163\x74\x22\40\x76\x61\x6c\165\x65\75\42" . $YL . "\42\x20\x2f\76\74\151\x6e\x70\x75\x74\x20\x74\x79\160\145\x3d\x22\x68\x69\144\144\145\156\x22\40\156\141\155\x65\x3d\x22\x52\145\x6c\141\x79\x53\x74\x61\x74\145\42\x20\x76\141\x6c\165\x65\75\42" . htmlentities($tr) . "\42\40\x2f\x3e";
-        if (empty($WY)) {
-            goto CSm;
+        echo "\15\12\11\11\x3c\150\x74\155\x6c\x3e\15\xa\x9\11\x9\x3c\142\x6f\144\x79\76\x50\x6c\x65\141\163\x65\x20\167\141\x69\x74\x2e\56\56\15\12\11\11\11\x9\x3c\x66\157\x72\x6d\x20\x61\143\164\x69\x6f\x6e\x3d\42" . esc_url($gA) . "\x22\x20\155\x65\x74\150\x6f\x64\x3d\42\160\157\x73\x74\42\40\x69\x64\75\42\163\x61\155\x6c\x2d\x72\145\161\165\x65\163\164\x2d\x66\157\x72\155\x22\x3e\xd\xa\x9\11\x9\11\x9\74\151\x6e\160\x75\164\40\x74\x79\160\145\75\x22\x68\x69\144\x64\x65\156\x22\40\156\x61\x6d\145\75\42\123\101\x4d\x4c\122\x65\161\165\x65\x73\x74\x22\40\166\x61\x6c\x75\145\x3d\42" . esc_attr($Sk) . "\x22\x20\57\x3e\15\xa\x9\x9\x9\11\11\x3c\151\x6e\160\x75\164\40\164\171\160\145\75\x22\x68\x69\x64\144\x65\x6e\x22\x20\156\x61\x6d\x65\x3d\x22\x52\145\x6c\x61\171\x53\164\141\164\145\x22\x20\166\141\154\165\145\75\42" . htmlentities($WF) . "\x22\40\x2f\76";
+        echo self::mo_saml_append_params_post_binding($TV);
+        if (empty($EQ)) {
+            goto blB;
         }
-        $S9 = "\74\x69\x6e\x70\x75\164\x20\164\x79\160\145\x3d\42\x68\x69\x64\x64\x65\x6e\42\40\x6e\141\155\x65\75\x22\x75\163\145\162\116\141\155\x65\42\40\166\x61\x6c\165\145\x3d\x22" . htmlentities($WY) . "\42\40\57\x3e";
-        CSm:
-        $S9 .= "\x3c\57\146\157\x72\155\76\74\57\142\x6f\x64\x79\x3e\x3c\57\x68\x74\x6d\154\76";
-        echo $S9;
+        echo "\xd\12\11\x9\11\11\11\x3c\151\x6e\160\165\x74\40\x74\171\x70\x65\x3d\x22\x68\x69\x64\144\x65\156\x22\x20\x6e\141\155\x65\75\x22\165\163\145\x72\x4e\141\155\145\x22\40\x76\141\154\165\145\x3d\42" . htmlentities($EQ) . "\x22\40\57\x3e";
+        blB:
+        echo "\xd\xa\x9\11\x9\x9\74\57\146\157\162\155\x3e\xd\xa\x9\11\x9\x9\x3c\x73\143\162\x69\160\x74\76\x64\x6f\x63\165\x6d\x65\156\x74\x2e\147\145\164\105\154\x65\x6d\145\x6e\164\102\x79\111\144\50\x27\163\141\x6d\x6c\55\x72\x65\161\x75\x65\x73\164\55\x66\157\x72\155\x27\x29\x2e\x73\165\142\155\151\164\50\51\x3b\74\x2f\x73\143\x72\151\160\x74\76\15\12\11\11\x9\x3c\x2f\142\x6f\x64\x79\76\xd\xa\11\11\x3c\57\150\x74\155\x6c\76";
         exit;
     }
-    public static function postSAMLResponse($of, $Ph, $tr)
+    public static function postSAMLResponse($gA, $yp, $WF)
     {
-        echo "\x3c\x68\x74\x6d\154\x3e\x3c\x68\145\x61\x64\76\x3c\x73\x63\x72\151\x70\x74\40\x73\162\x63\x3d\x27\150\x74\164\x70\163\x3a\x2f\57\x63\x6f\x64\145\56\152\x71\165\145\162\x79\x2e\143\157\155\57\x6a\x71\165\145\162\x79\x2d\61\56\x31\61\56\63\56\x6d\151\156\56\x6a\163\47\76\74\57\163\x63\162\x69\160\164\x3e\74\x73\x63\x72\x69\x70\164\40\x74\x79\160\145\75\42\164\x65\x78\x74\57\x6a\141\166\141\x73\x63\x72\151\x70\x74\42\x3e\x24\50\146\165\x6e\143\164\151\157\156\x28\x29\173\x64\x6f\x63\x75\155\145\x6e\x74\56\146\x6f\162\x6d\x73\133\47\x73\141\155\154\x2d\x72\x65\x71\165\145\163\164\x2d\146\157\x72\x6d\x27\135\x2e\163\165\x62\155\151\164\x28\51\73\175\x29\x3b\x3c\57\x73\x63\162\x69\x70\x74\76\74\x2f\150\x65\x61\144\x3e\74\142\x6f\x64\x79\76\120\x6c\145\141\x73\x65\40\167\141\x69\164\56\56\56\x3c\x66\x6f\x72\155\40\141\x63\x74\x69\157\156\x3d\42" . $of . "\42\x20\x6d\145\164\x68\157\144\x3d\x22\x70\157\x73\164\42\40\151\x64\75\x22\163\141\155\154\x2d\162\x65\x71\165\145\x73\x74\x2d\146\x6f\x72\x6d\42\x3e\x3c\151\x6e\x70\x75\164\x20\x74\x79\x70\145\x3d\x22\x68\x69\x64\144\145\156\x22\x20\x6e\141\x6d\x65\75\42\123\101\x4d\114\x52\x65\163\x70\157\156\163\x65\x22\x20\166\x61\154\x75\x65\75\42" . $Ph . "\x22\40\x2f\76\74\151\156\x70\x75\164\x20\164\171\x70\x65\75\x22\150\151\x64\x64\x65\x6e\x22\x20\x6e\x61\x6d\x65\x3d\x22\x52\145\154\x61\171\123\x74\141\x74\145\x22\40\x76\x61\154\x75\x65\x3d\42" . htmlentities($tr) . "\42\40\x2f\76\x3c\x2f\146\157\162\155\x3e\74\x2f\142\x6f\144\x79\x3e\x3c\57\150\x74\155\x6c\x3e";
+        echo "\15\12\x9\11\x9\74\150\x74\155\x6c\76\15\12\11\x9\11\x9\x3c\x62\157\144\171\x3e\x50\x6c\x65\x61\x73\x65\40\167\141\151\164\56\x2e\56\15\xa\x9\11\x9\x9\11\x3c\146\157\162\x6d\x20\x61\143\x74\x69\x6f\156\75\x22" . esc_url($gA) . "\x22\x20\x6d\145\x74\x68\157\x64\x3d\42\x70\157\x73\x74\42\x20\151\x64\x3d\42\x73\x61\155\154\x2d\x72\x65\163\160\157\x6e\163\x65\x2d\x66\157\x72\x6d\42\76\xd\xa\x9\11\11\x9\x9\x9\x3c\151\x6e\160\165\x74\x20\164\x79\x70\x65\x3d\x22\150\x69\144\144\145\156\x22\x20\156\141\x6d\x65\75\x22\123\x41\x4d\114\x52\x65\163\160\x6f\x6e\x73\x65\x22\x20\166\141\154\165\145\75\x22" . esc_attr($yp) . "\x22\40\x2f\x3e\xd\12\x9\11\11\11\x9\11\x3c\151\156\160\165\x74\x20\x74\171\160\145\x3d\x22\x68\x69\144\x64\x65\156\42\x20\x6e\141\155\145\x3d\x22\122\145\154\141\171\123\164\141\x74\x65\x22\x20\x76\141\154\x75\x65\x3d\x22" . htmlentities($WF) . "\42\x20\57\x3e\xd\xa\11\11\x9\11\11\74\x2f\x66\157\162\155\x3e\15\xa\11\11\x9\x9\x9\74\x73\143\162\151\160\164\76\x64\x6f\143\165\x6d\145\x6e\x74\x2e\147\145\x74\x45\154\145\x6d\x65\x6e\164\102\x79\x49\144\x28\47\x73\x61\x6d\154\x2d\x72\x65\x73\x70\157\x6e\163\x65\x2d\146\157\x72\155\47\x29\x2e\x73\x75\x62\155\151\x74\50\51\73\74\57\x73\143\162\x69\160\x74\76\15\12\x9\11\11\11\x3c\x2f\x62\x6f\144\171\76\xd\xa\11\x9\11\x3c\x2f\150\x74\x6d\154\76";
         exit;
     }
-    public static function sanitize_certificate($nV)
+    public static function sanitize_certificate($oS)
     {
-        $nV = trim($nV);
-        $nV = preg_replace("\57\133\15\12\x5d\53\57", '', $nV);
-        $nV = str_replace("\x2d", '', $nV);
-        $nV = str_replace("\102\105\x47\111\116\40\x43\x45\122\124\x49\x46\111\103\101\124\105", '', $nV);
-        $nV = str_replace("\x45\x4e\x44\x20\x43\105\x52\x54\x49\x46\111\103\x41\x54\x45", '', $nV);
-        $nV = str_replace("\40", '', $nV);
-        $nV = chunk_split($nV, 64, "\15\xa");
-        $nV = "\x2d\55\x2d\x2d\x2d\x42\105\107\x49\x4e\x20\103\x45\x52\x54\111\x46\111\103\101\124\105\55\55\55\x2d\x2d\xd\xa" . $nV . "\55\55\55\x2d\55\x45\116\104\40\103\105\122\124\x49\106\111\x43\x41\x54\x45\55\x2d\55\55\55";
-        return $nV;
+        $oS = trim($oS);
+        $oS = preg_replace("\x2f\133\15\xa\135\53\x2f", '', $oS);
+        $oS = str_replace("\55", '', $oS);
+        $oS = str_replace("\x42\x45\x47\111\x4e\40\x43\105\x52\x54\111\x46\111\103\x41\x54\x45", '', $oS);
+        $oS = str_replace("\x45\116\104\x20\103\x45\x52\124\x49\106\x49\103\x41\x54\105", '', $oS);
+        $oS = str_replace("\x20", '', $oS);
+        $oS = chunk_split($oS, 64, "\xd\12");
+        $oS = "\x2d\x2d\55\x2d\x2d\x42\x45\107\111\x4e\x20\103\105\122\x54\111\x46\111\x43\101\x54\x45\55\x2d\55\55\x2d\15\xa" . $oS . "\x2d\x2d\55\55\x2d\x45\116\x44\40\x43\x45\122\x54\x49\x46\x49\x43\101\x54\105\55\x2d\x2d\55\55";
+        return $oS;
     }
-    public static function desanitize_certificate($nV)
+    public static function desanitize_certificate($oS)
     {
-        $nV = preg_replace("\57\133\xd\12\135\x2b\x2f", '', $nV);
-        $nV = str_replace("\55\x2d\x2d\x2d\x2d\x42\105\107\x49\116\40\x43\105\122\x54\x49\106\x49\103\101\x54\x45\55\55\x2d\x2d\x2d", '', $nV);
-        $nV = str_replace("\55\55\x2d\55\x2d\105\116\x44\40\x43\105\122\x54\x49\106\x49\x43\x41\x54\105\x2d\55\55\55\55", '', $nV);
-        $nV = str_replace("\x20", '', $nV);
-        return $nV;
+        $oS = preg_replace("\57\133\xd\12\135\x2b\x2f", '', $oS);
+        $oS = str_replace("\x2d\55\55\x2d\55\x42\x45\107\x49\116\40\x43\x45\122\x54\111\106\x49\103\101\x54\x45\55\55\x2d\55\55", '', $oS);
+        $oS = str_replace("\x2d\55\55\x2d\55\105\116\104\40\x43\x45\122\x54\x49\x46\x49\x43\101\124\105\55\x2d\55\55\55", '', $oS);
+        $oS = str_replace("\x20", '', $oS);
+        return $oS;
     }
-    public static function mo_saml_wp_remote_call($of, $h6 = array(), $M2 = false)
+    public static function mo_saml_wp_remote_call($gA, $mH = array(), $s9 = false)
     {
-        if (!$M2) {
-            goto wKP;
+        if (!$s9) {
+            goto PSC;
         }
-        $Oc = wp_remote_get($of, $h6);
-        goto hTw;
-        wKP:
-        $Oc = wp_remote_post($of, $h6);
-        hTw:
-        if (!is_wp_error($Oc)) {
-            goto K2g;
+        $eq = wp_remote_get($gA, $mH);
+        goto YMP;
+        PSC:
+        $eq = wp_remote_post($gA, $mH);
+        YMP:
+        if (!is_wp_error($eq)) {
+            goto QIT;
         }
-        update_option("\155\157\x5f\163\x61\155\x6c\137\155\x65\163\163\x61\147\145", "\x55\156\x61\x62\x6c\x65\x20\x74\157\40\x63\157\x6e\156\x65\x63\164\40\164\157\40\164\150\145\40\x49\x6e\x74\145\162\156\145\x74\x2e\40\120\154\x65\x61\163\145\40\x74\x72\x79\40\x61\x67\x61\x69\x6e\56");
+        update_option("\x6d\157\137\163\x61\155\154\137\155\x65\163\x73\x61\147\x65", "\125\156\x61\x62\154\x65\40\164\x6f\40\143\157\x6e\x6e\145\x63\x74\40\164\157\x20\164\x68\145\x20\x49\x6e\164\x65\x72\156\145\164\56\40\x50\x6c\145\x61\x73\x65\x20\x74\x72\x79\40\141\147\141\x69\x6e\56");
         self::mo_saml_show_error_message();
         return false;
-        goto V7E;
-        K2g:
-        return $Oc["\142\x6f\144\171"];
-        V7E:
+        goto FQt;
+        QIT:
+        return $eq["\x62\157\x64\171"];
+        FQt:
     }
     public static function mo_saml_show_success_message()
     {
-        remove_action("\x61\144\x6d\x69\156\x5f\156\x6f\x74\x69\143\x65\163", array("\x53\x41\x4d\x4c\x53\x50\x55\x74\151\154\x69\164\x69\x65\x73", "\x6d\x6f\x5f\x73\x61\x6d\154\137\163\x75\x63\x63\145\163\163\x5f\155\x65\x73\163\x61\x67\x65"));
-        add_action("\141\144\x6d\x69\x6e\x5f\x6e\157\x74\x69\143\x65\x73", array("\x53\x41\115\x4c\123\120\125\x74\x69\154\x69\164\x69\145\x73", "\x6d\x6f\137\163\141\x6d\154\137\x65\162\x72\157\x72\x5f\x6d\x65\163\163\141\x67\x65"));
+        remove_action("\141\x64\155\x69\x6e\137\x6e\157\164\151\143\145\x73", array("\x53\x41\115\114\123\x50\x55\x74\x69\154\151\x74\151\145\x73", "\x6d\157\x5f\163\x61\155\154\137\x73\165\143\143\x65\x73\x73\137\155\x65\x73\x73\x61\147\145"));
+        add_action("\x61\144\155\151\156\x5f\156\157\164\x69\143\x65\x73", array("\x53\x41\x4d\x4c\123\120\125\164\151\154\x69\x74\x69\145\163", "\155\157\x5f\x73\x61\x6d\154\137\145\162\162\157\x72\137\x6d\145\x73\163\141\147\145"));
     }
     public static function mo_saml_show_error_message()
     {
-        remove_action("\141\144\155\x69\156\x5f\x6e\157\164\x69\x63\x65\x73", array("\123\101\x4d\114\x53\120\x55\164\x69\x6c\151\164\151\x65\163", "\155\x6f\137\x73\x61\x6d\x6c\137\x65\162\x72\157\162\x5f\155\145\163\x73\141\x67\145"));
-        add_action("\141\x64\155\151\156\137\x6e\x6f\164\151\x63\145\163", array("\123\101\x4d\x4c\123\120\125\164\x69\154\151\x74\x69\145\x73", "\155\x6f\137\x73\141\x6d\x6c\137\x73\165\143\143\145\163\163\137\x6d\x65\163\x73\141\x67\x65"));
+        remove_action("\x61\144\155\151\156\137\x6e\x6f\164\151\x63\145\163", array("\x53\101\x4d\114\x53\x50\125\164\151\x6c\151\164\x69\145\x73", "\155\157\x5f\163\141\x6d\x6c\x5f\145\162\x72\x6f\x72\137\155\x65\x73\163\141\147\145"));
+        add_action("\141\144\155\151\156\137\x6e\157\x74\x69\x63\145\x73", array("\x53\x41\x4d\x4c\x53\120\125\164\x69\x6c\151\164\151\145\163", "\155\157\137\x73\141\155\x6c\x5f\163\x75\x63\x63\145\x73\163\x5f\x6d\145\x73\x73\x61\x67\x65"));
     }
     static function mo_saml_success_message()
     {
-        $a4 = "\145\162\162\157\x72";
-        $k0 = get_option("\x6d\157\137\x73\141\155\x6c\137\155\x65\x73\x73\x61\x67\145");
-        echo "\74\x64\x69\x76\40\143\154\x61\x73\x73\75\x27" . $a4 . "\x27\x3e\40\x3c\160\76" . $k0 . "\x3c\57\x70\x3e\x3c\x2f\x64\x69\x76\76";
+        $kh = "\145\x72\x72\x6f\x72";
+        $CE = get_option("\155\157\137\x73\x61\x6d\154\x5f\x6d\145\x73\163\141\x67\x65");
+        echo "\x3c\x64\151\x76\40\143\154\x61\x73\x73\x3d\47" . $kh . "\47\x3e\40\x3c\x70\76" . $CE . "\x3c\x2f\160\x3e\74\57\x64\151\x76\x3e";
     }
     static function mo_saml_error_message()
     {
-        $a4 = "\165\160\144\141\164\x65\144";
-        $k0 = get_option("\155\x6f\x5f\x73\141\x6d\x6c\137\x6d\x65\x73\x73\x61\147\x65");
-        echo "\x3c\x64\151\x76\x20\x63\154\x61\163\163\x3d\x27" . $a4 . "\47\x3e\40\x3c\160\76" . $k0 . "\x3c\57\160\76\x3c\x2f\x64\x69\166\x3e";
+        $kh = "\x75\x70\144\141\164\x65\144";
+        $CE = get_option("\x6d\157\x5f\x73\141\155\x6c\x5f\x6d\x65\x73\x73\141\x67\x65");
+        echo "\74\x64\151\166\x20\x63\154\x61\x73\x73\x3d\47" . $kh . "\x27\x3e\x20\74\160\x3e" . $CE . "\x3c\x2f\160\x3e\74\57\144\x69\166\x3e";
     }
     public static function mo_saml_is_user_logged_in()
     {
         if (!is_user_logged_in()) {
-            goto enu;
+            goto RLv;
         }
         return true;
-        enu:
-        if (!(!empty(get_option("\155\x6f\x5f\145\156\141\x62\154\x65\137\147\x75\145\163\164\x5f\x6c\157\147\x69\156")) && get_option("\155\x6f\x5f\x65\x6e\x61\x62\x6c\145\x5f\147\165\x65\x73\x74\137\154\157\147\151\156") == "\x74\162\x75\x65")) {
-            goto Iwk;
+        RLv:
+        if (!(!empty(get_option("\155\x6f\137\x65\156\141\142\154\x65\x5f\147\165\x65\x73\164\x5f\154\x6f\x67\x69\x6e")) && get_option("\x6d\x6f\137\145\x6e\141\x62\154\145\137\147\x75\145\x73\x74\x5f\154\x6f\x67\151\156") == "\164\162\165\145")) {
+            goto xUh;
         }
-        if (!(!empty($_SESSION["\x6d\157\x5f\147\165\x65\x73\x74\x5f\154\157\147\x69\x6e"]["\x73\x65\163\163\x69\x6f\156\x49\x6e\x64\145\x78"]) || !empty($_COOKIE["\163\x65\x73\163\x69\x6f\x6e\111\x6e\144\145\x78"]))) {
-            goto OH4;
+        if (!(!empty($_SESSION["\155\157\137\x67\x75\x65\x73\164\137\154\157\x67\x69\x6e"]["\x73\145\163\x73\x69\x6f\x6e\111\156\144\145\170"]) || !empty($_COOKIE["\x73\x65\x73\x73\151\157\x6e\x49\156\x64\x65\170"]))) {
+            goto aZA;
         }
         return true;
-        OH4:
-        Iwk:
+        aZA:
+        xUh:
         return false;
     }
     public static function mo_saml_get_plugin_dir_url()
     {
         return plugin_dir_url(__FILE__);
+    }
+    public static function mo_saml_decrypt_data($iZ)
+    {
+        $mr = get_option("\155\x6f\137\163\141\x6d\x6c\137\x63\x75\x73\164\157\x6d\145\x72\x5f\x74\x6f\153\x65\x6e");
+        $bR = AESEncryption::decrypt_data($iZ, $mr);
+        return $bR;
+    }
+    public static function mo_saml_encrypt_data($iZ)
+    {
+        $mr = get_option("\155\x6f\137\163\141\x6d\x6c\x5f\143\x75\163\x74\157\x6d\x65\162\137\164\x6f\x6b\145\156");
+        $FB = AESEncryption::encrypt_data($iZ, $mr);
+        return $FB;
+    }
+    public static function mo_saml_append_params_redirect_binding($TV)
+    {
+        $Cn = '';
+        foreach ($TV as $mr => $Wl) {
+            if (!("\x6f\160\164\151\157\156" !== $mr && "\x72\x65\144\x69\x72\x65\143\x74\137\164\157" !== $mr)) {
+                goto I9a;
+            }
+            $Cn .= "\x26" . $mr . "\75" . urlencode($Wl);
+            I9a:
+            VbZ:
+        }
+        XDx:
+        return $Cn;
+    }
+    public static function mo_saml_append_params_post_binding($TV)
+    {
+        $qj = '';
+        if (empty($TV)) {
+            goto vK2;
+        }
+        foreach ($TV as $mr => $Wl) {
+            if (!("\157\160\x74\x69\x6f\156" !== $mr && "\x72\x65\144\151\x72\x65\x63\164\137\164\157" !== $mr)) {
+                goto DvO;
+            }
+            $qj .= "\74\151\156\x70\x75\x74\x20\x74\171\160\x65\x3d\x22\150\151\x64\x64\x65\x6e\42\40\156\x61\155\x65\x3d\42" . $mr . "\42\x20\x76\141\x6c\x75\145\x3d\42" . esc_attr($Wl) . "\42\40\x2f\x3e";
+            DvO:
+            C65:
+        }
+        ciE:
+        vK2:
+        return $qj;
+    }
+    public static function mo_saml_sanitize_associative_array($sW)
+    {
+        $ri = array();
+        foreach ($sW as $mr => $Wl) {
+            if (is_array($Wl)) {
+                goto s2N;
+            }
+            $ri[$mr] = sanitize_text_field($Wl);
+            goto SS4;
+            s2N:
+            $aA = array();
+            foreach ($Wl as $sU => $Kv) {
+                $aA[$sU] = sanitize_text_field($Kv);
+                qIo:
+            }
+            HGt:
+            $ri[$mr] = $aA;
+            SS4:
+            DS6:
+        }
+        A_z:
+        return $ri;
+    }
+    public static function mo_saml_get_secure_cookie_attribute()
+    {
+        $CH = is_ssl() && "\x68\164\x74\160\x73" === parse_url(get_option("\150\x6f\155\145"), PHP_URL_SCHEME);
+        return apply_filters("\x6d\157\x5f\x73\x61\x6d\x6c\x5f\163\145\164\137\x73\x65\x63\x75\x72\145\x5f\143\157\x6f\153\151\x65\x5f\141\164\x74\x72\151\x62\x75\164\145", $CH);
+    }
+    public static function mo_saml_check_saml_response_for_reply_attack($ge)
+    {
+        $UU = apply_filters("\x6d\157\137\x73\x61\155\154\x5f\163\153\x69\x70\x5f\x63\x68\145\143\153\x5f\x73\141\155\x6c\137\162\x65\163\160\x6f\x6e\163\x65\137\x66\157\x72\137\162\145\160\x6c\171\137\x61\x74\164\x61\143\153", false);
+        if (!$UU) {
+            goto GZY;
+        }
+        return;
+        GZY:
+        $WB = current($ge->getAssertions())->getNotOnOrAfter();
+        $my = current($ge->getAssertions())->getId();
+        if ($WB !== NULL) {
+            goto YNf;
+        }
+        $MC = 15 * MINUTE_IN_SECONDS;
+        goto RJ2;
+        YNf:
+        $MC = $WB - time() + 300;
+        RJ2:
+        $Nu = get_transient($my);
+        if (false === $Nu) {
+            goto ghj;
+        }
+        wp_die("\x3c\142\76\x5b\127\x50\123\101\x4d\x4c\x45\122\122\x30\60\61\66\x5d\74\x2f\142\76\x20\127\x65\x20\143\x6f\165\154\x64\x20\156\157\x74\40\x73\x69\x67\x6e\x20\171\x6f\x75\40\151\x6e\56\x20\120\154\x65\x61\163\145\40\x63\x6f\156\x74\141\x63\164\40\171\x6f\x75\x72\x20\x61\x64\x6d\x69\156\151\163\164\162\x61\x74\x6f\x72\40\167\151\164\x68\40\x74\150\145\40\155\x65\156\164\151\x6f\156\x65\144\40\x65\x72\x72\157\x72\40\143\x6f\x64\145\x2e", "\133\127\x50\x53\101\115\114\105\x52\122\60\60\x31\66\135\x20\x44\x75\160\154\x69\143\141\164\145\x20\x53\101\115\x4c\x20\122\145\163\160\157\156\163\145");
+        goto Qy_;
+        ghj:
+        set_transient($my, "\x65\170\x69\163\164\x65\144", $MC);
+        Qy_:
+    }
+    public static function mo_saml_is_plugin_active($Dt)
+    {
+        $Bk = get_option("\141\x63\x74\151\x76\x65\137\x70\154\165\147\151\156\x73");
+        return in_array($Dt, (array) $Bk);
+    }
+    public static function handleXmlError($m_, $Cs, $Ny, $Vm)
+    {
+        if ($m_ == E_WARNING && substr_count($Cs, "\x44\117\x4d\x44\157\143\165\x6d\145\156\x74\72\x3a\x6c\157\x61\x64\x58\x4d\x4c\50\x29") > 0) {
+            goto G60;
+        }
+        return false;
+        goto lKE;
+        G60:
+        return "\x57\x50\123\101\115\114\105\x52\122\x30\60\x31\x34";
+        lKE:
+    }
+    public static function mo_saml_safe_load_xml($jn)
+    {
+        if (class_exists("\x44\x4f\x4d\x44\157\x63\x75\x6d\145\156\x74")) {
+            goto V91;
+        }
+        return "\x57\x50\x53\101\115\114\x45\122\x52\x30\x30\61\x35";
+        V91:
+        $tR = new DOMDocument();
+        libxml_set_external_entity_loader(null);
+        $HR = set_error_handler(array("\123\101\115\114\x53\x50\125\164\151\x6c\x69\164\x69\x65\163", "\150\x61\x6e\144\154\x65\x58\155\154\105\162\162\157\x72"));
+        $uK = $tR->loadXML($jn, LIBXML_NONET);
+        restore_error_handler();
+        if (!$uK) {
+            goto mpf;
+        }
+        foreach ($tR->childNodes as $CP) {
+            if (!($CP->nodeType === XML_DOCUMENT_TYPE_NODE)) {
+                goto EZE;
+            }
+            return "\127\120\x53\x41\x4d\x4c\105\x52\122\60\60\61\x33";
+            EZE:
+            JjJ:
+        }
+        kne:
+        return $tR;
+        mpf:
+        return "\x57\120\123\101\115\114\x45\122\122\x30\60\x31\64";
+    }
+    public static function mo_saml_delete_plugin_cookies()
+    {
+        $CH = self::mo_saml_get_secure_cookie_attribute();
+        if (isset($_SESSION["\x6d\x6f\x5f\147\x75\145\163\164\x5f\154\x6f\x67\x69\x6e"]["\156\141\155\145\x49\104"])) {
+            goto ddk;
+        }
+        unset($_SESSION["\x6d\x6f\137\x73\x61\x6d\154"]);
+        unset($_SESSION["\x6d\157\137\x67\x75\145\x73\x74\x5f\x6c\157\x67\151\x6e"]);
+        unset($_COOKIE["\x6c\157\x67\147\145\144\x5f\x69\x6e\x5f\x77\x69\164\150\137\x69\x64\160"]);
+        setcookie("\x6c\157\x67\x67\x65\144\137\151\156\x5f\167\x69\x74\x68\137\x69\144\160", '', time() - 3600, '', '', $CH, true);
+        goto ITI;
+        ddk:
+        unset($_SESSION["\155\157\137\x67\165\x65\x73\164\x5f\x6c\x6f\147\151\156"]);
+        ITI:
+        setcookie("\156\x61\155\x65\x49\x44", '', time() - 3600, "\57", '', $CH, true);
+        setcookie("\163\x65\163\x73\x69\x6f\156\111\x6e\144\145\170", '', time() - 3600, "\x2f", '', $CH, true);
+    }
+    public static function update_metadata_cron($eG, $Fb)
+    {
+        $NA = get_option(Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_INTERVAL);
+        update_option(Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_URL, htmlspecialchars($Fb));
+        update_option(Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_INTERVAL, htmlspecialchars($eG));
+        if (!wp_next_scheduled(Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_CRON_ACTION)) {
+            goto b6q;
+        }
+        if ($NA !== htmlspecialchars($eG)) {
+            goto NwH;
+        }
+        goto HLx;
+        b6q:
+        wp_schedule_event(time(), htmlspecialchars($eG), Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_CRON_ACTION);
+        goto HLx;
+        NwH:
+        wp_unschedule_event(wp_next_scheduled(Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_CRON_ACTION), Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_CRON_ACTION);
+        wp_schedule_event(time(), htmlspecialchars($eG), Mo_Options_Enum_Metadata_Sync::METADATA_SYNC_CRON_ACTION);
+        HLx:
     }
 }
