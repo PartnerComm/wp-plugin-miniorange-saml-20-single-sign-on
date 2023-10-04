@@ -1,7 +1,13 @@
 <?php
+/**
+ * This file is a part of the miniorange-saml-20-single-sign-on plugin.
+ *
+ * @link https://plugins.miniorange.com/
+ * @author miniOrange
+ * @package miniorange-saml-20-single-sign-on
+ */
 
 
-$B6 = dirname(__FILE__) . "\57\x4c\x69\143\x65\156\163\x65\x55\164\151\154\x73";
-require $B6 . "\57\x76\x69\145\167\x73\57\x4d\141\x6e\141\x67\x65\114\x69\143\x65\156\x73\145\x56\151\145\x77\56\x70\x68\x70";
-require $B6 . "\x2f\x4c\151\x63\145\x6e\163\x65\x48\141\156\144\154\145\162\x2e\160\x68\x70";
-require $B6 . "\57\114\151\x63\145\x6e\163\x65\x4f\142\x6a\x65\x63\x74\56\160\150\x70";
+require_once Mo_Saml_Plugin_Files::MANAGE_LICENSE_VIEW;
+require_once Mo_Saml_Plugin_Files::ENV_LICENSE_HANDLER;
+require_once Mo_Saml_Plugin_Files::ENV_LICENSE_OBJECT;

@@ -1,8 +1,15 @@
 <?php
+/**
+ * This file is a part of the miniorange-saml-20-single-sign-on plugin.
+ *
+ * @link https://plugins.miniorange.com/
+ * @author miniOrange
+ * @package miniorange-saml-20-single-sign-on
+ */
 
 
-if (defined("\x57\x50\111\116\103")) {
-    goto i5;
+if (defined("\x57\x50\x49\116\103")) {
+    goto ds;
 }
 die;
-i5:
+ds:

@@ -1,21 +1,28 @@
 <?php
+/**
+ * This file is a part of the miniorange-saml-20-single-sign-on plugin.
+ *
+ * @link https://plugins.miniorange.com/
+ * @author miniOrange
+ * @package miniorange-saml-20-single-sign-on
+ */
 
 
 class LicenseObject
 {
     private $wp_site_url;
     private $plugin_settings = array();
-    public function __construct($KG)
+    public function __construct($sy)
     {
-        $this->wp_site_url = $KG;
+        $this->wp_site_url = $sy;
     }
     public function getWpSiteUrl()
     {
         return $this->wp_site_url;
     }
-    public function setWpSiteUrl($KG)
+    public function setWpSiteUrl($sy)
     {
-        $this->wp_site_url = $KG;
+        $this->wp_site_url = $sy;
     }
     public function convertEnvironmentObjectToArray()
     {
@@ -25,91 +32,91 @@ class LicenseObject
     {
         return $this->plugin_settings;
     }
-    public function setPluginSettings($bD, $Th = false)
+    public function setPluginSettings($n4, $X8 = false)
     {
-        if ($Th) {
-            goto zr;
+        if ($X8) {
+            goto lm;
         }
-        $this->plugin_settings = $bD;
-        goto ef;
-        zr:
-        foreach (mo_options_enum_service_provider::getConstants() as $jh) {
-            if ($jh == mo_options_enum_service_provider::Request_signed || $jh == mo_options_enum_service_provider::Is_encoding_enabled) {
-                goto vT;
+        $this->plugin_settings = $n4;
+        goto u9;
+        lm:
+        foreach (Mo_Saml_Options_Enum_Service_Provider::get_constants() as $RW) {
+            if ($RW == Mo_Saml_Options_Enum_Service_Provider::REQUEST_SIGNED || $RW == Mo_Saml_Options_Enum_Service_Provider::IS_ENCODING_ENABLED) {
+                goto ci;
             }
-            if (empty($bD[$jh])) {
-                goto Hz;
+            if (empty($n4[$RW])) {
+                goto yk;
             }
-            if (!($jh == mo_options_enum_service_provider::X509_certificate)) {
-                goto xC;
+            if (!($RW == Mo_Saml_Options_Enum_Service_Provider::X509_CERTIFICATE)) {
+                goto Nv;
             }
-            $DR = $bD[mo_options_enum_service_provider::X509_certificate];
-            $kc = array();
-            foreach ($DR as $WO => $cK) {
-                if (empty($cK)) {
-                    goto ck;
+            $CD = $n4[Mo_Saml_Options_Enum_Service_Provider::X509_CERTIFICATE];
+            $hc = array();
+            foreach ($CD as $mr => $Wl) {
+                if (empty($Wl)) {
+                    goto La;
                 }
-                $kc[$WO] = SAMLSPUtilities::sanitize_certificate($cK);
-                if (@openssl_x509_read($kc[$WO])) {
-                    goto sD;
+                $hc[$mr] = SAMLSPUtilities::sanitize_certificate($Wl);
+                if (@openssl_x509_read($hc[$mr])) {
+                    goto KX;
                 }
-                update_option("\x6d\x6f\137\x73\141\x6d\154\137\155\145\x73\163\x61\x67\x65", "\111\x6e\x76\141\x6c\151\x64\40\143\x65\x72\164\x69\146\151\x63\141\164\145\x3a\x20\x50\x6c\x65\x61\x73\x65\40\x70\x72\x6f\166\x69\144\145\40\x61\x20\x76\x61\x6c\151\144\x20\x63\145\162\x74\x69\146\151\x63\x61\x74\x65\56");
-                delete_option("\163\141\x6d\154\137\x78\65\60\71\x5f\x63\x65\162\164\x69\146\151\x63\x61\x74\x65");
+                update_option("\155\157\137\163\x61\155\154\137\x6d\x65\163\x73\x61\147\x65", "\x49\156\166\141\x6c\x69\144\40\143\x65\x72\164\x69\146\151\143\x61\x74\145\72\40\120\154\145\x61\163\145\40\160\162\157\166\151\144\x65\40\141\40\x76\141\x6c\151\144\40\x63\145\162\x74\x69\x66\x69\x63\141\x74\x65\56");
+                delete_option("\x73\141\155\x6c\137\170\x35\x30\71\x5f\143\145\x72\164\151\x66\151\x63\141\x74\x65");
                 return;
-                sD:
-                goto zm;
-                ck:
-                unset($DR[$WO]);
-                zm:
-                t1:
+                KX:
+                goto bj;
+                La:
+                unset($CD[$mr]);
+                bj:
+                xc:
             }
-            Et:
-            $bD[$jh] = maybe_serialize($kc);
-            xC:
-            $this->plugin_settings[$jh] = htmlspecialchars(trim($bD[$jh]));
-            Hz:
-            goto pZ;
-            vT:
-            if (!empty($bD[$jh])) {
-                goto fr;
+            YS:
+            $n4[$RW] = maybe_serialize($hc);
+            Nv:
+            $this->plugin_settings[$RW] = htmlspecialchars(trim($n4[$RW]));
+            yk:
+            goto AN;
+            ci:
+            if (!empty($n4[$RW])) {
+                goto LL;
             }
-            $bD[$jh] = "\165\156\143\x68\145\x63\x6b\145\x64";
-            goto UR;
-            fr:
-            $bD[$jh] = "\143\150\x65\x63\153\x65\144";
-            UR:
-            $this->plugin_settings[$jh] = htmlspecialchars(trim($bD[$jh]));
-            pZ:
-            kV:
+            $n4[$RW] = "\x75\156\143\150\x65\143\153\x65\x64";
+            goto Dd;
+            LL:
+            $n4[$RW] = "\143\150\145\143\x6b\145\144";
+            Dd:
+            $this->plugin_settings[$RW] = htmlspecialchars(trim($n4[$RW]));
+            AN:
+            i6:
         }
-        rb:
-        foreach (mo_options_enum_attribute_mapping::getConstants() as $jh) {
-            if (empty($bD[$jh])) {
-                goto Jf;
+        Az:
+        foreach (Mo_Saml_Options_Enum_Attribute_Mapping::get_constants() as $RW) {
+            if (empty($n4[$RW])) {
+                goto NT;
             }
-            $this->plugin_settings[$jh] = htmlspecialchars(trim($bD[$jh]));
-            Jf:
-            AJ:
+            $this->plugin_settings[$RW] = htmlspecialchars(trim($n4[$RW]));
+            NT:
+            Nw:
         }
-        gY:
-        foreach (mo_options_enum_domain_restriction::getConstants() as $jh) {
-            if (empty($bD[$jh])) {
-                goto oT;
+        pt:
+        foreach (Mo_Saml_Options_Enum_Domain_Restriction::get_constants() as $RW) {
+            if (empty($n4[$RW])) {
+                goto xq;
             }
-            $this->plugin_settings[$jh] = htmlspecialchars(trim($bD[$jh]));
-            oT:
-            i8:
+            $this->plugin_settings[$RW] = htmlspecialchars(trim($n4[$RW]));
+            xq:
+            ni:
         }
-        ak:
-        foreach (mo_options_enum_role_mapping::getConstants() as $jh) {
-            if (empty($bD[$jh])) {
-                goto J8;
+        a7:
+        foreach (Mo_Saml_Options_Enum_Role_Mapping::get_constants() as $RW) {
+            if (empty($n4[$RW])) {
+                goto l8;
             }
-            $this->plugin_settings[$jh] = htmlspecialchars(trim($bD[$jh]));
-            J8:
-            An:
+            $this->plugin_settings[$RW] = htmlspecialchars(trim($n4[$RW]));
+            l8:
+            bO:
         }
-        Zh:
-        ef:
+        AI:
+        u9:
     }
 }

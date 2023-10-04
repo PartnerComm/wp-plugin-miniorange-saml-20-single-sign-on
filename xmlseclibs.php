@@ -1,5 +1,12 @@
 <?php
 /**
+ * This file is a part of the miniorange-saml-20-single-sign-on plugin.
+ *
+ * @link https://plugins.miniorange.com/
+ * @author miniOrange
+ * @package miniorange-saml-20-single-sign-on
+ */
+/**
  * xmlseclibs.php
  *
  * Copyright (c) 2007-2020, Robert Richards <rrichards@cdatazone.org>.
@@ -41,8 +48,7 @@
  */
 
 
-$xmlseclibs_srcdir = dirname(__FILE__) . '/includes/lib/SAML2Core';
-require $xmlseclibs_srcdir . '/XMLSecurityKey.php';
-require $xmlseclibs_srcdir . '/XMLSecurityDSig.php';
-require $xmlseclibs_srcdir . '/XMLSecEnc.php';
-require $xmlseclibs_srcdir . '/Utils/XPath.php';
+require_once Mo_Saml_Plugin_Files::XML_SECURITY_KEY;
+require_once Mo_Saml_Plugin_Files::XML_SECURITY_DSIG;
+require_once Mo_Saml_Plugin_Files::XML_SEC_ENC;
+require_once Mo_Saml_Plugin_Files::XPATH;

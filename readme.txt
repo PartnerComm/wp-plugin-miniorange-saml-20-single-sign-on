@@ -3,8 +3,8 @@ Contributors: miniOrange
 Donate link: https://miniorange.com
 Tags: saml, single sign on, SSO, single sign on saml, sso saml, sso integration WordPress, sso using SAML, SAML 2.0 Service Provider, Wordpress SAML, SAML Single Sign-On, SSO using SAML, SAML 2.0, SAML 20, Wordpress Single Sign On, ADFS, Okta, Google Apps, Google for Work, Salesforce, Shibboleth, SimpleSAMLphp, OpenAM, Centrify, Ping, RSA, IBM, Oracle, OneLogin, Bitium, WSO2, NetIQ, Novell Access Manager
 Requires at least: 3.5
-Tested up to: 6.1
-Stable tag: 12.1.4
+Tested up to: 6.3
+Stable tag: 12.1.7.1
 Requires PHP: 5.4
 License URI: https://miniorange.com/usecases/miniOrange_User_Agreement.pdf
 
@@ -51,10 +51,10 @@ For more support or info email us at info@xecurify.com or <a href="http://minior
 == Frequently Asked Questions ==
 
 = I am not able to configure the Identity Provider with the provided settings =
-Please email us at info@xecurify.com or <a href="http://miniorange.com/contact" >Contact us</a>. You can also submit your app request from plugin's configuration page.
+Please email us at info@xecurify.com or <a href="https://miniorange.com/contact" >Contact us</a>. You can also submit your app request from plugin's configuration page.
 
 = For any query/problem/request =
-Visit Help & FAQ section in the plugin OR email us at info@xecurify.com or <a href="http://miniorange.com/contact">Contact us</a>. You can also submit your query from plugin's configuration page.
+Visit Help & FAQ section in the plugin OR email us at info@xecurify.com or <a href="https://miniorange.com/contact">Contact us</a>. You can also submit your query from plugin's configuration page.
 
 == Screenshots ==
 
@@ -63,6 +63,48 @@ Visit Help & FAQ section in the plugin OR email us at info@xecurify.com or <a hr
 3. Configure your IdP in your Wordpress site.
 
 == Changelog ==
+
+= 12.1.7.1 =
+Relaxed the Audience Restriction check
+Added custom CSS for Admin Dashboard widget
+Added a proper error message for invalid XML
+Resolved warning on plugin’s update page
+Resolved Metadata Sync for empty Metadata URL
+
+= 12.1.7 =
+Comaptibility fixes for PHP 8.2
+Vulnerability fixes for a DOS attack
+Vulnerability fix for Replay Attack
+Updated all CSS and JS Libraries
+Updated htaccess rules for the root folder
+Updated cookie creation with a secure parameter
+Fixed warning of iconv on Alpine Linux environments
+Fixed warning on logout when user session is terminated
+Fixed redirection behaviour after logout for a non SSO user
+Added sending of additonal parameters with SAML Request
+Added compatibility fixes for Advanced Role Mapping addon
+Added the Metadata Sync Settings in Service Provider Setup tab
+Added a proper error message on Encryption Certificate Mismatch
+
+= 12.1.6 =
+Compatibility with WP 6.3
+Compatibility fixes with Siteground Hosting
+Fix for error during file configuration import
+Fix for JSON error during license verification via WP CLI
+Fix for license options deletion on uninstall in a multisite
+Fix for license date updation
+Improvement of file inclusion method for the plugin
+Improvements in the License Admin Notice
+Added additional data type checks
+Removed unused JQuery
+
+= 12.1.5 =
+Compatibility with WP 6.2
+Redesigned Account Info tab
+Added Error Codes Submenu
+Updates in Licensing Framework 
+Added Admin Dashboard Widget
+Added notices in the plugin
 
 = 12.1.4 =
 Updated the bootstrap version to 5.2.2
@@ -228,6 +270,49 @@ UI Improvements.
 * this is the first release.
 
 == Upgrade Notice ==
+
+= 12.1.7.1 =
+Relaxed the Audience Restriction check
+Added custom CSS for Admin Dashboard widget
+Added a proper error message for invalid XML
+Resolved warning on plugin’s update page
+Resolved Metadata Sync for empty Metadata URL
+
+= 12.1.7 =
+Comaptibility fixes for PHP 8.2
+Vulnerability fixes for a DOS attack
+Vulnerability fix for Replay Attack
+Updated all CSS and JS Libraries
+Updated htaccess rules for the root folder
+Updated cookie creation with a secure parameter
+Fixed warning of iconv on Alpine Linux environments
+Fixed warning on logout when user session is terminated
+Fixed redirection behaviour after logout for a non SSO user
+Added sending of additonal parameters with SAML Request
+Added compatibility fixes for Advanced Role Mapping addon
+Added the Metadata Sync Settings in Service Provider Setup tab
+Added a proper error message on Encryption Certificate Mismatch
+
+
+= 12.1.6 =
+Compatibility with WP 6.3
+Compatibility fixes with Siteground Hosting
+Fix for error during file configuration import
+Fix for JSON error during WP-CLI license verification 
+Fix for license options deletion on uninstall in a multisite
+Fix for license date updation
+Improvement of file inclusion method for the plugin
+Improvements in the License Admin Notice
+Added additional data type checks
+Removed unused JQuery
+
+= 12.1.5 =
+Compatibility with WP 6.2
+Redesigned Account Info tab
+Added Error Codes Submenu
+Updates in Licensing Framework 
+Added Admin Dashboard Widget
+Added notices in the plugin
 
 = 12.1.4 =
 Updated the bootstrap version to 5.2.2

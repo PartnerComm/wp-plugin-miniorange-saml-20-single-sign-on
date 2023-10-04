@@ -1,24 +1,31 @@
 <?php
+/**
+ * This file is a part of the miniorange-saml-20-single-sign-on plugin.
+ *
+ * @link https://plugins.miniorange.com/
+ * @author miniOrange
+ * @package miniorange-saml-20-single-sign-on
+ */
 
 
 class CertificateUtility
 {
-    public static function generate_certificate($he, $TV, $Qr)
+    public static function generate_certificate($Oa, $V3, $AW)
     {
-        $uY = openssl_pkey_new();
-        $xY = openssl_csr_new($he, $uY, $TV);
-        $Ny = openssl_csr_sign($xY, null, $uY, $Qr, $TV, time());
-        openssl_csr_export($xY, $LE);
-        openssl_x509_export($Ny, $xd);
-        openssl_pkey_export($uY, $UH);
-        Gk:
-        if (!(($qc = openssl_error_string()) !== false)) {
-            goto M0;
+        $nm = openssl_pkey_new();
+        $Kl = openssl_csr_new($Oa, $nm, $V3);
+        $xg = openssl_csr_sign($Kl, null, $nm, $AW, $V3, time());
+        openssl_csr_export($Kl, $eg);
+        openssl_x509_export($xg, $z7);
+        openssl_pkey_export($nm, $f1);
+        oV:
+        if (!(($cN = openssl_error_string()) !== false)) {
+            goto pN;
         }
-        error_log("\x43\145\x72\x74\151\146\x69\x63\x61\x74\145\125\x74\151\154\x69\x74\171\x3a\40\105\x72\x72\x6f\162\40\147\145\x6e\x65\x72\141\x74\151\x6e\x67\x20\143\145\162\164\151\x66\151\x63\x61\164\x65\x2e\40" . $qc);
-        goto Gk;
-        M0:
-        $mG = array("\160\165\x62\x6c\151\x63\137\153\145\x79" => $xd, "\160\162\151\x76\x61\x74\x65\137\x6b\x65\x79" => $UH);
-        return $mG;
+        error_log("\103\145\162\x74\151\146\x69\143\141\x74\x65\x55\x74\151\154\x69\x74\171\72\x20\x45\162\x72\157\162\40\x67\x65\x6e\145\x72\141\x74\x69\x6e\147\40\143\145\x72\164\x69\146\151\x63\141\164\x65\x2e\40" . $cN);
+        goto oV;
+        pN:
+        $GU = array("\160\x75\x62\154\151\x63\x5f\x6b\x65\x79" => $z7, "\x70\x72\151\166\141\164\x65\137\x6b\x65\171" => $f1);
+        return $GU;
     }
 }

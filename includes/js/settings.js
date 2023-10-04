@@ -3,6 +3,16 @@ jQuery(document).ready(function () {
     jQuery("#toggle_am_content").click(function () {
         jQuery("#show_am_content").toggle();
     });
+
+
+    var input = document.querySelector("#contact_us_phone");
+    if(input){
+        window.intlTelInput(input, {
+            customPlaceholder: "phone-number",
+        });
+    }
+    
+
 	jQuery("#dont_allow_unlisted_user_role").change(function() {
 		if(jQuery(this).is(":checked")) {
 			jQuery("#saml_am_default_user_role").attr('disabled', true);
@@ -151,26 +161,6 @@ jQuery(document).ready(function () {
     });
     jQuery('.clk-icn').click(function() {
         jQuery(this).find('i').toggleClass('fa-times fa-expand-alt');
-    });
-
-    jQuery("#compare-plans").click(function(){ 
-        if (jQuery('#demo').hasClass("show")) { 
-            jQuery('#demo').removeClass('show');
-            jQuery('#demo').removeClass('in');
-        } else {
-            jQuery('#demo').addClass('show');
-            jQuery('#demo').removeClass('in');
-        }
-    });
-
-    jQuery("#compare-multi-plans").click(function(){ 
-        if (jQuery('#demo1').hasClass("show")) { 
-            jQuery('#demo1').removeClass('show');
-            jQuery('#demo1').removeClass('in');
-        } else {
-            jQuery('#demo1').addClass('show');
-            jQuery('#demo1').removeClass('in');
-        }
     });
 
     jQuery('.goto-opt a').click(function(e) {
@@ -327,11 +317,42 @@ jQuery(document).ready(function () {
 
 });
 
+function mo_saml_handle_metadata_sync_toggle(){
+    jQuery("#metadata_url")[0].required = jQuery("#sync_metadata")[0].checked;
+}
+
 function getlicensekeysform(){
-				jQuery("#loginform").submit();
+    jQuery("#loginform").submit();
 }
 
 function confirmlicenseform() {
 	jQuery("#mo_saml_check_license").submit();
 }
+
+jQuery(document).ready(function () {
+    let question = document.querySelectorAll(".question");
+    question.forEach(question => {
+        question.addEventListener("click", (item) => {
+            const active = document.querySelector(".question.active");
+            question.classList.toggle("active");
+            const answer = question.nextElementSibling;
+            if (question.classList.contains("active")) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                answer.style.borderBottom = "1.3px solid #f0d480";
+                question.style.borderBottom = "none";
+                answer.style.borderTop = "none";
+                answer.style.marginTop = 0;
+                answer.style.borderLeft = "1.3px solid #f0d480";
+                answer.style.borderRight = "1.3px solid #f0d480";
+                answer.style.padding = "1rem";
+                answer.style.borderRadius = "0 0 4px 4px";
+                question.style.borderRadius = "4px 4px 0 0";
+            } else {
+                answer.style.maxHeight = 0;
+                answer.style.padding = "0rem";
+                question.style.borderRadius = "4px 4px 4px 4px";
+            }
+        })
+    })
+});
 
